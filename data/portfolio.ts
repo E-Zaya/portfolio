@@ -3,13 +3,11 @@ import {
   FaEnvelope,
   FaGithub,
   FaHtml5,
-  FaInstagram,
   FaJs,
   FaLinkedin,
   FaReact,
 } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
-import { SiVercel } from "react-icons/si";
 
 export const navItems = [
   { label: "About", href: "/about" },
@@ -51,9 +49,16 @@ export const skillItems = [
   },
 ];
 
-export const heroBadges = [ "Frontend", "Backend", "UI / UX", "Responsive","Database", ];
+export const heroBadges = [
+  "Frontend",
+  "Backend",
+  "UI / UX",
+  "Responsive",
+  "Database",
+];
 
 export const contactEmail = "eitgelzaya@hotmail.com";
+
 export const socialLinks = [
   {
     name: "GitHub",
@@ -69,5 +74,49 @@ export const socialLinks = [
     name: "Email",
     icon: FaEnvelope,
     url: `mailto:${contactEmail}`,
+  },
+];
+
+export type ProjectItem = {
+  title: string;
+  slug: string;
+  description: string;
+  summary: string;
+  image: string;
+  tech: string[];
+  github?: string;
+  demo?: string;
+  featured?: boolean;
+  status?: "Completed" | "In Progress";
+};
+
+export const projectItems: ProjectItem[] = [
+  {
+    title: "Workout Log",
+    slug: "workout-log",
+    description:
+      "A training log app for recording workouts, tracking volume, and visualizing progress with a clean dashboard.",
+    summary:
+      "Built with Next.js, TypeScript, Prisma, and PostgreSQL. Focused on CRUD flows, dashboard UI, auth flow, and deployment.",
+  image: "/projects/workout-log.png",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    github: "https://github.com/E-Zaya/workout_log",
+    demo: "https://workout-log-smoky.vercel.app",
+    featured: true,
+    status: "In Progress",
+  },
+
+  {
+    title: "Country Explorer",
+    slug: "country-explorer",
+    description:
+      "A country information web app for browsing nations, searching by name, and learning key facts in an engaging UI.",
+    summary:
+      "Focused on card-based layouts, search/filter UX, and making data-heavy content feel approachable.",
+    image: "/projects/country-explorer.jpg",
+    tech: ["Next.js", "TypeScript", "REST API", "Tailwind CSS"],
+    github: "",
+    demo: "",
+    status: "In Progress",
   },
 ];

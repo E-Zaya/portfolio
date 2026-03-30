@@ -8,10 +8,17 @@ import ReactCountryFlag from "react-country-flag";
 
 export default function Hero() {
   const { scrollY } = useScroll();
-  const shouldReduceMotion = useReducedMotion(); // Reducemotion. Scrollエフェクトなどが苦手な方を配慮。ユーザー設定を取得 
-  // 設定が有効なら 0、無効なら元の動きを適用
+  const shouldReduceMotion = useReducedMotion();
+
   const imageY = useTransform(scrollY, [0, 500], [0, -35]);
   const glowY = useTransform(scrollY, [0, 500], [0, -20]);
+
+  const languages = [
+    { code: "MN", country: "MN" },
+    { code: "JP", country: "JP" },
+    { code: "EN", country: "US" },
+    { code: "CN", country: "CN" },
+  ];
 
   return (
     <section className="section-space pt-8">
@@ -20,24 +27,23 @@ export default function Hero() {
           <div
             className="hero-orb -left-10 -top-10 h-40 w-40"
             style={{
-              background:
-                "color-mix(in srgb, var(--accent-1) 30%, transparent)",
+              background: "color-mix(in srgb, var(--accent-1) 30%, transparent)",
             }}
           />
           <div
             className="hero-orb -bottom-10 -right-5 h-48 w-48"
             style={{
-              background:
-                "color-mix(in srgb, var(--accent-4) 24%, transparent)",
+              background: "color-mix(in srgb, var(--accent-4) 24%, transparent)",
             }}
           />
 
-<div className="relative z-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)]">            
-              <motion.div
+          <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(280px,0.9fr)]">
+            <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}   >
-              
+              transition={{ duration: 0.7 }}
+              className="min-w-0"
+            >
               <p className="mb-4 text-sm uppercase tracking-[0.3em] hero-gradient">
                 Full-stack Developer / Multilingual Engineer
               </p>
@@ -64,8 +70,6 @@ export default function Hero() {
                   </span>
                 ))}
               </div>
-              
-              
 
               <div className="flex flex-wrap gap-4">
                 <a
@@ -88,78 +92,72 @@ export default function Hero() {
                   GitHub
                 </a>
               </div>
-
-              {/* 画像、国旗 */}
-
-
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              style={{ y: imageY }}
-              className="relative flex justify-center lg:justify-end "
+              style={{ y: shouldReduceMotion ? 0 : imageY }}
+              className="relative flex justify-center lg:justify-end"
             >
               <motion.div
-                className="pointer-events-none absolute -right-6 top-10 h-40 w-40 rounded-full blur-3xl"
+                className="pointer-events-none absolute -right-4 top-8 h-28 w-28 rounded-full blur-3xl"
                 style={{
-                  y: glowY,
-                  background:
-                    "color-mix(in srgb, var(--accent-4) 18%, transparent)",
+                  y: shouldReduceMotion ? 0 : glowY,
+                  background: "color-mix(in srgb, var(--accent-4) 12%, transparent)",
                 }}
               />
               <motion.div
-                className="pointer-events-none absolute -left-6 bottom-10 h-44 w-44 rounded-full blur-3xl"
+                className="pointer-events-none absolute -left-4 bottom-8 h-32 w-32 rounded-full blur-3xl"
                 style={{
-                  y: glowY,
-                  background:
-                    "color-mix(in srgb, var(--accent-1) 16%, transparent)",
+                  y: shouldReduceMotion ? 0 : glowY,
+                  background: "color-mix(in srgb, var(--accent-1) 10%, transparent)",
                 }}
               />
 
-              <div className="relative gradient-border rounded-[26px] p-px">
-                <motion.div
-                  whileHover={{ scale: 1.035 }}
-                  transition={{ type: "spring", stiffness: 180, damping: 18 }}
-                  className="group overflow-hidden rounded-3xl border border-border bg-card shadow-theme"
-                >
-                  <Image
-                    src="/IMG_6346.JPEG"
-                    alt="Zaya portrait"
-                    width={300}
-                    height={400}
-                    priority
-                    sizes="(max-width: 768px) 100vw, 300px"
-                    className="w-full max-w-75 h-auto object-cover transition duration-700 ease-out group-hover:scale-[1.06]"
-                  />
-                </motion.div>
+              <div className="w-full max-w-[260px] sm:max-w-[300px] md:max-w-[340px] lg:max-w-[360px]">
+                <div className="relative rounded-[28px] bg-gradient-to-br from-white/60 via-white/20 to-white/10 p-[1px]">
+                  <motion.div
+                    whileHover={shouldReduceMotion ? undefined : { scale: 1.02 }}
+                    transition={{ type: "spring", stiffness: 180, damping: 20 }}
+                    className="group relative overflow-hidden rounded-[26px] border border-white/30 bg-card/90 shadow-theme"
+                  >
+                    <div className="relative aspect-[4/5]">
+                      <Image
+                        src="/IMG_6346.JPEG"
+                        alt="Zaya portrait"
+                        fill
+                        priority
+                        sizes="(max-width: 640px) 260px, (max-width: 768px) 300px, (max-width: 1024px) 340px, 360px"
+                        className="object-cover object-[58%_center] transition duration-700 ease-out group-hover:scale-[1.04]"
+                      />
 
-              <div className="mt-3 flex flex-wrap justify-center gap-2 lg:absolute lg:right-3 lg:-top-8 lg:z-20 lg:mt-0 lg:max-w-full lg:justify-end-safe">                      {[
-                        { code: "MN", country: "MN" },
-                        { code: "JP", country: "JP" },
-                        { code: "EN", country: "US" },
-                        { code: "CN", country: "CN" },
-                      ].map((lang) => (
-                        <div
-                          key={lang.code}
-                          className="inline-flex items-center gap-1 rounded-full border border-border bg-card/80 px-2.5 py-1 text-xs"
-                        >
-                          <ReactCountryFlag
-                            countryCode={lang.country}
-                            svg
-                            style={{ width: "1em", height: "1em" }}
-                          />
-                          <span>{lang.code}</span>
-                        </div>
-                      ))}
-
+                      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/12 via-transparent to-white/6" />
+                      <div className="pointer-events-none absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-white/20 to-transparent" />
+                    </div>
+                  </motion.div>
                 </div>
+
+                <div className="mt-3 flex flex-wrap justify-center gap-2 lg:justify-end">
+                  {languages.map((lang) => (
+                    <div
+                      key={lang.code}
+                      className="inline-flex items-center gap-1 rounded-full border border-border bg-card/80 px-2.5 py-1 text-xs shadow-sm backdrop-blur"
+                    >
+                      <ReactCountryFlag
+                        countryCode={lang.country}
+                        svg
+                        style={{ width: "1em", height: "1em" }}
+                      />
+                      <span>{lang.code}</span>
+                    </div>
+                  ))}
+                </div>
+
+
               </div>
-
-
             </motion.div>
-
-            {/* エンド */}
           </div>
         </div>
       </div>

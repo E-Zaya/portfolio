@@ -4,42 +4,6 @@
    Theme Tokens
 ========================= */
 :root {
-  color-scheme: dark;
-
-  /* base */
-  --background: #081120;
-  --background-2: #111827;
-  --foreground: #f8fafc;
-
-  /* text */
-  --text-soft: rgba(241, 245, 249, 0.84);
-  --text-muted: rgba(226, 232, 240, 0.7);
-
-  /* surface */
-  --card: rgba(255, 255, 255, 0.08);
-  --card-strong: rgba(255, 255, 255, 0.12);
-
-  /* border */
-  --border: rgba(255, 255, 255, 0.18);
-
-  /* shadow */
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
-
-  /* accent */
-  --accent-1: #38bdf8;
-  --accent-2: #818cf8;
-  --accent-3: #a855f7;
-  --accent-4: #f472b6;
-
-  /* glow */
-  --surface-glow: rgba(255, 255, 255, 0.06);
-  --surface-glow-strong: rgba(255, 255, 255, 0.1);
-
-  /* button text */
-  --button-foreground: #ffffff;
-}
-
-html.light {
   color-scheme: light;
 
   /* base */
@@ -75,6 +39,42 @@ html.light {
   --button-foreground: #b9aaaa;
 }
 
+html.dark {
+  color-scheme: dark;
+
+  /* base */
+  --background: #081120;
+  --background-2: #111827;
+  --foreground: #f8fafc;
+
+  /* text */
+  --text-soft: rgba(241, 245, 249, 0.84);
+  --text-muted: rgba(226, 232, 240, 0.7);
+
+  /* surface */
+  --card: rgba(255, 255, 255, 0.08);
+  --card-strong: rgba(255, 255, 255, 0.12);
+
+  /* border */
+  --border: rgba(255, 255, 255, 0.18);
+
+  /* shadow */
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+
+  /* accent */
+  --accent-1: #38bdf8;
+  --accent-2: #818cf8;
+  --accent-3: #a855f7;
+  --accent-4: #f472b6;
+
+  /* glow */
+  --surface-glow: rgba(255, 255, 255, 0.06);
+  --surface-glow-strong: rgba(255, 255, 255, 0.1);
+
+  /* button text */
+  --button-foreground: #ffffff;
+}
+
 /* =========================
    Base
 ========================= */
@@ -94,6 +94,23 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background:
     radial-gradient(
+      circle at 14% 16%,
+      color-mix(in srgb, var(--accent-1) 12%, transparent),
+      transparent 20%
+    ),
+    radial-gradient(
+      circle at 82% 14%,
+      color-mix(in srgb, var(--accent-2) 10%, transparent),
+      transparent 18%
+    ),
+    radial-gradient(circle at 50% 100%, rgba(148, 163, 184, 0.1), transparent 26%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.26), transparent 60%),
+    linear-gradient(180deg, #f3f6fa 0%, #e8eef5 52%, #dde6ef 100%);
+}
+
+html.dark body {
+  background:
+    radial-gradient(
       circle at 10% 20%,
       color-mix(in srgb, var(--accent-1) 22%, transparent),
       transparent 25%
@@ -109,23 +126,6 @@ body {
       transparent 26%
     ),
     linear-gradient(135deg, var(--background), var(--background-2) 55%, #111827);
-}
-
-html.light body {
-  background:
-    radial-gradient(
-      circle at 14% 16%,
-      color-mix(in srgb, var(--accent-1) 12%, transparent),
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 82% 14%,
-      color-mix(in srgb, var(--accent-2) 10%, transparent),
-      transparent 18%
-    ),
-    radial-gradient(circle at 50% 100%, rgba(148, 163, 184, 0.1), transparent 26%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.26), transparent 60%),
-    linear-gradient(180deg, #f3f6fa 0%, #e8eef5 52%, #dde6ef 100%);
 }
 
 a {
