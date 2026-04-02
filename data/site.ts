@@ -21,7 +21,7 @@ export const navItems = [
   { label: "Contact", href: "/contact" },
 ] as const;
 
-export const heroBadges = ["UI / UX", "Frontend", "Responsive", "Animation"];
+export const heroBadges = ["Full-stack", "Frontend", "UI / UX", "AI"];
 
 export const heroContent = {
   eyebrow: "/Web Developer / Multilingual Engineer / ",
@@ -92,15 +92,15 @@ export const contactContent = {
   eyebrow: "Contact",
   title: "Let's build something clean & memorable",
   description:
-    "Contact me for portfolio development, front-end implementation, or UI improvements. Let’s work together to create simple, beautiful, and user-friendly experiences.",
+    "Specializing in front-end development and UI optimization. Passionate about crafting simple, functional, and aesthetically pleasing digital products. Let’s build something great together.",
     // "ポートフォリオ制作、フロントエンド実装、UI改善などのご相談はこちらから。シンプルで美しく、使いやすい体験を一緒に作れます。",
   primaryTitle: "Email me directly",
   primaryDescription:
     "Feel free to reach out for work inquiries, projects, collaborations, or questions.  ", 
     // "お仕事の相談、制作依頼、コラボ、質問など気軽にお問い合わせください。",
   availability:
-  "Focused on front-end development, UI improvements, and building portfolios. I welcome new projects and collaboration inquiries."
-    // "フロントエンド制作、UI改善、ポートフォリオ構築などに興味があります。学習中の案件やコラボ相談も歓迎です。",
+  "Focused on front-end development and UI improvements. I welcome new projects and collaboration inquiries."
+    // "フロントエンド制作,UI改善などのご相談は歓迎します。新しい制作依頼やコラボ相談も歓迎です。",
 };
 
 export const footerContent = {

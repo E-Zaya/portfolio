@@ -72,7 +72,7 @@ export default function Hero({ locale }: { locale: Locale }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             style={{ y: imageY }}
-            className="relative mx-auto w-full max-w-[360px]"
+            className="relative mx-auto w-full max-w-90 "
           >
             <motion.div
               style={{ y: glowY }}

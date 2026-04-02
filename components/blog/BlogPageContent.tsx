@@ -45,7 +45,7 @@ export default function BlogPageContent({ posts, tags, locale = "en" }: Props) {
             <p className="text-sm text-soft">{t.postCount(posts.length)}</p>
           </div>
 
-          <BlogListClient posts={posts} tags={tags} />
+          <BlogListClient posts={posts} tags={tags} locale={locale} />
         </div>
       </section>
     </main>

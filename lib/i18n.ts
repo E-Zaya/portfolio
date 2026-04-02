@@ -289,7 +289,7 @@ export const messages = {
       eyebrow: "Blog",
       title: "ゼロから開発者へ。その道のりの学びと挑戦を綴るブログ",
       description:
-        "日々の開発ログやバグから得た知見、UIデザインの思考プロセス、そして毎週の小さな進捗。完成までの道のり、現状の試行錯誤を記録しています。よかったら覗いてみてください。質問やフィードバックも大歓迎です！",
+        "日々の開発ログやバグから得た知見、UIデザインの思考プロセス、そして毎週の小さな進捗。完成までの道のり、現状の試行錯誤を記録しています。よかったら覗いてみてください",
       filterLabel: "Filter by tag",
       browseTitle: "Browse posts",
       backToBlog: "Back to blog",
