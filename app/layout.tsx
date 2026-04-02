@@ -1,9 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import MouseGlow from "@/components/MouseGlow";
-import ScrollProgress from "@/components/ScrollProgress";
 
 export const metadata: Metadata = {
   title: "Zaya Portfolio",
@@ -16,16 +12,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
-      <body>
-        <ScrollProgress />
-        <MouseGlow />
-        <div className="site-content">
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
-      </body>
+    <html lang="en" suppressHydrationWarning>
+      <body>{children}</body>
     </html>
   );
 }

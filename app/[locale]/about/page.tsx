@@ -2,52 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useParams } from "next/navigation";
 import { socialLinks } from "@/data/portfolio";
-
-const strengths = [
-  {
-    title: "Multilingual Learning",
-    description:
-      "I learn primarily through Japanese technical resources and documentation, supported by English. This gives me access to a wider and deeper range of knowledge.",
-  },
-  {
-    title: "Frontend Focus",
-    description:
-      "I am focused on frontend development with Next.js and React, building interfaces that feel clean, modern, and comfortable to use.",
-  },
-  {
-    title: "Global Vision",
-    description:
-      "My journey across languages and cultures shapes how I think as a developer. I want to create products that combine local passion with global standards.",
-  },
-];
-
-const journeyItems = [
-  {
-    year: "2014",
-    title: "Move to Japan",
-    description:
-      "Started a new chapter abroad and built the foundation for a cross-cultural perspective.",
-  },
-  {
-    year: "2024",
-    title: "Return to Mongolia",
-    description:
-      "Came back to Mongolia to focus seriously on a future in web development.",
-  },
-  {
-    year: "Now",
-    title: "IO Institute",
-    description:
-      "Studying in an intensive environment and strengthening my frontend development skills.",
-  },
-  {
-    year: "Future",
-    title: "Global Developer",
-    description:
-      "Aiming to become a world-class developer who bridges cultures through code.",
-  },
-];
+import { getMessages, isLocale } from "@/lib/i18n";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -57,6 +14,10 @@ const fadeUp = {
 };
 
 export default function AboutPage() {
+  const params = useParams<{ locale: string }>();
+  const locale = isLocale(params.locale) ? params.locale : "en";
+  const t = getMessages(locale).about;
+
   return (
     <section className="section-space">
       <div className="container-custom">
@@ -83,38 +44,21 @@ export default function AboutPage() {
             >
               <div className="max-w-3xl">
                 <p className="mb-3 text-sm uppercase tracking-[0.3em] hero-gradient">
-                  About Me
+                  {t.eyebrow}
                 </p>
 
                 <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">
-                  From Tokyo to Ulaanbaatar
+                  {t.title}
                 </h1>
 
                 <div className="gradient-line mt-4 h-px w-28" />
 
                 <div className="mt-6 space-y-5 text-soft">
-                  <p className="leading-8">
-                    After spending a decade in Japan, I returned to Mongolia to
-                    pursue my goal of becoming a Web Developer. To fully focus
-                    on my growth, I enrolled in IO Institute&apos;s intensive
-                    program and committed myself to learning modern web
-                    development in a dedicated environment.
-                  </p>
-
-                  <p className="leading-8">
-                    Living in Japan for 10 years made me more fluent in Japanese
-                    than my native Mongolian. This gives me a unique advantage:
-                    I can learn from Japan&apos;s rich technical ecosystem
-                    through documentation, articles, and educational resources,
-                    while also expanding my perspective through English.
-                  </p>
-
-                  <p className="leading-8">
-                    My goal is to become a world-class developer who bridges
-                    cultures through code — combining multilingual learning,
-                    global thinking, and thoughtful design to build clean and
-                    meaningful digital experiences.
-                  </p>
+                  {t.paragraphs.map((paragraph) => (
+                    <p key={paragraph} className="leading-8">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
               </div>
 
@@ -166,15 +110,15 @@ export default function AboutPage() {
             >
               <div>
                 <p className="mb-2 text-sm uppercase tracking-[0.25em] hero-gradient">
-                  Strengths
+                  {t.strengthsEyebrow}
                 </p>
                 <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-                  What I Bring
+                  {t.strengthsTitle}
                 </h2>
               </div>
 
               <div className="grid gap-4 md:gap-5 lg:grid-cols-3">
-                {strengths.map((item, index) => (
+                {t.strengths.map((item, index) => (
                   <motion.div
                     key={item.title}
                     initial={{ opacity: 0, y: 24 }}
@@ -201,17 +145,17 @@ export default function AboutPage() {
             >
               <div>
                 <p className="mb-2 text-sm uppercase tracking-[0.25em] hero-gradient">
-                  Journey
+                  {t.journeyEyebrow}
                 </p>
                 <h2 className="text-2xl font-bold text-foreground md:text-3xl">
-                  My Path
+                  {t.journeyTitle}
                 </h2>
               </div>
 
               <div className="grid gap-4 md:grid-cols-2 md:gap-5 xl:grid-cols-4">
-                {journeyItems.map((item, index) => (
+                {t.journey.map((item, index) => (
                   <motion.div
-                    key={item.title}
+                    key={`${item.year}-${item.title}`}
                     initial={{ opacity: 0, y: 28 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}

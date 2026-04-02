@@ -4,24 +4,28 @@ import { ArrowLeft } from "lucide-react";
 import { remark } from "remark";
 import html from "remark-html";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getMessages, isLocale, withLocale, type Locale } from "@/lib/i18n";
 
 export function generateStaticParams() {
-  return getAllPosts().map((post) => ({
-    slug: post.slug,
-  }));
+  return getAllPosts().flatMap((post) => [
+    { locale: "en", slug: post.slug },
+    { locale: "ja", slug: post.slug },
+  ]);
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale: rawLocale, slug } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const t = getMessages(locale).blog;
   const post = getPostBySlug(slug);
 
   if (!post) {
     return {
-      title: "Post not found | Zaya Portfolio",
+      title: t.notFoundTitle,
     };
   }
 
@@ -34,9 +38,11 @@ export async function generateMetadata({
 export default async function BlogPostPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale: rawLocale, slug } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const t = getMessages(locale).blog;
   const post = getPostBySlug(slug);
 
   if (!post || !post.published) {
@@ -51,11 +57,11 @@ export default async function BlogPostPage({
       <article className="container-custom max-w-4xl space-y-8">
         <div className="apple-panel-strong gradient-border rounded-[32px] p-6 md:p-10">
           <Link
-            href="/blog"
+            href={withLocale(locale, "/blog")}
             className="mb-6 inline-flex items-center gap-2 text-sm text-soft transition hover:text-foreground"
           >
             <ArrowLeft size={16} />
-            Back to blog
+            {t.backToBlog}
           </Link>
 
           <div className="mb-4 flex flex-wrap items-center gap-3">

@@ -2,8 +2,7 @@
 title: "開発ブログ、はじめます。"
 date: "2026-03-30"
 category: "diary"
-tags: ["blog", "growth"]
-summary: "ポートフォリオの中に、日々の開発の記録を残す場所を作った理由について。"
+summary: "ポートフォリオの中に、日々の開発の記録を残す場所を作った理由。"
 published: true
 ---
 
