@@ -11,8 +11,14 @@ export default function Footer({ locale }: { locale: Locale }) {
         <div className="glass rounded-[28px] px-6 py-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
-              <p className="text-lg font-semibold text-foreground">{t.title}</p>
-              <p className="mt-1 text-sm text-soft">{t.subtitle}</p>
+              <div>
+                <p className="text-lg font-bold tracking-tight text-foreground">{t.title}</p>
+                <div className="mt-2 flex items-center gap-2 text-xs text-soft/70">
+                  <span>{t.subtitle}</span>
+                  <span className="h-1 w-1 rounded-full bg-soft/30" /> {/* 小さなドット */}
+                  <span>{t.copyright}</span>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-3">

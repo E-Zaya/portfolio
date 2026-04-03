@@ -48,7 +48,7 @@ export const messages = {
       highlight: "Engineering seamless web experiences across borders.",
       description:
         "A developer bridging the gap between Japanese, English, and Mongolian tech landscapes.I focus on building clean UIs and high-performance applications with a global perspective.",
-      badges: ["UI / UX", "Frontend", "Responsive", "Animation"],
+      badges: ["Frontend Development", "Full-stack Solutions", "UI / UX Design", "Database Management"],
     },
     skills: {
       eyebrow: "Tech Stack",
@@ -84,13 +84,13 @@ export const messages = {
       journeyTitle: "My Path",
       journey: [
         {
-          year: "2014",
+          year: "2016",
           title: "Move to Japan",
           description:
             "Started a new chapter abroad and built the foundation for a cross-cultural perspective.",
         },
         {
-          year: "2024",
+          year: "2026",
           title: "Return to Mongolia",
           description:
             "Came back to Mongolia to focus seriously on a future in web development.",
@@ -171,6 +171,7 @@ export const messages = {
     footer: {
       title: "Zaya Portfolio",
       subtitle: "Next.js / Tailwind CSS / Framer Motion",
+      copyright: "© 2026 Designed & Built by Zaya",
     },
     langToggle: {
       en: "EN",
@@ -180,10 +181,10 @@ export const messages = {
   ja: {
     meta: {
       title: "Zaya Portfolio",
-      description: "高品質な Next.js ポートフォリオサイト",
+      description: "Next.js ポートフォリオサイト",
     },
     header: {
-      subtitle: "フロントエンド ポートフォリオ",
+      subtitle: "ポートフォリオ",
       logoAria: "トップページへ移動",
       menuAria: "メニューを開く",
     },
@@ -195,11 +196,11 @@ export const messages = {
     ],
     hero: {
       eyebrow: "/Web Developer / Multilingual Engineer / ",
-      title: "こんにちは、Zayaです。",
-      highlight: "国境を越えて、なめらかなWeb体験を設計します。",
+      title: "",
+      highlight: "言葉の壁を越えたユニバーサルな設計を作ります。",
       description:
         "日本語・英語・モンゴル語の技術圏をつなぐ開発者です。グローバルな視点を持ちながら、クリーンなUIと高性能なアプリケーションを作ることに取り組んでいます。",
-      badges: ["UI / UX", "Frontend", "Responsive", "Animation"],
+      badges: ["Frontend Development", "Full-stack Solutions", "UI / UX Design", "Database Management"],
     },
     skills: {
       eyebrow: "Tech Stack",
@@ -208,19 +209,19 @@ export const messages = {
     
     about: {
     eyebrow: "私について",
-    title: "東京からウランバートルへ",
+    title: "ゼロから開発者へ",
     paragraphs: [
-      "日本で10年間過ごしたあと、Web Developer になる目標を本気で追うためにモンゴルへ戻りました。成長に集中するため、IO Institute の集中プログラムに参加し、現代的なWeb開発を学ぶ環境に身を置いています。",
-      "日本での10年間の生活を通して、母語のモンゴル語以上に日本語に慣れました。これは大きな強みで、日本の豊富な技術ドキュメント、記事、教材から深く学びつつ、英語を通して視野をさらに広げることができます。",
-      "私の目標は、コードで文化をつなぐ世界水準の開発者になることです。多言語で学ぶ力、グローバルな視点、そして丁寧なデザインを組み合わせ、クリーンで意味のあるデジタル体験をつくりたいと考えています。",
+      "言語や文化の壁を、技術という共通言語でつないでいく。それが私の目指す開発者像です。多言語に触れてきた経験とグローバルな視点を活かし、文化の壁を感じさせない設計を追求することで、クリーンで本質的なデジタル体験を形にします。",
+      "日本で10年間を過ごした後、エンジニアとしての目標を本気で追求するためモンゴルへ帰国しました。現在は IO Institute の集中プログラムに身を置き、モダンなWeb開発スキルの習得に邁進しています。",
+      "10年間の日本生活で培った母国語レベルの日本語能力は、私の大きな武器です。日本の豊富な技術資産から深く学びつつ、英語によるグローバルな最新知見を組み合わせることで、常に多角的な視点から課題解決に取り組んでいます。",
     ],
     strengthsEyebrow: "強み",
     strengthsTitle: "私が提供できること",
     strengths: [
       {
-        title: "多言語での学習力",
+        title: "多角的な技術リサーチ能力",
         description:
-          "主に日本語の技術資料やドキュメントから学び、英語でも補強しています。そのため、より広く深い知識へアクセスできます。",
+          "日本語と英語の双方で高度な技術ドキュメントを読み解き、最適なソリューションを迅速に導き出します。言語の壁に縛られず、常に広範で最新の知見を設計に反映させることが可能です。",
       },
       {
         title: "フロントエンド志向",
@@ -228,60 +229,60 @@ export const messages = {
           "Next.js と React を中心に、クリーンでモダン、そして使い心地のよいインターフェースを作ることに集中しています。",
       },
       {
-        title: "グローバルな視点",
+        title: "誠実さと責任感",
         description:
-          "言語と文化をまたいだ経験が、開発者としての考え方を形づくっています。ローカルな熱量とグローバル基準を両立したプロダクトを作りたいです。",
+          "日本での10年間の経験を通じ、細部へのこだわりと責任ある仕事の進め方を深く理解しています。技術的な実装だけでなく、円滑なコミュニケーションと丁寧なドキュメント作成を通じ、チーム開発の質を高めます。",
       },
     ],
     journeyEyebrow: "歩み",
     journeyTitle: "これまでの道のり",
     journey: [
       {
-        year: "2014",
-        title: "日本へ移住",
+        year: "2016",
+        title: "日本へ留学",
         description: "海外で新しい章を始め、異文化的な視点の土台を築きました。",
       },
       {
-        year: "2024",
+        year: "2026",
         title: "モンゴルへ帰国",
-        description: "Web開発の将来に本気で向き合うため、モンゴルへ戻りました。",
+        description: "ITエンジニアとしてのキャリアを本気で始めるため、モンゴルへ戻りました。",
       },
       {
-        year: "Now",
+        year: "現在",
         title: "IO Institute",
-        description: "集中できる環境で学びながら、フロントエンド開発力を高めています。",
+        description: "集中できる環境で学びながら、プログラミングスキルを高めています。",
       },
       {
-        year: "Future",
+        year: "目指す先",
         title: "Global Developer",
-        description: "コードで文化をつなぐ世界水準の開発者を目指しています。",
+        description: "言語の壁に縛られない世界水準の開発者を目指しています。",
       },
     ],
   },
     projects: {
       eyebrow: "Projects",
-      titleA: "Selected",
-      titleB: "Work",
+      titleA: "",
+      titleB: "主な実績",
       description:
-        "実用性、パフォーマンス、クリーンなUIを意識して制作したプロジェクトです。それぞれに、スケーラブルで保守しやすいアプリを作るための考え方が反映されています。",
-      featuredEyebrow: "Featured",
-      featuredTitle: "Main Project",
-      otherEyebrow: "More Projects",
-      otherTitle: "Other Work",
-      featuredBadge: "Featured",
-      liveDemo: "Live Demo",
-      viewCode: "View Code",
+        "実用性とクリーンなUIデザインにこだわったプロジェクト集です。それぞれのプロジェクトは、可読性が高く、管理しやすく構築しています。",
+      featuredEyebrow: "",
+      featuredTitle: "主要プロジェクト",
+      otherEyebrow: "その他のプロジェクト",
+      otherTitle: "その他の実績",
+      featuredBadge: "ピックアップ",
+      liveDemo: "デモを見る",
+      viewCode: "コードを見る",
       status: {
-        Completed: "Completed",
-        "In Progress": "In Progress",
+        Completed: "完了",
+        "In Progress": "開発中",
       },
       items: {
         "workout-log": {
-          title: "Workout Log",
+          title: "筋トレ記録アプリ",
           description:
             "負荷分析と種目管理を備えたフルスタックの筋トレ記録アプリです。",
           summary:
-            "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさとクリーンなUIを意識して設計しました。",
+            "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさを意識して設計しました。",
         },
       },
     },
@@ -297,29 +298,30 @@ export const messages = {
       notFoundTitle: "記事が見つかりません | Zaya Portfolio",
     },
     contact: {
-      eyebrow: "Contact",
-      titleA: "一緒に作ろう、",
-      titleB: "シンプルで印象に残る体験を",
+      eyebrow: "連絡先",
+      titleA: "アイデアを、",
+      titleB: "濁りのないデジタル体験へ",
       description:
-        "ポートフォリオ制作、フロントエンド実装、UI改善などのご相談はこちらから。シンプルで美しく、使いやすい体験を一緒に作れます。",
-      primaryLabel: "Primary Contact",
+        "一つひとつのプロジェクトと深く向き合い、最適な設計とコードで価値を生み出します。小規模な実装からUIの改善まで、あらゆる挑戦を歓迎します。",
+      primaryLabel: "連絡先",
       primaryTitle: "メールで直接連絡する",
       primaryDescription:
         "お仕事の相談、制作依頼、コラボ、質問など気軽にお問い合わせください。",
-      emailLabel: "Email Address",
-      copy: "Copy email",
-      copied: "Copied",
-      send: "Send Email",
-      viewProjects: "View Projects",
-      socialTitle: "Social Links",
-      connectVia: "Connect via",
-      availabilityLabel: "Availability",
+      emailLabel: "メールアドレス",
+      copy: "アドレスをコピー",
+      copied: "コピーしました",
+      send: "メールを送信",
+      viewProjects: "プロジェクトを見",
+      socialTitle: "SNS",
+      connectVia: "",
+      availabilityLabel: "案件受付中",
       availability:
-        "フロントエンド制作、UI改善、ポートフォリオ構築などに興味があります。学習中の案件やコラボ相談も歓迎です。",
+        "UIデザインから実装まで、一貫した体験を。共創のご相談、お待ちしています。",
     },
     footer: {
       title: "Zaya Portfolio",
       subtitle: "Next.js / Tailwind CSS / Framer Motion",
+      copyright: "© 2026 Designed & Built by Zaya",
     },
     langToggle: {
       en: "EN",
