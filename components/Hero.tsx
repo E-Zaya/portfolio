@@ -37,7 +37,9 @@ export default function Hero({ locale }: { locale: Locale }) {
 
             <h1 className="mb-6 text-4xl font-bold leading-tight text-foreground md:text-6xl">
               {t.title}
-              <span className="hero-gradient"> {t.highlight}</span>
+              <span className="hero-gradient" style={{ whiteSpace: "pre-line" }}>
+                {t.highlight}
+              </span>
             </h1>
 
             <p className="mb-8 max-w-2xl text-base leading-8 text-soft md:text-lg">{t.description}</p>

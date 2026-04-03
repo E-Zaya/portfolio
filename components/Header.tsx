@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 import ThemeToggle from "./ThemeToggle";
 import LangToggle from "./LangToggle";
 import { getMessages, stripLocaleFromPathname, withLocale, type Locale } from "@/lib/i18n";
-
+import Image from "next/image";
 function Logo() {
   return (
     <div className="relative">
@@ -95,7 +95,7 @@ export default function Header({ locale }: { locale: Locale }) {
             >
               <div className="transition duration-300 group-hover:scale-105 group-hover:rotate-3">
                 <Logo />
-              </div>
+              </div>             
 
               <div className="min-w-0 flex-col leading-none sm:flex">
                 <span className="truncate bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-lg font-semibold tracking-wide text-transparent">
@@ -103,6 +103,14 @@ export default function Header({ locale }: { locale: Locale }) {
                 </span>
                 <span className="truncate text-xs text-soft">{t.header.subtitle}</span>
               </div>
+
+                            {/* image */}
+              <Image
+                src="/character.png"
+                alt="logo"
+                width={90}
+                height={130}
+              />
             </Link>
 
             <nav className="ml-auto mr-1 hidden items-center gap-2 md:flex">

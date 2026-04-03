@@ -32,7 +32,7 @@ export const messages = {
       description: "High quality Next.js portfolio website",
     },
     header: {
-      subtitle: "Frontend Portfolio",
+      subtitle: "Portfolio",
       logoAria: "Go to top page",
       menuAria: "Open menu",
     },
@@ -197,7 +197,7 @@ export const messages = {
     hero: {
       eyebrow: "/Web Developer / Multilingual Engineer / ",
       title: "",
-      highlight: "言葉の壁を越えたユニバーサルな設計を作ります。",
+      highlight: "言葉の壁を越えた \n ユニバーサルな設計を作ります。",
       description:
         "日本語・英語・モンゴル語の技術圏をつなぐ開発者です。グローバルな視点を持ちながら、クリーンなUIと高性能なアプリケーションを作ることに取り組んでいます。",
       badges: ["Frontend Development", "Full-stack Solutions", "UI / UX Design", "Database Management"],
