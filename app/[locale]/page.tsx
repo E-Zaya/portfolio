@@ -3,6 +3,7 @@ import Skills from "@/components/Skills";
 import SectionReveal from "@/components/SectionReveal";
 import ContactSection from "@/components/ContactSection";
 import { isLocale, type Locale } from "@/lib/i18n";
+import ProjectsPage from "./projects/page";
 
 export default async function HomePage({
   params,

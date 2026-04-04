@@ -104,12 +104,12 @@ export default function Header({ locale }: { locale: Locale }) {
                 <span className="truncate text-xs text-soft">{t.header.subtitle}</span>
               </div>
 
-                            {/* image */}
+              {/* Image */}
               <Image
                 src="/character.png"
                 alt="logo"
                 width={90}
-                height={130}
+                height={50}
               />
             </Link>
 

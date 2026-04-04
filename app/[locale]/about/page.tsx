@@ -130,7 +130,7 @@ export default function AboutPage() {
                     <h3 className="mb-3 text-xl font-semibold text-foreground">
                       {item.title}
                     </h3>
-                    <p className="text-sm leading-7 text-soft">
+                    <p className="text-sm leading-7 text-soft "style={{ whiteSpace: "pre-line" }}>
                       {item.description}
                     </p>
                   </motion.div>
