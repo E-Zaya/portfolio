@@ -3,26 +3,69 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Check, Copy } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { contactEmail, socialLinks } from "@/data/portfolio";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { getMessages, withLocale, type Locale } from "@/lib/i18n";
 
+type CopyState = "idle" | "success" | "error";
+
+async function copyText(text: string) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "true");
+  textarea.style.position = "absolute";
+  textarea.style.left = "-9999px";
+  document.body.appendChild(textarea);
+  textarea.select();
+
+  const success = document.execCommand("copy");
+  document.body.removeChild(textarea);
+
+  if (!success) {
+    throw new Error("Copy command failed");
+  }
+}
+
 export default function ContactSection({ locale }: { locale: Locale }) {
-  const [copied, setCopied] = useState(false);
+  const [copyState, setCopyState] = useState<CopyState>("idle");
+  const resetTimerRef = useRef<number | null>(null);
   const t = getMessages(locale).contact;
 
+  useEffect(() => {
+    return () => {
+      if (resetTimerRef.current !== null) {
+        window.clearTimeout(resetTimerRef.current);
+      }
+    };
+  }, []);
+
   const handleCopyEmail = async () => {
-    try {
-      await navigator.clipboard.writeText(contactEmail);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1800);
-    } catch (error) {
-      console.error("Failed to copy email:", error);
+    if (resetTimerRef.current !== null) {
+      window.clearTimeout(resetTimerRef.current);
     }
+
+    try {
+      await copyText(contactEmail);
+      setCopyState("success");
+    } catch {
+      setCopyState("error");
+    }
+
+    resetTimerRef.current = window.setTimeout(() => {
+      setCopyState("idle");
+      resetTimerRef.current = null;
+    }, 1800);
   };
+
+  const isCopied = copyState === "success";
 
   return (
     <section className="relative overflow-hidden py-24 sm:py-28">
@@ -92,7 +135,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                       </span>
 
                       <Button onClick={handleCopyEmail} className="px-4 py-2.5">
-                        {copied ? (
+                        {isCopied ? (
                           <>
                             <Check className="h-4 w-4" />
                             {t.copied}
@@ -106,6 +149,14 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                       </Button>
                     </div>
                   </div>
+
+                  <span className="sr-only" aria-live="polite">
+                    {copyState === "success"
+                      ? t.copied
+                      : copyState === "error"
+                        ? `${t.copy}. ${contactEmail}`
+                        : ""}
+                  </span>
 
                   <div className="mt-6 flex flex-wrap gap-3">
                     <Button href={`mailto:${contactEmail}`} variant="primary">

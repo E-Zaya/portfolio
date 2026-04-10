@@ -1,0 +1,35 @@
+import AboutHero from "@/components/about/AboutHero";
+import AboutJourney from "@/components/about/AboutJourney";
+import AboutSocialLinks from "@/components/about/AboutSocialLinks";
+import AboutStrengths from "@/components/about/AboutStrengths";
+import { type Locale } from "@/lib/i18n";
+
+export default function AboutContent({ locale }: { locale: Locale }) {
+  return (
+    <section className="section-space">
+      <div className="container-custom">
+        <div className="apple-panel gradient-border relative overflow-hidden rounded-[32px] px-6 py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
+          <div
+            className="absolute left-[-40px] top-[-40px] h-40 w-40 rounded-full blur-3xl"
+            style={{
+              background: "color-mix(in srgb, var(--accent-1) 14%, transparent)",
+            }}
+          />
+          <div
+            className="absolute bottom-[-50px] right-[-30px] h-48 w-48 rounded-full blur-3xl"
+            style={{
+              background: "color-mix(in srgb, var(--accent-4) 14%, transparent)",
+            }}
+          />
+
+          <div className="relative z-10 space-y-14 md:space-y-16">
+            <AboutHero locale={locale} />
+            <AboutStrengths locale={locale} />
+            <AboutJourney locale={locale} />
+            <AboutSocialLinks />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

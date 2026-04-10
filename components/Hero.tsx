@@ -99,7 +99,7 @@ export default function Hero({ locale }: { locale: Locale }) {
                   width={720}
                   height={900}
                   priority
-                  className="h-auto w-full object-cover"
+                  className="h-auto w-full object-hover transition duration-700 ease-out group-hover:scale-[1.06]"
                 />
               </div>
             </div>

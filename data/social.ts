@@ -1,5 +1,6 @@
 import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
-import { contactEmail } from "./site";
+
+export const contactEmail = "eitgelzaya@hotmail.com";
 
 export type SocialLink = {
   name: string;

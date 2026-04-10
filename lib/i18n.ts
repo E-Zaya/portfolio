@@ -189,10 +189,10 @@ export const messages = {
       menuAria: "メニューを開く",
     },
     nav: [
-      { label: "About", href: "/about" },
-      { label: "Projects", href: "/projects" },
-      { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "/contact" },
+      { label: "私について", href: "/about" },
+      { label: "プロジェクト", href: "/projects" },
+      { label: "ブログ", href: "/blog" },
+      { label: "連絡先", href: "/contact" },
     ],
     hero: {
       eyebrow: "/Web Developer / Multilingual Engineer / ",
