@@ -1,63 +1,27 @@
 "use client";
 
-import { useEffect, useState, useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-
-const STORAGE_KEY = "theme";
-
-type Theme = "dark" | "light";
-
-function applyTheme(theme: Theme) {
-  const root = document.documentElement;
-  root.dataset.theme = theme;
-  root.classList.toggle("light", theme === "light");
-  root.style.colorScheme = theme;
-}
-
-function getInitialTheme(): Theme {
-  if (typeof document !== "undefined") {
-    const datasetTheme = document.documentElement.dataset.theme;
-    if (datasetTheme === "light" || datasetTheme === "dark") {
-      return datasetTheme;
-    }
-  }
-
-  if (typeof window !== "undefined") {
-    const saved = window.localStorage.getItem(STORAGE_KEY);
-    if (saved === "light" || saved === "dark") {
-      return saved;
-    }
-  }
-
-  return "dark";
-}
+import { useTheme } from "next-themes";
 
 export default function ThemeToggle() {
-  const hydrated = useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
-
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    applyTheme(theme);
-    window.localStorage.setItem(STORAGE_KEY, theme);
-  }, [theme]);
+    setMounted(true);
+  }, []);
 
-  const toggleTheme = () => {
-    setTheme((current) => (current === "dark" ? "light" : "dark"));
-  };
+  const isDark = mounted ? resolvedTheme !== "light" : true;
 
   return (
     <button
-      onClick={toggleTheme}
-      className="glass rounded-full p-3 text-foreground transition hover:scale-110"
-      aria-label={hydrated ? `Switch to ${theme === "dark" ? "light" : "dark"} mode` : "Toggle theme"}
       type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="glass inline-flex h-11 w-11 items-center justify-center rounded-full text-foreground transition duration-300 hover:scale-[1.04]"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
-      <span suppressHydrationWarning>{hydrated && theme === "light" ? <Moon size={18} /> : <Sun size={18} />}</span>
+      {isDark ? <Sun size={18} /> : <Moon size={18} />}
     </button>
   );
 }

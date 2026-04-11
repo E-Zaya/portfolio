@@ -1,5 +1,5 @@
 {
-  "name": "portfolio_test",
+  "name": "zaya-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
+    "next-themes": "^0.4.6",
     "notion-to-md": "^3.1.9",
     "postcss": "^8.5.8",
     "react": "19.2.3",
@@ -22,7 +23,8 @@
     "react-dom": "19.2.3",
     "react-icons": "^5.6.0",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "resend": "^6.10.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.2.2",

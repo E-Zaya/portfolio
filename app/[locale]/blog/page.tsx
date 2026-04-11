@@ -1,4 +1,4 @@
-import { getAllPosts, getAllTags } from "@/lib/blog";
+import { getBlogPosts, getAllTags } from "@/lib/notion";
 import BlogListClient from "@/components/blog/BlogListClient";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 
@@ -11,7 +11,7 @@ export default async function BlogPage({
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
 
-  const posts = await getAllPosts();
+  const posts = await getBlogPosts();
   const tags = getAllTags(posts);
 
   return (

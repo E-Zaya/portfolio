@@ -1,6 +1,6 @@
 "use client";
 
-import type { PostMeta } from "@/lib/blog";
+import type { PostMeta } from "@/lib/notion";
 import { getMessages, type Locale } from "@/lib/i18n";
 import BlogListClient from "./BlogListClient";
 

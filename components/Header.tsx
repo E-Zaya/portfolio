@@ -11,56 +11,26 @@ import LangToggle from "./LangToggle";
 import DesktopNav from "./header/DesktopNav";
 import MobileMenu from "./header/MobileMenu";
 import Logo from "./header/Logo";
-import { getMessages, stripLocaleFromPathname, withLocale, type Locale } from "@/lib/i18n";
-
-function MobileHeaderControls({
-  locale,
-  currentPath,
-  menuAria,
-  items,
-}: {
-  locale: Locale;
-  currentPath: string;
-  menuAria: string;
-  items: readonly { label: string; href: string }[];
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div className="md:hidden">
-      <div className="flex items-center gap-2">
-        <LangToggle locale={locale} />
-        <ThemeToggle />
-        <button
-          onClick={() => setOpen((prev) => !prev)}
-          className="header-icon-button inline-flex h-11 w-11 items-center justify-center p-0"
-          aria-label={menuAria}
-          aria-expanded={open}
-          type="button"
-        >
-          {open ? <X size={18} /> : <Menu size={18} />}
-        </button>
-      </div>
-
-      {open && (
-        <MobileMenu
-          locale={locale}
-          currentPath={currentPath}
-          items={items}
-          onNavigate={() => setOpen(false)}
-        />
-      )}
-    </div>
-  );
-}
+import {
+  getMessages,
+  stripLocaleFromPathname,
+  withLocale,
+  type Locale,
+} from "@/lib/i18n";
 
 export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const cleanPath = stripLocaleFromPathname(pathname);
   const t = getMessages(locale);
+
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,7 +73,7 @@ export default function Header({ locale }: { locale: Locale }) {
               </div>
 
               <div className="min-w-0 leading-none">
-                <span className="block truncate bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-wide text-transparent sm:text-lg">
+                <span className="block truncate bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
                   Zaya
                 </span>
                 <span className="block truncate text-xs text-soft">
@@ -114,7 +84,7 @@ export default function Header({ locale }: { locale: Locale }) {
               <div className="ml-1 hidden shrink-0 min-[430px]:block">
                 <Image
                   src="/character.png"
-                  alt="logo"
+                  alt="Mascot character"
                   width={72}
                   height={40}
                   className="h-auto w-[60px] sm:w-[72px]"
@@ -124,21 +94,32 @@ export default function Header({ locale }: { locale: Locale }) {
 
             <DesktopNav locale={locale} currentPath={cleanPath} items={t.nav} />
 
-            <div className="hidden items-center gap-2 md:flex">
+            <div className="flex shrink-0 items-center gap-2">
               <LangToggle locale={locale} />
               <ThemeToggle />
-            </div>
 
-            <div className="shrink-0">
-              <MobileHeaderControls
-                key={pathname}
-                locale={locale}
-                currentPath={cleanPath}
-                menuAria={t.header.menuAria}
-                items={t.nav}
-              />
+              <button
+                onClick={() => setMobileOpen((prev) => !prev)}
+                className="header-icon-button inline-flex h-11 w-11 items-center justify-center p-0 md:hidden"
+                aria-label={t.header.menuAria}
+                aria-expanded={mobileOpen}
+                type="button"
+              >
+                {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
             </div>
           </div>
+
+          {mobileOpen && (
+            <div className="md:hidden">
+              <MobileMenu
+                locale={locale}
+                currentPath={cleanPath}
+                items={t.nav}
+                onNavigate={() => setMobileOpen(false)}
+              />
+            </div>
+          )}
 
           <div className="header-bottom-line pointer-events-none absolute bottom-0 left-0 h-px w-full" />
         </div>

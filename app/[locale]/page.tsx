@@ -3,6 +3,7 @@ import Skills from "@/components/Skills";
 import SectionReveal from "@/components/SectionReveal";
 import ContactSection from "@/components/ContactSection";
 import { isLocale, type Locale } from "@/lib/i18n";
+import { ProjectsContent } from "./projects/page";
 
 export default async function HomePage({
   params,
@@ -15,6 +16,7 @@ export default async function HomePage({
   return (
     <>
       <Hero locale={locale} />
+      <ProjectsContent locale={locale} />
       <SectionReveal delay={0}>
         <Skills locale={locale} />
       </SectionReveal>

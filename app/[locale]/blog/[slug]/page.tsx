@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { remark } from "remark";
 import html from "remark-html";
-import { getPostBySlug } from "@/lib/blog";
+import { getBlogPost } from "@/lib/notion";
 import { getMessages, isLocale, withLocale, type Locale } from "@/lib/i18n";
 
 export const dynamic = "force-dynamic";
@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { locale: rawLocale, slug } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
-  const post = await getPostBySlug(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return {
@@ -38,7 +38,7 @@ export default async function BlogPostPage({
   const { locale: rawLocale, slug } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
-  const post = await getPostBySlug(slug);
+  const post = await getBlogPost(slug);
 
   if (!post || !post.published) {
     notFound();

@@ -4,22 +4,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MouseGlow from "@/components/MouseGlow";
 import ScrollProgress from "@/components/ScrollProgress";
+import ThemeProvider from "@/components/providers/ThemeProvider";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-en", display: "swap" });
-const notoSansJp = Noto_Sans_JP({ subsets: ["latin"], variable: "--font-ja", display: "swap" });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-en",
+  display: "swap",
+});
 
-const themeInitScript = `
-(function () {
-  try {
-    var saved = localStorage.getItem('theme');
-    var theme = saved === 'light' || saved === 'dark' ? saved : 'dark';
-    var root = document.documentElement;
-    root.dataset.theme = theme;
-    root.classList.toggle('light', theme === 'light');
-    root.style.colorScheme = theme;
-  } catch (e) {}
-})();`;
+const notoSansJp = Noto_Sans_JP({
+  subsets: ["latin"],
+  variable: "--font-ja",
+  display: "swap",
+});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -69,15 +67,23 @@ export default async function LocaleLayout({
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
 
   return (
-    <div className={`${inter.variable} ${notoSansJp.variable}`} data-locale={locale}>
-      <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
-      <ScrollProgress />
-      <MouseGlow />
-      <div className="site-content">
-        <Header locale={locale} />
-        <main>{children}</main>
-        <Footer locale={locale} />
-      </div>
-    </div>
+    <html lang={locale} suppressHydrationWarning>
+      <body>
+        <ThemeProvider>
+          <div
+            className={`${inter.variable} ${notoSansJp.variable}`}
+            data-locale={locale}
+          >
+            <ScrollProgress />
+            <MouseGlow />
+            <div className="site-content">
+              <Header locale={locale} />
+              <main>{children}</main>
+              <Footer locale={locale} />
+            </div>
+          </div>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

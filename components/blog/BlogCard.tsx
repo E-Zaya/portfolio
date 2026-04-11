@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { withLocale, type Locale } from "@/lib/i18n";
-import type { PostMeta } from "@/lib/blog";
+import type { PostMeta } from "@/lib/notion";
 
 type Props = {
   post: PostMeta;

@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import BlogCard from "@/components/blog/BlogCard";
-import type { PostMeta } from "@/lib/blog";
+import type { PostMeta } from "@/lib/notion";
 import type { Locale } from "@/lib/i18n";
 
 type Props = {

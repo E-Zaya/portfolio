@@ -3,13 +3,7 @@ import Link from "next/link";
 import { projectItems } from "@/data/projects";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 
-export default async function ProjectsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+export function ProjectsContent({ locale }: { locale: Locale }) {
   const t = getMessages(locale).projects;
   const featuredProjects = projectItems.filter((p) => p.featured);
   const otherProjects = projectItems.filter((p) => !p.featured);
@@ -172,4 +166,14 @@ export default async function ProjectsPage({
       </div>
     </main>
   );
+}
+
+export default async function ProjectsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  return <ProjectsContent locale={locale} />;
 }

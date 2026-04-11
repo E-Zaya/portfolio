@@ -2,81 +2,72 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Check, Copy } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
 import { contactEmail, socialLinks } from "@/data/portfolio";
 import Badge from "@/components/ui/Badge";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { getMessages, withLocale, type Locale } from "@/lib/i18n";
 
-type CopyState = "idle" | "success" | "error";
-
-async function copyText(text: string) {
-  if (navigator.clipboard?.writeText) {
-    await navigator.clipboard.writeText(text);
-    return;
-  }
-
-  const textarea = document.createElement("textarea");
-  textarea.value = text;
-  textarea.setAttribute("readonly", "true");
-  textarea.style.position = "absolute";
-  textarea.style.left = "-9999px";
-  document.body.appendChild(textarea);
-  textarea.select();
-
-  const success = document.execCommand("copy");
-  document.body.removeChild(textarea);
-
-  if (!success) {
-    throw new Error("Copy command failed");
-  }
-}
+type FormState = "idle" | "loading" | "success" | "error";
 
 export default function ContactSection({ locale }: { locale: Locale }) {
-  const [copyState, setCopyState] = useState<CopyState>("idle");
-  const resetTimerRef = useRef<number | null>(null);
   const t = getMessages(locale).contact;
+  const [state, setState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    return () => {
-      if (resetTimerRef.current !== null) {
-        window.clearTimeout(resetTimerRef.current);
-      }
+  async function handleSubmit(formData: FormData) {
+    setState("loading");
+    setErrorMessage("");
+
+    const payload = {
+      name: String(formData.get("name") || "").trim(),
+      email: String(formData.get("email") || "").trim(),
+      message: String(formData.get("message") || "").trim(),
+      company: String(formData.get("company") || "").trim(),
     };
-  }, []);
-
-  const handleCopyEmail = async () => {
-    if (resetTimerRef.current !== null) {
-      window.clearTimeout(resetTimerRef.current);
-    }
 
     try {
-      await copyText(contactEmail);
-      setCopyState("success");
-    } catch {
-      setCopyState("error");
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await res.json()) as { ok?: boolean; error?: string };
+
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setState("success");
+    } catch (error) {
+      setState("error");
+      setErrorMessage(
+        error instanceof Error ? error.message : "Failed to send message.",
+      );
     }
-
-    resetTimerRef.current = window.setTimeout(() => {
-      setCopyState("idle");
-      resetTimerRef.current = null;
-    }, 1800);
-  };
-
-  const isCopied = copyState === "success";
+  }
 
   return (
     <section className="relative overflow-hidden py-24 sm:py-28">
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute left-1/2 top-0 h-[420px] w-[420px] -translate-x-1/2 rounded-full blur-3xl"
-          style={{ background: "color-mix(in srgb, var(--accent-1) 20%, transparent)" }}
+          style={{
+            background:
+              "color-mix(in srgb, var(--accent-1) 20%, transparent)",
+          }}
         />
         <div
           className="absolute bottom-0 right-0 h-[280px] w-[280px] rounded-full blur-3xl"
-          style={{ background: "color-mix(in srgb, var(--accent-2) 16%, transparent)" }}
+          style={{
+            background:
+              "color-mix(in srgb, var(--accent-2) 16%, transparent)",
+          }}
         />
       </div>
 
@@ -91,7 +82,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
           <div className="mb-10 text-center">
             <Badge className="text-muted">{t.eyebrow}</Badge>
 
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
               {t.titleA} <span className="hero-gradient">{t.titleB}</span>
             </h2>
 
@@ -109,16 +100,24 @@ export default function ContactSection({ locale }: { locale: Locale }) {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
             >
-              <Card gradientBorder className="group relative overflow-hidden rounded-[32px] p-7 sm:p-9">
+              <Card
+                gradientBorder
+                className="relative overflow-hidden rounded-[32px] p-7 sm:p-9"
+              >
                 <div
-                  className="absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl transition duration-700 group-hover:scale-110"
-                  style={{ background: "color-mix(in srgb, var(--accent-1) 18%, transparent)" }}
+                  className="absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl"
+                  style={{
+                    background:
+                      "color-mix(in srgb, var(--accent-1) 18%, transparent)",
+                  }}
                 />
 
                 <div className="relative z-10">
-                  <p className="text-sm uppercase tracking-[0.22em] text-muted">{t.primaryLabel}</p>
+                  <p className="text-sm uppercase tracking-[0.22em] text-muted">
+                    {t.primaryLabel}
+                  </p>
 
-                  <h3 className="mt-4 text-2xl font-semibold text-foreground sm:text-3xl">
+                  <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
                     {t.primaryTitle}
                   </h3>
 
@@ -126,45 +125,86 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                     {t.primaryDescription}
                   </p>
 
-                  <div className="mt-8 rounded-2xl border border-border bg-card-strong p-4 shadow-theme sm:p-5">
-                    <p className="text-xs uppercase tracking-[0.18em] text-muted">{t.emailLabel}</p>
+                  <form
+                    className="mt-8 space-y-4"
+                    action={async (formData) => {
+                      await handleSubmit(formData);
+                    }}
+                  >
+                    <input
+                      name="company"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      className="hidden"
+                      aria-hidden="true"
+                    />
 
-                    <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <span className="break-all text-base font-medium text-foreground sm:text-lg">
-                        {contactEmail}
-                      </span>
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <label className="block">
+                        <span className="mb-2 block text-sm text-soft">
+                          Name
+                        </span>
+                        <input
+                          type="text"
+                          name="name"
+                          required
+                          className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+                          placeholder="Your name"
+                        />
+                      </label>
 
-                      <Button onClick={handleCopyEmail} className="px-4 py-2.5">
-                        {isCopied ? (
-                          <>
-                            <Check className="h-4 w-4" />
-                            {t.copied}
-                          </>
-                        ) : (
-                          <>
-                            <Copy className="h-4 w-4" />
-                            {t.copy}
-                          </>
-                        )}
-                      </Button>
+                      <label className="block">
+                        <span className="mb-2 block text-sm text-soft">
+                          Email
+                        </span>
+                        <input
+                          type="email"
+                          name="email"
+                          required
+                          className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+                          placeholder="you@example.com"
+                        />
+                      </label>
                     </div>
-                  </div>
 
-                  <span className="sr-only" aria-live="polite">
-                    {copyState === "success"
-                      ? t.copied
-                      : copyState === "error"
-                        ? `${t.copy}. ${contactEmail}`
-                        : ""}
-                  </span>
+                    <label className="block">
+                      <span className="mb-2 block text-sm text-soft">
+                        Message
+                      </span>
+                      <textarea
+                        name="message"
+                        rows={6}
+                        required
+                        className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+                        placeholder="Tell me about your project or idea."
+                      />
+                    </label>
 
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Button href={`mailto:${contactEmail}`} variant="primary">
-                      {t.send}
-                    </Button>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="px-5 py-3"
+                      >
+                        {state === "loading" ? "Sending..." : "Send Message"}
+                      </Button>
 
-                    <Button href={withLocale(locale, "/projects")}>{t.viewProjects}</Button>
-                  </div>
+                    </div>
+
+                    <div aria-live="polite" className="min-h-6 text-sm">
+                      {state === "success" && (
+                        <p className="text-soft">
+                          Your message has been sent successfully.
+                        </p>
+                      )}
+                      {state === "error" && (
+                        <p className="text-red-300">
+                          {errorMessage ||
+                            "Something went wrong. Please try again."}
+                        </p>
+                      )}
+                    </div>
+                  </form>
                 </div>
               </Card>
             </motion.div>
@@ -176,7 +216,9 @@ export default function ContactSection({ locale }: { locale: Locale }) {
               transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
             >
               <Card strong className="rounded-[32px] p-6 sm:p-7">
-                <p className="text-sm uppercase tracking-[0.22em] text-muted">{t.socialTitle}</p>
+                <p className="text-sm uppercase tracking-[0.22em] text-muted">
+                  {t.socialTitle}
+                </p>
 
                 <div className="mt-6 space-y-3">
                   {socialLinks.map((item) => {
@@ -196,20 +238,28 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                           </div>
 
                           <div>
-                            <p className="text-sm text-muted">{t.connectVia}</p>
-                            <p className="text-base font-medium text-foreground">{item.name}</p>
+                            <p className="text-sm text-muted">
+                              {t.connectVia}
+                            </p>
+                            <p className="text-base font-medium tracking-[-0.01em] text-foreground">
+                              {item.name}
+                            </p>
                           </div>
                         </div>
 
-                        <ArrowUpRight className="h-4 w-4 text-muted transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-foreground" />
+                        <ArrowUpRight className="h-4 w-4 text-muted transition duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-foreground" />
                       </Link>
                     );
                   })}
                 </div>
 
                 <div className="mt-6 rounded-2xl border border-border bg-card-strong p-4 shadow-theme">
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted">{t.availabilityLabel}</p>
-                  <p className="mt-2 text-sm leading-7 text-soft">{t.availability}</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-muted">
+                    {t.availabilityLabel}
+                  </p>
+                  <p className="mt-2 text-sm leading-7 text-soft">
+                    {t.availability}
+                  </p>
                 </div>
               </Card>
             </motion.div>
