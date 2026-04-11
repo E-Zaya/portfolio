@@ -3,15 +3,10 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { remark } from "remark";
 import html from "remark-html";
-import { getAllPosts, getPostBySlug } from "@/lib/blog";
+import { getPostBySlug } from "@/lib/blog";
 import { getMessages, isLocale, withLocale, type Locale } from "@/lib/i18n";
 
-export function generateStaticParams() {
-  return getAllPosts().flatMap((post) => [
-    { locale: "en", slug: post.slug },
-    { locale: "ja", slug: post.slug },
-  ]);
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
@@ -21,7 +16,7 @@ export async function generateMetadata({
   const { locale: rawLocale, slug } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -43,7 +38,7 @@ export default async function BlogPostPage({
   const { locale: rawLocale, slug } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
-  const post = getPostBySlug(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post || !post.published) {
     notFound();

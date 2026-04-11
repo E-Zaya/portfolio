@@ -21,14 +21,15 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
 
   return (
     <div className="space-y-6">
+      {/* Tag filter */}
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
           onClick={() => setSelectedTag("all")}
-          className={`rounded-full border px-4 py-2 text-sm transition ${
+          className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
             selectedTag === "all"
-              ? "border-transparent bg-[linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3))] text-white shadow-theme"
-              : "border-border bg-card text-soft hover:bg-card-strong hover:text-foreground"
+              ? "border-transparent text-white bg-[linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3))] shadow-theme"
+              : "border-border bg-card text-muted hover:bg-card-strong hover:text-foreground hover:border-white/25"
           }`}
         >
           All
@@ -39,10 +40,10 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
             key={tag}
             type="button"
             onClick={() => setSelectedTag(tag)}
-            className={`rounded-full border px-4 py-2 text-sm transition ${
+            className={`rounded-full border px-4 py-2 text-sm font-medium transition-all duration-200 ${
               selectedTag === tag
-                ? "border-transparent bg-[linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3))] text-white shadow-theme"
-                : "border-border bg-card text-soft hover:bg-card-strong hover:text-foreground"
+                ? "border-transparent text-white bg-[linear-gradient(135deg,var(--accent-1),var(--accent-2),var(--accent-3))] shadow-theme"
+                : "border-border bg-card text-muted hover:bg-card-strong hover:text-foreground hover:border-white/25"
             }`}
           >
             #{tag}
@@ -50,16 +51,17 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
         ))}
       </div>
 
+      {/* Post list */}
       {filteredPosts.length > 0 ? (
-        <div className="space-y-5 md:space-y-6">
+        <div className="flex flex-col gap-3">
           {filteredPosts.map((post) => (
             <BlogCard key={post.slug} post={post} locale={locale} />
           ))}
         </div>
       ) : (
-        <div className="rounded-[24px] border border-border bg-card px-6 py-10 text-center">
-          <p className="text-lg font-medium text-foreground">No posts found.</p>
-          <p className="mt-2 text-sm text-soft">Try a different tag.</p>
+        <div className="apple-panel rounded-[20px] px-6 py-12 text-center">
+          <p className="text-base font-medium text-foreground">No posts found.</p>
+          <p className="mt-2 text-sm text-muted">Try a different tag.</p>
         </div>
       )}
     </div>

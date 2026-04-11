@@ -29,11 +29,11 @@ export const messages = {
   en: {
     meta: {
       title: "Zaya Portfolio",
-      description: "High quality Next.js portfolio website",
+      description: "High-quality Next.js portfolio website",
     },
     header: {
       subtitle: "Portfolio",
-      logoAria: "Go to top page",
+      logoAria: "Back to home",
       menuAria: "Open menu",
     },
     nav: [
@@ -43,11 +43,11 @@ export const messages = {
       { label: "Contact", href: "/contact" },
     ],
     hero: {
-      eyebrow: "/Web Developer / Multilingual Engineer / ",
+      eyebrow: "/ Web Developer / Multilingual Engineer /",
       title: "Hello, I'm Zaya.",
-      highlight: "Engineering seamless web experiences across borders.",
+      highlight: "Crafting universal designs that \ntranscend language barriers.",
       description:
-        "A developer bridging the gap between Japanese, English, and Mongolian tech landscapes.I focus on building clean UIs and high-performance applications with a global perspective.",
+        "Bridging the tech ecosystems of Japan, Mongolia, and the English-speaking world. I focus on building clean UIs and high-performance applications with a global perspective.",
       badges: ["Frontend Development", "Full-stack Solutions", "UI / UX Design", "Database Management"],
     },
     skills: {
@@ -55,70 +55,70 @@ export const messages = {
     },
     about: {
       eyebrow: "About Me",
-      title: "From Tokyo to Ulaanbaatar",
+      title: "From Consumer to Creator",
       paragraphs: [
-        "After spending a decade in Japan, I returned to Mongolia to pursue my goal of becoming a Web Developer. To fully focus on my growth, I enrolled in IO Institute's intensive program and committed myself to learning modern web development in a dedicated environment.",
-        "Living in Japan for 10 years made me more fluent in Japanese than my native Mongolian. This gives me a unique advantage: I can learn from Japan's rich technical ecosystem through documentation, articles, and educational resources, while also expanding my perspective through English.",
-        "My goal is to become a world-class developer who bridges cultures through code — combining multilingual learning, global thinking, and thoughtful design to build clean and meaningful digital experiences.",
+        "My mission as a developer is to bridge cultures and languages through the universal language of technology. Drawing from my multilingual background, I strive to create seamless digital experiences that feel intuitive regardless of cultural borders.",
+        "After a decade in Japan, I returned to Mongolia to fully commit to my journey as a Web Developer. Currently, I am immersed in an intensive program at the IO Institute, refining my skills in modern web development every day.",
+        "Living in Japan for 10 years allowed me to reach native-level fluency. This gives me a unique edge: the ability to dive deep into Japan's rich technical documentation and community, while staying connected to global trends through English. I leverage this dual-perspective to find the best solutions for every challenge.",
       ],
       strengthsEyebrow: "Strengths",
-      strengthsTitle: "What I Bring",
+      strengthsTitle: "What I Bring to the Table",
       strengths: [
         {
-          title: "Multilingual Learning",
+          title: "Multilingual Tech Research",
           description:
-            "I learn primarily through Japanese technical resources and documentation, supported by English. This gives me access to a wider and deeper range of knowledge.",
+            "I navigate technical documentation in both Japanese and English with ease, allowing me to research deeply and implement the most effective solutions without being limited by language.",
         },
         {
-          title: "Frontend Focus",
+          title: "Frontend Craftsmanship",
           description:
-            "I am focused on frontend development with Next.js and React, building interfaces that feel clean, modern, and comfortable to use.",
+            "Specializing in Next.js and React, I am dedicated to building interfaces that are not only clean and modern but also feel effortless to use.",
         },
         {
-          title: "Global Vision",
+          title: "Precision & Ownership",
           description:
-            "My journey across languages and cultures shapes how I think as a developer. I want to create products that combine local passion with global standards.",
+            "My 10 years in Japan instilled in me a deep appreciation for detail and professional responsibility. Beyond just coding, I prioritize clear communication and thorough documentation to ensure team success.",
         },
       ],
       journeyEyebrow: "Journey",
-      journeyTitle: "My Path",
+      journeyTitle: "My Path So Far",
       journey: [
         {
           year: "2016",
-          title: "Move to Japan",
+          title: "The Japan Chapter",
           description:
-            "Started a new chapter abroad and built the foundation for a cross-cultural perspective.",
+            "Relocated to Japan, building a foundation of cross-cultural understanding and a global mindset over the next decade.",
         },
         {
           year: "2026",
-          title: "Return to Mongolia",
+          title: "The Creative Pivot",
           description:
-            "Came back to Mongolia to focus seriously on a future in web development.",
+            "Chose to move from 'consuming' to 'creating.' Returned to Mongolia to dedicate myself to a future in engineering.",
         },
         {
           year: "Now",
           title: "IO Institute",
           description:
-            "Studying in an intensive environment and strengthening my frontend development skills.",
+            "Evolving daily in an intensive environment, mastering full-stack skills and turning yesterday's challenges into today's capabilities.",
         },
         {
           year: "Future",
           title: "Global Developer",
           description:
-            "Aiming to become a world-class developer who bridges cultures through code.",
+            "Aiming to build products that innovate daily life across borders and devices. On a mission to become a world-class creator.",
         },
       ],
     },
     projects: {
       eyebrow: "Projects",
-      titleA: "Selected",
+      titleA: "Featured",
       titleB: "Work",
       description:
-        "A collection of projects focused on real-world usability, performance, and clean UI design. Each project reflects my approach to building scalable and maintainable applications.",
+        "A selection of projects focused on real-world usability, performance, and clean UI design. Each one reflects my commitment to maintainable and scalable code.",
       featuredEyebrow: "Featured",
       featuredTitle: "Main Project",
-      otherEyebrow: "More Projects",
-      otherTitle: "Other Work",
+      otherEyebrow: "Archive",
+      otherTitle: "Other Projects",
       featuredBadge: "Featured",
       liveDemo: "Live Demo",
       viewCode: "View Code",
@@ -130,43 +130,43 @@ export const messages = {
         "workout-log": {
           title: "Workout Log",
           description:
-            "A full-stack workout tracking app with volume analysis and exercise management.",
+            "A full-stack tracking app with volume analysis and exercise management.",
           summary:
-            "Built with Next.js, Prisma, and PostgreSQL. The app allows users to log workouts, manage exercises, and visualize weekly training volume. Designed with a focus on usability and clean UI.",
+            "Built with Next.js, Prisma, and PostgreSQL. Features exercise management and weekly volume visualization, designed with a focus on intuitive UX and clean UI.",
         },
       },
     },
     blog: {
       eyebrow: "Blog",
-      title: "Notes, progress, and lessons from my development journey",
+      title: "Logs of a Developer in the Making",
       description:
-        "Development logs, lessons from bugs, UI design thinking, and small weekly progress. This space is where I document the path from learning to building.",
+        "Documenting my technical insights, UI design thinking, and the small wins of a coding journey. A space where trial and error meets progress.",
       filterLabel: "Filter by tag",
       browseTitle: "Browse posts",
       backToBlog: "Back to blog",
       postCount: (count: number) => `${count} post${count !== 1 ? "s" : ""}`,
-      notFoundTitle: "Post not found | Zaya Portfolio",
+      notFoundTitle: "Post Not Found | Zaya Portfolio",
     },
     contact: {
       eyebrow: "Contact",
-      titleA: "Let’s build something",
-      titleB: "clean & memorable",
+      titleA: "Transforming ideas into",
+      titleB: "seamless digital experiences",
       description:
-        "Contact me for portfolio development, front-end implementation, or UI improvements. Let’s work together to create simple, beautiful, and user-friendly experiences.",
-      primaryLabel: "Primary Contact",
-      primaryTitle: "Email me directly",
+        "Whether it's building a portfolio from scratch, implementing a sleek frontend, or improving UI, I'm ready to dive in. Let's create something simple, beautiful, and user-friendly.",
+      primaryLabel: "Direct Contact",
+      primaryTitle: "Send me an email",
       primaryDescription:
-        "Feel free to reach out for work inquiries, projects, collaborations, or questions.",
+        "Feel free to reach out for project inquiries, collaborations, or just to say hello.",
       emailLabel: "Email Address",
       copy: "Copy email",
-      copied: "Copied",
+      copied: "Copied!",
       send: "Send Email",
       viewProjects: "View Projects",
-      socialTitle: "Social Links",
+      socialTitle: "Social",
       connectVia: "Connect via",
       availabilityLabel: "Availability",
       availability:
-        "Focused on front-end development, UI improvements, and building portfolios. I welcome new projects and collaboration inquiries.",
+        "Open to new projects and frontend collaborations. Let's build something meaningful together.",
     },
     footer: {
       title: "Zaya Portfolio",

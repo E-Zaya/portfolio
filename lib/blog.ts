@@ -1,9 +1,13 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
+import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from "notion-to-md";
 
-const postsDirectory = path.join(process.cwd(), "content/blog");
+// ─── クライアント初期化 ────────────────────────────────
+const notion = new Client({ auth: process.env.NOTION_TOKEN });
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
+const DB_ID = process.env.NOTION_BLOG_DB_ID!;
+
+// ─── 型定義（既存のまま維持） ─────────────────────────
 export type PostMeta = {
   title: string;
   date: string;
@@ -18,106 +22,60 @@ export type Post = PostMeta & {
   content: string;
 };
 
-type ParsedPostFile = Post & {
-  fileName: string;
-};
-
-function ensureBlogDirectory() {
-  if (!fs.existsSync(postsDirectory)) {
-    fs.mkdirSync(postsDirectory, { recursive: true });
-  }
-}
-
-function slugifySegment(value: string) {
-  return value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .replace(/-{2,}/g, "-");
-}
-
-function resolveSlug(fileName: string, rawSlug: unknown) {
-  if (typeof rawSlug === "string") {
-    const normalized = slugifySegment(rawSlug);
-    if (normalized) {
-      return normalized;
-    }
-  }
-
-  const fallback = slugifySegment(fileName.replace(/\.md$/, ""));
-  return fallback || "post";
-}
-
-function parsePostFile(fileName: string): ParsedPostFile {
-  const fullPath = path.join(postsDirectory, fileName);
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+// ─── Notionページ → PostMeta に変換 ──────────────────
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function pageToPostMeta(page: any): PostMeta {
+  const props = page.properties;
 
   return {
-    title: data.title ?? "",
-    date: data.date ?? "",
-    category: data.category ?? "diary",
-    tags: Array.isArray(data.tags) ? data.tags : [],
-    summary: data.summary ?? "",
-    published: Boolean(data.published),
-    slug: resolveSlug(fileName, data.slug),
-    content,
-    fileName,
+    title: props.Title?.title?.[0]?.plain_text ?? "",
+    date: props.Date?.date?.start ?? "",
+    category: props.Category?.select?.name ?? "diary",
+    tags: props.Tags?.multi_select?.map((t: { name: string }) => t.name) ?? [],
+    summary: props.Summary?.rich_text?.[0]?.plain_text ?? "",
+    published: props.Published?.checkbox ?? false,
+    slug: props.Slug?.rich_text?.[0]?.plain_text ?? page.id,
   };
 }
 
-function compareDatesDescending(a: string, b: string) {
-  const aTime = Number.isNaN(Date.parse(a)) ? 0 : new Date(a).getTime();
-  const bTime = Number.isNaN(Date.parse(b)) ? 0 : new Date(b).getTime();
-  return bTime - aTime;
+// ─── 記事一覧取得 ─────────────────────────────────────
+export async function getAllPosts(): Promise<PostMeta[]> {
+  const response = await notion.databases.query({
+    database_id: DB_ID,
+    filter: {
+      property: "Published",
+      checkbox: { equals: true },
+    },
+    sorts: [{ property: "Date", direction: "descending" }],
+  });
+
+  return response.results.map(pageToPostMeta);
 }
 
-function getParsedPosts() {
-  ensureBlogDirectory();
+// ─── slug で記事1件取得（本文付き） ──────────────────
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+  const response = await notion.databases.query({
+    database_id: DB_ID,
+    filter: {
+      property: "Slug",
+      rich_text: { equals: slug },
+    },
+  });
 
-  return fs
-    .readdirSync(postsDirectory)
-    .filter((fileName) => fileName.endsWith(".md"))
-    .map(parsePostFile);
+  const page = response.results[0];
+  if (!page) return null;
+
+  const meta = pageToPostMeta(page);
+
+  // Notionのブロックをmarkdownに変換
+  const mdBlocks = await n2m.pageToMarkdown(page.id);
+  const content = n2m.toMarkdownString(mdBlocks).parent;
+
+  return { ...meta, content };
 }
 
-export function getAllPosts(): PostMeta[] {
-  return getParsedPosts()
-    .filter((post) => post.published)
-    .sort((a, b) => compareDatesDescending(a.date, b.date))
-    .map((post) => ({
-      title: post.title,
-      date: post.date,
-      category: post.category,
-      tags: post.tags,
-      summary: post.summary,
-      published: post.published,
-      slug: post.slug,
-    }));
-}
-
-export function getPostBySlug(slug: string): Post | null {
-  const post = getParsedPosts().find((item) => item.slug === slug);
-
-  if (!post) {
-    return null;
-  }
-
-  return {
-    title: post.title,
-    date: post.date,
-    category: post.category,
-    tags: post.tags,
-    summary: post.summary,
-    published: post.published,
-    slug: post.slug,
-    content: post.content,
-  };
-}
-
-export function getAllTags(posts: PostMeta[]) {
+// ─── タグ一覧取得 ─────────────────────────────────────
+export function getAllTags(posts: PostMeta[]): string[] {
   return Array.from(new Set(posts.flatMap((post) => post.tags))).sort((a, b) =>
     a.localeCompare(b)
   );

@@ -11,7 +11,7 @@ export default async function BlogPage({
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
   const t = getMessages(locale).blog;
 
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   const tags = getAllTags(posts);
 
   return (
