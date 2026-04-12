@@ -103,7 +103,7 @@ export default function Hero({ locale }: { locale: Locale }) {
               </div>
             </div>
 
-            {/* Based in バッジ（気に入ったやつを小さく自然に） */}
+            {/* Based in バッジ） */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 0.85, y: 0 }}
