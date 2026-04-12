@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       );
     }
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from,
       to,
       replyTo: email,
@@ -67,6 +67,24 @@ export async function POST(req: Request) {
         </div>
       `,
     });
+
+    if (error) {
+      console.error("[contact] Resend error:", error);
+      return Response.json(
+        {
+          ok: false,
+          error: error.message || "Failed to send email.",
+        },
+        { status: 500 },
+      );
+    }
+
+    if (!data?.id) {
+      return Response.json(
+        { ok: false, error: "Failed to send email." },
+        { status: 500 },
+      );
+    }
 
     return Response.json({ ok: true });
   } catch {

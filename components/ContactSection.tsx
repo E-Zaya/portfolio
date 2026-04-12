@@ -262,6 +262,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
                   </p>
                 </div>
               </Card>
+              
             </motion.div>
           </div>
         </motion.div>

@@ -18,6 +18,12 @@ export default function Hero({ locale }: { locale: Locale }) {
   return (
     <SectionShell className="pt-8">
       <Card gradientBorder className="relative overflow-hidden rounded-[32px] px-6 py-12 md:px-12 md:py-16">
+        
+        {/* 背景の色（君が気に入ったやつ） */}
+        <div className="absolute inset-0 bg-[radial-gradient(at_25%_30%,var(--accent-1)_0%,transparent_45%)] opacity-60" />
+        <div className="absolute inset-0 bg-[radial-gradient(at_75%_70%,var(--accent-4)_0%,transparent_55%)] opacity-50" />
+
+        {/* 元のorb（少し調整） */}
         <div
           className="hero-orb left-[-40px] top-[-40px] h-40 w-40"
           style={{ background: "color-mix(in srgb, var(--accent-1) 30%, transparent)" }}
@@ -28,6 +34,8 @@ export default function Hero({ locale }: { locale: Locale }) {
         />
 
         <div className="relative z-10 grid items-center gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.9fr)]">
+          
+          {/* 左側テキスト（元のままシンプルに） */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
@@ -69,26 +77,19 @@ export default function Hero({ locale }: { locale: Locale }) {
             </div>
           </motion.div>
 
+          {/* 右側画像エリア（気に入ったエフェクトを追加） */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
             style={{ y: imageY }}
-            className="relative mx-auto w-full max-w-90 "
+            className="relative mx-auto w-full max-w-[420px]"
           >
+            {/* 強いglowエフェクト */}
             <motion.div
               style={{ y: glowY }}
-              className="absolute inset-0 -z-10 rounded-full blur-3xl"
-            >
-              <div
-                className="absolute left-8 top-10 h-32 w-32 rounded-full"
-                style={{ background: "color-mix(in srgb, var(--accent-1) 22%, transparent)" }}
-              />
-              <div
-                className="absolute bottom-10 right-6 h-36 w-36 rounded-full"
-                style={{ background: "color-mix(in srgb, var(--accent-4) 18%, transparent)" }}
-              />
-            </motion.div>
+              className="absolute -inset-12 -z-10 rounded-full bg-gradient-to-br from-accent-1/25 via-accent-4/20 to-transparent blur-3xl"
+            />
 
             <div className="gradient-border rounded-[30px] p-[1px]">
               <div className="relative overflow-hidden rounded-[28px] border border-border bg-card shadow-theme">
@@ -99,10 +100,20 @@ export default function Hero({ locale }: { locale: Locale }) {
                   width={720}
                   height={900}
                   priority
-                  className="h-auto w-full object-hover transition duration-700 ease-out group-hover:scale-[1.06]"
+                  className="h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.06]"
                 />
               </div>
             </div>
+
+            {/* Based in バッジ（気に入ったやつを小さく自然に） */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 0.85, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.6 }}
+              className="absolute -bottom-5 right-4 rounded-2xl bg-card/90 backdrop-blur-md px-5 py-2.5 text-xs border border-border shadow-md"
+            >
+              Based in Ulaanbaatar 🇲🇳
+            </motion.div>
           </motion.div>
         </div>
       </Card>
