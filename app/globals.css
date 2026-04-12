@@ -240,6 +240,36 @@ h6,
     -webkit-text-fill-color: transparent;
   }
 
+
+/* globals.css */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg::before,
+.hero-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.hero-bg::before {
+  background: radial-gradient(at 75% 70%, var(--accent-4) 0%, transparent 45%);
+
+
+  opacity: 0.6;
+}
+
+.hero-bg::after {
+  background: radial-gradient(at 25% 40%, var(--accent-1) 10%, transparent 55%);
+
+  opacity: 0.5;
+}
+
+
+
   .gradient-line {
     background: linear-gradient(
       90deg,

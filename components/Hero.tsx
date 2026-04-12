@@ -17,11 +17,9 @@ export default function Hero({ locale }: { locale: Locale }) {
 
   return (
     <SectionShell className="pt-8">
-      <Card gradientBorder className="relative overflow-hidden rounded-[32px] px-6 py-12 md:px-12 md:py-16">
+      <Card gradientBorder className="relative overflow-hidden rounded-[32px] px-6 py-12 md:px-12 md:py-16 hero-bg">
         
-        {/* 背景の色（君が気に入ったやつ） */}
-        <div className="absolute inset-0 bg-[radial-gradient(at_25%_30%,var(--accent-1)_0%,transparent_45%)] opacity-60" />
-        <div className="absolute inset-0 bg-[radial-gradient(at_75%_70%,var(--accent-4)_0%,transparent_55%)] opacity-50" />
+  
 
         {/* 元のorb（少し調整） */}
         <div

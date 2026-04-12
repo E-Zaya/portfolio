@@ -15,10 +15,12 @@ export default function AboutHero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).about;
 
   return (
+
     <motion.div
       {...fadeUp}
-      className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)]"
-    >
+      className="grid items-center  gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.85fr)]">
+
+
       <div className="max-w-3xl">
         <p className="hero-gradient mb-3 text-sm uppercase tracking-[0.3em]">{t.eyebrow}</p>
 
@@ -36,6 +38,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
           ))}
         </div>
       </div>
+    
 
       <motion.div
         initial={{ opacity: 0, x: 24, y: 20 }}
@@ -79,7 +82,11 @@ export default function AboutHero({ locale }: { locale: Locale }) {
             </motion.div>
           </motion.div>
         </div>
-      </motion.div>
+      </motion.div> 
+           
     </motion.div>
+    
+    
+
   );
 }
