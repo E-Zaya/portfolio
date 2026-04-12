@@ -46,7 +46,29 @@
     transparent
   );
   --header-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+/* ------------------------------ */
+/* blog page / luxury color vars  */
+/* ------------------------------ */
+
+/* page background */
+--bg-deep: #0f1115;              /* 真っ黒ではなく、少し青みのある深い墨色 */
+
+/* glass card */
+--card-glass: rgba(255, 255, 255, 0.04);   /* ほんの少しだけ見えるガラス感 */
+--card-border: rgba(255, 255, 255, 0.09);  /* 輪郭を少しだけ見せる境界線 */
+
+/* luxury accents */
+--accent-lux-1: #8ea7c9;         /* 上品な青灰 */
+--accent-lux-2: #c7b38a;         /* シャンパンゴールド寄り */
+--accent-lux-3: #7c8b9f;         /* 落ち着いたスレートブルー */
+--accent-glow: #d6c29a;          /* 派手すぎない光沢用ゴールド */
+
+/* text */
+--text-title: #f5f7fb;           /* タイトル用のやや柔らかい白 */
+--text-summary: #b8c0cc;         /* summary用の青みグレー */
 }
+
 
 html.light {
   color-scheme: light;

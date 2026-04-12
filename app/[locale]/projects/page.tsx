@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { projectItems } from "@/data/projects";
+import Button from "@/components/ui/Button";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 
 export function ProjectsContent({ locale }: { locale: Locale }) {
@@ -32,6 +32,7 @@ export function ProjectsContent({ locale }: { locale: Locale }) {
             <div className="relative min-h-[280px] border-b border-border lg:min-h-full lg:border-b-0 lg:border-r">
               <div className="relative h-full w-full p-5 md:p-6">
                 <div className="relative h-full min-h-[260px] overflow-hidden rounded-[24px] border border-border bg-card-strong shadow-theme">
+                  {/* Project image */}
                   <Image
                     src={featuredProject.image}
                     alt={itemText?.title ?? featuredProject.title}
@@ -88,23 +89,25 @@ export function ProjectsContent({ locale }: { locale: Locale }) {
               {/* Action buttons */}
               <div className="mt-8 flex flex-wrap gap-3">
                 {featuredProject.demo && (
-                  <Link
+                  <Button
                     href={featuredProject.demo}
                     target="_blank"
-                    className="rounded-full border border-border bg-card-strong px-5 py-3 text-sm font-semibold text-foreground shadow-theme transition hover:scale-[1.02] hover:bg-card"
+                    rel="noreferrer"
+                    variant="primary"
                   >
                     {t.liveDemo}
-                  </Link>
+                  </Button>
                 )}
 
                 {featuredProject.github && (
-                  <Link
+                  <Button
                     href={featuredProject.github}
                     target="_blank"
-                    className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground transition hover:scale-[1.02] hover:bg-card-strong"
+                    rel="noreferrer"
+                    variant="secondary"
                   >
                     {t.viewCode}
-                  </Link>
+                  </Button>
                 )}
               </div>
             </div>

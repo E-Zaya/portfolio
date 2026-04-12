@@ -15,44 +15,41 @@ export default async function BlogPage({
   const tags = getAllTags(posts);
 
   return (
-    <main className="section-space">
-      <section className="container-custom">
-        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-[32px] px-6 py-10 md:px-10 md:py-14">
-          <div className="absolute -left-12 top-10 h-28 w-28 rounded-full bg-sky-400/15 blur-3xl" />
-          <div className="absolute right-0 top-0 h-36 w-36 rounded-full bg-fuchsia-400/10 blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 h-28 w-28 rounded-full bg-cyan-400/10 blur-3xl" />
-
-          <div className="relative z-10 max-w-3xl space-y-5">
-            <span className="badge text-soft">{t.eyebrow}</span>
-
-            <div className="space-y-4">
-              <h1 className="section-title">{t.title}</h1>
-
-              <p className="max-w-2xl text-base leading-8 text-soft md:text-lg">
-                {t.description}
-              </p>
-            </div>
-          </div>
-        </div>
+    <main className="section-space pb-20">
+      {/* 超シンプルなヘッダー（長い説明は完全に削除） */}
+      <section className="container-custom text-center mb-16">
+        <span className="badge text-soft">{t.eyebrow || "Writing"}</span>
+        <h1 className="section-title mt-4 text-5xl md:text-6xl font-bold tracking-tighter">
+          {t.title}
+        </h1>
       </section>
 
-      <section className="container-custom mt-10 space-y-8">
-        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-[28px] p-5 md:p-6">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.06),transparent_35%)] opacity-80" />
+      {/* Bentoグリッド風コンテナ */}
+      <section className="container-custom">
+        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-[32px] p-8 md:p-12">
+          {/* アクセントのぼかし背景（今までのhero-bg風） */}
+          <div className="absolute -left-20 top-12 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
+          <div className="absolute right-8 bottom-20 h-52 w-52 rounded-full bg-fuchsia-400/10 blur-3xl" />
+          <div className="absolute left-1/2 top-1/3 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl" />
 
           <div className="relative z-10">
-            <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            {/* フィルター部分（少しコンパクトに） */}
+            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm text-muted">{t.filterLabel}</p>
-                <h2 className="mt-1 text-xl font-semibold tracking-tight text-foreground">
+                <h2 className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
                   {t.browseTitle}
                 </h2>
               </div>
-
               <p className="text-sm text-soft">{t.postCount(posts.length)}</p>
             </div>
 
-            <BlogListClient posts={posts} tags={tags} locale={locale} />
+            {/* BlogListClientにBentoグリッドを任せる */}
+            <BlogListClient 
+              posts={posts} 
+              tags={tags} 
+              locale={locale} 
+            />
           </div>
         </div>
       </section>

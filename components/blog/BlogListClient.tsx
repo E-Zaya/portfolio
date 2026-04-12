@@ -20,8 +20,8 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
   }, [posts, selectedTag]);
 
   return (
-    <div className="space-y-6">
-      {/* Tag filter */}
+    <div className="space-y-8">
+      {/* Tag filter（そのままキープ） */}
       <div className="flex flex-wrap gap-2">
         <button
           type="button"
@@ -51,12 +51,26 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
         ))}
       </div>
 
-      {/* Post list */}
+      {/* Bento Grid */}
       {filteredPosts.length > 0 ? (
-        <div className="flex flex-col gap-3">
-          {filteredPosts.map((post) => (
-            <BlogCard key={post.slug} post={post} locale={locale} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 auto-rows-[minmax(280px, auto)]">
+          {filteredPosts.map((post, index) => {
+            // Bentoっぽくサイズをランダムっぽく変える（最初の数個を大きく）
+            const isLarge = index % 5 === 0 || index % 5 === 3; // 例: 0番目と3番目を大きく
+            const spanClass = isLarge 
+              ? "md:col-span-2 md:row-span-2" 
+              : "";
+
+            return (
+              <div key={post.slug} className={spanClass}>
+                <BlogCard 
+                  post={post} 
+                  locale={locale} 
+                  isLarge={isLarge} // BlogCard側でサイズ調整できるようにprops追加
+                />
+              </div>
+            );
+          })}
         </div>
       ) : (
         <div className="apple-panel rounded-[20px] px-6 py-12 text-center">

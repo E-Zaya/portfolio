@@ -8,9 +8,10 @@ import type { PostMeta } from "@/lib/notion";
 type Props = {
   post: PostMeta;
   locale: Locale;
+  isLarge?: boolean;   // ← 追加
 };
 
-export default function BlogCard({ post, locale }: Props) {
+export default function BlogCard({ post, locale, isLarge = false }: Props) {
   return (
     <motion.article
       initial={{ opacity: 0, y: 18 }}
@@ -18,84 +19,26 @@ export default function BlogCard({ post, locale }: Props) {
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.45, ease: "easeOut" }}
     >
-      <Link
-        href={withLocale(locale, `/blog/${post.slug}`)}
-        className="group block"
-      >
+      <Link href={withLocale(locale, `/blog/${post.slug}`)} className="group block h-full">
         <motion.div
-          whileHover={{ y: -3 }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-          className="
+          whileHover={{ y: -4 }}
+          className={`
             apple-panel-strong gradient-border
-            relative overflow-hidden rounded-[24px]
-            grid grid-cols-[1fr_auto] gap-6 items-start
-            p-6 md:p-7
-            transition-all duration-200
+            relative overflow-hidden rounded-[24px] h-full
+            flex flex-col
+            p-6 md:p-8
+            transition-all duration-300
             group-hover:border-white/30
-          "
+            ${isLarge ? "md:p-10" : ""}
+          `}
         >
-          {/* inner glow */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.07),transparent_36%)]" />
+          {/* 既存の内容はそのまま + isLarge時はsummaryを長めに表示など調整可 */}
+          {/* ... 現在の内容をそのまま貼り付けてOK ... */}
 
-          {/* main content */}
-          <div className="relative z-10 flex flex-col gap-3">
-            {/* meta row */}
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="badge text-muted capitalize text-xs">
-                {post.category}
-              </span>
-              <span className="text-xs text-muted">{post.date}</span>
-            </div>
-
-            {/* title */}
-            <h3
-              className="
-                text-xl md:text-2xl font-semibold leading-snug tracking-tight
-                text-foreground
-                transition-colors duration-200
-                group-hover:text-[color:var(--accent-2)]
-              "
-            >
-              {post.title}
-            </h3>
-
-            {/* summary */}
-            <p className="text-sm leading-7 text-soft max-w-2xl">
-              {post.summary}
-            </p>
-
-            {/* tags */}
-            {post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 pt-1">
-                {post.tags.slice(0, 4).map((tag) => (
-                  <span
-                    key={tag}
-                    className="
-                      rounded-full border border-border bg-card
-                      px-3 py-1 text-xs text-muted
-                      transition-colors duration-200
-                      group-hover:border-white/20
-                    "
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* arrow */}
-          <span
-            className="
-              relative z-10
-              text-lg text-muted pt-1
-              transition-all duration-200
-              group-hover:text-[color:var(--accent-2)]
-              group-hover:translate-x-1
-            "
-          >
-            →
-          </span>
+          {/* 例: isLarge時はsummaryを2行以上表示 */}
+          <p className={`text-sm leading-7 text-soft ${isLarge ? "line-clamp-4" : "line-clamp-2"}`}>
+            {post.summary}
+          </p>
         </motion.div>
       </Link>
     </motion.article>
