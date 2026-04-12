@@ -4,167 +4,114 @@ import { projectItems } from "@/data/projects";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 
 export function ProjectsContent({ locale }: { locale: Locale }) {
+  // i18n text
   const t = getMessages(locale).projects;
-  const featuredProjects = projectItems.filter((p) => p.featured);
-  const otherProjects = projectItems.filter((p) => !p.featured);
+
+  // featured project
+  const featuredProject = projectItems.find((p) => p.featured) ?? projectItems[0];
+
+  if (!featuredProject) {
+    return null;
+  }
+
+  // localized content
+  const itemText = t.items[featuredProject.slug as keyof typeof t.items];
+  const status = t.status[featuredProject.status];
 
   return (
-    <main className="section-space">
-      <div className="container-custom space-y-10">
-        <section className="text-center">
-          <p className="badge text-muted">{t.eyebrow}</p>
+    <section id="projects" className="section-space">
+      <div className="container-custom">
+        {/* Project card */}
+        <article className="group relative overflow-hidden rounded-[32px] glass-strong">
+          {/* Background glow */}
+          <div className="hero-bg pointer-events-none absolute inset-0 opacity-20" />
 
-          <h1 className="mt-5 text-4xl font-semibold tracking-tight text-foreground sm:text-6xl">
-            {t.titleA} <span className="hero-gradient">{t.titleB}</span>
-          </h1>
+          {/* Main layout */}
+          <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
+            {/* Image area */}
+            <div className="relative min-h-[280px] border-b border-border lg:min-h-full lg:border-b-0 lg:border-r">
+              <div className="relative h-full w-full p-5 md:p-6">
+                <div className="relative h-full min-h-[260px] overflow-hidden rounded-[24px] border border-border bg-card-strong shadow-theme">
+                  <Image
+                    src={featuredProject.image}
+                    alt={itemText?.title ?? featuredProject.title}
+                    fill
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
+                  />
 
-          <div className="gradient-line mx-auto mt-5 h-px w-28" />
-
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-soft">{t.description}</p>
-        </section>
-
-        {featuredProjects.length > 0 && (
-          <section className="space-y-6">
-            <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">{t.featuredEyebrow}</p>
-              <h2 className="mt-3 text-2xl font-semibold text-foreground">{t.featuredTitle}</h2>
+                  {/* Image overlay */}
+                  <div className="project-image-overlay" />
+                </div>
+              </div>
             </div>
 
-            {featuredProjects.map((project) => {
-              const itemText = t.items[project.slug as keyof typeof t.items];
-              const status = t.status[project.status];
+            {/* Text content area */}
+            <div className="relative p-7 md:p-10">
+              {/* Status badges */}
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground">
+                  {status}
+                </span>
 
-              return (
-                <article
-                  key={project.slug}
-                  className="apple-panel-strong gradient-border overflow-hidden rounded-[32px]"
-                >
-                  <div className="grid gap-0 lg:grid-cols-[1.15fr_0.85fr]">
-                    <div className="p-7 md:p-10">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground">
-                          {status}
-                        </span>
+                <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted">
+                  {t.featuredBadge}
+                </span>
+              </div>
 
-                        <span className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted">
-                          {t.featuredBadge}
-                        </span>
-                      </div>
+              {/* Project title */}
+              <h2 className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                {itemText?.title ?? featuredProject.title}
+              </h2>
 
-                      <h3 className="mt-5 text-3xl font-semibold text-foreground sm:text-4xl">
-                        {itemText?.title ?? project.title}
-                      </h3>
+              {/* Main description */}
+              <p className="mt-4 text-base leading-8 text-soft">
+                {itemText?.description ?? featuredProject.description}
+              </p>
 
-                      <p className="mt-4 text-base leading-8 text-soft">
-                        {itemText?.description ?? project.description}
-                      </p>
+              {/* Summary */}
+              <p className="mt-4 text-sm leading-7 text-muted">
+                {itemText?.summary ?? featuredProject.summary}
+              </p>
 
-                      <p className="mt-4 text-sm leading-7 text-muted">
-                        {itemText?.summary ?? project.summary}
-                      </p>
+              {/* Tech tags */}
+              <div className="mt-6 flex flex-wrap gap-2">
+                {featuredProject.tech.map((tech) => (
+                  <span
+                    key={tech}
+                    className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-theme"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
 
-                      <div className="mt-6 flex flex-wrap gap-2">
-                        {project.tech.map((tech) => (
-                          <span
-                            key={tech}
-                            className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-theme"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
+              {/* Action buttons */}
+              <div className="mt-8 flex flex-wrap gap-3">
+                {featuredProject.demo && (
+                  <Link
+                    href={featuredProject.demo}
+                    target="_blank"
+                    className="rounded-full border border-border bg-card-strong px-5 py-3 text-sm font-semibold text-foreground shadow-theme transition hover:scale-[1.02] hover:bg-card"
+                  >
+                    {t.liveDemo}
+                  </Link>
+                )}
 
-                      <div className="mt-8 flex flex-wrap gap-3">
-                        {project.demo && (
-                          <Link
-                            href={project.demo}
-                            target="_blank"
-                            className="rounded-full px-5 py-3 text-sm font-semibold text-white shadow-theme transition hover:scale-[1.02]"
-                            style={{
-                              background:
-                                "linear-gradient(90deg, var(--accent-1), var(--accent-2), var(--accent-3))",
-                            }}
-                          >
-                            {t.liveDemo}
-                          </Link>
-                        )}
-
-                        {project.github && (
-                          <Link
-                            href={project.github}
-                            target="_blank"
-                            className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground transition hover:scale-[1.02] hover:bg-card-strong"
-                          >
-                            {t.viewCode}
-                          </Link>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="relative min-h-[280px] border-t border-border lg:min-h-full lg:border-l lg:border-t-0">
-                      <div className="relative h-full w-full p-5 md:p-6">
-                        <div className="relative h-full min-h-[240px] overflow-hidden rounded-[24px] border border-border bg-card shadow-theme">
-                          <Image
-                            src={project.image}
-                            alt={itemText?.title ?? project.title}
-                            fill
-                            className="object-cover object-top"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </section>
-        )}
-
-        {otherProjects.length > 0 && (
-          <section className="space-y-6">
-            <div>
-              <p className="text-sm uppercase tracking-[0.22em] text-muted">{t.otherEyebrow}</p>
-              <h2 className="mt-3 text-2xl font-semibold text-foreground">{t.otherTitle}</h2>
+                {featuredProject.github && (
+                  <Link
+                    href={featuredProject.github}
+                    target="_blank"
+                    className="rounded-full border border-border bg-card px-5 py-3 text-sm font-medium text-foreground transition hover:scale-[1.02] hover:bg-card-strong"
+                  >
+                    {t.viewCode}
+                  </Link>
+                )}
+              </div>
             </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              {otherProjects.map((project) => {
-                const itemText = t.items[project.slug as keyof typeof t.items];
-                const status = t.status[project.status];
-
-                return (
-                  <article key={project.slug} className="apple-panel rounded-[28px] p-6">
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="text-xl font-semibold text-foreground">
-                        {itemText?.title ?? project.title}
-                      </h3>
-                      <span className="rounded-full border border-border bg-card px-3 py-1 text-xs text-muted">
-                        {status}
-                      </span>
-                    </div>
-
-                    <p className="mt-4 text-sm leading-7 text-soft">
-                      {itemText?.description ?? project.description}
-                    </p>
-
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {project.tech.map((tech) => (
-                        <span
-                          key={tech}
-                          className="rounded-full border border-border bg-card px-3 py-1 text-xs text-foreground"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
-        )}
+          </div>
+        </article>
       </div>
-    </main>
+    </section>
   );
 }
 
@@ -173,7 +120,9 @@ export default async function ProjectsPage({
 }: {
   params: Promise<{ locale: string }>;
 }) {
+  // locale resolution
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+
   return <ProjectsContent locale={locale} />;
 }

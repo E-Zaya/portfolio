@@ -75,7 +75,7 @@ export default function Hero({ locale }: { locale: Locale }) {
             </div>
           </motion.div>
 
-          {/* 右側画像エリア（気に入ったエフェクトを追加） */}
+          {/* 右側画像エリア */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
