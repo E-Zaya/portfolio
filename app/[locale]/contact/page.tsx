@@ -1,4 +1,4 @@
-import ContactSection from "@/components/ContactSection";
+import ContactSection from "@/components/home/ContactSection";
 import { isLocale, type Locale } from "@/lib/i18n";
 
 export default async function ContactPage({

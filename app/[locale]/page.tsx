@@ -1,7 +1,7 @@
-import Hero from "@/components/Hero";
-import Skills from "@/components/Skills";
-import SectionReveal from "@/components/SectionReveal";
-import ContactSection from "@/components/ContactSection";
+import Hero from "@/components/home/Hero";
+import Skills from "@/components/home/Skills";
+import SectionReveal from "@/components/Effects/SectionReveal";
+import ContactSection from "@/components/home/ContactSection";
 import { isLocale, type Locale } from "@/lib/i18n";
 import { ProjectsContent } from "./projects/page";
 

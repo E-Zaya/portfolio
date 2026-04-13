@@ -18,7 +18,7 @@ export default function BlogPageContent({ posts, tags, locale = "en" }: Props) {
 
       {/* ── Hero ── */}
       <section className="container-custom">
-        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-[32px] px-6 py-12 md:px-12 md:py-16">
+        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-4xl px-6 py-12 md:px-12 md:py-16">
           {/* orbs — same colors as the site's body background */}
           <div className="pointer-events-none absolute -left-10 top-8 h-48 w-48 rounded-full bg-sky-400/20 blur-3xl" />
           <div className="pointer-events-none absolute -right-10 -top-6 h-48 w-48 rounded-full bg-purple-500/15 blur-3xl" />

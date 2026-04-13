@@ -22,20 +22,20 @@ export function ProjectsContent({ locale }: { locale: Locale }) {
     <section id="projects" className="section-space">
       <div className="container-custom">
         {/* Project card */}
-        <article className="group relative overflow-hidden rounded-[32px] glass-strong">
+        <article className="group relative overflow-hidden rounded-4xl glass-strong">
           {/* Background glow */}
           <div className="hero-bg pointer-events-none absolute inset-0 opacity-20" />
 
           {/* Main layout */}
           <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
             {/* Image area */}
-            <div className="relative min-h-[280px] border-b border-border lg:min-h-full lg:border-b-0 lg:border-r">
+            <div className="relative min-h-70 border-b border-border lg:min-h-full lg:border-b-0 lg:border-r">
               <div className="relative h-full w-full p-5 md:p-6">
-                <div className="relative h-full min-h-[260px] overflow-hidden rounded-[24px] border border-border bg-card-strong shadow-theme">
+                <div className="relative h-full min-h-65 overflow-hidden rounded-3xl border border-border bg-card-strong shadow-theme">
                   {/* Project image */}
                   <Image
                     src={featuredProject.image}
-                    alt={itemText?.title ?? featuredProject.title}
+                    alt={itemText.title}
                     fill
                     className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
                   />
@@ -61,17 +61,17 @@ export function ProjectsContent({ locale }: { locale: Locale }) {
 
               {/* Project title */}
               <h2 className="mt-5 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-                {itemText?.title ?? featuredProject.title}
+                {itemText.title}
               </h2>
 
               {/* Main description */}
               <p className="mt-4 text-base leading-8 text-soft">
-                {itemText?.description ?? featuredProject.description}
+                {itemText.description}
               </p>
 
               {/* Summary */}
               <p className="mt-4 text-sm leading-7 text-muted">
-                {itemText?.summary ?? featuredProject.summary}
+                {itemText.summary}
               </p>
 
               {/* Tech tags */}

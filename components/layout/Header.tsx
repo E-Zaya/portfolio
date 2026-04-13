@@ -1,16 +1,17 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/cn";
-import ThemeToggle from "./ThemeToggle";
-import LangToggle from "./LangToggle";
+import ThemeToggle from "../ui/ThemeToggle";
+import LangToggle from "../ui/LangToggle";
 import DesktopNav from "./header/DesktopNav";
 import MobileMenu from "./header/MobileMenu";
 import Logo from "./header/Logo";
+import { useHeaderScroll } from "@/hooks/useHeaderScroll";
 import {
   getMessages,
   stripLocaleFromPathname,
@@ -23,27 +24,12 @@ export default function Header({ locale }: { locale: Locale }) {
   const cleanPath = stripLocaleFromPathname(pathname);
   const t = getMessages(locale);
 
-  const [scrolled, setScrolled] = useState(false);
-  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const lastScrollY = useRef(0);
+  const { scrolled, hidden } = useHeaderScroll();
 
   useEffect(() => {
     setMobileOpen(false);
   }, [pathname]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 24);
-      setHidden(currentScrollY > lastScrollY.current && currentScrollY > 120);
-      lastScrollY.current = currentScrollY;
-    };
-
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <header
@@ -62,7 +48,7 @@ export default function Header({ locale }: { locale: Locale }) {
         >
           <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500/[0.06] via-transparent to-cyan-400/[0.06]" />
 
-          <div className="relative flex min-h-[64px] items-center justify-between gap-3 sm:gap-4">
+          <div className="relative flex min-h-16 items-center justify-between gap-3 sm:gap-4">
             <Link
               href={withLocale(locale, "/")}
               className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3 transition"
@@ -87,7 +73,7 @@ export default function Header({ locale }: { locale: Locale }) {
                   alt="Mascot character"
                   width={72}
                   height={40}
-                  className="h-auto w-[60px] sm:w-[72px]"
+                  className="h-auto w-15 sm:w-18"
                 />
               </div>
             </Link>

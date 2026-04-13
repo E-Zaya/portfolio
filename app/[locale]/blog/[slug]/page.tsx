@@ -50,7 +50,7 @@ export default async function BlogPostPage({
   return (
     <main className="section-space">
       <article className="container-custom max-w-4xl space-y-8">
-        <div className="apple-panel-strong gradient-border rounded-[32px] p-6 md:p-10">
+        <div className="apple-panel-strong gradient-border rounded-4xl p-6 md:p-10">
           <Link
             href={withLocale(locale, "/blog")}
             className="mb-6 inline-flex items-center gap-2 text-sm text-soft transition hover:text-foreground"
@@ -84,7 +84,7 @@ export default async function BlogPostPage({
           </div>
         </div>
 
-        <div className="apple-panel rounded-[32px] p-6 md:p-10">
+        <div className="apple-panel rounded-4xl p-6 md:p-10">
           <div
             className="
               prose max-w-none

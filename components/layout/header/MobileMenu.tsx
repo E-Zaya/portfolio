@@ -36,7 +36,7 @@ export default function MobileMenu({
               scroll
               onClick={onNavigate}
               className={cn(
-                "header-mobile-link group relative flex min-h-[48px] items-center rounded-xl px-4 py-3",
+                "header-mobile-link group relative flex min-h-12 items-center rounded-xl px-4 py-3",
                 active && "header-mobile-link-active",
               )}
             >

@@ -26,7 +26,7 @@ export default async function BlogPage({
 
       {/* Bentoグリッド風コンテナ */}
       <section className="container-custom">
-        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-[32px] p-8 md:p-12">
+        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-4xl p-8 md:p-12">
           {/* アクセントのぼかし背景（今までのhero-bg風） */}
           <div className="absolute -left-20 top-12 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
           <div className="absolute right-8 bottom-20 h-52 w-52 rounded-full bg-fuchsia-400/10 blur-3xl" />

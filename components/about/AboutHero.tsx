@@ -60,11 +60,11 @@ export default function AboutHero({ locale }: { locale: Locale }) {
           }}
         />
 
-        <div className="gradient-border rounded-[26px] p-[1px]">
+        <div className="gradient-border rounded-[26px] p-px">
           <motion.div
             whileHover={{ y: -4, scale: 1.015 }}
             transition={{ type: "spring", stiffness: 220, damping: 22 }}
-            className="overflow-hidden rounded-[24px] border border-border bg-card shadow-theme"
+            className="overflow-hidden rounded-3xl border border-border bg-card shadow-theme"
           >
             <motion.div
               whileHover={{ scale: 1.08 }}
@@ -77,7 +77,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
                 width={300}
                 height={400}
                 priority
-                className="h-[400px] w-[300px] object-cover will-change-transform"
+                className="h-100 w-75 object-cover will-change-transform"
               />
             </motion.div>
           </motion.div>

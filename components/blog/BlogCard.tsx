@@ -24,7 +24,7 @@ export default function BlogCard({ post, locale, isLarge = false }: Props) {
           whileHover={{ y: -4 }}
           className={`
             apple-panel-strong gradient-border
-            relative overflow-hidden rounded-[24px] h-full
+            relative overflow-hidden rounded-3xl h-full
             flex flex-col
             p-6 md:p-8
             transition-all duration-300

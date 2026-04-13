@@ -34,7 +34,7 @@ export default function DesktopNav({ locale, currentPath, items }: DesktopNavPro
             {active && (
               <>
                 <span className="pointer-events-none absolute inset-0 rounded-full border border-[var(--header-active-border)]" />
-                <span className="absolute left-1/2 top-full mt-1 h-[3px] w-8 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400" />
+                <span className="absolute left-1/2 top-full mt-1 h-0.75 w-8 -translate-x-1/2 rounded-full bg-gradient-to-r from-violet-500 to-cyan-400" />
               </>
             )}
           </Link>
