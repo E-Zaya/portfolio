@@ -10,7 +10,7 @@ export default function Hero({ locale }: { locale: Locale }) {
 
   return (
     <SectionShell className="pt-8">
-      <Card gradientBorder className="relative overflow-hidden rounded-4xl px-6 py-12 md:px-12 md:py-16 hero-bg">
+      <Card gradientBorder className="relative overflow-hidden rounded-4xl px-6 py-12 md:px-12 md:py-16">
         
   
 
