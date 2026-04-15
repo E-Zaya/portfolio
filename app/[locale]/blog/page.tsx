@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { getBlogPosts, getAllTags } from "@/lib/notion";
 import BlogListClient from "@/components/blog/BlogListClient";
-import { getMessages, isLocale, type Locale } from "@/lib/i18n";
+import { getMessages, isLocale, withLocale, type Locale } from "@/lib/i18n";
 
 export default async function BlogPage({
   params,
@@ -9,47 +10,47 @@ export default async function BlogPage({
 }) {
   const { locale: rawLocale } = await params;
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
-  const t = getMessages(locale).blog;
 
-  const posts = await getBlogPosts();
+  const t = getMessages(locale).blog;
+  const posts = await getBlogPosts(locale);
   const tags = getAllTags(posts);
 
   return (
     <main className="section-space pb-20">
-      {/* 超シンプルなヘッダー（長い説明は完全に削除） */}
-      <section className="container-custom text-center mb-16">
-        <span className="badge text-soft">{t.eyebrow || "Writing"}</span>
-        <h1 className="section-title mt-4 text-5xl md:text-6xl font-bold tracking-tighter">
-          {t.title}
-        </h1>
-      </section>
-
-      {/* Bentoグリッド風コンテナ */}
       <section className="container-custom">
-        <div className="apple-panel-strong gradient-border relative overflow-hidden rounded-4xl p-8 md:p-12">
-          {/* アクセントのぼかし背景（今までのhero-bg風） */}
-          <div className="absolute -left-20 top-12 h-40 w-40 rounded-full bg-sky-400/10 blur-3xl" />
-          <div className="absolute right-8 bottom-20 h-52 w-52 rounded-full bg-fuchsia-400/10 blur-3xl" />
-          <div className="absolute left-1/2 top-1/3 h-32 w-32 rounded-full bg-cyan-400/10 blur-3xl" />
+        <div className="relative overflow-hidden rounded-[34px] border border-border bg-card px-5 pb-8 pt-6 shadow-theme backdrop-blur-xl md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12">
+          <div className="blog-shell-blob blog-shell-blob-primary" />
+          <div className="blog-shell-blob blog-shell-blob-secondary" />
+          <div className="blog-shell-blob blog-shell-blob-bottom" />
 
           <div className="relative z-10">
-            {/* フィルター部分（少しコンパクトに） */}
-            <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-              <div>
-                <p className="text-sm text-muted">{t.filterLabel}</p>
-                <h2 className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
-                  {t.browseTitle}
-                </h2>
-              </div>
-              <p className="text-sm text-soft">{t.postCount(posts.length)}</p>
-            </div>
+            <nav
+              aria-label={t.breadcrumbAria}
+              className="mb-8 flex flex-wrap items-center gap-2 text-sm text-soft md:mb-10"
+            >
+              <Link href={withLocale(locale, "/")} className="transition hover:text-foreground">
+                {t.breadcrumbHome}
+              </Link>
 
-            {/* BlogListClientにBentoグリッドを任せる */}
-            <BlogListClient 
-              posts={posts} 
-              tags={tags} 
-              locale={locale} 
-            />
+              <span className="text-muted">/</span>
+
+              <span className="font-medium text-foreground">{t.breadcrumbBlog}</span>
+            </nav>
+
+            <header className="mx-auto mb-10 max-w-[760px] text-center">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                {t.eyebrow}
+              </p>
+              <h1 className="text-[clamp(38px,4.5vw,62px)] font-semibold tracking-[-0.05em] text-foreground">
+                {t.title}
+              </h1>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft md:text-base">
+                {t.description}
+              </p>
+              <p className="mt-4 text-sm text-muted">{t.postCount(posts.length)}</p>
+            </header>
+
+            <BlogListClient posts={posts} tags={tags} locale={locale} />
           </div>
         </div>
       </section>

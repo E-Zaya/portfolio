@@ -36,3 +36,4 @@ export function withLocale(locale: Locale, href: string): string {
 export function getMessages(locale: Locale) {
   return dictionaries[locale];
 }
+
