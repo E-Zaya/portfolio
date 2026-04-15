@@ -1,48 +1,60 @@
 "use client";
 
+import { getMessages, type Locale } from "@/lib/i18n";
+
 type Props = {
+  // [FIX] props統一
   tags: string[];
   activeTag: string;
   onTagChange: (tag: string) => void;
+  locale: Locale;
 };
 
 export default function BlogFilter({
   tags,
   activeTag,
   onTagChange,
+  locale,
 }: Props) {
+  const t = getMessages(locale).blog;
+
+  const baseClass =
+    "rounded-full border px-4 py-2 text-sm font-medium transition";
+  const activeClass =
+    "border-foreground/10 bg-card-strong text-foreground";
+  const inactiveClass =
+    "border-border bg-card text-soft hover:bg-card-strong hover:text-foreground";
+
   return (
-    <div className="flex flex-wrap gap-3">
-      <button
-        type="button"
-        onClick={() => onTagChange("all")}
-        className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
-          activeTag === "all"
-            ? "apple-panel-strong text-foreground border-border"
-            : "bg-card text-soft border-border hover:bg-card-strong hover:text-foreground"
-        }`}
-      >
-        All
-      </button>
+    <div className="space-y-3">
+      <p className="text-sm font-medium text-soft">{t.filterLabel}</p>
 
-      {tags.map((tag) => {
-        const active = activeTag === tag;
+      <div className="flex flex-wrap gap-3">
+        <button
+          type="button"
+          aria-pressed={activeTag === "all"}
+          onClick={() => onTagChange("all")}
+          className={`${baseClass} ${
+            activeTag === "all" ? activeClass : inactiveClass
+          }`}
+        >
+          {t.allTags}
+        </button>
 
-        return (
+        {tags.map((tag) => (
           <button
             key={tag}
             type="button"
+            aria-pressed={activeTag === tag}
             onClick={() => onTagChange(tag)}
-            className={`rounded-full border px-4 py-2 text-sm font-medium capitalize transition ${
-              active
-                ? "apple-panel-strong text-foreground border-border"
-                : "bg-card text-soft border-border hover:bg-card-strong hover:text-foreground"
+            className={`${baseClass} ${
+              activeTag === tag ? activeClass : inactiveClass
             }`}
           >
             {tag}
           </button>
-        );
-      })}
+        ))}
+      </div>
     </div>
   );
 }
