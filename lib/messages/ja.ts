@@ -1,10 +1,11 @@
 import type { en } from "./en";
 
 export const ja: typeof en = {
-  meta: {
-    title: "Zaya Portfolio",
-    description: "Next.js ポートフォリオサイト",
-  },
+meta: {
+  title: "Zaya | AI駆動フルスタックエンジニア（Next.js・多言語対応）",
+  description:
+    "モンゴル語・日本語・英語を強みに持つAI駆動フルスタックエンジニア。Next.jsを用いた高速・高品質なWeb開発で、グローバルなサービス構築を支援します。",
+},
   header: {
     subtitle: "ポートフォリオ",
     logoAria: "トップページへ移動",
