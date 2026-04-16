@@ -26,7 +26,8 @@ export default async function BlogPage({
           <div className="relative z-10">
             <nav
               aria-label={t.breadcrumbAria}
-              className="mb-8 flex flex-wrap items-center gap-2 text-sm text-soft md:mb-10"
+              // [FIX] Keep only the breadcrumb and remove the oversized hero/title block.
+              className="mb-5 flex flex-wrap items-center gap-2 text-sm text-soft md:mb-6"
             >
               <Link href={withLocale(locale, "/")} className="transition hover:text-foreground">
                 {t.breadcrumbHome}
@@ -37,20 +38,10 @@ export default async function BlogPage({
               <span className="font-medium text-foreground">{t.breadcrumbBlog}</span>
             </nav>
 
-            <header className="mx-auto mb-10 max-w-[760px] text-center">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
-                {t.eyebrow}
-              </p>
-              <h1 className="text-[clamp(38px,4.5vw,62px)] font-semibold tracking-[-0.05em] text-foreground">
-                {t.title}
-              </h1>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft md:text-base">
-                {t.description}
-              </p>
-              <p className="mt-4 text-sm text-muted">{t.postCount(posts.length)}</p>
-            </header>
-
-            <BlogListClient posts={posts} tags={tags} locale={locale} />
+            {/* [FIX] Leave a little breathing room so the list does not start too abruptly. */}
+            <div className="pt-1 md:pt-2">
+              <BlogListClient posts={posts} tags={tags} locale={locale} />
+            </div>
           </div>
         </div>
       </section>

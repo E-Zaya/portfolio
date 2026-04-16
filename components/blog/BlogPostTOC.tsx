@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getMessages, type Locale } from "@/lib/i18n";
 import { truncateText } from "@/components/blog/blog-utils";
 
@@ -15,14 +15,27 @@ type Props = {
   // [FIX] props統一
   headings: BlogHeading[];
   locale: Locale;
+  // [FIX] mobile / desktop の両方で mount されても observer が二重起動しないようにする
+  mode?: "all" | "mobile" | "desktop";
 };
 
-export default function BlogPostTOC({ headings, locale }: Props) {
+export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
   const t = getMessages(locale).blog;
   const [active, setActive] = useState("");
 
+  // [FIX] 現在の表示モードでだけ active tracking を有効にする
+  const shouldTrackActiveHeading = useMemo(() => {
+    if (typeof window === "undefined") return true;
+    const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
+    if (mode === "desktop") return isDesktop;
+    if (mode === "mobile") return !isDesktop;
+    return true;
+  }, [mode]);
+
   useEffect(() => {
-    if (!headings.length) return;
+    // [FIX] 非表示側の TOC では observer を起動しない
+    if (!headings.length || !shouldTrackActiveHeading) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -46,7 +59,7 @@ export default function BlogPostTOC({ headings, locale }: Props) {
     });
 
     return () => observer.disconnect();
-  }, [headings]);
+  }, [headings, shouldTrackActiveHeading]);
 
   if (!headings.length) return null;
 

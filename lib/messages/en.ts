@@ -109,10 +109,6 @@ export const en = {
     },
   },
   blog: {
-    eyebrow: "Journal",
-    title: "Logs of a Developer in the Making",
-    description:
-      "Notes from daily development, bug fixes, UI thinking, and weekly progress.",
     filterLabel: "Filter by tag",
     browseTitle: "Browse posts",
     backToAllPosts: "Back to all posts",
@@ -129,16 +125,13 @@ export const en = {
     copyCode: "Copy",
     copiedCode: "Copied",
     copyCodeAria: "Copy code to clipboard",
-    ctaTitle: "Interested in collaborating or have questions? Connect with me.",
-    ctaGithub: "GitHub",
-    ctaLinkedin: "LinkedIn",
-    ctaEmail: "Email",
+    
+    // [FIX] BlogPostCTA の mailto を messages から取得
     untitled: "Untitled post",
     uncategorized: "Uncategorized",
     noSummary: "Summary will be added soon.",
     noDate: "Date not set",
     minRead: (minutes: number) => `${minutes} min read`,
-    postCount: (count: number) => `${count} post${count !== 1 ? "s" : ""}`,
     notFoundTitle: "Article not found | Zaya Portfolio",
     categoryLabels: {
       cloud: "Cloud",

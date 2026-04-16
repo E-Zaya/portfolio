@@ -116,10 +116,6 @@ export const ja: typeof en = {
     },
   },
   blog: {
-    eyebrow: "ブログ",
-    title: "開発の記録をまとめたブログ",
-    description:
-      "日々の開発ログ、バグ修正、UI設計の考え方、小さな進捗を記録しています。",
     filterLabel: "タグで絞り込み",
     browseTitle: "記事一覧",
     backToAllPosts: "すべての記事へ戻る",
@@ -136,16 +132,11 @@ export const ja: typeof en = {
     copyCode: "コピー",
     copiedCode: "コピー済み",
     copyCodeAria: "コードをコピー",
-    ctaTitle: "相談や質問があれば、気軽にご連絡ください。",
-    ctaGithub: "GitHub",
-    ctaLinkedin: "LinkedIn",
-    ctaEmail: "メール",
     untitled: "無題の記事",
     uncategorized: "未分類",
     noSummary: "要約は後で追加します。",
     noDate: "日付未設定",
     minRead: (minutes: number) => `${minutes}分で読めます`,
-    postCount: (count: number) => `${count}件`,
     notFoundTitle: "記事が見つかりません | Zaya Portfolio",
     categoryLabels: {
       cloud: "クラウド",

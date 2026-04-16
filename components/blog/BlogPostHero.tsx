@@ -30,6 +30,7 @@ export default function BlogPostHero({ post, locale }: Props) {
     locale,
     t.uncategorized,
   );
+  // [FIX] 詳細ページでは本文込みで読了時間を計算
   const readTime = getPostReadingMinutes(post);
   const formattedDate = formatPostDate(post.date, locale) ?? t.noDate;
 
@@ -88,7 +89,14 @@ export default function BlogPostHero({ post, locale }: Props) {
             priority
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/18 via-black/6 to-transparent" />
+          {/* [FIX] black直書きをやめてテーマ変数寄りのオーバーレイに変更 */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(to top, color-mix(in srgb, var(--card-strong) 82%, transparent), color-mix(in srgb, var(--card) 38%, transparent), transparent)",
+            }}
+          />
         </div>
       )}
 

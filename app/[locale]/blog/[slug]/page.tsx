@@ -6,7 +6,6 @@ import { getBlogPost, getBlogPosts } from "@/lib/notion";
 import BlogPostHero from "@/components/blog/BlogPostHero";
 import BlogPostTOC, { type BlogHeading } from "@/components/blog/BlogPostTOC";
 import RelatedPostsRow from "@/components/blog/RelatedPostsRow";
-import BlogPostCTA from "@/components/blog/BlogPostCTA";
 import CodeCopy from "@/components/blog/CodeCopy";
 import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 import {
@@ -85,13 +84,16 @@ export default async function BlogDetailPage({
   const post = await getBlogPost(slug, locale);
   if (!post) notFound();
 
-  const processed = await remark().use(html, { sanitize: true }).process(post.content);
+  // [FIX] notFound() 後の型を明示的に確定させる
+  const currentPost = post;
+
+  const processed = await remark().use(html, { sanitize: true }).process(currentPost.content);
   const rawHtml = processed.toString();
   const t = getMessages(locale).blog;
   const { newHtml, headings } = injectIds(rawHtml, t.tocItemAria);
 
   const allPosts = await getBlogPosts(locale);
-  const related = getRelatedPosts(allPosts, post, 3);
+  const related = getRelatedPosts(allPosts, currentPost, 3);
 
   return (
     <main className="section-space pb-20">
@@ -103,11 +105,11 @@ export default async function BlogDetailPage({
           <div className="relative z-10">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
               <div className="space-y-8">
-                <BlogPostHero post={post} locale={locale} />
+                <BlogPostHero post={currentPost} locale={locale} />
 
                 {/* [mobile-toc] hero直下に表示 */}
                 <div className="lg:hidden">
-                  <BlogPostTOC headings={headings} locale={locale} />
+                  <BlogPostTOC headings={headings} locale={locale} mode="mobile" />
                 </div>
 
                 <article className="article-card rounded-[28px] border border-border bg-card-strong p-5 shadow-theme backdrop-blur-xl md:p-7">
@@ -119,12 +121,11 @@ export default async function BlogDetailPage({
                 </article>
 
                 <RelatedPostsRow posts={related} locale={locale} />
-                <BlogPostCTA locale={locale} />
               </div>
 
               {/* [desktop-toc] 右サイドのみ */}
               <aside className="hidden lg:block">
-                <BlogPostTOC headings={headings} locale={locale} />
+                <BlogPostTOC headings={headings} locale={locale} mode="desktop" />
               </aside>
             </div>
           </div>
