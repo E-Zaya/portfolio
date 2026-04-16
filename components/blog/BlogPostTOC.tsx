@@ -64,12 +64,12 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
   if (!headings.length) return null;
 
   return (
-    <aside className="rounded-[24px] border border-border bg-card p-5 shadow-theme backdrop-blur-xl lg:sticky lg:top-24">
-      <h2 className="mb-4 text-sm font-semibold tracking-[0.08em] text-foreground">
+    <aside className="rounded-[22px] border border-border bg-card p-4 shadow-theme backdrop-blur-xl sm:p-5 lg:sticky lg:top-24">
+      <h2 className="mb-3 text-sm font-semibold tracking-[0.08em] text-foreground sm:mb-4">
         {t.toc}
       </h2>
 
-      <nav aria-label={t.toc} className="space-y-2">
+      <nav aria-label={t.toc} className="space-y-1.5 sm:space-y-2">
         {headings.map((heading) => {
           const isActive = active === heading.id;
 
@@ -77,15 +77,15 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
             <a
               key={heading.id}
               href={`#${heading.id}`}
-              className={`block rounded-xl px-3 py-2 text-sm transition ${
+              className={`block rounded-xl px-3 py-2 text-sm leading-5 transition ${
                 isActive
                   ? "bg-card-strong font-medium text-foreground"
                   : "text-soft hover:bg-card-strong hover:text-foreground"
-              } ${heading.level === 3 ? "ml-4" : ""}`}
+              } ${heading.level === 3 ? "ml-3 sm:ml-4" : ""}`}
               title={heading.text}
             >
-              <span className="block truncate">
-                {truncateText(heading.text, heading.level === 3 ? 28 : 34)}
+              <span className="block break-words">
+                {truncateText(heading.text, heading.level === 3 ? 32 : 40)}
               </span>
             </a>
           );

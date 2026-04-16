@@ -96,15 +96,15 @@ export default async function BlogDetailPage({
   const related = getRelatedPosts(allPosts, currentPost, 3);
 
   return (
-    <main className="section-space pb-20">
+    <main className="section-space pb-16 sm:pb-20">
       <div className="container-custom">
-        <div className="relative overflow-hidden rounded-[34px] border border-border bg-card px-5 pb-8 pt-6 shadow-theme backdrop-blur-xl md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12">
+        <div className="relative overflow-hidden rounded-[24px] border border-border bg-card px-4 pb-6 pt-5 shadow-theme backdrop-blur-xl sm:rounded-[28px] sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:rounded-[34px] xl:px-10 xl:pb-12">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
 
           <div className="relative z-10">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_280px]">
-              <div className="space-y-8">
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-8">
+              <div className="space-y-6 sm:space-y-8">
                 <BlogPostHero post={currentPost} locale={locale} />
 
                 {/* [mobile-toc] hero直下に表示 */}
@@ -112,7 +112,7 @@ export default async function BlogDetailPage({
                   <BlogPostTOC headings={headings} locale={locale} mode="mobile" />
                 </div>
 
-                <article className="article-card rounded-[28px] border border-border bg-card-strong p-5 shadow-theme backdrop-blur-xl md:p-7">
+                <article className="article-card rounded-[22px] border border-border bg-card-strong p-4 shadow-theme backdrop-blur-xl sm:rounded-[24px] sm:p-5 md:rounded-[28px] md:p-7">
                   <CodeCopy locale={locale} />
                   <div
                     className="blog-article mx-auto max-w-[74ch]"
