@@ -46,12 +46,22 @@ export async function generateMetadata({
       title: t.meta.title,
       description: t.meta.description,
       type: "website",
+      url: `/${locale}`,
       locale: locale === "ja" ? "ja_JP" : "en_US",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: "Zaya portfolio OGP image",
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t.meta.title,
       description: t.meta.description,
+      images: ["/og-image.png"],
     },
   };
 }

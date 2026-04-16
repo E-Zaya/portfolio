@@ -1,8 +1,9 @@
 export const en = {
-  meta: {
-    title: "Zaya Portfolio",
-    description: "High-quality Next.js portfolio website",
-  },
+meta: {
+  title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Multilingual)",
+  description:
+    "AI-driven full-stack developer fluent in Mongolian, Japanese, and English. Builds fast, high-quality web applications with Next.js for globally minded products.",
+},
   header: {
     subtitle: "Portfolio",
     logoAria: "Back to home",

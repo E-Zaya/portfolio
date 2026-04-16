@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Zaya Portfolio",
-  description: "High quality Next.js portfolio website",
+  metadataBase: new URL("https://ezaya.dev"),
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
