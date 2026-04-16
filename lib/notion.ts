@@ -9,10 +9,15 @@ export const notion = new Client({
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
 
-const DB_ID: string = process.env.NOTION_BLOG_DB_ID ?? "";
+// [FIX] モジュール読込時に即 throw せず、ブログ関数を呼ぶタイミングで確認する
+function getBlogDatabaseId(): string {
+  const dbId = process.env.NOTION_BLOG_DB_ID ?? "";
 
-if (!DB_ID) {
-  throw new Error("Missing NOTION_BLOG_DB_ID");
+  if (!dbId) {
+    throw new Error("Missing NOTION_BLOG_DB_ID");
+  }
+
+  return dbId;
 }
 
 export type PostMeta = {
@@ -37,17 +42,31 @@ type NotionTag = {
   name?: string;
 };
 
+type NotionFileReference = {
+  file?: { url: string };
+  external?: { url: string };
+};
+
+type NotionFilesProperty = {
+  type: "files";
+  files: NotionFileReference[];
+};
+
 function getTextFromRichText(value: { plain_text?: string }[] | undefined): string {
   return value?.map((item) => item.plain_text ?? "").join("").trim() ?? "";
 }
 
-function getNotionCover(page: any): string {
-  // ① DBプロパティ優先
-  const files = page.properties.Cover?.files;
+function getNotionCover(page: BlogPage): string {
+  // [FIX] any をやめて files / file / external を型で扱う
+  const coverProperty = page.properties.Cover;
 
-  if (files && files.length > 0) {
-    const file = files[0];
-    return file.file?.url || file.external?.url || "";
+  if (coverProperty?.type === "files") {
+    const filesProperty = coverProperty as NotionFilesProperty;
+    const firstFile = filesProperty.files[0];
+
+    if (firstFile) {
+      return firstFile.file?.url ?? firstFile.external?.url ?? "";
+    }
   }
 
   // ② Notionページカバー fallback
@@ -112,7 +131,8 @@ export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
       });
 
   const response = await notion.databases.query({
-    database_id: DB_ID,
+    // [FIX] 呼び出し時に env を読む
+    database_id: getBlogDatabaseId(),
     filter,
     sorts: [{ property: "Date", direction: "descending" }],
   });
@@ -139,7 +159,8 @@ export async function getBlogPost(slug: string, lang?: string): Promise<Post | n
       });
 
   const response = await notion.databases.query({
-    database_id: DB_ID,
+    // [FIX] 呼び出し時に env を読む
+    database_id: getBlogDatabaseId(),
     filter,
     page_size: 1,
   });

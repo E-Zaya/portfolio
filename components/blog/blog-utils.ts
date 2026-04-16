@@ -1,22 +1,45 @@
 import { getMessages, type Locale } from "@/lib/i18n";
-import type { PostMeta } from "@/lib/notion";
+import type { Post, PostMeta } from "@/lib/notion";
 
 const WORDS_PER_MINUTE = 220;
 
-type ReadablePost = Pick<PostMeta, "title" | "summary" | "tags" | "category">;
+type ReadablePost = Pick<PostMeta, "title" | "summary" | "tags" | "category"> & {
+  // [FIX] 詳細ページでは本文も読了時間に含められるよう optional で受ける
+  content?: string;
+};
 
 export function stripMarkup(value: string): string {
   return value
     .replace(/<[^>]*>/g, " ")
     .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1")
-    .replace(/[`*_>#-]/g, " ")
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/`[^`]*`/g, " ")
+    .replace(/[*_>#-]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
+// [FIX] YYYY-MM-DD を安全に解釈して timezone ずれを防ぐ
+export function parsePostDate(date: string): Date | null {
+  if (!date?.trim()) return null;
+
+  const normalized = date.trim();
+  const dateOnlyMatch = normalized.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+  if (dateOnlyMatch) {
+    const [, year, month, day] = dateOnlyMatch;
+    const parsed = new Date(Number(year), Number(month) - 1, Number(day));
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  }
+
+  const parsed = new Date(normalized);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
+}
+
 export function getPostReadingMinutes(post: ReadablePost): number {
-  const source = [post.title, post.summary, post.category, post.tags.join(" ")]
+  // [FIX] 本文がある場合は最優先で含める。一覧では summary ベース、詳細では content ベースになる
+  const source = [post.title, post.summary, post.category, post.tags.join(" "), post.content ?? ""]
     .filter(Boolean)
     .join(" ");
 
@@ -25,10 +48,8 @@ export function getPostReadingMinutes(post: ReadablePost): number {
 }
 
 export function formatPostDate(date: string, locale: Locale): string | null {
-  if (!date?.trim()) return null;
-
-  const parsed = new Date(date);
-  if (Number.isNaN(parsed.getTime())) return null;
+  const parsed = parsePostDate(date);
+  if (!parsed) return null;
 
   return new Intl.DateTimeFormat(locale === "ja" ? "ja-JP" : "en-US", {
     year: "numeric",
@@ -113,13 +134,14 @@ export function getRelatedPosts(
         Boolean(currentPost.category) &&
         normalizeCategoryKey(post.category) === currentCategoryKey;
 
-      const timestamp = post.date ? new Date(post.date).getTime() : 0;
+      // [FIX] 関連記事の並び順でも安全な日付パースを使う
+      const timestamp = parsePostDate(post.date)?.getTime() ?? 0;
 
       return {
         post,
         sameTagCount,
         sameCategory,
-        timestamp: Number.isNaN(timestamp) ? 0 : timestamp,
+        timestamp,
       };
     })
     .sort((a, b) => {
