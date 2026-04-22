@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -18,6 +17,7 @@ import {
   withLocale,
   type Locale,
 } from "@/lib/i18n";
+
 
 export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
@@ -66,16 +66,15 @@ export default function Header({ locale }: { locale: Locale }) {
                   {t.header.subtitle}
                 </span>
               </div>
-
-              <div className="ml-1 hidden shrink-0 min-[430px]:block">
-                <Image
-                  src="/character.png"
-                  alt="Mascot character"
-                  width={72}
-                  height={40}
-                  className="h-auto w-15 sm:w-18"
-                />
-              </div>
+{/* ノイズになってたので、今は消す。いつかヒーローセクションで復活させる！ */}
+ {/* <ZazaHeaderAnimations
+  variant="tilt"
+  src="/Zaza/zaza-main.png"
+  width={220}
+  height={220}
+  className="w-[110px] sm:w-[130px] lg:w-[150px]"
+  priority
+/> */}
             </Link>
 
             <DesktopNav locale={locale} currentPath={cleanPath} items={t.nav} />
