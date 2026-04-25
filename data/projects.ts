@@ -20,4 +20,13 @@ export const projectItems: ProjectItem[] = [
     status: "Completed",
     featured: true,
   },
+  {
+    slug: "workout-log",
+    image: "/projects/workout-log.png",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    github: "https://github.com/E-Zaya/workout_log",
+    demo: "https://workout-log-smoky.vercel.app/",
+    status: "Completed",
+    featured: true,
+  },
 ];

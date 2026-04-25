@@ -1,11 +1,12 @@
 import type { en } from "./en";
+import type { HeroVisualContent } from "./types";
 
 export const ja: typeof en = {
-meta: {
-  title: "Zaya | AI駆動フルスタックエンジニア（Next.js・多言語対応）",
-  description:
-    "モンゴル語・日本語・英語を強みに持つAI駆動フルスタックエンジニア。Next.jsを用いた高速・高品質なWeb開発で、グローバルなサービス構築を支援します。",
-},
+  meta: {
+    title: "Zaya | AI駆動フルスタックエンジニア（Next.js・多言語対応）",
+    description:
+      "モンゴル語・日本語・英語を強みに持つAI駆動フルスタックエンジニア。Next.jsを用いた高速・高品質なWeb開発で、グローバルなサービス構築を支援します。",
+  },
   header: {
     subtitle: "ポートフォリオ",
     logoAria: "トップページへ移動",
@@ -18,17 +19,46 @@ meta: {
     { label: "連絡先", href: "/contact" },
   ],
   hero: {
-    eyebrow: "/Web Developer / Multilingual Engineer / ",
-    title: "",
-    highlight: "言葉の壁を越えた \n ユニバーサルな設計を作ります。",
+    eyebrow: "/ Custom Web Design / Fast Delivery / Practical Features /",
+    title: "事業の魅力が\n伝わるサイトを、\n",
+    highlight: "ゼロから設計・\nデザイン。",
     description:
-      "日本語・英語・モンゴル語の技術圏をつなぐ開発者です。グローバルな視点を持ちながら、クリーンなUIと高性能なアプリケーションを作ることに取り組んでいます。",
-    badges: [
-      "Frontend Development",
-      "Full-stack Solutions",
-      "UI / UX Design",
-      "Database Management",
+      "テンプレートではなく、目的に合わせて専用設計。LP・コーポレートサイト・小規模Webアプリまで、必要な機能だけを制作します。",
+    badges: ["Custom Design", "Fast Delivery", "Practical Features"],
+    primaryCta: "無料で相談する",
+    secondaryCta: "制作実績を見る",
+    meta: {
+      status: "案件受付中 · 2026.04",
+      focus: "Web制作 / LP / 小規模Webアプリ",
+      location: "Ulaanbaatar",
+    },
+    techLine: "Next.js · TypeScript · Tailwind · Postgres · Figma",
+    visualHint: "全部つくれます",
+    features: [
+      {
+        title: "Custom Design",
+        description: "テンプレートではなく、事業ごとにゼロから設計・デザイン",
+      },
+      {
+        title: "Fast Delivery",
+        description: "受注から納品までスピーディーに対応",
+      },
+      {
+        title: "Practical Features",
+        description: "ログイン・管理画面・小規模データベースにも対応",
+      },
     ],
+    visual: {
+      label: "Service Preview",
+      title: "作れるものが伝わる設計",
+      items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+      captions: [
+        "集客のためのLP",
+        "ログイン付き管理画面",
+        "小規模データベースUI",
+        "多言語対応サイト",
+      ],
+    },
   },
   skills: {
     eyebrow: "Tech Stack",
@@ -175,5 +205,87 @@ meta: {
   langToggle: {
     en: "EN",
     ja: "JP",
+    mn: "MN",
   },
+  visual: {
+    label: "Service Preview",
+    title: "作れるものが伝わる設計",
+    browserUrl: "zaya.dev / preview",
+    items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+    captions: [
+      "集客のためのLP",
+      "ログイン付き管理画面",
+      "小規模データベースUI",
+      "多言語対応サイト",
+    ],
+    scenes: {
+      landing: {
+        brand: "Brand",
+        nav: ["機能", "料金", "事例"],
+        ctaSmall: "無料登録",
+        eyebrow: "✦ NEW RELEASE",
+        titleBefore: "売上を",
+        titleHighlight: "最大化",
+        titleAfter: "する",
+        description: "顧客獲得から決済まで\nワンストップで完結。",
+        primaryCta: "無料で試す →",
+        secondaryCta: "デモを見る",
+        stat: "↑ 312%",
+        live: "LIVE",
+        features: ["✓ SEO最適化", "✓ A/Bテスト", "✓ 分析ダッシュボード"],
+        socialProofNumber: "",
+        socialProofText: "",
+      },
+      admin: {
+        logo: "Admin",
+        menu: ["ダッシュ", "ユーザー", "売上", "設定"],
+        userName: "admin",
+        loginStatus: "● ログイン中",
+        kpis: [
+          { label: "月間売上", value: "¥1.24M", change: "+12.4%", up: true },
+          { label: "ユーザー", value: "847", change: "+5.2%", up: true },
+          { label: "転換率", value: "3.2%", change: "-0.4%", up: false },
+        ],
+        months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月"],
+      },
+      database: {
+        queryTable: "users",
+        columns: ["id", "name", "email", "status"],
+        rows: [
+          {
+            id: "001",
+            name: "田中 浩一",
+            email: "tanaka@ex.co",
+            status: "active",
+          },
+          {
+            id: "002",
+            name: "山田 花子",
+            email: "yamada@ex.co",
+            status: "active",
+          },
+          {
+            id: "003",
+            name: "Б. Мөнхбат",
+            email: "munkh@ex.co",
+            status: "draft",
+          },
+          {
+            id: "004",
+            name: "James Kim",
+            email: "james@ex.co",
+            status: "active",
+          },
+        ],
+      },
+      multilingual: {
+        langs: [
+          { code: "JA", line: "魅力が伝わる、丁寧な日本語コピー。" },
+          { code: "EN", line: "Clear, considered English copy." },
+          { code: "MN", line: "Илэрхий, цэвэрхэн монгол текст." },
+        ],
+        footer: "i18n · seamless switch",
+      },
+    },
+  } satisfies HeroVisualContent,
 } as const;

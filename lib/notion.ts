@@ -1,6 +1,10 @@
 import "server-only";
+
 import { Client } from "@notionhq/client";
-import type { PageObjectResponse, QueryDatabaseParameters } from "@notionhq/client/build/src/api-endpoints";
+import type {
+  PageObjectResponse,
+  QueryDatabaseParameters,
+} from "@notionhq/client/build/src/api-endpoints";
 import { NotionToMarkdown } from "notion-to-md";
 
 export const notion = new Client({
@@ -9,7 +13,6 @@ export const notion = new Client({
 
 export const n2m = new NotionToMarkdown({ notionClient: notion });
 
-// [FIX] モジュール読込時に即 throw せず、ブログ関数を呼ぶタイミングで確認する
 function getBlogDatabaseId(): string {
   const dbId = process.env.NOTION_BLOG_DB_ID ?? "";
 
@@ -18,6 +21,14 @@ function getBlogDatabaseId(): string {
   }
 
   return dbId;
+}
+
+// [FIX] ブログ記事だけは mn ページでも日本語記事を表示する
+function normalizeBlogLang(lang?: string): string | undefined {
+  if (!lang) return undefined;
+  if (lang === "mn") return "ja";
+
+  return lang;
 }
 
 export type PostMeta = {
@@ -52,12 +63,18 @@ type NotionFilesProperty = {
   files: NotionFileReference[];
 };
 
-function getTextFromRichText(value: { plain_text?: string }[] | undefined): string {
-  return value?.map((item) => item.plain_text ?? "").join("").trim() ?? "";
+function getTextFromRichText(
+  value: { plain_text?: string }[] | undefined,
+): string {
+  return (
+    value
+      ?.map((item) => item.plain_text ?? "")
+      .join("")
+      .trim() ?? ""
+  );
 }
 
 function getNotionCover(page: BlogPage): string {
-  // [FIX] any をやめて files / file / external を型で扱う
   const coverProperty = page.properties.Cover;
 
   if (coverProperty?.type === "files") {
@@ -69,10 +86,9 @@ function getNotionCover(page: BlogPage): string {
     }
   }
 
-  // ② Notionページカバー fallback
   const cover = page.cover;
-  if (!cover) return "";
 
+  if (!cover) return "";
   if (cover.type === "external") return cover.external.url;
   if (cover.type === "file") return cover.file.url;
 
@@ -81,6 +97,7 @@ function getNotionCover(page: BlogPage): string {
 
 function pageToPostMeta(page: BlogPage): PostMeta {
   const props = page.properties;
+
   const titleProperty = props.Title;
   const dateProperty = props.Date;
   const categoryProperty = props.Category;
@@ -91,38 +108,59 @@ function pageToPostMeta(page: BlogPage): PostMeta {
 
   return {
     id: page.id,
-    title: titleProperty?.type === "title" ? getTextFromRichText(titleProperty.title) : "",
-    date: dateProperty?.type === "date" ? dateProperty.date?.start ?? "" : "",
+
+    title:
+      titleProperty?.type === "title"
+        ? getTextFromRichText(titleProperty.title)
+        : "",
+
+    date: dateProperty?.type === "date" ? (dateProperty.date?.start ?? "") : "",
+
     category:
-      categoryProperty?.type === "select" ? categoryProperty.select?.name ?? "diary" : "diary",
+      categoryProperty?.type === "select"
+        ? (categoryProperty.select?.name ?? "diary")
+        : "diary",
+
     tags:
       tagsProperty?.type === "multi_select"
-        ? tagsProperty.multi_select.map((tag: NotionTag) => tag.name ?? "").filter(Boolean)
+        ? tagsProperty.multi_select
+            .map((tag: NotionTag) => tag.name ?? "")
+            .filter(Boolean)
         : [],
+
     summary:
       summaryProperty?.type === "rich_text"
         ? getTextFromRichText(summaryProperty.rich_text)
         : "",
+
     published:
-      publishedProperty?.type === "checkbox" ? publishedProperty.checkbox : false,
+      publishedProperty?.type === "checkbox"
+        ? publishedProperty.checkbox
+        : false,
+
     slug:
       slugProperty?.type === "rich_text"
         ? getTextFromRichText(slugProperty.rich_text) || page.id
         : page.id,
+
     cover: getNotionCover(page),
   };
 }
 
-function toFilter(filter: QueryDatabaseParameters["filter"]) {
-  return filter as QueryDatabaseParameters["filter"];
+function toFilter(
+  filter: QueryDatabaseParameters["filter"],
+): QueryDatabaseParameters["filter"] {
+  return filter;
 }
 
 export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
-  const filter = lang
+  const blogLang = normalizeBlogLang(lang);
+
+  const filter = blogLang
     ? toFilter({
         and: [
           { property: "Published", checkbox: { equals: true } },
-          { property: "Lang", select: { equals: lang } },
+          { property: "Lang", select: { equals: blogLang } },
         ],
       })
     : toFilter({
@@ -131,7 +169,6 @@ export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
       });
 
   const response = await notion.databases.query({
-    // [FIX] 呼び出し時に env を読む
     database_id: getBlogDatabaseId(),
     filter,
     sorts: [{ property: "Date", direction: "descending" }],
@@ -142,13 +179,18 @@ export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
     .map(pageToPostMeta);
 }
 
-export async function getBlogPost(slug: string, lang?: string): Promise<Post | null> {
-  const filter = lang
+export async function getBlogPost(
+  slug: string,
+  lang?: string,
+): Promise<Post | null> {
+  const blogLang = normalizeBlogLang(lang);
+
+  const filter = blogLang
     ? toFilter({
         and: [
           { property: "Published", checkbox: { equals: true } },
           { property: "Slug", rich_text: { equals: slug } },
-          { property: "Lang", select: { equals: lang } },
+          { property: "Lang", select: { equals: blogLang } },
         ],
       })
     : toFilter({
@@ -159,20 +201,25 @@ export async function getBlogPost(slug: string, lang?: string): Promise<Post | n
       });
 
   const response = await notion.databases.query({
-    // [FIX] 呼び出し時に env を読む
     database_id: getBlogDatabaseId(),
     filter,
     page_size: 1,
   });
 
-  const page = response.results.find((result): result is BlogPage => result.object === "page");
+  const page = response.results.find(
+    (result): result is BlogPage => result.object === "page",
+  );
+
   if (!page) return null;
 
   const meta = pageToPostMeta(page);
   const mdBlocks = await n2m.pageToMarkdown(page.id);
   const content = n2m.toMarkdownString(mdBlocks).parent;
 
-  return { ...meta, content };
+  return {
+    ...meta,
+    content,
+  };
 }
 
 export function getAllTags(posts: PostMeta[]): string[] {

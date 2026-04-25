@@ -1,9 +1,10 @@
+import type { HeroVisualContent } from "./types";
 export const en = {
-meta: {
-  title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Multilingual)",
-  description:
-    "AI-driven full-stack developer fluent in Mongolian, Japanese, and English. Builds fast, high-quality web applications with Next.js for globally minded products.",
-},
+  meta: {
+    title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Multilingual)",
+    description:
+      "AI-driven full-stack developer fluent in Mongolian, Japanese, and English. Builds fast, high-quality web applications with Next.js for globally minded products.",
+  },
   header: {
     subtitle: "Portfolio",
     logoAria: "Back to home",
@@ -16,12 +17,49 @@ meta: {
     { label: "Contact", href: "/contact" },
   ],
   hero: {
-    eyebrow: "/ Web Developer / Multilingual Engineer /",
-    title: "Hello, I'm Zaya.",
-    highlight: "Crafting universal designs that \ntranscend language barriers.",
+    eyebrow: "/ Custom Web Design / Fast Delivery / Practical Features /",
+    title: "Websites that show your business value,",
+    highlight: "designed from scratch.",
     description:
-      "Bridging the tech ecosystems of Japan, Mongolia, and the English-speaking world. I focus on building clean UIs and high-performance applications with a global perspective.",
-    badges: ["Frontend Development", "Full-stack Solutions", "UI / UX Design", "Database Management"],
+      "No generic templates. I design and build custom websites around your goals — from landing pages and company sites to small web apps with login, admin screens, and simple databases.",
+    badges: ["Custom Design", "Fast Delivery", "Practical Features"],
+    primaryCta: "Free Consultation",
+    secondaryCta: "View Work",
+    meta: {
+      status: "Available for Projects · 2026.04",
+      focus: "Web Development / Landing Pages / Small-scale Web Apps",
+      location: "Ulaanbaatar",
+    },
+    techLine: "Next.js · TypeScript · Tailwind · Postgres · Figma",
+    visualHint: "I build all of this",
+    features: [
+      {
+        title: "Custom Design",
+        description:
+          "Designed from scratch for each business, not based on generic templates.",
+      },
+      {
+        title: "Fast Delivery",
+        description:
+          "A focused process from request to delivery, built for speed and clarity.",
+      },
+      {
+        title: "Practical Features",
+        description:
+          "Supports login, admin screens, and small database-backed features.",
+      },
+    ],
+    visual: {
+      label: "Service Preview",
+      title: "Custom website system",
+      items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+      captions: [
+        "Marketing landing page",
+        "Admin dashboard with login",
+        "Small database UI",
+        "Bilingual / trilingual sites",
+      ],
+    },
   },
   skills: {
     eyebrow: "Tech Stack",
@@ -126,7 +164,7 @@ meta: {
     copyCode: "Copy",
     copiedCode: "Copied",
     copyCodeAria: "Copy code to clipboard",
-    
+
     // [FIX] BlogPostCTA の mailto を messages から取得
     untitled: "Untitled post",
     uncategorized: "Uncategorized",
@@ -170,7 +208,93 @@ meta: {
   langToggle: {
     en: "EN",
     ja: "JP",
+    mn: "MN",
   },
-
+  visual: {
+    label: "Service Preview",
+    title: "Custom website system",
+    browserUrl: "zaya.dev / preview",
+    items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+    captions: [
+      "Marketing landing page",
+      "Admin dashboard with login",
+      "Small database UI",
+      "Bilingual / trilingual sites",
+    ],
+    scenes: {
+      landing: {
+        brand: "Brand",
+        nav: ["Features", "Pricing", "Works"],
+        ctaSmall: "Start Free",
+        eyebrow: "✦ NEW RELEASE",
+        titleBefore: "Maximize ",
+        titleHighlight: "growth",
+        titleAfter: " with a clear site",
+        description:
+          "From customer acquisition to checkout,\neverything works in one flow.",
+        primaryCta: "Try Free →",
+        secondaryCta: "View Demo",
+        stat: "↑ 312%",
+        live: "LIVE",
+        features: ["✓ SEO Ready", "✓ A/B Testing", "✓ Analytics Dashboard"],
+        socialProofNumber: "1,200+",
+        socialProofText: "teams use it",
+      },
+      admin: {
+        logo: "Admin",
+        menu: ["Dashboard", "Users", "Revenue", "Settings"],
+        userName: "admin",
+        loginStatus: "● Logged in",
+        kpis: [
+          {
+            label: "Monthly Revenue",
+            value: "$8.4K",
+            change: "+12.4%",
+            up: true,
+          },
+          { label: "Users", value: "847", change: "+5.2%", up: true },
+          { label: "Conversion", value: "3.2%", change: "-0.4%", up: false },
+        ],
+        months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+      },
+      database: {
+        queryTable: "users",
+        columns: ["id", "name", "email", "status"],
+        rows: [
+          {
+            id: "001",
+            name: "Alex Carter",
+            email: "alex@ex.co",
+            status: "active",
+          },
+          {
+            id: "002",
+            name: "Mia Tanaka",
+            email: "mia@ex.co",
+            status: "active",
+          },
+          {
+            id: "003",
+            name: "Б. Мөнхбат",
+            email: "munkh@ex.co",
+            status: "draft",
+          },
+          {
+            id: "004",
+            name: "James Kim",
+            email: "james@ex.co",
+            status: "active",
+          },
+        ],
+      },
+      multilingual: {
+        langs: [
+          { code: "JA", line: "Careful Japanese copy that builds trust." },
+          { code: "EN", line: "Clear, considered English copy." },
+          { code: "MN", line: "Илэрхий, цэвэрхэн монгол текст." },
+        ],
+        footer: "i18n · seamless switch",
+      },
+    },
+  } satisfies HeroVisualContent,
 };
-

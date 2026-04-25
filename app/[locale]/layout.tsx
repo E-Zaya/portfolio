@@ -40,6 +40,7 @@ export async function generateMetadata({
       languages: {
         en: "/en",
         ja: "/ja",
+        mn: "/mn",
       },
     },
     openGraph: {
@@ -47,7 +48,7 @@ export async function generateMetadata({
       description: t.meta.description,
       type: "website",
       url: `/${locale}`,
-      locale: locale === "ja" ? "ja_JP" : "en_US",
+      locale: locale === "ja" ? "ja_JP" : locale === "mn" ? "mn_MN" : "en_US",
       images: [
         {
           url: "/og-image.png",
