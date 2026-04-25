@@ -8,7 +8,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
   return (
     <section className="section-space">
       <div className="container-custom">
-        <div className="apple-panel gradient-border relative overflow-hidden rounded-[32px] px-6 py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
+        <div className="apple-panel gradient-border relative overflow-hidden rounded-[24px] sm:rounded-[32px] px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
           <div className="hero-bg pointer-events-none absolute inset-0 z-0" />
 
           <div

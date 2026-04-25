@@ -33,11 +33,11 @@ export const mn: typeof en = {
 
     meta: {
       status: "Шинэ төсөл дээр ажиллахад бэлэн байна. · 2026.04",
-      focus: "Web制作 / LP / жижиг Web app",
+      focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
 
-    techLine: "Next.js · TypeScript · Tailwind · Postgres · Figma",
+    techLine: "Үнэгүй зөвлөгөө · 2 долоо хоногоос · JP/MN дэмжлэг",
     visualHint: "Эдгээрийг бүгдийг нь хийж чадна",
 
     features: [
@@ -307,9 +307,9 @@ export const mn: typeof en = {
 
       multilingual: {
         langs: [
-          { code: "JA", line: "魅力が伝わる、丁寧な日本語コピー。" },
-          { code: "EN", line: "Clear, considered English copy." },
-          { code: "MN", line: "Цэвэр, ойлгомжтой монгол текст." },
+          { code: "JA", line: "多言語対応サイト" },
+          { code: "EN", line: "Multilingual website" },
+          { code: "MN", line: "Олон хэлтэй вебсайт" },
         ],
         footer: "i18n · seamless switch",
       },

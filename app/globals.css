@@ -383,7 +383,14 @@ h6,
 }
 
 .section-space {
-  padding: 30px 0;
+  /* mobile-first: smaller vertical padding */
+  padding: 20px 0;
+}
+@media (min-width: 48rem) {
+  /* medium screens and above: restore original spacing */
+  .section-space {
+    padding: 30px 0;
+  }
 }
 
 .grid-auto {

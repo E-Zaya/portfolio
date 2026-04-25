@@ -44,7 +44,7 @@ export default function HeroVisual() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24, scale: 0.98 }}
+      initial={{ opacity: 0, y: 12, scale: 0.99 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
       className="relative mx-auto w-full max-w-[440px] lg:mx-0 lg:ml-auto"
@@ -131,10 +131,10 @@ export default function HeroVisual() {
           <AnimatePresence mode="wait">
             <motion.div
               key={active}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
               className="relative h-full w-full"
             >
               {active === 0 && <SceneLanding data={visual.scenes.landing} />}
@@ -149,10 +149,10 @@ export default function HeroVisual() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={`caption-${active}`}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 3 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.35 }}
+                exit={{ opacity: 0, y: -3 }}
+                transition={{ duration: 0.3 }}
                 className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold backdrop-blur"
                 style={{
                   borderColor:
@@ -218,7 +218,7 @@ export default function HeroVisual() {
 
       {/* mascot */}
       <motion.div
-        animate={{ y: [0, -4, 0] }}
+        animate={{ y: [0, -2, 0] }}
         transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
         className="pointer-events-none absolute -bottom-10 -right-2 z-20 flex flex-col items-center sm:-bottom-12 sm:-right-4"
       >

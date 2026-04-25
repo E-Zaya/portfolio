@@ -10,10 +10,10 @@ export default function Hero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).hero;
 
   return (
-    <SectionShell className="pt-8">
+    <SectionShell className="pt-6 sm:pt-8">
       <Card
         gradientBorder
-        className="relative overflow-hidden rounded-4xl px-5 py-10 md:px-10 md:py-14 lg:px-14 lg:py-16"
+        className="relative overflow-hidden rounded-3xl sm:rounded-4xl px-4 py-6 sm:px-5 sm:py-8 md:px-10 md:py-14 lg:px-14 lg:py-16"
       >
         {/* subtle grid */}
         <div
@@ -90,7 +90,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           <div className="min-w-0 lg:col-span-7">
             <HeroContent locale={locale} />
           </div>
-          <div className="min-w-0 pb-16 sm:pb-20 lg:col-span-5 lg:pb-0">
+          <div className="min-w-0 pb-10 sm:pb-14 lg:col-span-5 lg:pb-0">
             <HeroVisual/>
           </div>
         </div>

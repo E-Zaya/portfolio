@@ -10,7 +10,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
 
   return (
-    <section className="relative overflow-hidden py-24 sm:py-28">
+    <section className="relative overflow-hidden py-16 sm:py-24 md:py-28">
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute left-1/2 top-0 h-105 w-105 -translate-x-1/2 rounded-full blur-3xl"

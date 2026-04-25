@@ -16,9 +16,9 @@ export default async function BlogPage({
   const tags = getAllTags(posts);
 
   return (
-    <main className="section-space pb-20">
+    <main className="section-space pb-12 sm:pb-16 md:pb-20">
       <section className="container-custom">
-        <div className="relative overflow-hidden rounded-[34px] border border-border bg-card px-5 pb-8 pt-6 shadow-theme backdrop-blur-xl md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12">
+        <div className="relative overflow-hidden rounded-[24px] sm:rounded-[34px] border border-border bg-card px-4 pb-6 pt-4 sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
           <div className="blog-shell-blob blog-shell-blob-bottom" />
