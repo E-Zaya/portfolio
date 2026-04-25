@@ -8,7 +8,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
 
   return (
-    <Card strong className="rounded-[32px] p-6 sm:p-7">
+    <Card strong className="rounded-[24px] sm:rounded-[32px] p-4 sm:p-6 md:p-7">
       <p className="text-sm uppercase tracking-[0.22em] text-muted">
         {t.socialTitle}
       </p>
@@ -23,7 +23,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
               href={item.url}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-4 transition duration-300 hover:scale-[1.01]"
+              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 md:py-4 transition duration-300 hover:scale-[1.01]"
             >
               <div className="flex items-center gap-4">
                 <div className="flex h-11 w-11 items-center justify-center rounded-full border border-border bg-card-strong text-foreground">
@@ -44,7 +44,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
         })}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-border bg-card-strong p-4 shadow-theme">
+      <div className="mt-6 rounded-2xl border border-border bg-card-strong p-3 md:p-4 shadow-theme">
         <p className="text-xs uppercase tracking-[0.18em] text-muted">
           {t.availabilityLabel}
         </p>

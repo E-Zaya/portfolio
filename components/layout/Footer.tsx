@@ -6,9 +6,9 @@ export default function Footer({ locale }: { locale: Locale }) {
   const t = getMessages(locale).footer;
 
   return (
-    <footer className="pb-10 pt-4">
+    <footer className="pb-6 pt-3 md:pb-10 md:pt-4">
       <div className="container-custom">
-        <div className="glass rounded-[28px] px-6 py-6">
+        <div className="glass rounded-[24px] sm:rounded-[28px] px-4 py-4 sm:px-6 sm:py-6">
           <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
             <div>
               <div>
@@ -28,7 +28,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                   href={item.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2"
+                  className="px-3 py-2 md:px-4 md:py-3"
                 >
                   {item.name}
                 </Button>

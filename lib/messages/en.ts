@@ -27,10 +27,10 @@ export const en = {
     secondaryCta: "View Work",
     meta: {
       status: "Available for Projects · 2026.04",
-      focus: "Web Development / Landing Pages / Small-scale Web Apps",
+      focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
-    techLine: "Next.js · TypeScript · Tailwind · Postgres · Figma",
+    techLine: "Free consultation · Timeline from 2 weeks · JP/MN support",
     visualHint: "I build all of this",
     features: [
       {
@@ -289,9 +289,9 @@ export const en = {
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "Careful Japanese copy that builds trust." },
-          { code: "EN", line: "Clear, considered English copy." },
-          { code: "MN", line: "Илэрхий, цэвэрхэн монгол текст." },
+          { code: "JA", line: "多言語対応サイト" },
+          { code: "EN", line: "Multilingual website" },
+          { code: "MN", line: "Олон хэлтэй вебсайт" },
         ],
         footer: "i18n · seamless switch",
       },

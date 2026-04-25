@@ -96,9 +96,9 @@ export default async function BlogDetailPage({
   const related = getRelatedPosts(allPosts, currentPost, 3);
 
   return (
-    <main className="section-space pb-16 sm:pb-20">
+    <main className="section-space pb-10 sm:pb-14 md:pb-16">
       <div className="container-custom">
-        <div className="relative overflow-hidden rounded-[24px] border border-border bg-card px-4 pb-6 pt-5 shadow-theme backdrop-blur-xl sm:rounded-[28px] sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:rounded-[34px] xl:px-10 xl:pb-12">
+        <div className="relative overflow-hidden rounded-[20px] sm:rounded-[24px] md:rounded-[28px] xl:rounded-[34px] border border-border bg-card px-4 pb-4 pt-4 sm:px-5 sm:pb-6 sm:pt-5 md:px-8 md:pb-8 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
 

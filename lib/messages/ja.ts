@@ -29,10 +29,10 @@ export const ja: typeof en = {
     secondaryCta: "制作実績を見る",
     meta: {
       status: "案件受付中 · 2026.04",
-      focus: "Web制作 / LP / 小規模Webアプリ",
+      focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
-    techLine: "Next.js · TypeScript · Tailwind · Postgres · Figma",
+    techLine: "無料相談受付中 ・ 最短2週間〜 ・ JP / MN対応",
     visualHint: "全部つくれます",
     features: [
       {
@@ -280,9 +280,9 @@ export const ja: typeof en = {
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "魅力が伝わる、丁寧な日本語コピー。" },
-          { code: "EN", line: "Clear, considered English copy." },
-          { code: "MN", line: "Илэрхий, цэвэрхэн монгол текст." },
+          { code: "JA", line: "多言語対応サイト" },
+          { code: "EN", line: "Multilingual website" },
+          { code: "MN", line: "Олон хэлтэй вебсайт" },
         ],
         footer: "i18n · seamless switch",
       },

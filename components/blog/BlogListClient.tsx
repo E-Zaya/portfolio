@@ -44,7 +44,7 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
           ))}
         </div>
       ) : (
-        <div className="rounded-[28px] border border-border bg-card px-6 py-14 text-center backdrop-blur-xl">
+        <div className="rounded-[20px] sm:rounded-[28px] border border-border bg-card px-4 py-10 md:px-6 md:py-12 lg:py-14 text-center backdrop-blur-xl">
           <p className="text-base font-medium text-foreground">
             {t.noPostsTitle}
           </p>
