@@ -1,13 +1,17 @@
 import { en } from "./messages/en";
 import { ja } from "./messages/ja";
+import { mn } from "./messages/mn";
 
 const dictionaries = {
   en,
   ja,
+  mn,
 };
 
-export const locales = ["en", "ja"] as const;
+export const locales = ["en", "ja", "mn"] as const;
 export type Locale = (typeof locales)[number];
+
+export type Messages = typeof en;
 
 export function isLocale(value: string): value is Locale {
   return locales.some((locale) => locale === value);
@@ -33,7 +37,6 @@ export function withLocale(locale: Locale, href: string): string {
   return `/${locale}${href}`;
 }
 
-export function getMessages(locale: Locale) {
+export function getMessages(locale: Locale): Messages {
   return dictionaries[locale];
 }
-

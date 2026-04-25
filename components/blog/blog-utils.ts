@@ -51,7 +51,10 @@ export function formatPostDate(date: string, locale: Locale): string | null {
   const parsed = parsePostDate(date);
   if (!parsed) return null;
 
-  return new Intl.DateTimeFormat(locale === "ja" ? "ja-JP" : "en-US", {
+  const formatterLocale =
+    locale === "ja" ? "ja-JP" : locale === "mn" ? "mn-MN" : "en-US";
+
+  return new Intl.DateTimeFormat(formatterLocale, {
     year: "numeric",
     month: "short",
     day: "numeric",

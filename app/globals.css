@@ -65,6 +65,15 @@
   --blog-table-cell-border: rgba(255, 255, 255, 0.08);
   --blog-copy-bg: rgba(255, 255, 255, 0.08);
   --blog-copy-border: rgba(255, 255, 255, 0.12);
+
+/* feature card glow tokens */
+--feature-glow-strong: color-mix(in srgb, var(--accent-1) 46%, transparent);
+--feature-glow-medium: color-mix(in srgb, var(--accent-2) 34%, transparent);
+--feature-glow-soft: color-mix(in srgb, var(--accent-3) 26%, transparent);
+
+--feature-border-strong: color-mix(in srgb, var(--accent-1) 70%, var(--border));
+--feature-border-medium: color-mix(in srgb, var(--accent-2) 56%, var(--border));
+--feature-border-soft: color-mix(in srgb, var(--accent-3) 44%, var(--border));
 }
 
 
@@ -980,4 +989,9 @@ h6,
   }
 }
 
-
+/* globals.css */
+.jp-tight {
+  line-break: strict;
+  word-break: keep-all;
+}
+  

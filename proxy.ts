@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
 const PUBLIC_FILE = /\.(.*)$/;
-const LOCALES = ["en", "ja"];
+const LOCALES = ["en", "ja", "mn"];
 const DEFAULT_LOCALE = "en";
 
 export function proxy(request: NextRequest) {
