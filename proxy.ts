@@ -5,7 +5,7 @@ const PUBLIC_FILE = /\.(.*)$/;
 const LOCALES = ["en", "ja"];
 const DEFAULT_LOCALE = "en";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   if (
@@ -25,7 +25,11 @@ export function middleware(request: NextRequest) {
   }
 
   const url = request.nextUrl.clone();
-  url.pathname = pathname === "/" ? `/${DEFAULT_LOCALE}` : `/${DEFAULT_LOCALE}${pathname}`;
+  url.pathname =
+    pathname === "/"
+      ? `/${DEFAULT_LOCALE}`
+      : `/${DEFAULT_LOCALE}${pathname}`;
+
   return NextResponse.redirect(url);
 }
 
