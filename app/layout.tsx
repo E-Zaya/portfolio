@@ -16,7 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    // Set the base document language to Japanese.  The [locale] route will
+    // override this per-page as needed, but defaulting to Japanese reflects
+    // the site's primary audience.
+    <html lang="ja" suppressHydrationWarning>
       <body>
         {children}
         <Analytics />;

@@ -11,10 +11,11 @@ export const en = {
     menuAria: "Open menu",
   },
   nav: [
-    { label: "About", href: "/about" },
-    { label: "Projects", href: "/projects" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
+        { label: "Service", href: "/services" },
+        { label: "Projects", href: "/projects" },
+        { label: "Blog", href: "/blog" },
+        { label: "About", href: "/about" },
+        { label: "Contact", href: "/contact" },
   ],
   hero: {
     eyebrow: "/ Custom Web Design / Fast Delivery / Practical Features /",
@@ -177,6 +178,220 @@ export const en = {
       frontend: "Frontend",
       engineering: "Engineering",
       diary: "Diary",
+    },
+  },
+
+  // Services & Pricing page content
+  services: {
+    title: "Services & Pricing",
+    subtitle:
+      "For freelancers, small businesses, and creators — we design and build websites that drive results from scratch.",
+    intro:
+      "From landing pages and corporate sites to admin dashboards, login systems, and multilingual support — we implement only what you need, nothing more.",
+    ctaLabel: "Contact Us",
+    bottomCtaTitle: "Feel free to start with just a consultation",
+    bottomCtaText:
+      "Even if you haven't finalized your requirements, that's perfectly fine. We'll work together to define the structure based on your goals and budget.",
+    introNote:
+      "Introductory pricing is available for the first 5 projects only.",
+    plans: {
+      simple: {
+        name: "Simple LP",
+        price: "200$ (incl. tax)",
+        description:
+          "Minimal structure. For those who need a quick, simple landing page.",
+        details: [
+          "1-page layout (LP)",
+          "Custom design",
+          "SNS links",
+          "Responsive design",
+          "Basic SEO",
+          "1 minor revision per month",
+        ],
+        timeline: "≈7～14 days",
+        note: "Introductory pricing is available for the first 5 projects only.",
+      },
+      starter: {
+        name: "Starter Website",
+        badge: "Recommended",
+        price: "800$～900$ (incl. tax)",
+        description: "Recommended plan for showcasing your business properly.",
+        details: [
+          "3–4 pages",
+          "Custom design",
+          "News management",
+          "SNS links",
+          "Responsive design",
+          "Basic SEO settings",
+          "2 minor revisions per month",
+        ],
+        timeline: "≈3～4 weeks",
+        note: "A practical website with pages for your business info, portfolio and contact. Easily update announcements yourself.",
+      },
+      custom: {
+        name: "Custom Development",
+        price: "From 1,500$ (consultation)",
+        description: "For feature-rich websites or web apps.",
+        details: [
+          "Login functionality",
+          "Admin dashboard",
+          "Database integration",
+          "Payment integration",
+          "Advanced animations",
+          "Multilingual support",
+          "API integrations",
+        ],
+        note: "Designed and developed based on your requirements. We can handle login, payment, database integrations and more.",
+      },
+    },
+    targetAudience: {
+      title: "Who This Service Is For",
+      items: [
+        "Those who feel limited by social media alone for customer acquisition",
+        "Those who want to properly communicate the value of their business or service",
+        "Those who want a website tailored to their business, not a generic template",
+        "Those who want a high-quality website while keeping costs as low as possible",
+        "Those who want to keep improving their site through ongoing consultation after launch",
+      ],
+    },
+    reasons: {
+      title: "Why Choose Us",
+      items: [
+        {
+          title: "Designed from Scratch",
+          description:
+            "Rather than using templates as-is, we plan the structure based on your business, target audience, and goals.",
+        },
+        {
+          title: "Conversion-Focused Design",
+          description:
+            "We design not just for looks, but for results — crafting CTAs, copy structure, and page flow that lead to inquiries and bookings.",
+        },
+        {
+          title: "High Quality at Low Cost",
+          description:
+            "As introductory pricing, we deliver agency-quality work at the lowest possible price.",
+        },
+        {
+          title: "Regular Communication",
+          description:
+            "We check in throughout the process so the final result matches your expectations.",
+        },
+      ],
+    },
+    philosophy: {
+      title: "Our Approach to Building",
+      items: [
+        {
+          title: "Understanding Your Business",
+          description:
+            "We review your services, strengths, target audience, and competition to clarify what your website needs to communicate.",
+        },
+        {
+          title: "Structure That Drives Inquiries",
+          description:
+            "We think through the order of information, button placement, and user flow so visitors never feel lost.",
+        },
+        {
+          title: "Balancing Design and Usability",
+          description:
+            "Beyond aesthetics, we prioritize readability on mobile, clarity of text, and ease of use.",
+        },
+      ],
+    },
+    process: {
+      title: "How It Works",
+      steps: [
+        {
+          title: "Contact",
+          description:
+            "Tell us briefly about what you want to build, your goals, and your budget.",
+        },
+        {
+          title: "Discovery",
+          description:
+            "We review your business, target audience, required pages, and features.",
+        },
+        {
+          title: "Estimate",
+          description:
+            "We organize the scope, pricing, and timeline and send you a proposal.",
+        },
+        {
+          title: "Development",
+          description:
+            "We work through structure, design, and implementation — with check-ins as needed.",
+        },
+        {
+          title: "Review & Revision",
+          description:
+            "You review the work before launch and we incorporate any needed changes.",
+        },
+        {
+          title: "Launch & Support",
+          description:
+            "We handle the launch and can assist with maintenance and minor updates afterward.",
+        },
+      ],
+    },
+    fees: {
+      title: "Cost Breakdown",
+      description:
+        "Depending on your project, the following costs may apply in addition to the plan price.",
+      production: {
+        title: "Production Cost",
+        description:
+          "The cost to build your website. The plan prices above are production costs.",
+      },
+      maintenance: {
+        title: "Maintenance Cost",
+        description:
+          "Ongoing cost to ensure your site stays secure and up to date.",
+      },
+      external: {
+        title: "External Cost",
+        description: "Domain, hosting, and other third-party fees.",
+      },
+      delivery: {
+        title: "About Deliverables",
+        description:
+          "After production, we deliver a complete set of code reflecting your design and content. For post-launch updates, maintenance, and ongoing support, a separate maintenance fee applies.",
+      },
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      items: [
+        {
+          question: "How many revisions are included?",
+          answer:
+            "It depends on the plan. Minor revisions are covered within the scope of each plan. Major structural changes or feature additions will be quoted separately.",
+        },
+        {
+          question: "When is payment required?",
+          answer:
+            "Generally, a partial payment is required before development begins, with the remainder due before delivery. We can discuss this based on your project.",
+        },
+        {
+          question: "What about domain and hosting?",
+          answer:
+            "Domain and hosting are external costs, separate from the production fee. If needed, we can assist with setup.",
+        },
+        {
+          question: "Can I update the site myself after launch?",
+          answer:
+            "With a news management feature, you can update some content yourself. Standard static page edits fall under maintenance.",
+        },
+        {
+          question: "What are the deliverables?",
+          answer:
+            "You receive a complete set of website code with your design and content applied. We can also assist with publishing and ongoing support.",
+        },
+        {
+          question: "Why is the price this low?",
+          answer:
+            "This is an introductory price for the first 5 clients. Prices will be revised once we have more projects completed.",
+        },
+      ],
     },
   },
   contact: {

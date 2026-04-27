@@ -14,13 +14,10 @@ type LangItem = {
   accent: string;
 };
 
+// Present the language options in priority order: Japanese (primary),
+// Mongolian (secondary), and English (decorative).  The accent colors are
+// unchanged from the original definitions.
 const LANGS: LangItem[] = [
-  {
-    code: "en",
-    label: "English",
-    flagSrc: "/icons/flag-us.svg",
-    accent: "var(--accent-1)",
-  },
   {
     code: "ja",
     label: "日本語",
@@ -32,6 +29,12 @@ const LANGS: LangItem[] = [
     label: "Монгол",
     flagSrc: "/icons/flag-mn.svg",
     accent: "var(--accent-4)",
+  },
+  {
+    code: "en",
+    label: "English",
+    flagSrc: "/icons/flag-us.svg",
+    accent: "var(--accent-1)",
   },
 ];
 

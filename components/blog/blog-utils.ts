@@ -1,12 +1,7 @@
 import { getMessages, type Locale } from "@/lib/i18n";
-import type { Post, PostMeta } from "@/lib/notion";
+import type { PostMeta } from "@/lib/notion";
 
-const WORDS_PER_MINUTE = 220;
-
-type ReadablePost = Pick<PostMeta, "title" | "summary" | "tags" | "category"> & {
-  // [FIX] 詳細ページでは本文も読了時間に含められるよう optional で受ける
-  content?: string;
-};
+type ReadablePost = Pick<PostMeta, "readingTime">;
 
 export function stripMarkup(value: string): string {
   return value
@@ -37,14 +32,10 @@ export function parsePostDate(date: string): Date | null {
   return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
+// Notion DB の ReadingTime (Number) プロパティをそのまま返す
+// プロパティ未設定時は notion.ts 側で 1 にフォールバック済み
 export function getPostReadingMinutes(post: ReadablePost): number {
-  // [FIX] 本文がある場合は最優先で含める。一覧では summary ベース、詳細では content ベースになる
-  const source = [post.title, post.summary, post.category, post.tags.join(" "), post.content ?? ""]
-    .filter(Boolean)
-    .join(" ");
-
-  const words = stripMarkup(source).split(/\s+/).filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / WORDS_PER_MINUTE));
+  return post.readingTime;
 }
 
 export function formatPostDate(date: string, locale: Locale): string | null {

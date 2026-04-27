@@ -29,7 +29,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  // Fall back to Japanese when no valid locale is provided.  Japanese is
+  // treated as the primary language of this site.
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
   const t = getMessages(locale);
 
   return {
@@ -37,10 +39,12 @@ export async function generateMetadata({
     description: t.meta.description,
     alternates: {
       canonical: `/${locale}`,
+      // List all supported languages with Japanese first; this order hints
+      // search engines that Japanese is the preferred default.
       languages: {
-        en: "/en",
         ja: "/ja",
         mn: "/mn",
+        en: "/en",
       },
     },
     openGraph: {
@@ -75,7 +79,9 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  // Use Japanese when no locale is specified or an unsupported value is
+  // provided.  This keeps the UI consistent with the primary language.
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
 
   return (
     <html lang={locale} suppressHydrationWarning>
