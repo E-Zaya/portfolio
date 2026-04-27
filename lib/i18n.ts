@@ -3,15 +3,18 @@ import { ja } from "./messages/ja";
 import { mn } from "./messages/mn";
 
 const dictionaries = {
-  en,
+  // The order here doesn't matter for lookup, but the public locales array below does.
   ja,
   mn,
+  en,
 };
 
-export const locales = ["en", "ja", "mn"] as const;
+// Expose the supported locales in order of priority. Japanese is the primary
+// language, followed by Mongolian, with English as a decorative option.
+export const locales = ["ja", "mn", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export type Messages = typeof en;
+export type Messages = typeof ja;
 
 export function isLocale(value: string): value is Locale {
   return locales.some((locale) => locale === value);

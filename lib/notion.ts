@@ -41,6 +41,7 @@ export type PostMeta = {
   published: boolean;
   slug: string;
   cover: string;
+  readingTime: number;
 };
 
 export type Post = PostMeta & {
@@ -51,16 +52,6 @@ type BlogPage = PageObjectResponse;
 
 type NotionTag = {
   name?: string;
-};
-
-type NotionFileReference = {
-  file?: { url: string };
-  external?: { url: string };
-};
-
-type NotionFilesProperty = {
-  type: "files";
-  files: NotionFileReference[];
 };
 
 function getTextFromRichText(
@@ -74,27 +65,6 @@ function getTextFromRichText(
   );
 }
 
-function getNotionCover(page: BlogPage): string {
-  const coverProperty = page.properties.Cover;
-
-  if (coverProperty?.type === "files") {
-    const filesProperty = coverProperty as NotionFilesProperty;
-    const firstFile = filesProperty.files[0];
-
-    if (firstFile) {
-      return firstFile.file?.url ?? firstFile.external?.url ?? "";
-    }
-  }
-
-  const cover = page.cover;
-
-  if (!cover) return "";
-  if (cover.type === "external") return cover.external.url;
-  if (cover.type === "file") return cover.file.url;
-
-  return "";
-}
-
 function pageToPostMeta(page: BlogPage): PostMeta {
   const props = page.properties;
 
@@ -105,6 +75,13 @@ function pageToPostMeta(page: BlogPage): PostMeta {
   const summaryProperty = props.Summary;
   const publishedProperty = props.Published;
   const slugProperty = props.Slug;
+  const readingTimeProperty = props.ReadingTime;
+
+  // slug を先に確定させて cover パスの生成に使う
+  const slug =
+    slugProperty?.type === "rich_text"
+      ? getTextFromRichText(slugProperty.rich_text) || page.id
+      : page.id;
 
   return {
     id: page.id,
@@ -138,12 +115,19 @@ function pageToPostMeta(page: BlogPage): PostMeta {
         ? publishedProperty.checkbox
         : false,
 
-    slug:
-      slugProperty?.type === "rich_text"
-        ? getTextFromRichText(slugProperty.rich_text) || page.id
-        : page.id,
+    slug,
 
-    cover: getNotionCover(page),
+    // Notion の期限付き S3 URL を使わず、public 配下の静的パスを使う
+    // 画像ファイルは /public/images/blog/{slug}.png に配置する想定
+    // ファイルが未用意の場合は /images/blog/example.png へのフォールバックを参照
+    cover: `/images/blog/${slug}.png`,
+
+    // Notion DB の ReadingTime (Number) プロパティを使用
+    // プロパティが未設定の場合は 1 分として扱う
+    readingTime:
+      readingTimeProperty?.type === "number"
+        ? (readingTimeProperty.number ?? 1)
+        : 1,
   };
 }
 
