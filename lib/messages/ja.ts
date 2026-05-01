@@ -29,7 +29,7 @@ export const ja: typeof en = {
     primaryCta: "無料で相談する",
     secondaryCta: "制作実績を見る",
     meta: {
-      status: "案件受付中 · 2026.04",
+      status: "案件受付中 · 2026.05",
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
