@@ -33,7 +33,7 @@ export const mn: typeof ja = {
     secondaryCta: "Төслүүд үзэх",
 
     meta: {
-      status: "Шинэ төсөл дээр ажиллахад бэлэн · 2026.04",
+      status: "Шинэ төсөл дээр ажиллахад бэлэн · 2026.05",
       focus: "Websites & Web Apps",
       location: "Улаанбаатар",
     },

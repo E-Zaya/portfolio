@@ -27,7 +27,7 @@ export const en = {
     primaryCta: "Free Consultation",
     secondaryCta: "View Work",
     meta: {
-      status: "Available for Projects · 2026.04",
+      status: "Available for Projects · 2026.05",
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
