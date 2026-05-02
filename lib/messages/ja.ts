@@ -3,9 +3,9 @@ import type { HeroVisualContent, Messages } from "./types";
 export const ja = {
   // 中身
   meta: {
-    title: "Zaya | AI駆動フルスタックエンジニア（Next.js・多言語対応）",
+    title: "Zaya | 日本語・モンゴル語・英語対応のWeb制作",
     description:
-      "モンゴル語・日本語・英語を強みに持つAI駆動フルスタックエンジニア。Next.jsを用いた高速・高品質なWeb開発で、グローバルなサービス構築を支援します。",
+      "日本・モンゴルの個人事業主・小規模店舗向けに、集客と信頼につながるWebサイトを制作します。LP・コーポレートサイト・多言語サイトもご相談ください",
   },
   header: {
     subtitle: "Web Developer",

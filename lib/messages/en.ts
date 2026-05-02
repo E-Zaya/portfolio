@@ -1,12 +1,10 @@
 import type { HeroVisualContent, Messages } from "./types";
 
 export const en = {
-
-
   meta: {
-    title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Multilingual)",
+    title: "Zaya | Web Design & Development in Japanese and Mongolian",
     description:
-      "AI-driven full-stack developer fluent in Mongolian, Japanese, and English. Builds fast, high-quality web applications with Next.js for globally minded products.",
+      "I build clear, trustworthy websites for freelancers, small businesses, and creators in Japan and Mongolia. Japanese and Mongolian support available.",
   },
   header: {
     subtitle: "Web Developer",
@@ -14,11 +12,11 @@ export const en = {
     menuAria: "Open menu",
   },
   nav: [
-        { label: "Service", href: "/services" },
-        { label: "Projects", href: "/projects" },
-        { label: "Blog", href: "/blog" },
-        { label: "About", href: "/about" },
-        { label: "Contact", href: "/contact" },
+    { label: "Service", href: "/services" },
+    { label: "Projects", href: "/projects" },
+    { label: "Blog", href: "/blog" },
+    { label: "About", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ],
   hero: {
     eyebrow: "/ Custom Web Design / Fast Delivery / Practical Features /",
@@ -148,12 +146,12 @@ export const en = {
           "Built with Next.js, Prisma, and PostgreSQL. Features exercise management and weekly volume visualization, designed with a focus on intuitive UX and clean UI.",
       },
       "soul-skin-brand-lookbook": {
-  title: "Soul Skin Brand Lookbook",
-  description:
-    "A brand lookbook website designed to communicate the visual identity and atmosphere of Soul Skin.",
-  summary:
-    "Built as a lookbook-style website focused on brand presentation, visual flow, and clear navigation toward Instagram and contact links rather than direct e-commerce.",
-},
+        title: "Soul Skin Brand Lookbook",
+        description:
+          "A brand lookbook website designed to communicate the visual identity and atmosphere of Soul Skin.",
+        summary:
+          "Built as a lookbook-style website focused on brand presentation, visual flow, and clear navigation toward Instagram and contact links rather than direct e-commerce.",
+      },
     },
   },
   blog: {
@@ -402,44 +400,44 @@ export const en = {
       ],
     },
   },
-contact: {
-  eyebrow: "Contact",
-  titleA: "I build websites",
-  titleB: "that fit your business",
-  description:
-    "I design and build websites with a clear focus on customer acquisition, trust, and smooth inquiry flows. From landing pages and corporate websites to portfolios and small web applications, I can support the full process from design to implementation.",
+  contact: {
+    eyebrow: "Contact",
+    titleA: "I build websites",
+    titleB: "that fit your business",
+    description:
+      "I design and build websites with a clear focus on customer acquisition, trust, and smooth inquiry flows. From landing pages and corporate websites to portfolios and small web applications, I can support the full process from design to implementation.",
 
-  primaryLabel: "Free Consultation",
-  primaryTitle: "Start with an email",
-  primaryDescription:
-    "It is completely fine if you are still unsure what you need or want to know what can be done within your budget.",
+    primaryLabel: "Free Consultation",
+    primaryTitle: "Start with an email",
+    primaryDescription:
+      "It is completely fine if you are still unsure what you need or want to know what can be done within your budget.",
 
-  emailLabel: "Email Address",
-  copy: "Copy Address",
-  copied: "Copied",
-  send: "Send Email",
-  viewProjects: "View Projects",
+    emailLabel: "Email Address",
+    copy: "Copy Address",
+    copied: "Copied",
+    send: "Send Email",
+    viewProjects: "View Projects",
 
-  socialTitle: "SNS",
-  connectVia: "",
+    socialTitle: "SNS",
+    connectVia: "",
 
-  availabilityLabel: "Available for New Projects",
-  availability:
-    "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
+    availabilityLabel: "Available for New Projects",
+    availability:
+      "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
 
-  form: {
-    nameLabel: "Name",
-    namePlaceholder: "Your name",
-    emailLabel: "Email",
-    emailPlaceholder: "you@example.com",
-    messageLabel: "Message",
-    messagePlaceholder: "Tell me about your project or idea.",
-    sending: "Sending...",
-    submit: "Send Message",
-    success: "Your message has been sent successfully.",
-    error: "Something went wrong. Please try again.",
+    form: {
+      nameLabel: "Name",
+      namePlaceholder: "Your name",
+      emailLabel: "Email",
+      emailPlaceholder: "you@example.com",
+      messageLabel: "Message",
+      messagePlaceholder: "Tell me about your project or idea.",
+      sending: "Sending...",
+      submit: "Send Message",
+      success: "Your message has been sent successfully.",
+      error: "Something went wrong. Please try again.",
+    },
   },
-},
   footer: {
     title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
