@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import LoadingScreen from "@/components/layout/LoadingScreen";
 import MouseGlow from "@/components/Effects/MouseGlow";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
@@ -86,11 +87,17 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}`,
+          }}
+        />
         <ThemeProvider>
           <div
             className={`${inter.variable} ${notoSansJp.variable}`}
             data-locale={locale}
           >
+            <LoadingScreen />
             <ScrollProgress />
             <MouseGlow />
             <div className="site-content">

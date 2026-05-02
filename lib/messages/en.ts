@@ -69,9 +69,7 @@ export const en = {
     eyebrow: "About Me",
     title: "From Consumer to Creator",
     paragraphs: [
-      "My mission as a developer is to bridge cultures and languages through the universal language of technology. Drawing from my multilingual background, I strive to create seamless digital experiences that feel intuitive regardless of cultural borders.",
-      "After a decade in Japan, I returned to Mongolia to fully commit to my journey as a Web Developer. Currently, I am immersed in an intensive program at the IO Institute, refining my skills in modern web development every day.",
-      "Living in Japan for 10 years allowed me to reach native-level fluency. This gives me a unique edge: the ability to dive deep into Japan's rich technical documentation and community, while staying connected to global trends through English. I leverage this dual-perspective to find the best solutions for every challenge.",
+      "I'm a full-stack developer fluent in Mongolian, Japanese, and English — three languages, three perspectives. After 10 years in Japan, I returned to Mongolia to fully pivot into web development. I now build multilingual websites and apps for clients who need to reach across cultures.",
     ],
     strengthsEyebrow: "Strengths",
     strengthsTitle: "What I Bring to the Table",
@@ -146,6 +144,13 @@ export const en = {
         summary:
           "Built with Next.js, Prisma, and PostgreSQL. Features exercise management and weekly volume visualization, designed with a focus on intuitive UX and clean UI.",
       },
+      "soul-skin-brand-lookbook": {
+  title: "Soul Skin Brand Lookbook",
+  description:
+    "A brand lookbook website designed to communicate the visual identity and atmosphere of Soul Skin.",
+  summary:
+    "Built as a lookbook-style website focused on brand presentation, visual flow, and clear navigation toward Instagram and contact links rather than direct e-commerce.",
+},
     },
   },
   blog: {
@@ -394,27 +399,31 @@ export const en = {
       ],
     },
   },
-  contact: {
-    eyebrow: "Contact",
-    titleA: "Transforming ideas into",
-    titleB: "seamless digital experiences",
-    description:
-      "Whether it's building a portfolio from scratch, implementing a sleek frontend, or improving UI, I'm ready to dive in. Let's create something simple, beautiful, and user-friendly.",
-    primaryLabel: "Direct Contact",
-    primaryTitle: "Send me an email",
-    primaryDescription:
-      "Feel free to reach out for project inquiries, collaborations, or just to say hello.",
-    emailLabel: "Email Address",
-    copy: "Copy email",
-    copied: "Copied!",
-    send: "Send Email",
-    viewProjects: "View Projects",
-    socialTitle: "Social",
-    connectVia: "Connect via",
-    availabilityLabel: "Availability",
-    availability:
-      "Open to new projects and frontend collaborations. Let's build something meaningful together.",
-  },
+contact: {
+  eyebrow: "Contact",
+  titleA: "I build websites",
+  titleB: "that fit your business",
+  description:
+    "I design and build websites with a clear focus on customer acquisition, trust, and smooth inquiry flows. From landing pages and corporate websites to portfolios and small web applications, I can support the full process from design to implementation.",
+
+  primaryLabel: "Free Consultation",
+  primaryTitle: "Start with an email",
+  primaryDescription:
+    "It is completely fine if you are still unsure what you need or want to know what can be done within your budget.",
+
+  emailLabel: "Email Address",
+  copy: "Copy Address",
+  copied: "Copied",
+  send: "Send Email",
+  viewProjects: "View Projects",
+
+  socialTitle: "SNS",
+  connectVia: "",
+
+  availabilityLabel: "Available for New Projects",
+  availability:
+    "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
+},
   footer: {
     title: "Zaya Portfolio",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",

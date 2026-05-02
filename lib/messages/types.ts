@@ -100,6 +100,36 @@ export type ServicesContent = {
   };
 };
 
+// project status
+export type ProjectStatus = "Completed" | "In Progress";
+
+// project text item
+export type ProjectMessageItem = {
+  title: string;
+  description: string;
+  summary: string;
+};
+
+// projects section content
+export type ProjectsContent = {
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  description: string;
+  featuredEyebrow: string;
+  featuredTitle: string;
+  otherEyebrow: string;
+  otherTitle: string;
+  featuredBadge: string;
+  liveDemo: string;
+  viewCode: string;
+  status: Record<ProjectStatus, string>;
+
+  // projectItems の slug を key として使う
+  // 新しい project を追加しても、types.ts の修正は不要
+  items: Record<string, ProjectMessageItem>;
+};
+
 export type HeroVisualContent = {
   label: string;
   title: string;
