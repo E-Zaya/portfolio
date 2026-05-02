@@ -1,5 +1,8 @@
-import type { HeroVisualContent } from "./types";
+import type { HeroVisualContent, Messages } from "./types";
+
 export const en = {
+
+
   meta: {
     title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Multilingual)",
     description:
@@ -423,6 +426,19 @@ contact: {
   availabilityLabel: "Available for New Projects",
   availability:
     "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
+
+  form: {
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    emailLabel: "Email",
+    emailPlaceholder: "you@example.com",
+    messageLabel: "Message",
+    messagePlaceholder: "Tell me about your project or idea.",
+    sending: "Sending...",
+    submit: "Send Message",
+    success: "Your message has been sent successfully.",
+    error: "Something went wrong. Please try again.",
+  },
 },
   footer: {
     title: "Zaya Web Development",
@@ -436,89 +452,99 @@ contact: {
   },
   visual: {
     label: "Service Preview",
-    title: "Custom website system",
-    browserUrl: "zaya.dev / preview",
-    items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+    title: "Website preview",
+    browserUrl: "ezaya.dev / preview",
+    items: ["Website", "Dashboard", "Content DB", "JP / MN / EN"],
     captions: [
-      "Marketing landing page",
-      "Admin dashboard with login",
-      "Small database UI",
-      "Bilingual / trilingual sites",
+      "Business website with clear CTA",
+      "Simple dashboard-style preview",
+      "Structured content database",
+      "Japanese / Mongolian / English support",
     ],
     scenes: {
       landing: {
-        brand: "Brand",
-        nav: ["Features", "Pricing", "Works"],
-        ctaSmall: "Start Free",
-        eyebrow: "✦ NEW RELEASE",
-        titleBefore: "Maximize ",
-        titleHighlight: "growth",
-        titleAfter: " with a clear site",
+        brand: "Zaya Studio",
+        nav: ["Service", "Works", "Contact"],
+        ctaSmall: "Contact",
+        eyebrow: "WEB PRODUCTION",
+        titleBefore: "Clear websites for ",
+        titleHighlight: "small businesses",
+        titleAfter: "",
         description:
-          "From customer acquisition to checkout,\neverything works in one flow.",
-        primaryCta: "Try Free →",
-        secondaryCta: "View Demo",
-        stat: "↑ 312%",
-        live: "LIVE",
-        features: ["✓ SEO Ready", "✓ A/B Testing", "✓ Analytics Dashboard"],
-        socialProofNumber: "1,200+",
-        socialProofText: "teams use it",
+          "Design, content structure, and implementation\nbuilt to help visitors take action.",
+        primaryCta: "Start Project",
+        secondaryCta: "View Works",
+        stat: "+42%",
+        live: "PREVIEW",
+        features: ["CTA Design", "Responsive UI", "Basic SEO"],
+        socialProofNumber: "3 LANG",
+        socialProofText: "Japanese / Mongolian / English",
       },
       admin: {
-        logo: "Admin",
-        menu: ["Dashboard", "Users", "Revenue", "Settings"],
-        userName: "admin",
-        loginStatus: "● Logged in",
+        logo: "Client Panel",
+        menu: ["Overview", "Inquiries", "Pages", "Settings"],
+        userName: "client",
+        loginStatus: "● Secure access",
         kpis: [
           {
-            label: "Monthly Revenue",
-            value: "$8.4K",
-            change: "+12.4%",
+            label: "Inquiries",
+            value: "24",
+            change: "+8",
             up: true,
           },
-          { label: "Users", value: "847", change: "+5.2%", up: true },
-          { label: "Conversion", value: "3.2%", change: "-0.4%", up: false },
+          {
+            label: "Page Views",
+            value: "1.8K",
+            change: "+18%",
+            up: true,
+          },
+          {
+            label: "Drafts",
+            value: "3",
+            change: "Review",
+            up: false,
+          },
         ],
-        months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        months: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       },
       database: {
-        queryTable: "users",
+        queryTable: "projects",
         columns: ["id", "name", "email", "status"],
         rows: [
           {
             id: "001",
-            name: "Alex Carter",
-            email: "alex@ex.co",
+            name: "Cafe Aomi",
+            email: "landing-page",
             status: "active",
           },
           {
             id: "002",
-            name: "Mia Tanaka",
-            email: "mia@ex.co",
+            name: "Studio Nara",
+            email: "portfolio",
             status: "active",
           },
           {
             id: "003",
-            name: "Б. Мөнхбат",
-            email: "munkh@ex.co",
+            name: "Брэнд сайт",
+            email: "multilingual",
             status: "draft",
           },
           {
             id: "004",
-            name: "James Kim",
-            email: "james@ex.co",
+            name: "Local Clinic",
+            email: "business-site",
             status: "active",
           },
         ],
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "多言語対応サイト" },
-          { code: "EN", line: "Multilingual website" },
-          { code: "MN", line: "Олон хэлтэй вебсайт" },
+          { code: "JA", line: "日本語で相談できるWeb制作" },
+          { code: "EN", line: "English-ready website structure" },
+          { code: "MN", line: "Монгол хэлээр ойлгомжтой вебсайт" },
         ],
-        footer: "i18n · seamless switch",
+        footer: "i18n · clear structure · local support",
       },
     },
   } satisfies HeroVisualContent,
-};
+} satisfies Messages;

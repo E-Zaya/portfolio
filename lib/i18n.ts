@@ -1,9 +1,9 @@
 import { en } from "./messages/en";
 import { ja } from "./messages/ja";
 import { mn } from "./messages/mn";
+import type { Messages } from "./messages/types";
 
 const dictionaries = {
-  // The order here doesn't matter for lookup, but the public locales array below does.
   ja,
   mn,
   en,
@@ -14,7 +14,7 @@ const dictionaries = {
 export const locales = ["ja", "mn", "en"] as const;
 export type Locale = (typeof locales)[number];
 
-export type Messages = typeof ja;
+export type { Messages };
 
 export function isLocale(value: string): value is Locale {
   return locales.some((locale) => locale === value);

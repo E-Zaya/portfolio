@@ -1,7 +1,6 @@
-import type { ja } from "./ja";
-import type { HeroVisualContent } from "./types";
+import type { HeroVisualContent, Messages } from "./types";
 
-export const mn: typeof ja = {
+export const mn = {
   meta: {
     title: "Zaya | AI-Driven Full-Stack Developer (Next.js, Олон хэлтэй)",
     description:
@@ -159,12 +158,12 @@ export const mn: typeof ja = {
           "Next.js, Prisma, болон PostgreSQL ашиглан бүтээсэн. Ойлгомжтой UX, цэвэр UI-д төвлөрч, дасгалын удирдлага болон долоо хоногийн ачааллыг графикаар харуулах боломжтой.",
       },
       "soul-skin-brand-lookbook": {
-  title: "Soul Skin Brand Lookbook",
-  description:
-    "Soul Skin брэндийн өнгө төрх, уур амьсгал, visual identity-г харуулах зориулалттай lookbook вебсайт.",
-  summary:
-    "Шууд худалдааны сайт биш, харин брэндийн дүр төрхийг танилцуулж, Instagram болон холбоо барих хэсэг рүү чиглүүлэх урсгалыг бодож хийсэн lookbook төрлийн сайт.",
-},
+        title: "Soul Skin Brand Lookbook",
+        description:
+          "Soul Skin брэндийн өнгө төрх, уур амьсгал, visual identity-г харуулах зориулалттай lookbook вебсайт.",
+        summary:
+          "Шууд худалдааны сайт биш, харин брэндийн дүр төрхийг танилцуулж, Instagram болон холбоо барих хэсэг рүү чиглүүлэх урсгалыг бодож хийсэн lookbook төрлийн сайт.",
+      },
     },
   },
 
@@ -248,7 +247,8 @@ export const mn: typeof ja = {
       custom: {
         name: "Custom Development",
         price: "2,500,000₮ эхлэн (Зөвшилцөнө)",
-        description: "Олон үйлдэлт вэбсайт эсвэл web app хэрэгтэй хүмүүст зориулав.",
+        description:
+          "Олон үйлдэлт вэбсайт эсвэл web app хэрэгтэй хүмүүст зориулав.",
         details: [
           "Login систем",
           "Admin dashboard",
@@ -367,7 +367,8 @@ export const mn: typeof ja = {
       },
       external: {
         title: "Гадны зардал",
-        description: "Domain, hosting болон бусад 3-дагч талын үйлчилгээний төлбөрүүд.",
+        description:
+          "Domain, hosting болон бусад 3-дагч талын үйлчилгээний төлбөрүүд.",
       },
       delivery: {
         title: "Хүлээлгэн өгөх талаар",
@@ -412,31 +413,43 @@ export const mn: typeof ja = {
     },
   },
 
- contact: {
-  eyebrow: "Холбоо барих",
-  titleA: "Таны бизнест тохирсон",
-  titleB: "вебсайт бүтээнэ",
-  description:
-    "Хэрэглэгч татах, итгэл төрүүлэх, холбоо барих урсгалыг ойлгомжтой болгоход чиглэсэн вебсайтыг дизайн болон хөгжүүлэлтээр нь бүрэн гүйцэтгэнэ. Landing page, байгууллагын сайт, портфолио, жижиг хэмжээний веб апп хүртэл хийх боломжтой.",
+  contact: {
+    eyebrow: "Холбоо барих",
+    titleA: "Таны бизнест тохирсон",
+    titleB: "вебсайт бүтээнэ",
+    description:
+      "Хэрэглэгч татах, итгэл төрүүлэх, холбоо барих урсгалыг ойлгомжтой болгоход чиглэсэн вебсайтыг дизайн болон хөгжүүлэлтээр нь бүрэн гүйцэтгэнэ. Landing page, байгууллагын сайт, портфолио, жижиг хэмжээний веб апп хүртэл хийх боломжтой.",
 
-  primaryLabel: "Үнэгүй зөвлөгөө",
-  primaryTitle: "Эхлээд имэйлээр зөвлөлдөх",
-  primaryDescription:
-    `"Яг ямар вэб хуудас хийхээ сайн ойлгохгүй байна" ,  "Төсөвтөө багтаан юу хийж болохыг мэдэхийг хүсэж байна" гэх мэт асуултууд байвал нэрэлхэлгүй шууд холбогдоод асуугаарай!`,
+    primaryLabel: "Үнэгүй зөвлөгөө",
+    primaryTitle: "Эхлээд имэйлээр зөвлөлдөх",
+    primaryDescription: `"Яг ямар вэб хуудас хийхээ сайн ойлгохгүй байна" ,  "Төсөвтөө багтаан юу хийж болохыг мэдэхийг хүсэж байна" гэх мэт асуултууд байвал нэрэлхэлгүй шууд холбогдоод асуугаарай!`,
 
-  emailLabel: "Имэйл хаяг",
-  copy: "Хаягийг хуулах",
-  copied: "Хууллаа",
-  send: "Имэйл илгээх",
-  viewProjects: "Хийсэн ажлуудыг үзэх",
+    emailLabel: "Имэйл хаяг",
+    copy: "Хаягийг хуулах",
+    copied: "Хууллаа",
+    send: "Имэйл илгээх",
+    viewProjects: "Хийсэн ажлуудыг үзэх",
 
-  socialTitle: "SNS",
-  connectVia: "",
+    socialTitle: "SNS",
+    connectVia: "",
 
-  availabilityLabel: "Шинэ захиалга авч байна",
-  availability:
-    "Жижиг бизнес, хувиараа ажилладаг хүмүүс болон бүтээлч хүмүүст зориулж, ойлгомжтой, үр дүнтэй, боломжийн үнэтэй вебсайт хийж өгнө.",
-},
+    availabilityLabel: "Шинэ захиалга авч байна",
+    availability:
+      "Жижиг бизнес, хувиараа ажилладаг хүмүүс болон бүтээлч хүмүүст зориулж, ойлгомжтой, үр дүнтэй, боломжийн үнэтэй вебсайт хийж өгнө.",
+
+    form: {
+      nameLabel: "Нэр",
+      namePlaceholder: "Таны нэр",
+      emailLabel: "Имэйл",
+      emailPlaceholder: "you@example.com",
+      messageLabel: "Мессеж",
+      messagePlaceholder: "Төслийн тухай товч мэдээлнэ үү.",
+      sending: "Илгээж байна...",
+      submit: "Илгээх",
+      success: "Таны мессеж амжилттай илгээгдлээ.",
+      error: "Илгээхэд алдаа гарлаа. Дахин оролдоно уу.",
+    },
+  },
 
   footer: {
     title: "Zaya Web Development",
@@ -452,79 +465,89 @@ export const mn: typeof ja = {
 
   visual: {
     label: "Service Preview",
-    title: "Custom website систем",
-    browserUrl: "zaya.dev / preview",
-    items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+    title: "Website preview system",
+    browserUrl: "ezaya.dev / preview",
+    items: ["Website", "Dashboard", "Content DB", "JP / MN / EN"],
     captions: [
-      "Маркетингийн Landing page",
-      "Login-тэй Admin dashboard",
-      "Жижиг database UI",
-      "Хос болон гурван хэлтэй сайт",
+      "Clear business website with CTA",
+      "Simple admin-style dashboard",
+      "Structured content database",
+      "Japanese / Mongolian / English support",
     ],
     scenes: {
       landing: {
-        brand: "Brand",
-        nav: ["Функц", "Үнэ", "Ажлууд"],
-        ctaSmall: "Үнэгүй эхлэх",
-        eyebrow: "✦ NEW RELEASE",
-        titleBefore: "Ойлгомжтой вэбсайт ашиглан ",
-        titleHighlight: "өсөлтөө",
-        titleAfter: " нэмэгдүүл",
+        brand: "Zaya Studio",
+        nav: ["Service", "Works", "Contact"],
+        ctaSmall: "Contact",
+        eyebrow: "WEB PRODUCTION",
+        titleBefore: "Clear websites for ",
+        titleHighlight: "small brands",
+        titleAfter: "",
         description:
-          "Хэрэглэгч татахаас эхлээд захиалга өгөх хүртэлх\nбүх зүйл нэг урсгалаар ажиллана.",
-        primaryCta: "Үнэгүй турших →",
-        secondaryCta: "Demo үзэх",
-        stat: "↑ 312%",
-        live: "LIVE",
-        features: ["✓ SEO бэлэн", "✓ A/B тест", "✓ Analytics dashboard"],
-        socialProofNumber: "1,200+",
-        socialProofText: "баг ашиглаж байна",
+          "Design, content structure, and implementation\nbuilt to help visitors take action.",
+        primaryCta: "Start Project",
+        secondaryCta: "View Works",
+        stat: "+42%",
+        live: "PREVIEW",
+        features: ["CTA Design", "Responsive UI", "Basic SEO"],
+        socialProofNumber: "3 LANG",
+        socialProofText: "JA / MN / EN ready",
       },
 
       admin: {
-        logo: "Admin",
-        menu: ["Dashboard", "Хэрэглэгч", "Орлого", "Тохиргоо"],
-        userName: "admin",
-        loginStatus: "● Нэвтэрсэн",
+        logo: "Client Panel",
+        menu: ["Overview", "Inquiries", "Pages", "Settings"],
+        userName: "client",
+        loginStatus: "● Secure access",
         kpis: [
           {
-            label: "Сарын орлого",
-            value: "₮12.4M",
-            change: "+12.4%",
+            label: "Inquiries",
+            value: "24",
+            change: "+8",
             up: true,
           },
-          { label: "Хэрэглэгч", value: "847", change: "+5.2%", up: true },
-          { label: "Conversion", value: "3.2%", change: "-0.4%", up: false },
+          {
+            label: "Page Views",
+            value: "1.8K",
+            change: "+18%",
+            up: true,
+          },
+          {
+            label: "Drafts",
+            value: "3",
+            change: "Review",
+            up: false,
+          },
         ],
-        months: ["1 сар", "2 сар", "3 сар", "4 сар", "5 сар", "6 сар", "7 сар"],
+        months: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       },
 
       database: {
-        queryTable: "users",
+        queryTable: "projects",
         columns: ["id", "name", "email", "status"],
         rows: [
           {
             id: "001",
-            name: "Б. Мөнхбат",
-            email: "munkh@ex.co",
+            name: "Cafe Aomi",
+            email: "landing-page",
             status: "active",
           },
           {
             id: "002",
-            name: "С. Энхжин",
-            email: "enkhjin@ex.co",
+            name: "Studio Nara",
+            email: "portfolio",
             status: "active",
           },
           {
             id: "003",
-            name: "田中 浩一",
-            email: "tanaka@ex.co",
+            name: "Брэнд сайт",
+            email: "multilingual",
             status: "draft",
           },
           {
             id: "004",
-            name: "James Kim",
-            email: "james@ex.co",
+            name: "Local Clinic",
+            email: "business-site",
             status: "active",
           },
         ],
@@ -532,12 +555,12 @@ export const mn: typeof ja = {
 
       multilingual: {
         langs: [
-          { code: "JA", line: "多言語対応サイト" },
-          { code: "EN", line: "Multilingual website" },
-          { code: "MN", line: "Олон хэлтэй вебсайт" },
+          { code: "JA", line: "日本語で相談できるWeb制作" },
+          { code: "EN", line: "English-ready website structure" },
+          { code: "MN", line: "Монгол хэлээр ойлгомжтой вебсайт" },
         ],
-        footer: "i18n · seamless switch",
+        footer: "i18n · clear structure · local support",
       },
     },
   } satisfies HeroVisualContent,
-} as const;
+} satisfies Messages;

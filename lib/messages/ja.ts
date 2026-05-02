@@ -1,7 +1,7 @@
-import type { en } from "./en";
-import type { HeroVisualContent } from "./types";
+import type { HeroVisualContent, Messages } from "./types";
 
-export const ja: typeof en = {
+export const ja = {
+  // 中身
   meta: {
     title: "Zaya | AI駆動フルスタックエンジニア（Next.js・多言語対応）",
     description:
@@ -69,8 +69,8 @@ export const ja: typeof en = {
     title: "ゼロから開発者へ",
     paragraphs: [
       "モンゴル語・日本語・英語の3言語を使いこなす開発者として、文化の壁を感じさせないデジタル体験を作ることが私のテーマです。",
-"日本で10年間を過ごした後、本気でエンジニアを目指すためモンゴルへ帰国。現在はIO Instituteでフルスタック開発を集中的に学んでいます。",
-"3言語それぞれの技術情報にアクセスできる視点を、設計と問題解決に活かしています。"
+      "日本で10年間を過ごした後、本気でエンジニアを目指すためモンゴルへ帰国。現在はIO Instituteでフルスタック開発を集中的に学んでいます。",
+      "3言語それぞれの技術情報にアクセスできる視点を、設計と問題解決に活かしています。",
     ],
     strengthsEyebrow: "強み",
     strengthsTitle: "私が提供できること",
@@ -120,42 +120,40 @@ export const ja: typeof en = {
       },
     ],
   },
-projects: {
-  eyebrow: "",
-  titleA: "",
-  titleB: "主な実績",
-  description:
-    "",
-  featuredEyebrow: "",
-  featuredTitle: "主要プロジェクト",
-  otherEyebrow: "その他のプロジェクト",
-  otherTitle: "その他の実績",
-  featuredBadge: "ピックアップ",
-  liveDemo: "デモを見る",
-  viewCode: "コードを見る",
-  status: {
-    Completed: "完了",
-    "In Progress": "開発中",
-  },
-  items: {
-    "workout-log": {
-      title: "筋トレ記録アプリ",
-      description:
-        "負荷分析と種目管理を備えたフルスタックの筋トレ記録アプリです。",
-      summary:
-        "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさを意識して設計しました。",
+  projects: {
+    eyebrow: "",
+    titleA: "",
+    titleB: "主な実績",
+    description: "",
+    featuredEyebrow: "",
+    featuredTitle: "主要プロジェクト",
+    otherEyebrow: "その他のプロジェクト",
+    otherTitle: "その他の実績",
+    featuredBadge: "ピックアップ",
+    liveDemo: "デモを見る",
+    viewCode: "コードを見る",
+    status: {
+      Completed: "完了",
+      "In Progress": "開発中",
     },
+    items: {
+      "workout-log": {
+        title: "筋トレ記録アプリ",
+        description:
+          "負荷分析と種目管理を備えたフルスタックの筋トレ記録アプリです。",
+        summary:
+          "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさを意識して設計しました。",
+      },
 
-"soul-skin-brand-lookbook": {
-  title: "Soul Skin Brand Lookbook",
-  description:
-    "ブランドの世界観を伝えるためのLookbookサイトです。",
-  summary:
-    "商品販売ではなく、Instagramや問い合わせにつなげる導線を意識して、ビジュアル・ブランドイメージ・連絡先への流れを整理しました。",
-},
+      "soul-skin-brand-lookbook": {
+        title: "Soul Skin Brand Lookbook",
+        description: "ブランドの世界観を伝えるためのLookbookサイトです。",
+        summary:
+          "商品販売ではなく、Instagramや問い合わせにつなげる導線を意識して、ビジュアル・ブランドイメージ・連絡先への流れを整理しました。",
+      },
+    },
   },
-},
-  
+
   blog: {
     filterLabel: "タグで絞り込み",
     browseTitle: "記事一覧",
@@ -274,7 +272,7 @@ projects: {
         {
           title: "低価格でも品質重視",
           description:
-            "初期実績価格として、制作会社に近い品質をできるだけ低価格で提供します。",
+            "初期実績価格として、設計・デザイン・実装まで一貫して対応します。",
         },
         {
           title: "こまめなコミュニケーション",
@@ -313,8 +311,7 @@ projects: {
         },
         {
           title: "ヒアリング",
-          description:
-            "事業内容、ターゲット、必要なページや機能を確認します。",
+          description: "事業内容、ターゲット、必要なページや機能を確認します。",
         },
         {
           title: "お見積もり",
@@ -397,31 +394,45 @@ projects: {
     },
   },
 
-contact: {
-  eyebrow: "連絡先",
-  titleA: "あなたの事業に合う",
-  titleB: "Webサイトを作ります",
-  description:
-    "集客・信頼感・問い合わせ導線を意識したWebサイトを、デザインから実装まで一貫して制作します。LP、コーポレートサイト、ポートフォリオ、小規模なWebアプリまで対応可能です。",
+  contact: {
+    eyebrow: "連絡先",
+    titleA: "あなたの事業に合う",
+    titleB: "Webサイトを作ります",
+    description:
+      "集客・信頼感・問い合わせ導線を意識したWebサイトを、デザインから実装まで一貫して制作します。LP、コーポレートサイト、ポートフォリオ、小規模なWebアプリまで対応可能です。",
 
-  primaryLabel: "無料相談",
-  primaryTitle: "まずはメールで相談する",
-  primaryDescription:
-    "「何を作ればいいかわからない」「予算内でできることを知りたい」といった段階でも問題ありません。",
+    primaryLabel: "無料相談",
+    primaryTitle: "まずはメールで相談する",
+    primaryDescription:
+      "「何を作ればいいかわからない」「予算内でできることを知りたい」といった段階でも問題ありません。",
 
-  emailLabel: "メールアドレス",
-  copy: "アドレスをコピー",
-  copied: "コピーしました",
-  send: "メールを送信",
-  viewProjects: "制作実績を見る",
+    emailLabel: "メールアドレス",
+    copy: "アドレスをコピー",
+    copied: "コピーしました",
+    send: "メールを送信",
+    viewProjects: "制作実績を見る",
 
-  socialTitle: "SNS",
-  connectVia: "",
+    socialTitle: "SNS",
+    connectVia: "",
 
-  availabilityLabel: "新規案件受付中",
-  availability:
-    "小規模事業者・個人事業主・クリエイター向けに、低コストでも伝わるWebサイトを制作します。",
-},
+    availabilityLabel: "新規案件受付中",
+    availability:
+      "小規模事業者・個人事業主・クリエイター向けに、低コストでも伝わるWebサイトを制作します。",
+
+    form: {
+      nameLabel: "お名前",
+      namePlaceholder: "お名前を入力してください",
+      emailLabel: "メールアドレス",
+      emailPlaceholder: "you@example.com",
+      messageLabel: "ご相談内容",
+      messagePlaceholder: "制作したいサイトや相談内容を教えてください。",
+      sending: "送信中...",
+      submit: "送信する",
+      success: "メッセージを送信しました。",
+      error: "送信に失敗しました。時間をおいてもう一度お試しください。",
+    },
+  },
+
   footer: {
     title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
@@ -435,82 +446,98 @@ contact: {
   visual: {
     label: "Service Preview",
     title: "作れるものが伝わる設計",
-    browserUrl: "zaya.dev / preview",
-    items: ["Landing Page", "Admin Login", "Database", "JP / MN / EN"],
+    browserUrl: "ezaya.dev / preview",
+    items: ["Website", "Dashboard", "Content DB", "JP / MN / EN"],
     captions: [
-      "集客のためのLP",
-      "ログイン付き管理画面",
-      "小規模データベースUI",
-      "多言語対応サイト",
+      "行動につながるビジネスサイト",
+      "シンプルな管理画面UI",
+      "整理されたコンテンツDB",
+      "日本語・モンゴル語・英語対応",
     ],
     scenes: {
       landing: {
-        brand: "Brand",
-        nav: ["機能", "料金", "事例"],
-        ctaSmall: "無料登録",
-        eyebrow: "✦ NEW RELEASE",
-        titleBefore: "売上を",
-        titleHighlight: "最大化",
-        titleAfter: "する",
-        description: "顧客獲得から決済まで\nワンストップで完結。",
-        primaryCta: "無料で試す →",
-        secondaryCta: "デモを見る",
-        stat: "↑ 312%",
-        live: "LIVE",
-        features: ["✓ SEO最適化", "✓ A/Bテスト", "✓ 分析ダッシュボード"],
-        socialProofNumber: "",
-        socialProofText: "",
+        brand: "Zaya Studio",
+        nav: ["サービス", "実績", "相談"],
+        ctaSmall: "相談する",
+        eyebrow: "WEB PRODUCTION",
+        titleBefore: "伝わるサイトで、",
+        titleHighlight: "相談",
+        titleAfter: "につなげる",
+        description:
+          "構成・デザイン・実装まで、\n目的に合わせてシンプルに設計します。",
+        primaryCta: "制作を相談",
+        secondaryCta: "実績を見る",
+        stat: "+42%",
+        live: "PREVIEW",
+        features: ["CTA設計", "スマホ対応", "基本SEO"],
+        socialProofNumber: "3 LANG",
+        socialProofText: "日本語 / モンゴル語 / 英語",
       },
       admin: {
-        logo: "Admin",
-        menu: ["ダッシュ", "ユーザー", "売上", "設定"],
-        userName: "admin",
-        loginStatus: "● ログイン中",
+        logo: "Client Panel",
+        menu: ["概要", "問い合わせ", "ページ", "設定"],
+        userName: "client",
+        loginStatus: "● Secure access",
         kpis: [
-          { label: "月間売上", value: "¥1.24M", change: "+12.4%", up: true },
-          { label: "ユーザー", value: "847", change: "+5.2%", up: true },
-          { label: "転換率", value: "3.2%", change: "-0.4%", up: false },
+          {
+            label: "問い合わせ",
+            value: "24",
+            change: "+8",
+            up: true,
+          },
+          {
+            label: "表示回数",
+            value: "1.8K",
+            change: "+18%",
+            up: true,
+          },
+          {
+            label: "下書き",
+            value: "3",
+            change: "確認中",
+            up: false,
+          },
         ],
-        months: ["1月", "2月", "3月", "4月", "5月", "6月", "7月"],
+        months: ["月", "火", "水", "木", "金", "土", "日"],
       },
       database: {
-        queryTable: "users",
+        queryTable: "projects",
         columns: ["id", "name", "email", "status"],
         rows: [
           {
             id: "001",
-            name: "田中 浩一",
-            email: "tanaka@ex.co",
+            name: "Cafe Aomi",
+            email: "landing-page",
             status: "active",
           },
           {
             id: "002",
-            name: "山田 花子",
-            email: "yamada@ex.co",
+            name: "Studio Nara",
+            email: "portfolio",
             status: "active",
           },
           {
             id: "003",
-            name: "Б. Мөнхбат",
-            email: "munkh@ex.co",
+            name: "Брэнд сайт",
+            email: "multilingual",
             status: "draft",
           },
           {
             id: "004",
-            name: "James Kim",
-            email: "james@ex.co",
+            name: "Local Clinic",
+            email: "business-site",
             status: "active",
           },
         ],
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "多言語対応サイト" },
-          { code: "EN", line: "Multilingual website" },
-          { code: "MN", line: "Олон хэлтэй вебсайт" },
+          { code: "JA", line: "日本語で相談できるWeb制作" },
+          { code: "EN", line: "English-ready website structure" },
+          { code: "MN", line: "Монгол хэлээр ойлгомжтой вебсайт" },
         ],
-        footer: "i18n · seamless switch",
+        footer: "i18n · clear structure · local support",
       },
     },
   } satisfies HeroVisualContent,
-} as const;
+} satisfies Messages;

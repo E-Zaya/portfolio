@@ -236,7 +236,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </h2>
 
           {/* desktop stepper */}
-          <div className="hidden items-start sm:flex">
+          <div className="hidden items-start gap-0 sm:flex">
             {t.process.steps.map((step, index) => {
               const isLast = index === t.process.steps.length - 1;
 
@@ -263,7 +263,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </div>
 
           {/* mobile stepper */}
-          <ol className="space-y-0 sm:hidden">
+          <ol className="list-none space-y-0 sm:hidden">
             {t.process.steps.map((step, index) => {
               const isLast = index === t.process.steps.length - 1;
 
