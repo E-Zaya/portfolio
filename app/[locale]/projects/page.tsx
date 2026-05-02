@@ -157,7 +157,7 @@ export default async function ProjectsPage({
 }) {
   // locale resolution
   const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
 
   return <ProjectsContent locale={locale} />;
 }
