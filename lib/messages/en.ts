@@ -6,7 +6,7 @@ export const en = {
       "AI-driven full-stack developer fluent in Mongolian, Japanese, and English. Builds fast, high-quality web applications with Next.js for globally minded products.",
   },
   header: {
-    subtitle: "Portfolio",
+    subtitle: "Web Developer",
     logoAria: "Back to home",
     menuAria: "Open menu",
   },
@@ -425,7 +425,7 @@ contact: {
     "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
 },
   footer: {
-    title: "Zaya Portfolio",
+    title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
     copyright: "© 2026 Designed & Built by Zaya",
   },

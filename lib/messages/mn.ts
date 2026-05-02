@@ -9,7 +9,7 @@ export const mn: typeof ja = {
   },
 
   header: {
-    subtitle: "Portfolio",
+    subtitle: "Web Developer",
     logoAria: "Нүүр хуудас",
     menuAria: "Цэс нээх",
   },
@@ -190,7 +190,7 @@ export const mn: typeof ja = {
     noSummary: "Товч тайлбар удахгүй нэмэгдэнэ.",
     noDate: "Огноо тохируулагдаагүй",
     minRead: (minutes: number) => `${minutes} минут уншина`,
-    notFoundTitle: "Нийтлэл олдсонгүй | Zaya Portfolio",
+    notFoundTitle: "Нийтлэл олдсонгүй | Zaya-dev",
     categoryLabels: {
       cloud: "Cloud",
       frontend: "Frontend",
@@ -439,7 +439,7 @@ export const mn: typeof ja = {
 },
 
   footer: {
-    title: "Zaya Portfolio",
+    title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
     copyright: "© 2026 Designed & Built by Zaya",
   },

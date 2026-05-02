@@ -9,7 +9,7 @@ export default async function BlogPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
 
   const t = getMessages(locale).blog;
   const posts = await getBlogPosts(locale);

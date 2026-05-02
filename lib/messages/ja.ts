@@ -8,7 +8,7 @@ export const ja: typeof en = {
       "モンゴル語・日本語・英語を強みに持つAI駆動フルスタックエンジニア。Next.jsを用いた高速・高品質なWeb開発で、グローバルなサービス構築を支援します。",
   },
   header: {
-    subtitle: "ポートフォリオ",
+    subtitle: "Web Developer",
     logoAria: "トップページへ移動",
     menuAria: "メニューを開く",
   },
@@ -178,7 +178,7 @@ projects: {
     noSummary: "要約は後で追加します。",
     noDate: "日付未設定",
     minRead: (minutes: number) => `${minutes}分で読めます`,
-    notFoundTitle: "記事が見つかりません | Zaya Portfolio",
+    notFoundTitle: "記事が見つかりません | Zaya-dev",
     categoryLabels: {
       cloud: "クラウド",
       frontend: "フロントエンド",
@@ -423,7 +423,7 @@ contact: {
     "小規模事業者・個人事業主・クリエイター向けに、低コストでも伝わるWebサイトを制作します。",
 },
   footer: {
-    title: "Zaya Portfolio",
+    title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
     copyright: "© 2026 Designed & Built by Zaya",
   },

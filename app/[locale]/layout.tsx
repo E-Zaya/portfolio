@@ -59,7 +59,7 @@ export async function generateMetadata({
           url: "/og-image.png",
           width: 1200,
           height: 630,
-          alt: "Zaya portfolio OGP image",
+          alt: "Zaya-dev OGP image",
         },
       ],
     },

@@ -7,7 +7,7 @@ export default async function ContactPage({
   params: Promise<{ locale: string }>;
 }) {
   const { locale: rawLocale } = await params;
-  const locale: Locale = isLocale(rawLocale) ? rawLocale : "en";
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
 
   return <ContactSection locale={locale} />;
 }
