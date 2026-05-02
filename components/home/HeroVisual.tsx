@@ -91,9 +91,9 @@ export default function HeroVisual() {
           }}
         >
           <div className="flex items-center gap-1.5">
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#ff5f56" }} />
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#ffbd2e" }} />
-            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "#27c93f" }} />
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--blog-code-dot-red)" }} />
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--blog-code-dot-yellow)" }} />
+            <span className="h-2.5 w-2.5 rounded-full" style={{ background: "var(--blog-code-dot-green)" }} />
           </div>
 
           <div
@@ -545,7 +545,7 @@ function SceneAdmin({ data }: { data: AdminScene }) {
 
               <div
                 className="text-[7px] font-bold"
-                style={{ color: kpi.up ? "var(--accent-1)" : "#f87171" }}
+                style={{ color: kpi.up ? "var(--accent-1)" : "var(--color-error)" }}
               >
                 {kpi.change}
               </div>

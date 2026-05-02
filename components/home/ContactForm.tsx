@@ -50,7 +50,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   return (
     <Card
       gradientBorder
-      className="relative overflow-hidden rounded-[24px] sm:rounded-[32px] p-5 sm:p-7 md:p-9"
+      className="relative overflow-hidden rounded-3xl sm:rounded-4xl p-5 sm:p-7 md:p-9"
     >
       <div
         className="absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl"
@@ -93,7 +93,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 type="text"
                 name="name"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[color:var(--accent-2)]"
                 placeholder={t.form.namePlaceholder}
               />
             </label>
@@ -104,7 +104,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 type="email"
                 name="email"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[color:var(--accent-2)]"
                 placeholder={t.form.emailPlaceholder}
               />
             </label>
@@ -116,7 +116,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
               name="message"
               rows={6}
               required
-              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
+              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[color:var(--accent-2)]"
               placeholder={t.form.messagePlaceholder}
             />
           </label>
@@ -134,7 +134,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
               </p>
             )}
             {state === "error" && (
-              <p className="text-red-300">
+              <p className="text-[color:var(--color-error)]">
                 {errorMessage || t.form.error}
               </p>
             )}

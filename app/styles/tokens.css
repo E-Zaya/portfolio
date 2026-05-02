@@ -34,6 +34,7 @@
 
   --color-success: #34d399;
   --color-warning: #fbbf24;
+  --color-error: #f87171;
 
   --header-bg: rgba(8, 17, 32, 0.72);
   --header-bg-strong: rgba(8, 17, 32, 0.84);
@@ -114,6 +115,7 @@ html.light {
 
   --color-success: #22c55e;
   --color-warning: #f59e0b;
+  --color-error: #ef4444;
 
   --brand-email: #ea4335;
   --brand-github: #181717;
