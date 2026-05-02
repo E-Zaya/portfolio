@@ -88,54 +88,54 @@ export default function ContactForm({ locale }: { locale: Locale }) {
 
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block">
-              <span className="mb-2 block text-sm text-soft">Name</span>
+              <span className="mb-2 block text-sm text-soft">{t.form.nameLabel}</span>
               <input
                 type="text"
                 name="name"
                 required
                 className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
-                placeholder="Your name"
+                placeholder={t.form.namePlaceholder}
               />
             </label>
 
             <label className="block">
-              <span className="mb-2 block text-sm text-soft">Email</span>
+              <span className="mb-2 block text-sm text-soft">{t.form.emailLabel}</span>
               <input
                 type="email"
                 name="email"
                 required
                 className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
-                placeholder="you@example.com"
+                placeholder={t.form.emailPlaceholder}
               />
             </label>
           </div>
 
           <label className="block">
-            <span className="mb-2 block text-sm text-soft">Message</span>
+            <span className="mb-2 block text-sm text-soft">{t.form.messageLabel}</span>
             <textarea
               name="message"
               rows={6}
               required
               className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-white/35"
-              placeholder="Tell me about your project or idea."
+              placeholder={t.form.messagePlaceholder}
             />
           </label>
 
           <div className="flex flex-wrap items-center gap-3">
             <Button type="submit" variant="primary" className="px-5 py-3">
-              {state === "loading" ? "Sending..." : "Send Message"}
+              {state === "loading" ? t.form.sending : t.form.submit}
             </Button>
           </div>
 
           <div aria-live="polite" className="min-h-6 text-sm">
             {state === "success" && (
               <p className="text-soft">
-                Your message has been sent successfully.
+                {t.form.success}
               </p>
             )}
             {state === "error" && (
               <p className="text-red-300">
-                {errorMessage || "Something went wrong. Please try again."}
+                {errorMessage || t.form.error}
               </p>
             )}
           </div>

@@ -88,10 +88,7 @@ export type ServicesContent = {
     production: ServicesFeeItem;
     maintenance: ServicesFeeItem;
     external: ServicesFeeItem;
-    delivery: {
-      title: string;
-      description: string;
-    };
+    delivery: ServicesFeeItem;
   };
 
   faq: {
@@ -100,17 +97,14 @@ export type ServicesContent = {
   };
 };
 
-// project status
 export type ProjectStatus = "Completed" | "In Progress";
 
-// project text item
 export type ProjectMessageItem = {
   title: string;
   description: string;
   summary: string;
 };
 
-// projects section content
 export type ProjectsContent = {
   eyebrow: string;
   titleA: string;
@@ -154,6 +148,7 @@ export type HeroVisualContent = {
       socialProofNumber: string;
       socialProofText: string;
     };
+
     admin: {
       logo: string;
       menu: string[];
@@ -162,14 +157,180 @@ export type HeroVisualContent = {
       kpis: HeroKpi[];
       months: string[];
     };
+
     database: {
       queryTable: string;
       columns: ["id", "name", "email", "status"];
       rows: HeroDatabaseRow[];
     };
+
     multilingual: {
       langs: HeroLanguageLine[];
       footer: string;
     };
   };
+};
+
+// Contact form text
+export type ContactFormContent = {
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  sending: string;
+  submit: string;
+  success: string;
+  error: string;
+};
+
+export type ContactContent = {
+  eyebrow: string;
+  titleA: string;
+  titleB: string;
+  description: string;
+
+  primaryLabel: string;
+  primaryTitle: string;
+  primaryDescription: string;
+
+  emailLabel: string;
+  copy: string;
+  copied: string;
+  send: string;
+  viewProjects: string;
+
+  socialTitle: string;
+  connectVia: string;
+
+  availabilityLabel: string;
+  availability: string;
+
+  form: ContactFormContent;
+};
+
+export type BlogContent = {
+  filterLabel: string;
+  browseTitle: string;
+  backToAllPosts: string;
+  breadcrumbHome: string;
+  breadcrumbBlog: string;
+  breadcrumbAria: string;
+  toc: string;
+  tocItemAria: string;
+  related: string;
+  readMore: string;
+  allTags: string;
+  noPostsTitle: string;
+  noPostsDescription: string;
+  copyCode: string;
+  copiedCode: string;
+  copyCodeAria: string;
+  untitled: string;
+  uncategorized: string;
+  noSummary: string;
+  noDate: string;
+  minRead: (minutes: number) => string;
+  notFoundTitle: string;
+  categoryLabels: {
+    cloud: string;
+    frontend: string;
+    engineering: string;
+    diary: string;
+  };
+};
+
+export type Messages = {
+  meta: {
+    title: string;
+    description: string;
+  };
+
+  header: {
+    subtitle: string;
+    logoAria: string;
+    menuAria: string;
+  };
+
+  nav: {
+    label: string;
+    href: string;
+  }[];
+
+  hero: {
+    eyebrow: string;
+    title: string;
+    highlight: string;
+    description: string;
+    badges: string[];
+    primaryCta: string;
+    secondaryCta: string;
+
+    meta: {
+      status: string;
+      focus: string;
+      location: string;
+    };
+
+    techLine: string;
+    visualHint: string;
+
+    features: {
+      title: string;
+      description: string;
+    }[];
+
+    visual: {
+      label: string;
+      title: string;
+      items: string[];
+      captions: string[];
+    };
+  };
+
+  skills: {
+    eyebrow: string;
+  };
+
+  about: {
+    eyebrow: string;
+    title: string;
+    paragraphs: string[];
+    strengthsEyebrow: string;
+    strengthsTitle: string;
+
+    strengths: {
+      title: string;
+      description: string;
+    }[];
+
+    journeyEyebrow: string;
+    journeyTitle: string;
+
+    journey: {
+      year: string;
+      title: string;
+      description: string;
+    }[];
+  };
+
+  projects: ProjectsContent;
+  blog: BlogContent;
+  services: ServicesContent;
+  contact: ContactContent;
+
+  footer: {
+    title: string;
+    subtitle: string;
+    copyright: string;
+  };
+
+  langToggle: {
+    en: string;
+    ja: string;
+    mn: string;
+  };
+
+  visual: HeroVisualContent;
 };
