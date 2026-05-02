@@ -6,7 +6,7 @@
   --foreground: #f8fafc;
 
   --text-soft: rgba(241, 245, 249, 0.84);
-  --text-muted: rgba(226, 232, 240, 0.72);
+  --text-muted: rgba(226, 232, 240, 0.80);
 
   --card: rgba(255, 255, 255, 0.08);
   --card-strong: rgba(255, 255, 255, 0.12);
@@ -31,6 +31,9 @@
   --surface-glow-strong: rgba(255, 255, 255, 0.1);
 
   --button-foreground: #ffffff;
+
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
 
   --header-bg: rgba(8, 17, 32, 0.72);
   --header-bg-strong: rgba(8, 17, 32, 0.84);
@@ -91,10 +94,10 @@ html.light {
   --foreground: #0f172a;
 
   --text-soft: rgba(15, 23, 42, 0.84);
-  --text-muted: rgba(30, 41, 59, 0.72);
+  --text-muted: rgba(30, 41, 59, 0.80);
 
-  --card: rgba(255, 255, 255, 0.74);
-  --card-strong: rgba(255, 255, 255, 0.9);
+  --card: rgba(255, 255, 255, 0.55);
+  --card-strong: rgba(255, 255, 255, 0.72);
   --border: rgba(100, 116, 139, 0.22);
 
   --shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
@@ -109,7 +112,9 @@ html.light {
 
   --button-foreground: #ffffff;
 
-  
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+
   --brand-email: #ea4335;
   --brand-github: #181717;
   --brand-instagram: #e4405f;

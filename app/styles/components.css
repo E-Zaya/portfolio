@@ -151,14 +151,29 @@
 }
 
 .section-space {
-  /* mobile-first: smaller vertical padding */
-  padding: 20px 0;
+  padding: 32px 0;
 }
 @media (min-width: 48rem) {
-  /* medium screens and above: restore original spacing */
   .section-space {
-    padding: 30px 0;
+    padding: 56px 0;
   }
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  background: linear-gradient(
+    90deg,
+    var(--accent-1),
+    var(--accent-2),
+    var(--accent-3),
+    var(--accent-4)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .grid-auto {

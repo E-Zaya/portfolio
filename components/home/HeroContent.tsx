@@ -23,7 +23,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
       </p>
 
       {/* headline */}
-<h1 className="jp-tight whitespace-pre-line text-[2rem] font-black leading-[1.08] tracking-[-0.05em] text-foreground sm:text-[2.4rem] sm:leading-[1.06] md:text-[3.4rem] lg:text-[3.9rem] xl:text-[4.2rem]">        <span className="block whitespace-pre-line">{t.title}</span>
+<h1 className="jp-tight whitespace-pre-line text-[2rem] font-black leading-[1.15] tracking-[-0.05em] text-foreground sm:text-[2.4rem] sm:leading-[1.08] md:text-[3.4rem] md:leading-[1.06] lg:text-[3.9rem] xl:text-[4.2rem]">        <span className="block whitespace-pre-line">{t.title}</span>
         <span className="block whitespace-pre-line hero-gradient">
           {t.highlight}
         </span>

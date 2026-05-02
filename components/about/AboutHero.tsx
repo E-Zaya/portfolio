@@ -29,7 +29,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
 
 
       <div className="max-w-3xl">
-        <p className="hero-gradient mb-3 text-sm uppercase tracking-[0.3em]">{t.eyebrow}</p>
+        <p className="eyebrow mb-3">{t.eyebrow}</p>
 
         <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">
           {t.title}
