@@ -1,0 +1,152 @@
+/* ── Project badges ── */
+.badge-completed {
+  border-color: color-mix(in srgb, var(--accent-1) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+  color: var(--accent-1);
+}
+
+.badge-in-progress {
+  border-color: color-mix(in srgb, var(--accent-4) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-4) 12%, transparent);
+  color: var(--accent-4);
+}
+
+.badge-featured {
+  border-color: color-mix(in srgb, var(--accent-3) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-3) 12%, transparent);
+  color: var(--accent-3);
+}
+
+/* ── Project card ── */
+.project-card {
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+.project-detail-hint {
+  transition: color 0.2s ease;
+}
+
+.project-card:hover .project-detail-hint {
+  color: var(--foreground);
+}
+
+.project-detail-arrow {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-card:hover .project-detail-arrow {
+  transform: translateX(5px);
+}
+
+/* ── Modal backdrop ── */
+@keyframes project-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes project-modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-modal-backdrop {
+  animation: project-backdrop-in 0.22s ease forwards;
+  background: rgba(8, 17, 32, 0.76);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.project-modal-panel {
+  animation: project-modal-in 0.32s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Modal close button ── */
+.project-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.project-modal-close:hover {
+  background: var(--card-strong);
+  color: var(--foreground);
+  transform: scale(1.08);
+}
+
+/* ── Info blocks (scope / focus) ── */
+.project-info-block {
+  background: color-mix(in srgb, var(--card-strong) 70%, transparent);
+  transition: background 0.2s ease;
+}
+
+.project-info-block:hover {
+  background: color-mix(in srgb, var(--card-strong) 90%, transparent);
+}
+
+/* ── WIP dot pulse ── */
+@keyframes wip-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+}
+
+.wip-dot {
+  animation: wip-pulse 2.4s ease-in-out infinite;
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .project-card {
+    transition: none;
+  }
+  .project-modal-backdrop,
+  .project-modal-panel {
+    animation: none;
+  }
+  .project-detail-arrow,
+  .project-modal-close {
+    transition: none;
+  }
+  .wip-dot {
+    animation: none;
+  }
+}

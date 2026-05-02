@@ -103,6 +103,13 @@ export type ProjectMessageItem = {
   title: string;
   description: string;
   summary: string;
+  scope: string;
+  focus: string;
+};
+
+export type WipMessageItem = {
+  title: string;
+  description: string;
 };
 
 export type ProjectsContent = {
@@ -117,11 +124,19 @@ export type ProjectsContent = {
   featuredBadge: string;
   liveDemo: string;
   viewCode: string;
+  scopeLabel: string;
+  focusLabel: string;
+  wipTitle: string;
+  wipStatus: string;
   status: Record<ProjectStatus, string>;
 
   // projectItems の slug を key として使う
   // 新しい project を追加しても、types.ts の修正は不要
   items: Record<string, ProjectMessageItem>;
+
+  wip: {
+    items: Record<string, WipMessageItem>;
+  };
 };
 
 export type HeroVisualContent = {
@@ -305,14 +320,6 @@ export type Messages = {
       description: string;
     }[];
 
-    journeyEyebrow: string;
-    journeyTitle: string;
-
-    journey: {
-      year: string;
-      title: string;
-      description: string;
-    }[];
   };
 
   projects: ProjectsContent;

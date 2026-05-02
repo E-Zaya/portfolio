@@ -3,11 +3,16 @@ import type { ProjectStatus } from "@/lib/messages/types";
 export type ProjectItem = {
   slug: string;
   image: string;
-  tech: string[];
+  tech: readonly string[];
   github?: string;
   demo?: string;
   status: ProjectStatus;
   featured?: boolean;
+};
+
+export type WipItem = {
+  slug: string;
+  tech: readonly string[];
 };
 
 export const projectItems = [
@@ -30,5 +35,21 @@ export const projectItems = [
   //   featured: true,
   // },
 ] as const satisfies readonly ProjectItem[];
+
+// 制作中のプロジェクト — slug を追加するだけで WipSection に表示される
+export const wipItems: readonly WipItem[] = [
+  {
+    slug: "lookbook",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+  },
+  {
+    slug: "portfolio",
+    tech: ["Next.js", "TypeScript"],
+  },
+  {
+    slug: "local-business",
+    tech: ["Next.js", "Tailwind CSS"],
+  },
+];
 
 export type ProjectSlug = (typeof projectItems)[number]["slug"];

@@ -91,41 +91,43 @@ export const en = {
           "My 10 years in Japan instilled in me a deep appreciation for detail and professional responsibility. Beyond just coding, I prioritize clear communication and thorough documentation to ensure team success.",
       },
     ],
-    journeyEyebrow: "Journey",
-    journeyTitle: "My Path So Far",
-    journey: [
-      {
-        year: "2016",
-        title: "The Japan Chapter",
-        description:
-          "Relocated to Japan, building a foundation of cross-cultural understanding and a global mindset over the next decade.",
-      },
-      {
-        year: "2026",
-        title: "The Creative Pivot",
-        description:
-          "Chose to move from 'consuming' to 'creating.' Returned to Mongolia to dedicate myself to a future in engineering.",
-      },
-      {
-        year: "Now",
-        title: "IO Institute",
-        description:
-          "Evolving daily in an intensive environment, mastering full-stack skills and turning yesterday's challenges into today's capabilities.",
-      },
-      {
-        year: "Future",
-        title: "Global Developer",
-        description:
-          "Aiming to build products that innovate daily life across borders and devices. On a mission to become a world-class creator.",
-      },
-    ],
+        // 以前入れてたけど、あまりに個人的な内容だったので削除した経歴セクションの内容。必要なら復活させる。
+
+    // journeyEyebrow: "Journey",
+    // journeyTitle: "My Path So Far",
+    // journey: [
+    //   {
+    //     year: "2016",
+    //     title: "The Japan Chapter",
+    //     description:
+    //       "Relocated to Japan, building a foundation of cross-cultural understanding and a global mindset over the next decade.",
+    //   },
+    //   {
+    //     year: "2026",
+    //     title: "The Creative Pivot",
+    //     description:
+    //       "Chose to move from 'consuming' to 'creating.' Returned to Mongolia to dedicate myself to a future in engineering.",
+    //   },
+    //   {
+    //     year: "Now",
+    //     title: "IO Institute",
+    //     description:
+    //       "Evolving daily in an intensive environment, mastering full-stack skills and turning yesterday's challenges into today's capabilities.",
+    //   },
+    //   {
+    //     year: "Future",
+    //     title: "Global Developer",
+    //     description:
+    //       "Aiming to build products that innovate daily life across borders and devices. On a mission to become a world-class creator.",
+    //   },
+    // ],
   },
   projects: {
     eyebrow: "Projects",
     titleA: "Featured",
     titleB: "Work",
     description:
-      "A selection of projects focused on real-world usability, performance, and clean UI design. Each one reflects my commitment to maintainable and scalable code.",
+      "Handling everything from design to deployment solo — built with a focus on both usability and visual polish.",
     featuredEyebrow: "Featured",
     featuredTitle: "Main Project",
     otherEyebrow: "Archive",
@@ -133,6 +135,10 @@ export const en = {
     featuredBadge: "Featured",
     liveDemo: "Live Demo",
     viewCode: "View Code",
+    scopeLabel: "My Role",
+    focusLabel: "What I Focused On",
+    wipTitle: "Work in Progress",
+    wipStatus: "In Progress",
     status: {
       Completed: "Completed",
       "In Progress": "In Progress",
@@ -144,6 +150,10 @@ export const en = {
           "A full-stack tracking app with volume analysis and exercise management.",
         summary:
           "Built with Next.js, Prisma, and PostgreSQL. Features exercise management and weekly volume visualization, designed with a focus on intuitive UX and clean UI.",
+        scope:
+          "Sole developer — handled design, frontend, backend, DB schema, and deployment end to end.",
+        focus:
+          "Making logging feel effortless and weekly volume charts easy to read at a glance.",
       },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
@@ -151,6 +161,30 @@ export const en = {
           "A brand lookbook website designed to communicate the visual identity and atmosphere of Soul Skin.",
         summary:
           "Built as a lookbook-style website focused on brand presentation, visual flow, and clear navigation toward Instagram and contact links rather than direct e-commerce.",
+        scope:
+          "Sole developer — handled design, frontend implementation, content structure, and deployment.",
+        focus:
+          "Conveying the brand's atmosphere through visuals and creating a natural flow toward SNS and contact.",
+      },
+    },
+
+    wip: {
+      items: {
+        lookbook: {
+          title: "Lookbook Site",
+          description:
+            "A visual-first lookbook site to communicate an apparel brand's world.",
+        },
+        portfolio: {
+          title: "Portfolio Redesign",
+          description:
+            "Refining this site's design, UX, and performance — ongoing.",
+        },
+        "local-business": {
+          title: "Local Business Site",
+          description:
+            "A clean, easy-to-use website for small businesses and independent shops.",
+        },
       },
     },
   },

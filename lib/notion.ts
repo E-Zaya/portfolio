@@ -23,12 +23,17 @@ function getBlogDatabaseId(): string {
   return dbId;
 }
 
-// [FIX] ブログ記事だけは mn ページでも日本語記事を表示する
-function normalizeBlogLang(lang?: string): string | undefined {
+// ブログ記事はページ言語ごとに表示対象を調整する
+// ja → ja
+// mn → ja + mn
+// en → ja + en
+function normalizeBlogLangs(lang?: string): string[] | undefined {
   if (!lang) return undefined;
-  if (lang === "mn") return "ja";
 
-  return lang;
+  if (lang === "mn") return ["ja", "mn"];
+  if (lang === "en") return ["ja", "en"];
+
+  return [lang];
 }
 
 export type PostMeta = {
@@ -119,7 +124,6 @@ function pageToPostMeta(page: BlogPage): PostMeta {
 
     // Notion の期限付き S3 URL を使わず、public 配下の静的パスを使う
     // 画像ファイルは /public/images/blog/{slug}.png に配置する想定
-    // ファイルが未用意の場合は /images/blog/example.png へのフォールバックを参照
     cover: `/images/blog/${slug}.png`,
 
     // Notion DB の ReadingTime (Number) プロパティを使用
@@ -138,13 +142,18 @@ function toFilter(
 }
 
 export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
-  const blogLang = normalizeBlogLang(lang);
+  const blogLangs = normalizeBlogLangs(lang);
 
-  const filter = blogLang
+  const filter = blogLangs
     ? toFilter({
         and: [
           { property: "Published", checkbox: { equals: true } },
-          { property: "Lang", select: { equals: blogLang } },
+          {
+            or: blogLangs.map((blogLang) => ({
+              property: "Lang",
+              select: { equals: blogLang },
+            })),
+          },
         ],
       })
     : toFilter({
@@ -167,14 +176,19 @@ export async function getBlogPost(
   slug: string,
   lang?: string,
 ): Promise<Post | null> {
-  const blogLang = normalizeBlogLang(lang);
+  const blogLangs = normalizeBlogLangs(lang);
 
-  const filter = blogLang
+  const filter = blogLangs
     ? toFilter({
         and: [
           { property: "Published", checkbox: { equals: true } },
           { property: "Slug", rich_text: { equals: slug } },
-          { property: "Lang", select: { equals: blogLang } },
+          {
+            or: blogLangs.map((blogLang) => ({
+              property: "Lang",
+              select: { equals: blogLang },
+            })),
+          },
         ],
       })
     : toFilter({
