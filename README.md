@@ -45,7 +45,7 @@ The site is built with a Japanese-first structure and supports three languages:
 
 ## Project Structure
 
-```txt
+```txt.
 app/
   [locale]/
     page.tsx
