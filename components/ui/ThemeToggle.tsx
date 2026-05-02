@@ -20,7 +20,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/70 text-foreground shadow-theme backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/30 hover:bg-card-strong hover:shadow-lg active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
+      className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/70 text-foreground shadow-theme backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-[color:var(--accent-1)] hover:bg-card-strong hover:shadow-lg active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
     >
       {/* radial glow on hover */}
       <span

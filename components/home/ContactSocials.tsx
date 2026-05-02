@@ -11,7 +11,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
   const snsLinks = socialLinks.filter((item) => item.name !== "Email");
 
   return (
-    <Card strong className="rounded-[24px] p-4 sm:rounded-[32px] sm:p-6 md:p-7">
+    <Card strong className="rounded-3xl p-4 sm:rounded-4xl sm:p-6 md:p-7">
       <p className="text-sm uppercase tracking-[0.22em] text-muted">
         {t.socialTitle}
       </p>
@@ -27,7 +27,8 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
               href={item.url}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 transition duration-300 hover:scale-[1.01] md:py-4"
+              aria-label={`${item.name} へのリンク (新しいタブで開く)`}
+              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 transition duration-300 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:py-4"
             >
               <div className="flex items-center gap-4">
                 {/* icon */}

@@ -26,11 +26,17 @@ export default function LanguageBadgeList({
   return (
     <div className={cn("flex flex-wrap justify-center gap-2", className)}>
       {items.map((lang) => (
-        <motion.div key={lang.code} whileHover={{ scale: 1.1, rotate: 5 }} className="shadow-lg">
+        <motion.div
+          key={lang.code}
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          className="shadow-lg"
+          aria-label={`${lang.code} language`}
+        >
           <div className="inline-flex items-center gap-1 rounded-full border border-border bg-card/80 px-2.5 py-1 text-xs text-foreground backdrop-blur">
             <ReactCountryFlag
               countryCode={lang.country}
               svg
+              aria-hidden="true"
               style={{ width: "1em", height: "1em" }}
             />
             <span>{lang.code}</span>
