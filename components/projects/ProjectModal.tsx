@@ -61,8 +61,13 @@ export function ProjectModal({ project, itemText, t, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="project-modal-panel glass-strong relative w-full max-w-3xl overflow-y-auto rounded-3xl sm:rounded-4xl"
-        style={{ maxHeight: "90dvh" }}
+        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-3xl sm:rounded-4xl"
+        style={{
+          maxHeight: "90dvh",
+          background: "var(--background-2)",
+          border: "1px solid var(--border)",
+          boxShadow: "0 32px 80px rgba(0, 0, 0, 0.5)",
+        }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}

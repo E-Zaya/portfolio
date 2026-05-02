@@ -136,7 +136,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   )}
                   {/* note */}
                   {plan.note && (
-                    <div className="mt-5 border-l-2 border-primary pl-4">
+                    <div className="mt-5 border-l-2 border-[var(--accent-2)] pl-4">
                       <p className="text-sm leading-relaxed text-muted">
                         {plan.note}
                       </p>
@@ -264,7 +264,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </div>
 
           {/* mobile stepper */}
-          <ol className="list-none space-y-0 sm:hidden">
+          <ol className="block list-none space-y-0 sm:hidden">
             {t.process.steps.map((step, index) => {
               const isLast = index === t.process.steps.length - 1;
 

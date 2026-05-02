@@ -22,15 +22,15 @@ type LinkProps = SharedProps &
   };
 
 const baseClass =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
 
 const variants: Record<Variant, string> = {
   primary:
-    "border border-transparent bg-[linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3))] text-[var(--button-foreground)] shadow-theme hover:shadow-xl",
-  secondary: "border border-border bg-card text-foreground shadow-theme hover:bg-card/80",
-  ghost: "border border-transparent bg-transparent text-soft hover:text-foreground hover:bg-card/50",
+    "border border-transparent bg-[linear-gradient(90deg,var(--accent-1),var(--accent-2),var(--accent-3))] text-[var(--button-foreground)] shadow-theme hover:shadow-xl focus-visible:ring-[color:var(--accent-1)]",
+  secondary: "border border-border bg-card text-foreground shadow-theme hover:bg-card/80 focus-visible:ring-[color:var(--accent-2)]",
+  ghost: "border border-transparent bg-transparent text-soft hover:text-foreground hover:bg-card/50 focus-visible:ring-[color:var(--accent-2)]",
   outline:
-    "border-2 border-border bg-transparent text-foreground hover:bg-card/60 hover:border-white/25",
+    "border-2 border-border bg-transparent text-foreground hover:bg-card/60 hover:border-white/25 focus-visible:ring-[color:var(--accent-2)]",
 };
 
 const sizes: Record<Size, string> = {

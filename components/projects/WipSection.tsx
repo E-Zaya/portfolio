@@ -27,7 +27,7 @@ export function WipSection({ projects, t }: Props) {
           >
             {/* Status indicator */}
             <div className="mb-4 flex items-center gap-2">
-              <span className="wip-dot h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="wip-dot h-2 w-2 rounded-full" />
               <span className="text-xs text-muted">{t.wipStatus}</span>
             </div>
 
