@@ -134,12 +134,13 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       ⏱ {timeline}
                     </p>
                   )}
-
                   {/* note */}
                   {plan.note && (
-                    <p className="mt-4 text-xs leading-relaxed text-soft">
-                      {plan.note}
-                    </p>
+                    <div className="mt-5 border-l-2 border-primary pl-4">
+                      <p className="text-sm leading-relaxed text-muted">
+                        {plan.note}
+                      </p>
+                    </div>
                   )}
 
                   {/* CTA */}

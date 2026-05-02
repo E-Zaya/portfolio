@@ -1,5 +1,5 @@
 import AboutHero from "@/components/about/AboutHero";
-import AboutJourney from "@/components/about/AboutJourney";
+// import AboutJourney from "@/components/about/AboutJourney";
 import AboutSocialLinks from "@/components/about/AboutSocialLinks";
 import AboutStrengths from "@/components/about/AboutStrengths";
 import { type Locale } from "@/lib/i18n";
@@ -27,7 +27,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
           <div className="relative z-10 space-y-14 md:space-y-16">
             <AboutHero locale={locale} />
             <AboutStrengths locale={locale} />
-            <AboutJourney locale={locale} />
+            {/* <AboutJourney locale={locale} /> */}
             <AboutSocialLinks />
           </div>
         </div>
