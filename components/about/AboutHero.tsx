@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { getMessages, type Locale } from "@/lib/i18n";
+import ReactCountryFlag from "react-country-flag";
 
 const fadeUp = {
   initial: { opacity: 0, y: 28 },
@@ -10,6 +11,12 @@ const fadeUp = {
   viewport: { once: true, amount: 0.2 },
   transition: { duration: 0.7 },
 };
+
+const languages = [
+  { code: "MN", country: "MN", level: "Native" },
+  { code: "JA", country: "JP", level: "Fluent" },
+  { code: "EN", country: "US", level: "Business" },
+];
 
 export default function AboutHero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).about;
@@ -31,10 +38,40 @@ export default function AboutHero({ locale }: { locale: Locale }) {
         <div className="gradient-line mt-4 h-px w-28" />
 
         <div className="mt-6 space-y-5 text-soft">
-          {t.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="leading-8">
+          {t.paragraphs.map((paragraph, index) => (
+            <motion.p
+              key={paragraph}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
+              className="leading-8"
+            >
               {paragraph}
-            </p>
+            </motion.p>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-wrap gap-2">
+          {languages.map((lang, index) => (
+            <motion.div
+              key={lang.code}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: 0.55 + index * 0.1 }}
+              whileHover={{ scale: 1.07, y: -2 }}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs shadow-sm backdrop-blur"
+            >
+              <ReactCountryFlag
+                countryCode={lang.country}
+                svg
+                style={{ width: "1.1em", height: "1.1em" }}
+              />
+              <span className="font-medium text-foreground">{lang.code}</span>
+              <span className="text-muted">·</span>
+              <span className="text-muted">{lang.level}</span>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -68,9 +68,9 @@ export const ja: typeof en = {
     eyebrow: "私について",
     title: "ゼロから開発者へ",
     paragraphs: [
-      "言語や文化の壁を、技術という共通言語でつないでいく。それが私の目指す開発者像です。多言語に触れてきた経験とグローバルな視点を活かし、文化の壁を感じさせない設計を追求することで、クリーンで本質的なデジタル体験を形にします。",
-      "日本で10年間を過ごした後、エンジニアとしての目標を本気で追求するためモンゴルへ帰国しました。現在は IO Institute の集中プログラムに身を置き、モダンなWeb開発スキルの習得に邁進しています。",
-      "10年間の日本生活で培った母国語レベルの日本語能力は、私の大きな武器です。日本の豊富な技術資産から深く学びつつ、英語によるグローバルな最新知見を組み合わせることで、常に多角的な視点から課題解決に取り組んでいます。",
+      "モンゴル語・日本語・英語の3言語を使いこなす開発者として、文化の壁を感じさせないデジタル体験を作ることが私のテーマです。",
+"日本で10年間を過ごした後、本気でエンジニアを目指すためモンゴルへ帰国。現在はIO Instituteでフルスタック開発を集中的に学んでいます。",
+"3言語それぞれの技術情報にアクセスできる視点を、設計と問題解決に活かしています。"
     ],
     strengthsEyebrow: "強み",
     strengthsTitle: "私が提供できること",
@@ -120,33 +120,41 @@ export const ja: typeof en = {
       },
     ],
   },
-  projects: {
-    eyebrow: "Projects",
-    titleA: "",
-    titleB: "主な実績",
-    description:
-      "実用性とクリーンなUIデザインにこだわったプロジェクト集です。それぞれのプロジェクトは、可読性が高く、管理しやすく構築しています。",
-    featuredEyebrow: "",
-    featuredTitle: "主要プロジェクト",
-    otherEyebrow: "その他のプロジェクト",
-    otherTitle: "その他の実績",
-    featuredBadge: "ピックアップ",
-    liveDemo: "デモを見る",
-    viewCode: "コードを見る",
-    status: {
-      Completed: "完了",
-      "In Progress": "開発中",
-    },
-    items: {
-      "workout-log": {
-        title: "筋トレ記録アプリ",
-        description:
-          "負荷分析と種目管理を備えたフルスタックの筋トレ記録アプリです。",
-        summary:
-          "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさを意識して設計しました。",
-      },
-    },
+projects: {
+  eyebrow: "",
+  titleA: "",
+  titleB: "主な実績",
+  description:
+    "",
+  featuredEyebrow: "",
+  featuredTitle: "主要プロジェクト",
+  otherEyebrow: "その他のプロジェクト",
+  otherTitle: "その他の実績",
+  featuredBadge: "ピックアップ",
+  liveDemo: "デモを見る",
+  viewCode: "コードを見る",
+  status: {
+    Completed: "完了",
+    "In Progress": "開発中",
   },
+  items: {
+    "workout-log": {
+      title: "筋トレ記録アプリ",
+      description:
+        "負荷分析と種目管理を備えたフルスタックの筋トレ記録アプリです。",
+      summary:
+        "Next.js、Prisma、PostgreSQL で構築。ワークアウト記録、種目管理、週ごとの負荷可視化ができ、使いやすさを意識して設計しました。",
+    },
+
+"soul-skin-brand-lookbook": {
+  title: "Soul Skin Brand Lookbook",
+  description:
+    "ブランドの世界観を伝えるためのLookbookサイトです。",
+  summary:
+    "商品販売ではなく、Instagramや問い合わせにつなげる導線を意識して、ビジュアル・ブランドイメージ・連絡先への流れを整理しました。",
+},
+  },
+},
   
   blog: {
     filterLabel: "タグで絞り込み",
@@ -389,27 +397,31 @@ export const ja: typeof en = {
     },
   },
 
-  contact: {
-    eyebrow: "連絡先",
-    titleA: "アイデアを、",
-    titleB: "濁りのないデジタル体験へ",
-    description:
-      "一つひとつのプロジェクトと深く向き合い、最適な設計とコードで価値を生み出します。小規模な実装からウェブアプリ開発まで、依頼をお待ちしてます。",
-    primaryLabel: "連絡先",
-    primaryTitle: "メールで連絡する",
-    primaryDescription:
-      "お仕事の相談、制作依頼、コラボ、質問など気軽にお問い合わせください。",
-    emailLabel: "メールアドレス",
-    copy: "アドレスをコピー",
-    copied: "コピーしました",
-    send: "メールを送信",
-    viewProjects: "プロジェクトを見",
-    socialTitle: "SNS",
-    connectVia: "",
-    availabilityLabel: "案件受付中",
-    availability:
-      "UIデザインから実装まで、一貫した体験を。共創のご相談、お待ちしています。",
-  },
+contact: {
+  eyebrow: "連絡先",
+  titleA: "あなたの事業に合う",
+  titleB: "Webサイトを作ります",
+  description:
+    "集客・信頼感・問い合わせ導線を意識したWebサイトを、デザインから実装まで一貫して制作します。LP、コーポレートサイト、ポートフォリオ、小規模なWebアプリまで対応可能です。",
+
+  primaryLabel: "無料相談",
+  primaryTitle: "まずはメールで相談する",
+  primaryDescription:
+    "「何を作ればいいかわからない」「予算内でできることを知りたい」といった段階でも問題ありません。",
+
+  emailLabel: "メールアドレス",
+  copy: "アドレスをコピー",
+  copied: "コピーしました",
+  send: "メールを送信",
+  viewProjects: "制作実績を見る",
+
+  socialTitle: "SNS",
+  connectVia: "",
+
+  availabilityLabel: "新規案件受付中",
+  availability:
+    "小規模事業者・個人事業主・クリエイター向けに、低コストでも伝わるWebサイトを制作します。",
+},
   footer: {
     title: "Zaya Portfolio",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",

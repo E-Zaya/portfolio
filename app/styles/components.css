@@ -552,3 +552,113 @@
   line-height: 1.75;
   color: var(--text-muted);
 }
+
+/* ── Loading screen ── */
+html[data-loading] .site-content {
+  visibility: hidden;
+}
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.loader-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, color-mix(in srgb, var(--accent-1) 22%, transparent), transparent 25%),
+    radial-gradient(circle at 90% 20%, color-mix(in srgb, var(--accent-3) 20%, transparent), transparent 22%),
+    radial-gradient(circle at 50% 100%, color-mix(in srgb, var(--accent-4) 16%, transparent), transparent 26%),
+    linear-gradient(135deg, var(--background), var(--background-2) 55%, var(--background-2));
+}
+
+.loader-ambient {
+  position: absolute;
+  height: min(72vw, 42rem);
+  width: min(72vw, 42rem);
+  border-radius: 9999px;
+  background: conic-gradient(
+    from 180deg,
+    transparent,
+    color-mix(in srgb, var(--accent-3) 16%, transparent),
+    color-mix(in srgb, var(--accent-2) 12%, transparent),
+    color-mix(in srgb, var(--accent-1) 12%, transparent),
+    transparent
+  );
+  opacity: 0.34;
+  filter: blur(82px);
+  animation: loader-spin 18s linear infinite;
+}
+
+.loader-content {
+  position: relative;
+  display: grid;
+  width: min(84vw, 320px);
+  justify-items: center;
+  gap: 20px;
+}
+
+.loader-logo-wrap {
+  position: relative;
+}
+
+.loader-logo-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-3) 30%, transparent),
+    color-mix(in srgb, var(--accent-2) 30%, transparent)
+  );
+  opacity: 0.78;
+  filter: blur(22px);
+}
+
+.loader-progress-area {
+  width: min(100%, 260px);
+  display: grid;
+  gap: 8px;
+}
+
+.loader-progress-labels {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: color-mix(in srgb, var(--foreground) 42%, transparent);
+}
+
+.loader-progress-track {
+  height: 4px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--foreground) 10%, transparent);
+}
+
+.loader-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--accent-3), var(--accent-2), var(--accent-1));
+  box-shadow:
+    0 0 14px color-mix(in srgb, var(--accent-2) 55%, transparent),
+    0 0 24px color-mix(in srgb, var(--accent-3) 28%, transparent);
+  transition: width 100ms ease-out;
+}
+
+@keyframes loader-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-ambient { animation: none; }
+}
