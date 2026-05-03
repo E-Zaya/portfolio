@@ -1,7 +1,59 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts, getAllTags } from "@/lib/notion";
 import BlogListClient from "@/components/blog/BlogListClient";
-import { getMessages, isLocale, withLocale, type Locale } from "@/lib/i18n";
+import { getMessages, isLocale, locales, withLocale, type Locale } from "@/lib/i18n";
+
+const blogMeta: Record<Locale, { title: string; description: string }> = {
+  ja: {
+    title: "ブログ | Zaya Dev",
+    description:
+      "Web開発・TypeScript・Next.jsなどについての技術記事を発信しています。",
+  },
+  en: {
+    title: "Blog | Zaya Dev",
+    description:
+      "Technical articles on web development, TypeScript, Next.js and more.",
+  },
+  mn: {
+    title: "Блог | Zaya Dev",
+    description:
+      "Вэб хөгжүүлэлт, TypeScript, Next.js болон бусад сэдвээр нийтлэл.",
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale: rawLocale } = await params;
+  const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
+  const { title, description } = blogMeta[locale];
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/blog`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/blog`])),
+    },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: `/${locale}/blog`,
+      locale: locale === "ja" ? "ja_JP" : locale === "mn" ? "mn_MN" : "en_US",
+      images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "Zaya Dev Blog" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og-image.png"],
+    },
+  };
+}
 
 export default async function BlogPage({
   params,
@@ -18,7 +70,7 @@ export default async function BlogPage({
   return (
     <main className="section-space pb-12 sm:pb-16 md:pb-20">
       <section className="container-custom">
-        <div className="relative overflow-hidden rounded-[24px] sm:rounded-[34px] border border-border bg-card px-4 pb-6 pt-4 sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl sm:rounded-4xl border border-border bg-card px-4 pb-6 pt-4 sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
           <div className="blog-shell-blob blog-shell-blob-bottom" />

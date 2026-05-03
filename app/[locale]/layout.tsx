@@ -84,8 +84,26 @@ export default async function LocaleLayout({
   // provided.  This keeps the UI consistent with the primary language.
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
 
+  const personJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Zaya E",
+    url: "https://ezaya.dev",
+    sameAs: [
+      "https://github.com/zaya-dev",
+    ],
+    jobTitle: "Web Developer",
+    knowsLanguage: ["ja", "mn", "en"],
+  };
+
   return (
     <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+      </head>
       <body>
         <script
           dangerouslySetInnerHTML={{
