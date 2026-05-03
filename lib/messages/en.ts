@@ -67,77 +67,49 @@ export const en = {
     eyebrow: "Tech Stack",
   },
   about: {
-    eyebrow: "About Me",
-    title: "From Consumer to Creator",
+    eyebrow: "About",
+    title: "A multilingual web developer",
     paragraphs: [
-      "I'm a full-stack developer fluent in Mongolian, Japanese, and English — three languages, three perspectives. After 10 years in Japan, I returned to Mongolia to fully pivot into web development. I now build multilingual websites and apps for clients who need to reach across cultures.",
+      "I build websites in Mongolian, Japanese, and English, with attention to both language and cultural context. My goal is to create websites that are easy to understand, easy to use, and clear for the people they are meant to reach.",
+      "After spending 10 years in Japan, I returned to Mongolia to seriously pursue a career as an engineer. I am currently studying full-stack development at IO Institute while also building websites for freelancers, small businesses, and independent creators.",
+      "Rather than relying on templates, I focus on the audience, purpose, and message behind each project so the final website communicates clearly.",
     ],
     strengthsEyebrow: "Strengths",
-    strengthsTitle: "What I Bring to the Table",
+    strengthsTitle: "What I can offer",
     strengths: [
       {
-        title: "Multilingual Tech Research",
+        title: "Multilingual web production",
         description:
-          "I navigate technical documentation in both Japanese and English with ease, allowing me to research deeply and implement the most effective solutions without being limited by language.",
+          "I can create websites in Japanese, Mongolian, and English while considering language, tone, and cultural differences. I can support both Japan-facing and Mongolia-facing projects.",
       },
       {
-        title: "Frontend Craftsmanship",
+        title: "Clear and practical UI design",
         description:
-          "Specializing in Next.js and React, I am dedicated to building interfaces that are not only clean and modern but also feel effortless to use.",
+          "Using Next.js and React, I build websites that are not only visually clean, but also easy to understand, easy to navigate, and practical for real users.",
       },
       {
-        title: "Precision & Ownership",
+        title: "Careful communication",
         description:
-          "My 10 years in Japan instilled in me a deep appreciation for detail and professional responsibility. Beyond just coding, I prioritize clear communication and thorough documentation to ensure team success.",
+          "I help organize your goals, budget, and required features before building. Even if this is your first website, I will explain the process clearly and keep the project moving step by step.",
       },
     ],
-        // 以前入れてたけど、あまりに個人的な内容だったので削除した経歴セクションの内容。必要なら復活させる。
-
-    // journeyEyebrow: "Journey",
-    // journeyTitle: "My Path So Far",
-    // journey: [
-    //   {
-    //     year: "2016",
-    //     title: "The Japan Chapter",
-    //     description:
-    //       "Relocated to Japan, building a foundation of cross-cultural understanding and a global mindset over the next decade.",
-    //   },
-    //   {
-    //     year: "2026",
-    //     title: "The Creative Pivot",
-    //     description:
-    //       "Chose to move from 'consuming' to 'creating.' Returned to Mongolia to dedicate myself to a future in engineering.",
-    //   },
-    //   {
-    //     year: "Now",
-    //     title: "IO Institute",
-    //     description:
-    //       "Evolving daily in an intensive environment, mastering full-stack skills and turning yesterday's challenges into today's capabilities.",
-    //   },
-    //   {
-    //     year: "Future",
-    //     title: "Global Developer",
-    //     description:
-    //       "Aiming to build products that innovate daily life across borders and devices. On a mission to become a world-class creator.",
-    //   },
-    // ],
   },
   projects: {
-    eyebrow: "Projects",
-    titleA: "Featured",
-    titleB: "Work",
+    eyebrow: "",
+    titleA: "",
+    titleB: "Selected Work",
     description:
-      "Handling everything from design to deployment solo — built with a focus on both usability and visual polish.",
-    featuredEyebrow: "Featured",
-    featuredTitle: "Main Project",
-    otherEyebrow: "Archive",
-    otherTitle: "Other Projects",
+      "Projects where I handled planning, design, implementation, and deployment myself, with attention to both usability and visual quality.",
+    featuredEyebrow: "",
+    featuredTitle: "Main Projects",
+    otherEyebrow: "Other Projects",
+    otherTitle: "Other Work",
     featuredBadge: "Featured",
-    liveDemo: "Live Demo",
+    liveDemo: "View Demo",
     viewCode: "View Code",
-    scopeLabel: "My Role",
-    focusLabel: "What I Focused On",
-    wipTitle: "Work in Progress",
+    scopeLabel: "Scope",
+    focusLabel: "Focus",
+    wipTitle: "Projects in Progress",
     wipStatus: "In Progress",
     status: {
       Completed: "Completed",
@@ -145,74 +117,70 @@ export const en = {
     },
     items: {
       "workout-log": {
-        title: "Workout Log",
+        title: "Workout Log App",
         description:
-          "A full-stack tracking app with volume analysis and exercise management.",
+          "A full-stack workout tracking app with volume analysis and exercise management.",
         summary:
-          "Built with Next.js, Prisma, and PostgreSQL. Features exercise management and weekly volume visualization, designed with a focus on intuitive UX and clean UI.",
+          "Built with Next.js, Prisma, and PostgreSQL. It includes workout logging, exercise management, and weekly training volume visualization, designed with usability in mind.",
         scope:
-          "Sole developer — handled design, frontend, backend, DB schema, and deployment end to end.",
+          "Handled planning, design, frontend, backend, database design, and deployment independently.",
         focus:
-          "Making logging feel effortless and weekly volume charts easy to read at a glance.",
+          "Making workout logging simple and weekly progress easy to understand at a glance.",
       },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
         description:
-          "A brand lookbook website designed to communicate the visual identity and atmosphere of Soul Skin.",
+          "A lookbook website designed to communicate the atmosphere and visual identity of a brand.",
         summary:
-          "Built as a lookbook-style website focused on brand presentation, visual flow, and clear navigation toward Instagram and contact links rather than direct e-commerce.",
+          "Built not as an e-commerce site, but as a visual brand presentation with a clear path toward Instagram and contact links.",
         scope:
-          "Sole developer — handled design, frontend implementation, content structure, and deployment.",
+          "Handled design, frontend implementation, content structure, and deployment independently.",
         focus:
-          "Conveying the brand's atmosphere through visuals and creating a natural flow toward SNS and contact.",
+          "Communicating the brand’s atmosphere through visuals and creating a natural flow toward social media and contact.",
       },
     },
-
     wip: {
       items: {
         lookbook: {
-          title: "Lookbook Site",
+          title: "Lookbook Website",
           description:
-            "A visual-first lookbook site to communicate an apparel brand's world.",
+            "A visual-first lookbook website for presenting an apparel brand’s world and atmosphere.",
         },
         portfolio: {
-          title: "Portfolio Redesign",
-          description:
-            "Refining this site's design, UX, and performance — ongoing.",
+          title: "Portfolio Improvements",
+          description: "Improving this website’s design, UX, and performance.",
         },
         "local-business": {
-          title: "Local Business Site",
+          title: "Small Business Website",
           description:
-            "A clean, easy-to-use website for small businesses and independent shops.",
+            "A simple and practical website for independent shops and small local businesses.",
         },
       },
     },
   },
   blog: {
     filterLabel: "Filter by tag",
-    browseTitle: "Browse posts",
+    browseTitle: "All Posts",
     backToAllPosts: "Back to all posts",
     breadcrumbHome: "Home",
     breadcrumbBlog: "Blog",
     breadcrumbAria: "Breadcrumb",
     toc: "Table of Contents",
-    tocItemAria: "Jump to section",
+    tocItemAria: "Jump to heading",
     related: "Related Posts",
     readMore: "Read more",
     allTags: "All",
     noPostsTitle: "No posts found.",
-    noPostsDescription: "Try a different tag.",
+    noPostsDescription: "Try another tag.",
     copyCode: "Copy",
     copiedCode: "Copied",
-    copyCodeAria: "Copy code to clipboard",
-
-    // [FIX] BlogPostCTA の mailto を messages から取得
+    copyCodeAria: "Copy code",
     untitled: "Untitled post",
     uncategorized: "Uncategorized",
-    noSummary: "Summary will be added soon.",
+    noSummary: "Summary will be added later.",
     noDate: "Date not set",
     minRead: (minutes: number) => `${minutes} min read`,
-    notFoundTitle: "Article not found | Zaya Portfolio",
+    notFoundTitle: "Article not found | Zaya-dev",
     categoryLabels: {
       cloud: "Cloud",
       frontend: "Frontend",
@@ -221,57 +189,59 @@ export const en = {
     },
   },
 
-  // Services & Pricing page content
+  // Services page content
   services: {
-    title: "Services & Pricing",
+    title: "Web Design & Development Services",
     subtitle:
-      "For freelancers, small businesses, and creators — we design and build websites that drive results from scratch.",
+      "I design and build websites from scratch for freelancers, small businesses, local shops, and creators who want to attract customers and build trust online.",
     intro:
-      "From landing pages and corporate sites to admin dashboards, login systems, and multilingual support — we implement only what you need, nothing more.",
-    ctaLabel: "Contact Us",
-    bottomCtaTitle: "Feel free to start with just a consultation",
+      "From landing pages and business websites to admin screens, login features, and multilingual support, I build only what your project actually needs.",
+    ctaLabel: "Contact",
+    bottomCtaTitle: "You can start with a simple consultation",
     bottomCtaText:
-      "Even if you haven't finalized your requirements, that's perfectly fine. We'll work together to define the structure based on your goals and budget.",
+      "Your idea does not need to be fully organized yet. I can help you clarify the structure, features, and budget based on your goals.",
     introNote:
       "Introductory pricing is available for the first 5 projects only.",
     plans: {
       simple: {
         name: "Simple LP",
-        price: "200$ (incl. tax)",
+        price: "¥40,000〜¥50,000",
         description:
-          "Minimal structure. For those who need a quick, simple landing page.",
+          "A simple one-page landing page that introduces your service, shop, or offer clearly.",
         details: [
-          "1-page layout (LP)",
-          "Custom design",
-          "SNS links",
+          "1-page layout",
+          "Original design",
+          "Social media links",
           "Responsive design",
           "Basic SEO",
           "1 minor revision per month",
         ],
-        timeline: "≈7～14 days",
-        note: "Introductory pricing is available for the first 5 projects only.",
+        timeline: "From 7 to 14 days",
+        note: "The process will be smoother if you can prepare the basic text and images in advance.",
       },
       starter: {
         name: "Starter Website",
         badge: "Recommended",
-        price: "800$～900$ (incl. tax)",
-        description: "Recommended plan for showcasing your business properly.",
+        price: "¥80,000〜¥98,000",
+        description:
+          "Recommended for presenting your business properly with the essential pages.",
         details: [
           "3–4 pages",
-          "Custom design",
-          "News management",
-          "SNS links",
+          "Original design",
+          "News update feature",
+          "Social media links",
           "Responsive design",
-          "Basic SEO settings",
+          "Basic SEO setup",
           "2 minor revisions per month",
         ],
-        timeline: "≈3～4 weeks",
-        note: "A practical website with pages for your business info, portfolio and contact. Easily update announcements yourself.",
+        timeline: "3 to 4 weeks",
+        note: "A practical structure that includes your business information, key content, contact flow, and an easy way to update announcements.",
       },
       custom: {
         name: "Custom Development",
-        price: "From 1,500$ (consultation)",
-        description: "For feature-rich websites or web apps.",
+        price: "From ¥150,000 / consultation required",
+        description:
+          "For websites and small web apps that need custom features.",
         details: [
           "Login functionality",
           "Admin dashboard",
@@ -281,170 +251,177 @@ export const en = {
           "Multilingual support",
           "API integrations",
         ],
-        note: "Designed and developed based on your requirements. We can handle login, payment, database integrations and more.",
+        note: "The structure will be planned individually based on your required features, content, and how the site will be operated.",
       },
     },
     targetAudience: {
-      title: "Who This Service Is For",
+      title: "Recommended for",
       items: [
-        "Those who feel limited by social media alone for customer acquisition",
-        "Those who want to properly communicate the value of their business or service",
-        "Those who want a website tailored to their business, not a generic template",
-        "Those who want a high-quality website while keeping costs as low as possible",
-        "Those who want to keep improving their site through ongoing consultation after launch",
+        "People who feel limited by using social media alone",
+        "People who want to clearly explain their business, service, or offer",
+        "People who want a website tailored to their business instead of a generic template",
+        "People who want a high-quality website while keeping costs reasonable",
+        "People who want to keep improving their website after launch through consultation",
       ],
     },
     reasons: {
-      title: "Why Choose Us",
+      title: "Why work with me",
       items: [
         {
-          title: "Designed from Scratch",
+          title: "Designed from scratch",
           description:
-            "Rather than using templates as-is, we plan the structure based on your business, target audience, and goals.",
+            "I do not simply reuse templates. I plan the structure based on your business, target audience, and goals.",
         },
         {
-          title: "Conversion-Focused Design",
+          title: "Built with inquiries in mind",
           description:
-            "We design not just for looks, but for results — crafting CTAs, copy structure, and page flow that lead to inquiries and bookings.",
+            "The design is not only about appearance. I also consider CTAs, page flow, and content structure so visitors can take action more easily.",
         },
         {
-          title: "High Quality at Low Cost",
+          title: "Quality-focused, even at a lower price",
           description:
-            "As introductory pricing, we deliver agency-quality work at the lowest possible price.",
+            "As introductory pricing, I handle planning, design, and implementation carefully from start to finish.",
         },
         {
-          title: "Regular Communication",
+          title: "Frequent communication",
           description:
-            "We check in throughout the process so the final result matches your expectations.",
+            "I keep communication clear during production, which helps reduce misunderstandings and keeps the final result close to your expectations.",
         },
       ],
     },
     philosophy: {
-      title: "Our Approach to Building",
+      title: "What I value when building",
       items: [
         {
-          title: "Understanding Your Business",
+          title: "Understanding your business",
           description:
-            "We review your services, strengths, target audience, and competition to clarify what your website needs to communicate.",
+            "I review your service, strengths, target audience, and competitors to clarify what the website should communicate.",
         },
         {
-          title: "Structure That Drives Inquiries",
+          title: "A structure that leads to inquiries",
           description:
-            "We think through the order of information, button placement, and user flow so visitors never feel lost.",
+            "I think through the order of information, button placement, and user flow so visitors can move through the site without confusion.",
         },
         {
-          title: "Balancing Design and Usability",
+          title: "Design and usability together",
           description:
-            "Beyond aesthetics, we prioritize readability on mobile, clarity of text, and ease of use.",
+            "I value visual quality, but also readability on mobile, clear text, and smooth operation.",
         },
       ],
     },
     process: {
-      title: "How It Works",
+      title: "Process",
       steps: [
         {
           title: "Contact",
           description:
-            "Tell us briefly about what you want to build, your goals, and your budget.",
+            "First, tell me briefly what kind of website you want, your goal, and your rough budget.",
         },
         {
           title: "Discovery",
           description:
-            "We review your business, target audience, required pages, and features.",
+            "I ask about your business, target audience, required pages, and necessary features.",
         },
         {
           title: "Estimate",
           description:
-            "We organize the scope, pricing, and timeline and send you a proposal.",
+            "I organize the production scope, price, and timeline, then send you a proposal.",
         },
         {
-          title: "Development",
+          title: "Production",
           description:
-            "We work through structure, design, and implementation — with check-ins as needed.",
+            "I work on the structure, design, and implementation. I will also check in with you when needed.",
         },
         {
           title: "Review & Revision",
           description:
-            "You review the work before launch and we incorporate any needed changes.",
+            "You review the website before launch, and I apply the necessary revisions.",
         },
         {
           title: "Launch & Support",
           description:
-            "We handle the launch and can assist with maintenance and minor updates afterward.",
+            "I handle the launch process and can also support maintenance or minor updates if needed.",
         },
       ],
     },
     fees: {
       title: "Cost Breakdown",
       description:
-        "Depending on your project, the following costs may apply in addition to the plan price.",
+        "In addition to the plan price above, the following costs may apply depending on your project.",
       production: {
-        title: "Production Cost",
+        title: "Production Fee",
         description:
-          "The cost to build your website. The plan prices above are production costs.",
+          "The cost of building the website. The plan prices above are production fees.",
       },
       maintenance: {
-        title: "Maintenance Cost",
+        title: "Maintenance Fee",
         description:
-          "Ongoing cost to ensure your site stays secure and up to date.",
+          "A fee for safely maintaining and updating the website after launch.",
       },
       external: {
-        title: "External Cost",
-        description: "Domain, hosting, and other third-party fees.",
+        title: "External Costs",
+        description:
+          "Actual costs for domain, hosting, and other third-party services.",
       },
       delivery: {
-        title: "About Deliverables",
+        title: "Deliverables",
         description:
-          "After production, we deliver a complete set of code reflecting your design and content. For post-launch updates, maintenance, and ongoing support, a separate maintenance fee applies.",
+          "After production, I deliver the full codebase reflecting the design and content. If you need post-launch updates, operation support, or ongoing maintenance, a separate maintenance fee will apply.",
       },
     },
     faq: {
-      title: "Frequently Asked Questions",
+      title: "FAQ",
       items: [
         {
           question: "How many revisions are included?",
           answer:
-            "It depends on the plan. Minor revisions are covered within the scope of each plan. Major structural changes or feature additions will be quoted separately.",
+            "It depends on the plan. Minor revisions are included within each plan. Major layout changes or additional features will require a separate estimate.",
         },
         {
-          question: "When is payment required?",
+          question: "When do I need to pay?",
           answer:
-            "Generally, a partial payment is required before development begins, with the remainder due before delivery. We can discuss this based on your project.",
+            "In general, part of the payment is required before production starts, and the remaining balance is paid before delivery. This can be discussed depending on the project.",
         },
         {
           question: "What about domain and hosting?",
           answer:
-            "Domain and hosting are external costs, separate from the production fee. If needed, we can assist with setup.",
+            "Domain and hosting costs are separate from the production fee. I can also help with setup if needed.",
         },
         {
-          question: "Can I update the site myself after launch?",
+          question: "Can I update the website myself after launch?",
           answer:
-            "With a news management feature, you can update some content yourself. Standard static page edits fall under maintenance.",
+            "If we add a news update feature, you can update some content yourself. Regular static page edits are usually handled through maintenance support.",
         },
         {
-          question: "What are the deliverables?",
+          question: "What will I receive after production?",
           answer:
-            "You receive a complete set of website code with your design and content applied. We can also assist with publishing and ongoing support.",
+            "You will receive the full website code with the design and content applied. Publishing setup and operation support are also available if needed.",
         },
         {
           question: "Why is the price this low?",
           answer:
-            "This is an introductory price for the first 5 clients. Prices will be revised once we have more projects completed.",
+            "This is introductory pricing for the first 5 projects only. Prices may be revised after more completed projects are added to my portfolio.",
+        },
+        {
+          question: "Do I need to prepare the photos and text myself?",
+          answer:
+            "In general, I ask clients to prepare the basic text and photos. If you are not sure what to write, I can help organize the content through the discovery process.",
         },
       ],
     },
   },
+
   contact: {
     eyebrow: "Contact",
     titleA: "I build websites",
     titleB: "that fit your business",
     description:
-      "I design and build websites with a clear focus on customer acquisition, trust, and smooth inquiry flows. From landing pages and corporate websites to portfolios and small web applications, I can support the full process from design to implementation.",
+      "I design and build websites with customer acquisition, trust, and clear inquiry flow in mind. I can support landing pages, business websites, portfolios, and small web applications from design to implementation.",
 
     primaryLabel: "Free Consultation",
     primaryTitle: "Start with an email",
     primaryDescription:
-      "It is completely fine if you are still unsure what you need or want to know what can be done within your budget.",
+      "It is completely fine if you are not sure what to build yet or simply want to know what is possible within your budget.",
 
     emailLabel: "Email Address",
     copy: "Copy Address",
@@ -457,21 +434,23 @@ export const en = {
 
     availabilityLabel: "Available for New Projects",
     availability:
-      "I create clear, effective, and affordable websites for small businesses, independent professionals, and creators.",
+      "I build affordable, clear, and practical websites for small businesses, independent professionals, and creators.",
 
     form: {
       nameLabel: "Name",
-      namePlaceholder: "Your name",
-      emailLabel: "Email",
+      namePlaceholder: "Enter your name",
+      emailLabel: "Email Address",
       emailPlaceholder: "you@example.com",
       messageLabel: "Message",
-      messagePlaceholder: "Tell me about your project or idea.",
+      messagePlaceholder:
+        "Example: I want to create a website for a new cafe. My budget is around ¥100,000.",
       sending: "Sending...",
       submit: "Send Message",
-      success: "Your message has been sent successfully.",
-      error: "Something went wrong. Please try again.",
+      success: "Your message has been sent.",
+      error: "Failed to send your message. Please try again later.",
     },
   },
+
   footer: {
     title: "Zaya Web Development",
     subtitle: "Next.js / Tailwind CSS / Framer Motion",
@@ -484,28 +463,28 @@ export const en = {
   },
   visual: {
     label: "Service Preview",
-    title: "Website preview",
+    title: "A structure that shows what can be built",
     browserUrl: "ezaya.dev / preview",
     items: ["Website", "Dashboard", "Content DB", "JP / MN / EN"],
     captions: [
-      "Business website with clear CTA",
-      "Simple dashboard-style preview",
-      "Structured content database",
-      "Japanese / Mongolian / English support",
+      "Business websites that lead to action",
+      "Simple admin dashboard UI",
+      "Organized content database",
+      "Japanese, Mongolian, and English support",
     ],
     scenes: {
       landing: {
         brand: "Zaya Studio",
-        nav: ["Service", "Works", "Contact"],
+        nav: ["Services", "Work", "Contact"],
         ctaSmall: "Contact",
         eyebrow: "WEB PRODUCTION",
-        titleBefore: "Clear websites for ",
-        titleHighlight: "small businesses",
+        titleBefore: "Turn a clear website into ",
+        titleHighlight: "inquiries",
         titleAfter: "",
         description:
-          "Design, content structure, and implementation\nbuilt to help visitors take action.",
+          "Planning, design, and implementation\nbuilt around your project goals.",
         primaryCta: "Start Project",
-        secondaryCta: "View Works",
+        secondaryCta: "View Work",
         stat: "+42%",
         live: "PREVIEW",
         features: ["CTA Design", "Responsive UI", "Basic SEO"],
@@ -571,7 +550,7 @@ export const en = {
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "日本語で相談できるWeb制作" },
+          { code: "JA", line: "Web production with Japanese support" },
           { code: "EN", line: "English-ready website structure" },
           { code: "MN", line: "Монгол хэлээр ойлгомжтой вебсайт" },
         ],
