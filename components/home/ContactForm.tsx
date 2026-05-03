@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { getMessages, type Locale } from "@/lib/i18n";
@@ -11,6 +11,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
 
   async function handleSubmit(formData: FormData) {
     setState("loading");
@@ -39,6 +40,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       }
 
       setState("success");
+      formRef.current?.reset();
     } catch (error) {
       setState("error");
       setErrorMessage(
@@ -73,6 +75,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
         </p>
 
         <form
+          ref={formRef}
           className="mt-8 space-y-4"
           action={async (formData) => {
             await handleSubmit(formData);
@@ -95,6 +98,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 required
                 className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[color:var(--accent-2)]"
                 placeholder={t.form.namePlaceholder}
+                autoComplete="name"
               />
             </label>
 
@@ -106,6 +110,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 required
                 className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[color:var(--accent-2)]"
                 placeholder={t.form.emailPlaceholder}
+                autoComplete="email"
               />
             </label>
           </div>
