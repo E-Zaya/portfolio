@@ -185,7 +185,7 @@ export const en = {
       cloud: "Cloud",
       frontend: "Frontend",
       engineering: "Engineering",
-      diary: "Diary",
+      diary: "",
     },
   },
 

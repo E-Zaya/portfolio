@@ -319,7 +319,6 @@ export type Messages = {
       title: string;
       description: string;
     }[];
-
   };
 
   projects: ProjectsContent;

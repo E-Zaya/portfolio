@@ -33,7 +33,7 @@ export const ja = {
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
-    techLine: "無料相談受付中 ・ 最短2週間〜 ・ JP / MN対応",
+    techLine: "無料相談受付中 ・ 最短1週間〜 ・ JP / MN対応",
     visualHint: "全部つくれます",
     features: [
       {
@@ -215,7 +215,7 @@ export const ja = {
       cloud: "クラウド",
       frontend: "フロントエンド",
       engineering: "エンジニアリング",
-      diary: "日記",
+      diary: "",
     },
   },
 

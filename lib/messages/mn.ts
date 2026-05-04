@@ -227,7 +227,7 @@ export const mn = {
       cloud: "Cloud",
       frontend: "Frontend",
       engineering: "Engineering",
-      diary: "Тэмдэглэл",
+      diary: "",
     },
   },
 
