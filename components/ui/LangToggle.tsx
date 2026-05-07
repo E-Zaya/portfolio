@@ -86,8 +86,8 @@ export default function LangToggle({ locale }: { locale: Locale }) {
           "inline-flex h-9 items-center gap-2 rounded-full",
           "border px-3 shadow-sm backdrop-blur-xl",
           "font-mono text-[11px] font-semibold uppercase tracking-[0.14em]",
-          "text-[var(--foreground)] transition-[background,border-color,box-shadow] duration-200",
-          "hover:bg-[var(--surface-soft)]",
+          "text-(--foreground)] transition-[background,border-color,box-shadow] duration-200",
+          "hover:bg-(--surface-soft)]",
         )}
         style={{
           borderColor: current.accent,
@@ -102,7 +102,7 @@ export default function LangToggle({ locale }: { locale: Locale }) {
           width={20}
           height={14}
           aria-hidden="true"
-          className="h-[14px] w-5 rounded-[2px] object-cover"
+          className="h-3.5 w-5 rounded-xs object-cover"
         />
 
         {/* current language code */}
@@ -144,8 +144,8 @@ export default function LangToggle({ locale }: { locale: Locale }) {
               className={cn(
                 "flex h-10 items-center gap-2 rounded-xl px-3",
                 "font-mono text-[11px] font-semibold uppercase tracking-[0.14em]",
-                "text-[var(--muted-foreground)] transition-[background,color] duration-200",
-                "hover:bg-[var(--lang-hover-bg)] hover:text-[var(--foreground)]",
+                "text-(--muted-foreground)] transition-[background,color] duration-200",
+                "hover:bg-(--lang-hover-bg)] hover:text-(--foreground)]",
               )}
               style={
                 {
@@ -159,7 +159,7 @@ export default function LangToggle({ locale }: { locale: Locale }) {
                 width={20}
                 height={14}
                 aria-hidden="true"
-                className="h-[14px] w-5 rounded-[2px] object-cover opacity-80"
+                className="h-3.5 w-5 rounded-xs object-cover opacity-80"
               />
 
               <span>{lang.code.toUpperCase()}</span>

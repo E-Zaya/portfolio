@@ -10,7 +10,7 @@ export default function Logo({ size = 46 }: LogoProps) {
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 rounded-full bg-gradient-to-r from-violet-500/30 to-cyan-400/30 blur-xl" />
+      <div className="absolute inset-0 rounded-full bg-linear-to-r from-violet-500/30 to-cyan-400/30 blur-xl" />
       <div
         className="logo-shell relative"
         style={isCustom ? { borderRadius: shellRadius } : undefined}
