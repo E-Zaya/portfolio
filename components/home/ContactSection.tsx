@@ -46,7 +46,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
             <div className="gradient-line mx-auto mt-5 h-px w-28" />
 
             <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-soft sm:text-base">
-              {t.description}
+              {/* {t.description} ちょっと情報量多すぎるのでとりあえず　コメントアウト　*/}
             </p>
           </div>
 

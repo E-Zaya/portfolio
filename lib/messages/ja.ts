@@ -3,7 +3,7 @@ import type { HeroVisualContent, Messages } from "./types";
 export const ja = {
   // 中身
   meta: {
-    title: "Zaya | 日本語・モンゴル語・英語対応のWeb制作",
+    title: "Zaya | 日本・モンゴル・英語対応のWeb制作",
     description:
       "日本・モンゴルの個人事業主・小規模店舗向けに、集客と信頼につながるWebサイトを制作します。LP・コーポレートサイト・多言語サイトもご相談ください",
   },
@@ -225,7 +225,7 @@ export const ja = {
     subtitle:
       "個人事業主・小規模店舗・クリエイター向けに、集客につながるWebサイトをゼロから設計・制作します。",
     intro:
-      "LP、コーポレートサイト、管理画面、ログイン機能、多言語対応まで、目的に合わせて必要な機能だけを無駄なく実装します。",
+      "LP、コーポレートサイト、管理画面、ログイン機能、多言語対応まで、目的に合わせて必要な機能だけを実装します。",
     ctaLabel: "お問い合わせ",
     bottomCtaTitle: "まずは相談だけでも大丈夫です",
     bottomCtaText:
@@ -243,7 +243,7 @@ export const ja = {
           "SNSリンク",
           "スマホ対応",
           "基本SEO",
-          "月1回の軽微修正",
+          "1回の軽微修正",
         ],
         timeline: "最短7〜14日",
         note: "原稿・画像素材をご用意いただける場合、よりスムーズに制作できます。",
@@ -260,10 +260,10 @@ export const ja = {
           "SNSリンク",
           "スマホ対応",
           "SEO基本設定",
-          "月2回の軽微修正",
+          "3回の軽微修正",
         ],
         timeline: "3〜4週間",
-        note: "お知らせ更新まで含めて、公開後も使いやすい基本構成を整えます。",
+        note: "お知らせ更新、まで含めて、公開後も使いやすい基本構成を整えます。",
       },
       custom: {
         name: "Custom Development",
@@ -342,7 +342,7 @@ export const ja = {
         {
           title: "お問い合わせ",
           description:
-            "まずは作りたいサイトの内容、目的、予算感を簡単にお聞きします。",
+            "まずは作りたいサイトの内容、目的、予算の目安などを簡単にお聞きします。",
         },
         {
           title: "ヒアリング",
@@ -389,7 +389,7 @@ export const ja = {
       delivery: {
         title: "納品について",
         description:
-          "制作後は、デザインや内容を反映したコード一式をお渡しします。公開後の修正・更新・運用サポートが必要な場合は、別途保守費が発生します。",
+          "制作後は、デザインや内容を反映したコード一式をお渡しします。公開作業、初期設定は別途で料金の案内となります。公開後の修正・更新・運用サポートが必要な場合は、別途保守費が発生します。",
       },
     },
     faq: {
@@ -435,6 +435,7 @@ export const ja = {
   },
 
   contact: {
+    // 修正必要。　Title が弱い。。
     eyebrow: "連絡先",
     titleA: "あなたの事業に合う",
     titleB: "Webサイトを作ります",
@@ -444,7 +445,7 @@ export const ja = {
     primaryLabel: "無料相談",
     primaryTitle: "まずはメールで相談する",
     primaryDescription:
-      "「何を作ればいいかわからない」「予算内でできることを知りたい」といった段階でも問題ありません。",
+      "「具体的なイメージはないけど名刺となるWebサイトがほしい！」「予算内でできることを知りたい」といった段階でも問題ありません。",
 
     emailLabel: "メールアドレス",
     copy: "アドレスをコピー",
@@ -466,7 +467,7 @@ export const ja = {
       emailPlaceholder: "you@example.com",
       messageLabel: "ご相談内容",
       messagePlaceholder:
-        "例：新しくオープンするカフェのホームページを作りたいです。予算は10万円程度で考えています。",
+        "例：新しくオープンするカフェのホームページを作りたいです。予算は5万円程度で考えています。",
       sending: "送信中...",
       submit: "送信する",
       success: "メッセージを送信しました。",
@@ -573,8 +574,8 @@ export const ja = {
       },
       multilingual: {
         langs: [
-          { code: "JA", line: "日本語で相談できるWeb制作" },
-          { code: "EN", line: "English-ready website structure" },
+          { code: "JA", line: "多言語対応Webサイト" },
+          { code: "EN", line: "Multi-lang Website" },
           { code: "MN", line: "Монгол хэлээр ойлгомжтой вебсайт" },
         ],
         footer: "i18n · clear structure · local support",

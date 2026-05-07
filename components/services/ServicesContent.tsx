@@ -60,6 +60,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── Hero ── */}
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-4 text-center">
+          {/* 修正必要　ただノテキスト並びになってておもんない。 */}
           <h1 className="section-title">{t.title}</h1>
           <p className="text-lg font-semibold text-soft">{t.subtitle}</p>
           <p className="text-base leading-relaxed text-muted">{t.intro}</p>
@@ -71,7 +72,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
         <div className="space-y-8">
           <div className="flex justify-center">
             <div className="inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-semibold services-accent-pill">
-              <span className="h-2 w-2 flex-shrink-0 animate-pulse rounded-full services-accent-dot" />
+              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full services-accent-dot" />
               {t.introNote}
             </div>
           </div>
@@ -136,7 +137,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   )}
                   {/* note */}
                   {plan.note && (
-                    <div className="mt-5 border-l-2 border-[var(--accent-2)] pl-4">
+                    <div className="mt-5 border-l-2 border-(--accent-2)] pl-4">
                       <p className="text-sm leading-relaxed text-muted">
                         {plan.note}
                       </p>

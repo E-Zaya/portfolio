@@ -707,7 +707,7 @@ function SceneMultilingual({ data }: { data: MultilingualScene }) {
         className="mt-auto text-center font-mono text-[9px] uppercase tracking-[0.25em]"
         style={{ color: "var(--text-muted)" }}
       >
-        {data.footer}
+        {/* {data.footer} これもちょっと邪魔なのでとりあえず　コメントアウト*/}
       </div>
     </div>
   );

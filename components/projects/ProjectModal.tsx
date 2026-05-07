@@ -57,7 +57,7 @@ export function ProjectModal({ project, itemText, t, onClose }: Props) {
 
   const modal = (
     <div
-      className="project-modal-backdrop fixed inset-0 z-[9000] flex items-start justify-center p-3 sm:items-center sm:p-6"
+      className="project-modal-backdrop fixed inset-0 z-9000 flex items-start justify-center p-3 sm:items-center sm:p-6"
       onClick={onClose}
     >
       <div

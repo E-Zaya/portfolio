@@ -46,7 +46,7 @@ export default function Header({ locale }: { locale: Locale }) {
             scrolled ? "px-3 py-3 sm:px-5" : "px-3 py-4 sm:px-5",
           )}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-r from-violet-500/[0.06] via-transparent to-cyan-400/[0.06]" />
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-violet-500/6 via-transparent to-cyan-400/6" />
 
           <div className="relative flex min-h-16 items-center justify-between gap-3 sm:gap-4">
             <Link
@@ -59,7 +59,7 @@ export default function Header({ locale }: { locale: Locale }) {
               </div>
 
               <div className="min-w-0 leading-none">
-                <span className="block truncate bg-gradient-to-r from-violet-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
+                <span className="block truncate bg-linear-to-r from-violet-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
                   Zaya
                 </span>
                 <span className="block truncate text-xs text-soft">
