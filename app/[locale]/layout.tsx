@@ -7,6 +7,8 @@ import MouseGlow from "@/components/Effects/MouseGlow";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -125,6 +127,7 @@ export default async function LocaleLayout({
             </div>
           </div>
         </ThemeProvider>
+         <SpeedInsights />
       </body>
     </html>
   );
