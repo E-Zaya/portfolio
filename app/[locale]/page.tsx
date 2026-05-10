@@ -6,6 +6,10 @@ import { isLocale, type Locale } from "@/lib/i18n";
 import { ProjectsContent } from "./projects/page";
 import ServicesContent from "@/components/services/ServicesContent";
 
+// 静的生成を強制 → Vercel Edge Network から配信されて TTFB が劇的に短くなる
+export const dynamic = "force-static";
+export const revalidate = false; // 完全静的 (再ビルドまで不変)
+
 export default async function HomePage({
   params,
 }: {

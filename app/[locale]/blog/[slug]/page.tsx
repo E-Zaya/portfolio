@@ -14,6 +14,7 @@ import {
   slugifyHeading,
 } from "@/components/blog/blog-utils";
 
+// 1 hour cache for blog posts;
 export const revalidate = 3600;
 
 export async function generateStaticParams() {

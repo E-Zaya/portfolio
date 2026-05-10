@@ -26,6 +26,10 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
+// generateStaticParams で返した locale 以外は 404 にする
+// → 動的レンダリングを完全に無効化して TTFB を最小化
+export const dynamicParams = false;
+
 export async function generateMetadata({
   params,
 }: {
