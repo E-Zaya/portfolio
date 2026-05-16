@@ -16,7 +16,17 @@ export type WipItem = {
 };
 
 export const projectItems = [
+
   {
+    slug: "soul-skin-brand-lookbook",
+    image: "/soul-skin-brand-lookbook.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+    github: "https://github.com/E-Zaya/SoulSkin-Website",
+    demo: "https://soul-skin-website.vercel.app/",
+    status: "In Progress",
+    featured: true,
+  },
+    {
     slug: "workout-log",
     image: "/projects/workout-log.png",
     tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
@@ -25,15 +35,6 @@ export const projectItems = [
     status: "Completed",
     featured: true,
   },
-  // {
-  //   slug: "soul-skin-brand-lookbook",
-  //   image: "/projects/soul-skin-brand-lookbook.png",
-  //   tech: ["Next.js", "TypeScript", "Tailwind CSS"],
-  //   github: "https://github.com/E-Zaya/soul-skin-brand-lookbook",
-  //   demo: "https://soul-skin-brand-lookbook.vercel.app/",
-  //   status: "In Progress",
-  //   featured: true,
-  // },
 ] as const satisfies readonly ProjectItem[];
 
 // 制作中のプロジェクト — slug を追加するだけで WipSection に表示される
