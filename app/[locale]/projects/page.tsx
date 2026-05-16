@@ -27,7 +27,12 @@ export async function ProjectsContent({ locale }: { locale: Locale }) {
   return (
     <section id="projects" className="section-space">
       <div className="container-custom">
-        <ProjectsClient projects={projects} wipProjects={wipProjects} t={t} />
+        <ProjectsClient
+          locale={locale}
+          projects={projects}
+          wipProjects={wipProjects}
+          t={t}
+        />
       </div>
     </section>
   );

@@ -107,6 +107,7 @@ export const en = {
     featuredBadge: "Featured",
     liveDemo: "View Demo",
     viewCode: "View Code",
+    caseStudy: "Read Case Study",
     scopeLabel: "Scope",
     focusLabel: "Focus",
     wipTitle: "Projects in Progress",
@@ -126,6 +127,7 @@ export const en = {
           "Handled planning, design, frontend, backend, database design, and deployment independently.",
         focus:
           "Making workout logging simple and weekly progress easy to understand at a glance.",
+        caseStudy: "workout-log-case-study",
       },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
@@ -137,6 +139,7 @@ export const en = {
           "Handled design, frontend implementation, content structure, and deployment independently.",
         focus:
           "Communicating the brand’s atmosphere through visuals and creating a natural flow toward social media and contact.",
+        caseStudy: "soul-skin-project",
       },
     },
     wip: {

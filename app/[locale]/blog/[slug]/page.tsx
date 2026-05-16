@@ -14,8 +14,8 @@ import {
   slugifyHeading,
 } from "@/components/blog/blog-utils";
 
-// 1 hour cache for blog posts;
-export const revalidate = 3600;
+// Refresh Notion-powered blog posts without requiring a redeploy.
+export const revalidate = 300;
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];

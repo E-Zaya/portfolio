@@ -105,6 +105,7 @@ export type ProjectMessageItem = {
   summary: string;
   scope: string;
   focus: string;
+  caseStudy?: string;
 };
 
 export type WipMessageItem = {
@@ -124,6 +125,7 @@ export type ProjectsContent = {
   featuredBadge: string;
   liveDemo: string;
   viewCode: string;
+  caseStudy: string;
   scopeLabel: string;
   focusLabel: string;
   wipTitle: string;

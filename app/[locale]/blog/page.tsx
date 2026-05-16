@@ -4,6 +4,9 @@ import { getBlogPosts, getAllTags } from "@/lib/notion";
 import BlogListClient from "@/components/blog/BlogListClient";
 import { getMessages, isLocale, locales, withLocale, type Locale } from "@/lib/i18n";
 
+// Refresh the Notion-powered blog index without requiring a redeploy.
+export const revalidate = 300;
+
 const blogMeta: Record<Locale, { title: string; description: string }> = {
   ja: {
     title: "ブログ | Zaya Dev",
