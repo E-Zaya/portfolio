@@ -5,6 +5,7 @@ import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
 import { WipSection } from "./WipSection";
 import type { ProjectItem, WipItem } from "@/data/projects";
+import type { Locale } from "@/lib/i18n";
 import type { ProjectMessageItem, WipMessageItem, ProjectsContent } from "@/lib/messages/types";
 
 type ProjectEntry = {
@@ -18,12 +19,13 @@ type WipEntry = {
 };
 
 type Props = {
+  locale: Locale;
   projects: ProjectEntry[];
   wipProjects: WipEntry[];
   t: ProjectsContent;
 };
 
-export function ProjectsClient({ projects, wipProjects, t }: Props) {
+export function ProjectsClient({ locale, projects, wipProjects, t }: Props) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const activeProject = projects.find((p) => p.item.slug === activeSlug) ?? null;
@@ -70,6 +72,7 @@ export function ProjectsClient({ projects, wipProjects, t }: Props) {
       {/* Modal */}
       {activeProject && (
         <ProjectModal
+          locale={locale}
           project={activeProject.item}
           itemText={activeProject.text}
           t={t}

@@ -5,20 +5,31 @@ import { createPortal } from "react-dom";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import type { ProjectItem } from "@/data/projects";
+import type { Locale } from "@/lib/i18n";
 import type { ProjectMessageItem, ProjectsContent } from "@/lib/messages/types";
 
 type Props = {
+  locale: Locale;
   project: ProjectItem;
   itemText: ProjectMessageItem;
   t: Pick<
     ProjectsContent,
-    "status" | "featuredBadge" | "liveDemo" | "viewCode" | "scopeLabel" | "focusLabel"
+    | "status"
+    | "featuredBadge"
+    | "liveDemo"
+    | "viewCode"
+    | "caseStudy"
+    | "scopeLabel"
+    | "focusLabel"
   >;
   onClose: () => void;
 };
 
-export function ProjectModal({ project, itemText, t, onClose }: Props) {
+export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
   const status = t.status[project.status];
+  const caseStudyHref = itemText.caseStudy
+    ? `/${locale}/blog/${itemText.caseStudy}`
+    : null;
   const scrollYRef = useRef(0);
 
   useEffect(() => {
@@ -167,6 +178,11 @@ export function ProjectModal({ project, itemText, t, onClose }: Props) {
                 variant="secondary"
               >
                 {t.viewCode}
+              </Button>
+            )}
+            {caseStudyHref && (
+              <Button href={caseStudyHref} variant="secondary">
+                {t.caseStudy}
               </Button>
             )}
           </div>

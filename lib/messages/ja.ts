@@ -134,6 +134,7 @@ export const ja = {
     featuredBadge: "ピックアップ",
     liveDemo: "デモを見る",
     viewCode: "コードを見る",
+    caseStudy: "Case-Studyを読む",
     scopeLabel: "担当範囲",
     focusLabel: "こだわり",
     wipTitle: "制作中のプロジェクト",
@@ -155,6 +156,7 @@ export const ja = {
           "設計・デザイン・フロントエンド・バックエンド・DB設計・デプロイまで一人で担当。",
         focus:
           "記録のしやすさと週次グラフの視認性。継続したくなるUIを意識して設計しました。",
+        caseStudy: "workout-log-case-study",
       },
 
       "soul-skin-brand-lookbook": {
@@ -166,6 +168,7 @@ export const ja = {
           "デザイン・フロントエンド実装・コンテンツ構成・デプロイまで一人で担当。",
         focus:
           "ブランドの空気感をビジュアルで伝えることと、SNS・問い合わせへの自然な導線設計。",
+        caseStudy: "soul-skin-project",
       },
     },
 

@@ -146,6 +146,7 @@ export const mn = {
     featuredBadge: "Онцлох",
     liveDemo: "Live Demo",
     viewCode: "View Code",
+    caseStudy: "Case study унших",
     scopeLabel: "Хариуцсан хэсэг",
     focusLabel: "Анхаарсан зүйл",
     wipTitle: "Хийж байгаа төслүүд",
@@ -165,6 +166,7 @@ export const mn = {
           "Бүтэц, дизайн, frontend, backend, DB загвар, deploy хүртэл бүгдийг ганцаараа хариуцсан.",
         focus:
           "Бүртгэхэд хялбар байдал болон 7 хоногийн графикийн ойлгомжтой байдал. Үргэлжлүүлэн ашиглах сэдэл төрүүлэх UI бүтээхийг зорьсон",
+        caseStudy: "workout-log-case-study",
       },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
@@ -176,6 +178,7 @@ export const mn = {
           "Дизайн, frontend хэрэгжүүлэлт, контент бүтэц, deploy хүртэл ганцаараа хариуцсан.",
         focus:
           "Брэндийн уур амьсгалыг visual-аар  дамжуулах, мөн SNS болон холбоо барих хэсэг рүү чиглэх энгийн бөгөөд ойлгомжтой урсгал гаргах.",
+        caseStudy: "soul-skin-project",
       },
     },
 
