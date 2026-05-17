@@ -16,6 +16,8 @@ import {
 
 // Refresh Notion-powered blog posts without requiring a redeploy.
 export const revalidate = 300;
+export const dynamic = "force-static";
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
