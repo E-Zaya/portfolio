@@ -24,11 +24,39 @@ export default function LoadingScreen({ showOnce = true }: LoadingScreenProps) {
      Show / hide control
   ========================= */
   useEffect(() => {
-    if (showOnce && localStorage.getItem(STORAGE_KEY) === "true") {
+    // localStorage はプライバシーモードや一部の iOS Safari で throw する。
+    // 例外が出ても少なくとも UI は壊さないよう try/catch でラップしておく。
+    const safeGet = (key: string): string | null => {
+      try {
+        return localStorage.getItem(key);
+      } catch {
+        return null;
+      }
+    };
+    const safeSet = (key: string, value: string) => {
+      try {
+        localStorage.setItem(key, value);
+      } catch {
+        /* noop */
+      }
+    };
+
+    if (showOnce && safeGet(STORAGE_KEY) === "true") {
       document.documentElement.removeAttribute("data-loading");
       return;
     }
-    if (showOnce) localStorage.setItem(STORAGE_KEY, "true");
+
+    // モーション抑制をユーザーが望んでいる場合、ローディング画面は即時スキップ
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    if (reduceMotion) {
+      if (showOnce) safeSet(STORAGE_KEY, "true");
+      document.documentElement.removeAttribute("data-loading");
+      return;
+    }
+
+    if (showOnce) safeSet(STORAGE_KEY, "true");
 
     setPhase("visible");
 

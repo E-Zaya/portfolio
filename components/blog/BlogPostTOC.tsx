@@ -64,7 +64,9 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
   if (!headings.length) return null;
 
   return (
-    <aside className="rounded-[22px] border border-border bg-card p-4 shadow-theme backdrop-blur-xl sm:p-5 lg:sticky lg:top-24">
+    <aside
+      className="rounded-[22px] border border-border bg-card p-4 shadow-theme backdrop-blur-xl sm:p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
+    >
       <h2 className="mb-3 text-sm font-semibold tracking-[0.08em] text-foreground sm:mb-4">
         {t.toc}
       </h2>
@@ -77,13 +79,22 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
             <a
               key={heading.id}
               href={`#${heading.id}`}
-              className={`block rounded-xl px-3 py-2 text-sm leading-5 transition ${
+              aria-current={isActive ? "true" : undefined}
+              className={`relative block rounded-xl px-3 py-2 text-sm leading-5 transition ${
                 isActive
                   ? "bg-card-strong font-medium text-foreground"
                   : "text-soft hover:bg-card-strong hover:text-foreground"
               } ${heading.level === 3 ? "ml-3 sm:ml-4" : ""}`}
               title={heading.text}
             >
+              {/* アクティブ時の左バー */}
+              {isActive && (
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-1/2 h-4 w-0.5 -translate-y-1/2 rounded-full"
+                  style={{ background: "var(--accent-1)" }}
+                />
+              )}
               <span className="block break-words">
                 {truncateText(heading.text, heading.level === 3 ? 32 : 40)}
               </span>

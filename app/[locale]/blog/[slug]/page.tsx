@@ -65,7 +65,12 @@ export async function generateMetadata({
       type: "article",
       url: `/${locale}/blog/${slug}`,
       locale: locale === "ja" ? "ja_JP" : locale === "mn" ? "mn_MN" : "en_US",
-      images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+      // images は opengraph-image.tsx で自動生成されるためここでは指定しない
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title || t.notFoundTitle,
+      description: post.summary || t.noSummary,
     },
   };
 }
@@ -148,7 +153,7 @@ export default async function BlogDetailPage({
       url: "https://ezaya.dev",
     },
     url: `https://ezaya.dev/${locale}/blog/${slug}`,
-    image: "https://ezaya.dev/og-image.png",
+    image: `https://ezaya.dev/${locale}/blog/${slug}/opengraph-image`,
     inLanguage: locale === "ja" ? "ja" : locale === "mn" ? "mn" : "en",
   };
 

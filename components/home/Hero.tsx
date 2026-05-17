@@ -1,5 +1,3 @@
-"use client";
-
 import Card from "@/components/ui/Card";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";

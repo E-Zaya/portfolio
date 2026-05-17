@@ -34,6 +34,7 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
                 src={project.image}
                 alt={itemText.title}
                 fill
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 540px"
                 className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
               />
               <div className="project-image-overlay" />

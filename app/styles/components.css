@@ -164,12 +164,11 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.34em;
+  /* グラデーション控えめ化：2色のみ */
   background: linear-gradient(
     90deg,
-    var(--accent-1),
     var(--accent-2),
-    var(--accent-3),
-    var(--accent-4)
+    var(--accent-1)
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -209,16 +208,16 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  height: 4px;
+  height: 3px;
   width: 100%;
   transform-origin: 0%;
+  /* グラデーション控えめ化：2色のみ */
   background: linear-gradient(
     90deg,
-    var(--accent-3) 0%,
-    var(--accent-2) 35%,
+    var(--accent-2) 0%,
     var(--accent-1) 100%
   );
-  box-shadow: 0 0 18px color-mix(in srgb, var(--accent-1) 45%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent-1) 35%, transparent);
 }
 
 
@@ -249,6 +248,18 @@
     color-mix(in srgb, var(--accent-4) 8%, transparent) 58%,
     transparent 72%
   );
+}
+
+/* ライトモードでは背景と重なってボヤけがちなので透明度を下げる */
+html.light .mouse-glow::before {
+  opacity: 0.55;
+}
+
+/* モーション抑制ユーザーには表示しない */
+@media (prefers-reduced-motion: reduce) {
+  .mouse-glow {
+    display: none;
+  }
 }
 
 .site-content {
@@ -382,6 +393,24 @@
 
 .header-icon-button:hover {
   background: var(--header-hover);
+}
+
+/* ── Lang toggle dropdown row ── */
+.lang-row > span {
+  /* hover でアクセントカラーの淡い背景を当てる。CSS変数 --lang-accent は
+     LangToggle 側で各行に注入される。 */
+  position: relative;
+}
+
+.lang-row:hover > span,
+.lang-row:focus-visible > span {
+  background: color-mix(in srgb, var(--lang-accent, var(--accent-2)) 14%, transparent);
+  color: var(--foreground);
+}
+
+.lang-row:hover > span > span > span,
+.lang-row:focus-visible > span > span > span {
+  color: var(--foreground);
 }
 
 /* services */
@@ -663,10 +692,8 @@ html[data-loading] .site-content {
 .loader-progress-fill {
   height: 100%;
   border-radius: 9999px;
-  background: linear-gradient(90deg, var(--accent-3), var(--accent-2), var(--accent-1));
-  box-shadow:
-    0 0 14px color-mix(in srgb, var(--accent-2) 55%, transparent),
-    0 0 24px color-mix(in srgb, var(--accent-3) 28%, transparent);
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--accent-2) 45%, transparent);
   transition: width 100ms ease-out;
 }
 

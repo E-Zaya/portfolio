@@ -2,8 +2,8 @@ import Hero from "@/components/home/Hero";
 import Skills from "@/components/home/Skills";
 import SectionReveal from "@/components/Effects/SectionReveal";
 import ContactSection from "@/components/home/ContactSection";
+import ProjectsSection from "@/components/projects/ProjectsSection";
 import { isLocale, type Locale } from "@/lib/i18n";
-import { ProjectsContent } from "./projects/page";
 import ServicesContent from "@/components/services/ServicesContent";
 
 // 静的生成を強制 → Vercel Edge Network から配信されて TTFB が劇的に短くなる
@@ -22,7 +22,7 @@ export default async function HomePage({
     <>
       <Hero locale={locale} />
       <ServicesContent locale={locale} />
-      <ProjectsContent locale={locale} />
+      <ProjectsSection locale={locale} />
       <SectionReveal delay={0}>
         <Skills locale={locale} />
       </SectionReveal>

@@ -6,6 +6,7 @@ import LoadingScreen from "@/components/layout/LoadingScreen";
 import MouseGlow from "@/components/Effects/MouseGlow";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
+import MotionProvider from "@/components/providers/MotionProvider";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -97,6 +98,9 @@ export default async function LocaleLayout({
     url: "https://ezaya.dev",
     sameAs: [
       "https://github.com/zaya-dev",
+      "https://x.com/EZaya0805",
+      "https://www.instagram.com/ezaya977/",
+      "https://www.facebook.com/profile.php?id=61578100397690",
     ],
     jobTitle: "Web Developer",
     knowsLanguage: ["ja", "mn", "en"],
@@ -113,23 +117,25 @@ export default async function LocaleLayout({
       <body>
         <script
           dangerouslySetInnerHTML={{
-            __html: `if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}`,
+            __html: `try{if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}}catch(e){}`,
           }}
         />
         <ThemeProvider>
-          <div
-            className={`${inter.variable} ${notoSansJp.variable}`}
-            data-locale={locale}
-          >
-            <LoadingScreen />
-            <ScrollProgress />
-            <MouseGlow />
-            <div className="site-content">
-              <Header locale={locale} />
-              <main>{children}</main>
-              <Footer locale={locale} />
+          <MotionProvider>
+            <div
+              className={`${inter.variable} ${notoSansJp.variable}`}
+              data-locale={locale}
+            >
+              <LoadingScreen />
+              <ScrollProgress />
+              <MouseGlow />
+              <div className="site-content">
+                <Header locale={locale} />
+                <main>{children}</main>
+                <Footer locale={locale} />
+              </div>
             </div>
-          </div>
+          </MotionProvider>
         </ThemeProvider>
          <SpeedInsights />
       </body>
