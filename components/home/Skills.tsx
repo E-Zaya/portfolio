@@ -24,14 +24,18 @@ export default function Skills({ locale }: { locale: Locale }) {
               href={skill.url}
               target="_blank"
               rel="noreferrer"
+              aria-label={skill.name}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
               whileHover={{ y: -8, scale: 1.05 }}
-              className="glass group flex min-h-10 flex-col items-center justify-center rounded-[28px] p-6 text-center transition"
+              className="glass group flex min-h-10 flex-col items-center justify-center rounded-[28px] p-6 text-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
             >
-              <Icon className="mb-4 text-5xl text-foreground transition duration-300 group-hover:scale-110" />
+              <Icon
+                aria-hidden="true"
+                className="mb-4 text-5xl text-foreground transition duration-300 group-hover:scale-110"
+              />
               <span className="text-sm font-medium text-foreground">{skill.name}</span>
             </motion.a>
           );

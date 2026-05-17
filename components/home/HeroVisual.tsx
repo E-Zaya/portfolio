@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { getMessages, type Locale } from "@/lib/i18n";
+import { getMessages, isLocale, type Locale } from "@/lib/i18n";
 import type { HeroVisualContent } from "@/lib/messages/types";
 
 const ZAZA_IMAGE = "/Zaza/chira-zaza.png";
@@ -17,8 +17,8 @@ type MultilingualScene = HeroVisualContent["scenes"]["multilingual"];
 
 export default function HeroVisual() {
   const params = useParams<{ locale?: string }>();
-  const locale: Locale =
-    params?.locale === "ja" || params?.locale === "mn" ? params.locale : "en";
+  const rawLocale = params?.locale;
+  const locale: Locale = rawLocale && isLocale(rawLocale) ? rawLocale : "ja";
 
   const t = getMessages(locale);
   const visual: HeroVisualContent = t.visual;

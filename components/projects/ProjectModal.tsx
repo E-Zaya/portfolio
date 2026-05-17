@@ -96,6 +96,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
             src={project.image}
             alt={itemText.title}
             fill
+            sizes="(max-width: 768px) 100vw, 768px"
             className="object-cover object-top"
           />
           <div className="project-image-overlay" />

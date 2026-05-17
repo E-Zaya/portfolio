@@ -81,12 +81,15 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             await handleSubmit(formData);
           }}
         >
+          {/* Honeypot — 人間には見えない / SR からも無視される */}
           <input
+            type="text"
             name="company"
             tabIndex={-1}
             autoComplete="off"
             className="hidden"
             aria-hidden="true"
+            defaultValue=""
           />
 
           <div className="grid gap-4 sm:grid-cols-2">
@@ -96,7 +99,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 type="text"
                 name="name"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-(--accent-2)]"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.namePlaceholder}
                 autoComplete="name"
               />
@@ -108,7 +111,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
                 type="email"
                 name="email"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-(--accent-2)]"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.emailPlaceholder}
                 autoComplete="email"
               />
@@ -121,7 +124,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
               name="message"
               rows={6}
               required
-              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-(--accent-2)]"
+              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
               placeholder={t.form.messagePlaceholder}
             />
           </label>
@@ -139,7 +142,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
               </p>
             )}
             {state === "error" && (
-              <p className="text-(--color-error)]">
+              <p className="text-[var(--color-error)]">
                 {errorMessage || t.form.error}
               </p>
             )}

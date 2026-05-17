@@ -86,6 +86,7 @@ export default function BlogPostHero({ post, locale }: Props) {
             alt={title}
             fill
             priority
+            sizes="(max-width: 768px) 100vw, 768px"
             className="object-cover"
           />
           <div

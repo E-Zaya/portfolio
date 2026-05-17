@@ -88,6 +88,7 @@ export default function Header({ locale }: { locale: Locale }) {
                 className="header-icon-button inline-flex h-11 w-11 items-center justify-center p-0 md:hidden"
                 aria-label={t.header.menuAria}
                 aria-expanded={mobileOpen}
+                aria-controls="mobile-nav"
                 type="button"
               >
                 {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -96,7 +97,7 @@ export default function Header({ locale }: { locale: Locale }) {
           </div>
 
           {mobileOpen && (
-            <div className="md:hidden">
+            <div id="mobile-nav" className="md:hidden">
               <MobileMenu
                 locale={locale}
                 currentPath={cleanPath}
