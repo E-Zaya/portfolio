@@ -141,6 +141,18 @@ export const en = {
           "Communicating the brand’s atmosphere through visuals and creating a natural flow toward social media and contact.",
         caseStudy: "soul-skin-project",
       },
+      "type-mon": {
+        title: "TypeMon",
+        description:
+          "A Mongolian typing tool that converts familiar Latin input into Cyrillic text.",
+        summary:
+          "Built with Next.js and TypeScript. It supports Latin-to-Cyrillic conversion, local history, URL text loading, dark mode, and an AI polish feature with request limits.",
+        scope:
+          "Handled product planning, UI design, frontend implementation, API integration, rate limiting, and deployment independently.",
+        focus:
+          "Making Mongolian Cyrillic typing faster for people who are used to writing in Latin letters, while keeping the interface minimal and practical.",
+        caseStudy: "type-mon-case-study",
+      },
     },
     wip: {
       items: {

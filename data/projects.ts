@@ -35,6 +35,15 @@ export const projectItems = [
     status: "Completed",
     featured: true,
   },
+  {
+    slug: "type-mon",
+    image: "/images/blog/type-mon-case-study.png",
+    tech: ["Next.js", "TypeScript", "Gemini API", "Upstash Redis", "Tailwind CSS"],
+    github: "https://github.com/E-Zaya/type-mon",
+    demo: "https://type-mon.vercel.app/",
+    status: "Completed",
+    featured: true,
+  },
 ] as const satisfies readonly ProjectItem[];
 
 // 制作中のプロジェクト — slug を追加するだけで WipSection に表示される

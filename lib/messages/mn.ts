@@ -180,6 +180,18 @@ export const mn = {
           "Брэндийн уур амьсгалыг visual-аар  дамжуулах, мөн SNS болон холбоо барих хэсэг рүү чиглэх энгийн бөгөөд ойлгомжтой урсгал гаргах.",
         caseStudy: "soul-skin-project",
       },
+      "type-mon": {
+        title: "TypeMon",
+        description:
+          "Латинаар бичсэн монгол текстийг кирилл бичиг рүү хөрвүүлэх typing tool.",
+        summary:
+          "Next.js болон TypeScript ашиглан бүтээсэн. Latin-to-Cyrillic хөрвүүлэлт, history хадгалах, URL-аас text ачаалах, dark mode, Gemini API ашигласан засварлах функц болон Upstash Redis дээр суурилсан request limit-тэй.",
+        scope:
+          "Product idea, UI дизайн, frontend хэрэгжүүлэлт, API холболт, rate limit болон deploy хүртэл ганцаараа хариуцсан.",
+        focus:
+          "Латинаар бичиж дадсан монгол хэрэглэгчид кирилл текстийг хурдан, ойлгомжтой, өдөр тутамдаа ашиглахад хялбар байдлаар бэлтгэх боломж өгөх.",
+        caseStudy: "type-mon-case-study",
+      },
     },
 
     wip: {

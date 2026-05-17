@@ -6,6 +6,7 @@ import type {
   QueryDatabaseParameters,
 } from "@notionhq/client/build/src/api-endpoints";
 import { NotionToMarkdown } from "notion-to-md";
+import { replaceNotionMarkdownImages } from "@/lib/blog-content-images";
 
 export const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -212,7 +213,10 @@ export async function getBlogPost(
 
   const meta = pageToPostMeta(page);
   const mdBlocks = await n2m.pageToMarkdown(page.id);
-  const content = n2m.toMarkdownString(mdBlocks).parent;
+  const content = replaceNotionMarkdownImages(
+    n2m.toMarkdownString(mdBlocks).parent,
+    meta.slug,
+  );
 
   return {
     ...meta,

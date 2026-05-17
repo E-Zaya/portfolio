@@ -170,6 +170,18 @@ export const ja = {
           "ブランドの空気感をビジュアルで伝えることと、SNS・問い合わせへの自然な導線設計。",
         caseStudy: "soul-skin-project",
       },
+      "type-mon": {
+        title: "TypeMon",
+        description:
+          "ラテン文字で入力したモンゴル語を、キリル文字に変換できるタイピングツールです。",
+        summary:
+          "Next.js と TypeScript で制作。ラテン文字からキリル文字への変換、履歴保存、URLからのテキスト読み込み、ダークモード、Gemini API を使った文章補正機能、Upstash Redis による利用回数制限を実装しました。",
+        scope:
+          "企画・UI設計・フロントエンド実装・API連携・レート制限・デプロイまで一人で担当。",
+        focus:
+          "ラテン文字入力に慣れているモンゴル語ユーザーが、より早く自然にキリル文字の文章を作れるように、シンプルで実用的なUIを意識しました。",
+        caseStudy: "type-mon-case-study",
+      },
     },
 
     wip: {
