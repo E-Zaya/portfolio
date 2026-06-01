@@ -26,14 +26,14 @@ export const projectItems = [
     status: "In Progress",
     featured: true,
   },
-    {
-    slug: "workout-log",
-    image: "/projects/workout-log.png",
-    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
-    github: "https://github.com/E-Zaya/workout_log",
-    demo: "https://workout-log-smoky.vercel.app/",
-    status: "Completed",
-    featured: true,
+  {
+    // sui-salon: サロン紹介シングルページ。3-4万円帯の案件想定の制作例。
+    slug: "sui-salon",
+    image: "/image.png",
+    tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    github: "https://github.com/E-Zaya/sui-salon",
+    demo: "https://sui-salon.vercel.app/",
+    status: "In Progress",
   },
   {
     slug: "type-mon",
@@ -41,6 +41,15 @@ export const projectItems = [
     tech: ["Next.js", "TypeScript", "Gemini API", "Upstash Redis", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/type-mon",
     demo: "https://type-mon.vercel.app/",
+    status: "Completed",
+    featured: true,
+  },
+  {
+    slug: "workout-log",
+    image: "/projects/workout-log.png",
+    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
+    github: "https://github.com/E-Zaya/workout_log",
+    demo: "https://workout-log-smoky.vercel.app/",
     status: "Completed",
     featured: true,
   },
