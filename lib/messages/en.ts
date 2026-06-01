@@ -28,7 +28,7 @@ export const en = {
     primaryCta: "Free Consultation",
     secondaryCta: "View Work",
     meta: {
-      status: "Available for Projects · 2026.05",
+      status: "Available for Projects · 2026.06",
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
@@ -152,6 +152,17 @@ export const en = {
         focus:
           "Making Mongolian Cyrillic typing faster for people who are used to writing in Latin letters, while keeping the interface minimal and practical.",
         caseStudy: "type-mon-case-study",
+      },
+      "sui-salon": {
+        title: "Sui Salon LP",
+        description:
+          "A single-page introduction site for a beauty salon, built as a sample of real client work.",
+        summary:
+          "Designed from scratch with Next.js and Tailwind CSS, sized and scoped to match the kind of project I deliver in the 30,000–40,000 JPY range. Framer Motion adds light entry animations, and the page brings the salon's mood, menu, access, and booking flow together into one focused layout.",
+        scope:
+          "Handled structure, design, frontend implementation, and responsive layout independently.",
+        focus:
+          "Built around a clear flow — show the vibe, communicate the offer, lead to a booking. Mobile readability and tap-friendly CTAs were the top priorities.",
       },
     },
     wip: {

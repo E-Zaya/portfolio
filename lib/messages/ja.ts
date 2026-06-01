@@ -29,7 +29,7 @@ export const ja = {
     primaryCta: "無料で相談する",
     secondaryCta: "制作実績を見る",
     meta: {
-      status: "案件受付中 · 2026.05",
+      status: "案件受付中 · 2026.06",
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
@@ -181,6 +181,17 @@ export const ja = {
         focus:
           "ラテン文字入力に慣れているモンゴル語ユーザーが、より早く自然にキリル文字の文章を作れるように、シンプルで実用的なUIを意識しました。",
         caseStudy: "type-mon-case-study",
+      },
+      "sui-salon": {
+        title: "Sui Salon LP",
+        description:
+          "美容サロン向けのシングルページ紹介サイト（案件想定の制作例）。",
+        summary:
+          "個人経営のサロンを想定し、Next.js と Tailwind CSS でゼロから設計したシングルページサイトです。料金30,000〜40,000円帯の案件で実際にお渡しする想定の構成・分量で作成しています。Framer Motion で読み込み時のアニメーションを軽く付け、店舗の雰囲気・メニュー・アクセス・予約導線までを1ページに整理しました。",
+        scope:
+          "構成・デザイン・フロントエンド実装・レスポンシブ対応まで一人で担当。",
+        focus:
+          "「見て、雰囲気が伝わって、すぐ予約に行ける」という流れを意識。スマホで見たときの読みやすさとCTAの押しやすさを最優先に設計しました。",
       },
     },
 
