@@ -23,7 +23,7 @@ export const projectItems = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/SoulSkin-Website",
     demo: "https://soul-skin-website.vercel.app/",
-    status: "In Progress",
+    status: "Completed",
     featured: true,
   },
   {
@@ -33,7 +33,7 @@ export const projectItems = [
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/E-Zaya/sui-salon",
     demo: "https://sui-salon.vercel.app/",
-    status: "In Progress",
+    status: "Completed",
   },
   {
     slug: "type-mon",
