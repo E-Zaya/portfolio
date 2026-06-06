@@ -70,13 +70,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── 価格プラン ── */}
       <SectionShell>
         <div className="space-y-8">
-          <div className="flex justify-center">
-            <div className="inline-flex items-center gap-2.5 rounded-full px-5 py-2.5 text-sm font-semibold services-accent-pill">
-              <span className="h-2 w-2 shrink-0 animate-pulse rounded-full services-accent-dot" />
-              {t.introNote}
-            </div>
-          </div>
-
           <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {PLAN_KEYS.map((key) => {
               const plan = t.plans[key];
