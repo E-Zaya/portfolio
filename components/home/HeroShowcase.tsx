@@ -139,6 +139,44 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
         timerLabel={t.phoneTimerLabel}
         rows={t.phoneRows}
       />
+
+      {/* 手書き注釈 — 「さわってみて！」+ くるっとした矢印 */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-16 left-2 z-0 flex items-end gap-1 sm:left-4"
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.1, duration: 0.5, ease: "easeOut" }}
+      >
+        <svg
+          viewBox="0 0 48 44"
+          className="h-9 w-10"
+          fill="none"
+          style={{ color: "var(--marker-ink)" }}
+        >
+          {/* くるっと上向きの手描き風矢印 */}
+          <path
+            d="M6 40 C 10 24, 22 12, 38 8"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeDasharray="2 4"
+          />
+          <path
+            d="M31 6 L 39 7.5 L 35 15"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+        <span
+          className="-rotate-2 text-sm font-bold italic"
+          style={{ color: "var(--marker-ink)" }}
+        >
+          {t.handNote}
+        </span>
+      </motion.div>
     </motion.div>
   );
 }

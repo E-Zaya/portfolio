@@ -22,6 +22,7 @@ type Props = {
     | "caseStudy"
     | "scopeLabel"
     | "focusLabel"
+    | "behindLabel"
   >;
   onClose: () => void;
 };
@@ -168,6 +169,29 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
               <p className="text-sm leading-6 text-soft">{itemText.focus}</p>
             </div>
           </div>
+
+          {/* 制作の裏側 — 一番悩んだところ。人間味とプロ味の同時出し */}
+          {itemText.behind && (
+            <div
+              className="mb-6 rounded-2xl border p-4"
+              style={{
+                borderColor:
+                  "color-mix(in srgb, var(--marker-ink) 28%, var(--border))",
+                background:
+                  "color-mix(in srgb, var(--marker-ink) 6%, transparent)",
+              }}
+            >
+              <p
+                className="mb-1.5 text-xs font-bold uppercase tracking-widest"
+                style={{ color: "var(--marker-ink)" }}
+              >
+                {t.behindLabel}
+              </p>
+              <p className="text-sm italic leading-6 text-soft">
+                {itemText.behind}
+              </p>
+            </div>
+          )}
 
           {/* 使用技術 — 興味のある人向けの控えめな1行(技術語はメイン導線から排除する方針) */}
           <p className="mb-6 font-mono text-[11px] tracking-wide text-muted">

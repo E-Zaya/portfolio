@@ -47,6 +47,7 @@ export const en = {
         { name: "Design", value: "3.2h" },
         { name: "Build", value: "4.5h" },
       ],
+      handNote: "go on, try it!",
     },
     features: [
       {
@@ -82,12 +83,13 @@ export const en = {
   },
   about: {
     eyebrow: "About",
-    title: "A multilingual web developer",
+    title: "Hi, I'm Zaya.",
     paragraphs: [
-      "I build websites in Mongolian, Japanese, and English, with attention to both language and cultural context. My goal is to create websites that are easy to understand, easy to use, and clear for the people they are meant to reach.",
-      "After spending 10 years in Japan, I returned to Mongolia to seriously pursue a career as an engineer. I am currently studying full-stack development at IO Institute while also building websites for freelancers, small businesses, and independent creators.",
-      "Rather than relying on templates, I focus on the audience, purpose, and message behind each project so the final website communicates clearly.",
+      "I lived in Japan for ten years, then came home to Mongolia because I wanted to become someone who truly builds things.",
+      "The people I help run small shops and small businesses. Days eaten up by booking calls, good work that somehow doesn't come across — untangling that kind of \"stuck\", with websites and apps, is my job.",
+      "I won't promise fireworks. What I can promise: I'll listen properly, think it through with you, and stay beside you past launch. In Japanese, Mongolian, or English.",
     ],
+    signature: "— from my desk in Ulaanbaatar, Zaya",
     strengthsEyebrow: "Strengths",
     strengthsTitle: "What I can offer",
     strengths: [
@@ -107,6 +109,12 @@ export const en = {
           "I help organize your goals, budget, and required features before building. Even if this is your first website, I will explain the process clearly and keep the project moving step by step.",
       },
     ],
+    zaza: {
+      name: "Zaza",
+      role: "Chief cheerleader (sidekick)",
+      description:
+        "The pup peeking out from corners of this site. His job is to gently cheer you on. He barks when I slack off.",
+    },
   },
   projects: {
     eyebrow: "",
@@ -132,6 +140,7 @@ export const en = {
     caseStudy: "Read Case Study",
     scopeLabel: "Scope",
     focusLabel: "Focus",
+    behindLabel: "Behind the scenes",
     wipTitle: "Projects in Progress",
     wipStatus: "In Progress",
     status: {
@@ -150,6 +159,8 @@ export const en = {
           "Handled planning, design, frontend, backend, database design, and deployment independently.",
         focus:
           "Making workout logging simple and weekly progress easy to understand at a glance.",
+        behind:
+          "I kept rebuilding the UI with myself as the test subject — what would make even a serial quitter come back?",
         caseStudy: "workout-log-case-study",
       },
       "soul-skin-brand-lookbook": {
@@ -163,6 +174,8 @@ export const en = {
           "Handled design, frontend implementation, content structure, and deployment independently.",
         focus:
           "Communicating the brand’s atmosphere through visuals and creating a natural flow toward social media and contact.",
+        behind:
+          "I adjusted the whitespace around every single photo, hunting for the framing that wouldn't break the brand's air.",
         caseStudy: "soul-skin-project",
       },
       "type-mon": {
@@ -176,6 +189,8 @@ export const en = {
           "Handled product planning, UI design, frontend implementation, API integration, rate limiting, and deployment independently.",
         focus:
           "Making Mongolian Cyrillic typing faster for people who are used to writing in Latin letters, while keeping the interface minimal and practical.",
+        behind:
+          "Late nights staring down the conversion table, one character at a time. It's my mother tongue — no compromises.",
         caseStudy: "type-mon-case-study",
       },
       "sui-salon": {
@@ -189,6 +204,8 @@ export const en = {
           "Handled structure, design, frontend implementation, and responsive layout independently.",
         focus:
           "Built around a clear flow — show the vibe, communicate the offer, lead to a booking. Mobile readability and tap-friendly CTAs were the top priorities.",
+        behind:
+          "I imagined the exact spot a thumb would rest at the moment of booking, and moved the button there.",
       },
     },
     wip: {
@@ -454,10 +471,11 @@ export const en = {
       messageLabel: "Message",
       messagePlaceholder:
         "Example: Taking bookings by phone is getting overwhelming — I'd like to take them online. My budget is around ¥100,000.",
-      sending: "Sending...",
-      submit: "Send Message",
+      sending: "Zaza is running it over…",
+      submit: "Send it over",
       success: "Your message has been sent.",
       error: "Failed to send your message. Please try again later.",
+      note: "Nothing needs to be decided yet. I write every reply myself.",
     },
   },
 
@@ -470,6 +488,10 @@ export const en = {
     en: "EN",
     ja: "JP",
     mn: "MN",
+  },
+  zaza: {
+    pillBubble: "Asking costs nothing!",
+    formSuccess: "Delivered! Thank you!",
   },
   visual: {
     label: "Service Preview",

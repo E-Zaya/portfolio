@@ -100,6 +100,8 @@ export type ProjectMessageItem = {
   client?: string;
   /** 制作期間(例: "3週間") */
   duration?: string;
+  /** 制作の裏側 — 一番悩んだところ等の人間味1行 */
+  behind?: string;
 };
 
 export type WipMessageItem = {
@@ -131,6 +133,8 @@ export type ProjectsContent = {
   caseStudy: string;
   scopeLabel: string;
   focusLabel: string;
+  /** 「制作の裏側」ラベル(モーダル内の人間味コーナー) */
+  behindLabel: string;
   wipTitle: string;
   wipStatus: string;
   status: Record<ProjectStatus, string>;
@@ -203,6 +207,8 @@ export type ContactFormContent = {
   submit: string;
   success: string;
   error: string;
+  /** 送信ボタン下の安心ひとこと */
+  note: string;
 };
 
 export type ContactContent = {
@@ -306,6 +312,8 @@ export type Messages = {
       phoneCaption: string;
       phoneTimerLabel: string;
       phoneRows: { name: string; value: string }[];
+      /** 手書き風の注釈(「さわってみて！」) */
+      handNote: string;
     };
 
     features: {
@@ -329,6 +337,8 @@ export type Messages = {
     eyebrow: string;
     title: string;
     paragraphs: string[];
+    /** 手紙の締めの署名(手書き風表示) */
+    signature: string;
     strengthsEyebrow: string;
     strengthsTitle: string;
 
@@ -336,6 +346,13 @@ export type Messages = {
       title: string;
       description: string;
     }[];
+
+    /** 相棒紹介カード */
+    zaza: {
+      name: string;
+      role: string;
+      description: string;
+    };
   };
 
   projects: ProjectsContent;
@@ -353,6 +370,12 @@ export type Messages = {
     en: string;
     ja: string;
     mn: string;
+  };
+
+  /** Zazaのセリフ集(吹き出し用) */
+  zaza: {
+    pillBubble: string;
+    formSuccess: string;
   };
 
   visual: HeroVisualContent;

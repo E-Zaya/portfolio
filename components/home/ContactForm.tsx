@@ -1,6 +1,8 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { getMessages, type Locale } from "@/lib/i18n";
@@ -9,6 +11,7 @@ type FormState = "idle" | "loading" | "success" | "error";
 
 export default function ContactForm({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
+  const zaza = getMessages(locale).zaza;
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
@@ -135,11 +138,33 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             </Button>
           </div>
 
+          {/* 安心のひとこと — 送るハードルを下げるマイクロコピー */}
+          <p className="text-xs leading-relaxed text-muted">{t.form.note}</p>
+
           <div aria-live="polite" className="min-h-6 text-sm">
             {state === "success" && (
-              <p className="text-soft">
-                {t.form.success}
-              </p>
+              <motion.div
+                className="flex items-center gap-3"
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
+              >
+                {/* Zazaが喜ぶ */}
+                <Image
+                  src="/Zaza/mascot/zaza-celebrate.png"
+                  alt=""
+                  aria-hidden
+                  width={56}
+                  height={56}
+                  className="w-11 shrink-0"
+                />
+                <div>
+                  <p className="font-bold text-foreground">
+                    {zaza.formSuccess}
+                  </p>
+                  <p className="mt-0.5 text-xs text-muted">{t.form.success}</p>
+                </div>
+              </motion.div>
             )}
             {state === "error" && (
               <p className="text-[var(--color-error)]">

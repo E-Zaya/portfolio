@@ -30,6 +30,8 @@
   /* マーカー下線(MarkerHighlight)。ダークではインディゴが沈むので
      Zazaの金色系で光らせる。ライトは html.light で上書き。 */
   --marker: color-mix(in srgb, #fbbf24 45%, transparent);
+  /* 手書き文字用のインク色(署名・注釈)。マーカーと同系統の濃い色 */
+  --marker-ink: #fbbf24;
 
   --surface-glow: rgba(255, 255, 255, 0.06);
   --surface-glow-strong: rgba(255, 255, 255, 0.1);
@@ -115,6 +117,7 @@ html.light {
 
   /* ライトは従来どおりインディゴのマーカー */
   --marker: color-mix(in srgb, var(--accent-2) 30%, transparent);
+  --marker-ink: var(--accent-2);
 
   --surface-glow: rgba(255, 255, 255, 0.58);
   --surface-glow-strong: rgba(255, 255, 255, 0.8);

@@ -51,6 +51,18 @@ export default function AboutHero({ locale }: { locale: Locale }) {
               {paragraph}
             </motion.p>
           ))}
+
+          {/* 手紙の署名 — 手書き風 */}
+          <motion.p
+            initial={{ opacity: 0, x: -8 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="-rotate-1 text-right text-sm font-bold italic tracking-wide"
+            style={{ color: "var(--marker-ink)" }}
+          >
+            {t.signature}
+          </motion.p>
         </div>
 
         <div className="mt-8 flex flex-wrap gap-2">

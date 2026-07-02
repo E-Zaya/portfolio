@@ -24,6 +24,8 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
   const reduce = useReducedMotion();
 
   const [visible, setVisible] = useState(false);
+  const [bubble, setBubble] = useState(false);
+  const [flashed, setFlashed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,6 +42,20 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // 初登場時に一度だけ、吹き出しをひょこっと見せる(その後はhoverで)
+  useEffect(() => {
+    if (!visible || flashed) return;
+    const show = setTimeout(() => setBubble(true), 700);
+    const hide = setTimeout(() => {
+      setBubble(false);
+      setFlashed(true);
+    }, 3800);
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+    };
+  }, [visible, flashed]);
+
   if (cleanPath === "/contact") return null;
 
   return (
@@ -55,7 +71,36 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
           animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
           exit={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 320, damping: 24 }}
+          onMouseEnter={() => setBubble(true)}
+          onMouseLeave={() => flashed && setBubble(false)}
         >
+          {/* Zazaのひとこと吹き出し */}
+          <AnimatePresence>
+            {bubble && (
+              <motion.span
+                key="bubble"
+                className="absolute -top-11 right-0 z-20 whitespace-nowrap rounded-2xl rounded-br-sm border px-3.5 py-2 text-xs font-bold"
+                style={{
+                  background: "var(--background-2)",
+                  borderColor: "var(--border)",
+                  color: "var(--foreground)",
+                  boxShadow: "var(--shadow)",
+                }}
+                initial={
+                  reduce ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.85 }
+                }
+                animate={
+                  reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
+                }
+                exit={
+                  reduce ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.9 }
+                }
+                transition={{ type: "spring", stiffness: 380, damping: 22 }}
+              >
+                {t.zaza.pillBubble}
+              </motion.span>
+            )}
+          </AnimatePresence>
           {/* Zaza — ピルの左肩からひょこっと覗く */}
           <motion.span
             aria-hidden
