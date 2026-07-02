@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Noto_Sans_JP } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import FloatingConsultPill from "@/components/layout/FloatingConsultPill";
 import LoadingScreen from "@/components/layout/LoadingScreen";
 import MouseGlow from "@/components/Effects/MouseGlow";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
@@ -133,6 +134,7 @@ export default async function LocaleLayout({
                 <Header locale={locale} />
                 <main>{children}</main>
                 <Footer locale={locale} />
+                <FloatingConsultPill locale={locale} />
               </div>
             </div>
           </MotionProvider>

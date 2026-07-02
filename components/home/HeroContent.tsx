@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Button from "@/components/ui/Button";
+import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function HeroContent({ locale }: { locale: Locale }) {
@@ -10,6 +11,10 @@ export default function HeroContent({ locale }: { locale: Locale }) {
   const contactHref = `/${locale}/contact`;
   const projectsHref = `/${locale}/projects`;
 
+  // モバイルでは文単位で自然に流し、sm以上では行ごとにブロック表示(4行の大組み)
+  const titleLines = t.title.split("\n").filter((line) => line.trim());
+  const highlightLines = t.highlight.split("\n").filter((line) => line.trim());
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -17,15 +22,25 @@ export default function HeroContent({ locale }: { locale: Locale }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="flex min-w-0 flex-col items-start text-left"
     >
-      {/* eyebrow */}
-      <p className="mb-4 whitespace-pre-line text-[11px] font-bold uppercase tracking-[0.34em] hero-gradient sm:mb-6 md:text-xs">
-        {t.eyebrow}
-      </p>
-
-      {/* headline */}
-<h1 className="jp-tight whitespace-pre-line text-[2rem] font-black leading-[1.15] tracking-[-0.05em] text-foreground sm:text-[2.4rem] sm:leading-[1.08] md:text-[3.4rem] md:leading-[1.06] lg:text-[3.9rem] xl:text-[4.2rem]">        <span className="block whitespace-pre-line">{t.title}</span>
-        <span className="block whitespace-pre-line hero-gradient">
-          {t.highlight}
+      {/* headline — モバイルは文単位で2行、sm以上は行ブロックで4行の大組み */}
+      <h1 className="jp-tight text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.5] tracking-[-0.05em] text-foreground sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]">
+        <span className="block">
+          {titleLines.map((line) => (
+            <span key={line} className="inline sm:block">
+              {line}
+            </span>
+          ))}
+        </span>
+        <span className="block">
+          {highlightLines.map((line, index) => (
+            <MarkerHighlight
+              key={line}
+              delay={0.6 + index * 0.18}
+              className="sm:table"
+            >
+              {line}
+            </MarkerHighlight>
+          ))}
         </span>
       </h1>
       {/* description */}
@@ -33,56 +48,37 @@ export default function HeroContent({ locale }: { locale: Locale }) {
         {t.description}
       </p>
 
-      {/* CTAs */}
-      <div className="mt-6 flex flex-col items-stretch gap-3 sm:mt-10 sm:flex-row sm:items-center">
-        <Link
+      {/* CTAs — モバイルは同幅2列グリッドで1行(改行禁止)、sm以上は従来のlgサイズ */}
+      <div className="mt-6 grid w-full grid-cols-2 items-center gap-3 sm:mt-10 sm:flex sm:w-auto sm:flex-row">
+        <Button
           href={contactHref}
-          className="group relative inline-flex w-full items-center justify-center overflow-hidden rounded-full px-7 py-3.5 text-sm font-bold transition duration-300 hover:-translate-y-0.5 sm:w-auto md:px-8 md:py-4 md:text-base"
-          style={{
-            color: "var(--button-foreground)",
-            background:
-              "linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3))",
-            boxShadow:
-              "0 8px 32px color-mix(in srgb, var(--accent-1) 35%, transparent), 0 1px 0 color-mix(in srgb, var(--foreground) 20%, transparent) inset",
-          }}
+          variant="primary"
+          size="compact"
+          className="group w-full whitespace-nowrap font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
         >
-          <span
-            className="pointer-events-none absolute inset-x-6 top-0 h-px opacity-60"
-            style={{
-              background:
-                "linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 70%, transparent), transparent)",
-            }}
-          />
-          <span className="relative z-10 inline-flex items-center gap-2">
-            {t.primaryCta}
-            <svg
-              aria-hidden
-              viewBox="0 0 24 24"
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M5 12h14M13 5l7 7-7 7" />
-            </svg>
-          </span>
-        </Link>
+          {t.primaryCta}
+          <svg
+            aria-hidden
+            viewBox="0 0 24 24"
+            className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M5 12h14M13 5l7 7-7 7" />
+          </svg>
+        </Button>
 
-        <Link
+        <Button
           href={projectsHref}
-          className="inline-flex w-full items-center justify-center rounded-full border px-7 py-3.5 text-sm font-semibold transition duration-300 hover:-translate-y-0.5 sm:w-auto md:px-8 md:py-4 md:text-base"
-          style={{
-            color: "var(--foreground)",
-            borderColor: "var(--border)",
-            background:
-              "color-mix(in srgb, var(--card-strong) 76%, transparent)",
-            boxShadow: "var(--shadow)",
-          }}
+          variant="secondary"
+          size="compact"
+          className="w-full whitespace-nowrap font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
         >
           {t.secondaryCta}
-        </Link>
+        </Button>
       </div>
 
       {/* tech line — subtle proof line */}
@@ -96,7 +92,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           }}
         />
         <p
-          className="text-[10.5px]  text-center font-medium uppercase tracking-[0.3em] text-muted md:text-[11px]"
+          className="break-keep text-left text-[10px] font-medium uppercase leading-relaxed tracking-[0.14em] text-muted sm:tracking-[0.3em] md:text-[11px]"
           style={{ fontFamily: "var(--font-mono, ui-monospace, monospace)" }}
         >
           {t.techLine}

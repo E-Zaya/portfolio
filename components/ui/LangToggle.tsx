@@ -16,25 +16,25 @@ type LangItem = {
   accent: string;
 };
 
-// 表示優先度順（ja → mn → en）。各 accent は現在選択中の言語を示す装飾色。
+// 表示優先度順（ja → mn → en）。accent はサイト統一色(accent-2)に揃えた。
 const LANGS: LangItem[] = [
   {
     code: "ja",
     label: "日本語",
     flagSrc: "/icons/flag-jp.svg",
-    accent: "var(--accent-3)",
+    accent: "var(--accent-2)",
   },
   {
     code: "mn",
     label: "Монгол",
     flagSrc: "/icons/flag-mn.svg",
-    accent: "var(--accent-4)",
+    accent: "var(--accent-2)",
   },
   {
     code: "en",
     label: "English",
     flagSrc: "/icons/flag-us.svg",
-    accent: "var(--accent-1)",
+    accent: "var(--accent-2)",
   },
 ];
 

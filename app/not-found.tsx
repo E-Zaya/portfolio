@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Button from "@/components/ui/Button";
 
 export default function NotFound() {
   return (
@@ -10,8 +10,8 @@ export default function NotFound() {
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem",
-        background: "#081120",
-        color: "#f8fafc",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "system-ui, sans-serif",
         textAlign: "center",
       }}
@@ -24,9 +24,7 @@ export default function NotFound() {
             textTransform: "uppercase",
             letterSpacing: "0.34em",
             marginBottom: "1.5rem",
-            background: "linear-gradient(90deg, #38bdf8, #818cf8, #a855f7)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "var(--accent-2)",
           }}
         >
           404
@@ -45,7 +43,7 @@ export default function NotFound() {
 
         <p
           style={{
-            color: "rgba(226,232,240,0.80)",
+            color: "var(--text-muted)",
             lineHeight: 1.8,
             marginBottom: "2.5rem",
           }}
@@ -55,24 +53,9 @@ export default function NotFound() {
           The page you&apos;re looking for doesn&apos;t exist.
         </p>
 
-        <Link
-          href="/ja"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "0.5rem",
-            padding: "0.875rem 2rem",
-            borderRadius: "9999px",
-            background: "linear-gradient(135deg, #38bdf8, #818cf8, #a855f7)",
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "0.875rem",
-            textDecoration: "none",
-            boxShadow: "0 8px 32px rgba(56, 189, 248, 0.35)",
-          }}
-        >
+        <Button href="/ja" variant="primary" className="font-bold">
           ← ホームに戻る / Back to Home
-        </Link>
+        </Button>
       </div>
     </div>
   );

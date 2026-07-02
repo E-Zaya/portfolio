@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import BlogCard from "@/components/blog/BlogCard";
 import BlogFilter from "@/components/blog/BlogFilter";
+import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import type { PostMeta } from "@/lib/notion";
 import { getMessages, type Locale } from "@/lib/i18n";
 
@@ -26,7 +27,7 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
     <div className="space-y-8">
       <div className="flex items-center justify-between gap-4">
         <h2 className="text-[clamp(22px,2.4vw,30px)] font-semibold tracking-[-0.04em] text-foreground">
-          {t.browseTitle}
+          <MarkerHighlight delay={0.2}>{t.browseTitle}</MarkerHighlight>
         </h2>
       </div>
 

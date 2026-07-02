@@ -17,27 +17,8 @@ export type HeroLanguageLine = {
   line: string;
 };
 
-export type ServicesPlan = {
-  name: string;
-  badge?: string;
-  price: string;
-  description: string;
-  details: string[];
-  timeline?: string;
-  note?: string;
-};
-
-export type ServicesFeeItem = {
-  title: string;
-  description: string;
-};
-
+// サービスページ — 「選ばれる × 楽になる」2本柱構成(ビフォー→アフター形式)
 export type ServicesStep = {
-  title: string;
-  description: string;
-};
-
-export type ServicesReasonItem = {
   title: string;
   description: string;
 };
@@ -47,34 +28,47 @@ export type ServicesFaqItem = {
   answer: string;
 };
 
+export type ServicesBeforeAfter = {
+  before: string;
+  after: string;
+};
+
+export type ServicesProof = {
+  name: string;
+  description: string;
+  href?: string;
+};
+
+export type ServicesPillar = {
+  name: string;
+  tagline: string;
+  lead: string;
+  beforeAfter: ServicesBeforeAfter[];
+  forms: string[];
+  proofs: ServicesProof[];
+  price: string;
+  timeline: string;
+};
+
 export type ServicesContent = {
   title: string;
-  subtitle: string;
-  intro: string;
-  introNote: string;
+  intro: string[];
   ctaLabel: string;
-  bottomCtaTitle: string;
-  bottomCtaText: string;
 
-  plans: {
-    simple: ServicesPlan;
-    starter: ServicesPlan;
-    custom: ServicesPlan;
+  labels: {
+    before: string;
+    after: string;
+    forms: string;
+    proofs: string;
+    price: string;
   };
 
-  targetAudience: {
-    title: string;
-    items: string[];
-  };
+  pillars: ServicesPillar[];
 
-  reasons: {
+  care: {
     title: string;
-    items: ServicesReasonItem[];
-  };
-
-  philosophy: {
-    title: string;
-    items: ServicesReasonItem[];
+    description: string;
+    price: string;
   };
 
   process: {
@@ -82,19 +76,13 @@ export type ServicesContent = {
     steps: ServicesStep[];
   };
 
-  fees: {
-    title: string;
-    description: string;
-    production: ServicesFeeItem;
-    maintenance: ServicesFeeItem;
-    external: ServicesFeeItem;
-    delivery: ServicesFeeItem;
-  };
-
   faq: {
     title: string;
     items: ServicesFaqItem[];
   };
+
+  bottomCtaTitle: string;
+  bottomCtaText: string;
 };
 
 export type ProjectStatus = "Completed" | "In Progress";
@@ -106,6 +94,12 @@ export type ProjectMessageItem = {
   scope: string;
   focus: string;
   caseStudy?: string;
+  /** 成果タグ(ベネフィット語) — カード表面に表示 */
+  tags?: string[];
+  /** クライアント名(実案件のみ) */
+  client?: string;
+  /** 制作期間(例: "3週間") */
+  duration?: string;
 };
 
 export type WipMessageItem = {
@@ -123,6 +117,15 @@ export type ProjectsContent = {
   otherEyebrow: string;
   otherTitle: string;
   featuredBadge: string;
+  /** 実案件 / 自社プロダクト / 制作例 のバッジ表示名 */
+  kindLabels: {
+    client: string;
+    product: string;
+    sample: string;
+  };
+  liveLabel: string;
+  openLive: string;
+  detailHint: string;
   liveDemo: string;
   viewCode: string;
   caseStudy: string;
@@ -292,6 +295,18 @@ export type Messages = {
 
     techLine: string;
     visualHint: string;
+
+    // 実物ショーケース(HeroShowcase)用 — 「選ばれる×楽になる」の2軸に実物を対応させる
+    showcase: {
+      liveBadge: string;
+      open: string;
+      laptopLabel: string;
+      laptopCaption: string;
+      phoneLabel: string;
+      phoneCaption: string;
+      phoneTimerLabel: string;
+      phoneRows: { name: string; value: string }[];
+    };
 
     features: {
       title: string;

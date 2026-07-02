@@ -1,10 +1,12 @@
 import AboutHero from "@/components/about/AboutHero";
 import AboutSocialLinks from "@/components/about/AboutSocialLinks";
 import AboutStrengths from "@/components/about/AboutStrengths";
+import Skills from "@/components/home/Skills";
 import { type Locale } from "@/lib/i18n";
 
 export default function AboutContent({ locale }: { locale: Locale }) {
   return (
+    <>
     <section className="section-space">
       <div className="container-custom">
         <div className="apple-panel gradient-border relative overflow-hidden rounded-3xl sm:rounded-4xl px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
@@ -19,7 +21,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
           <div
             className="pointer-events-none absolute bottom-[-50px] right-[-30px] z-0 h-48 w-48 rounded-full blur-3xl"
             style={{
-              background: "color-mix(in srgb, var(--accent-4) 14%, transparent)",
+              background: "color-mix(in srgb, var(--accent-2) 14%, transparent)",
             }}
           />
 
@@ -31,5 +33,9 @@ export default function AboutContent({ locale }: { locale: Locale }) {
         </div>
       </div>
     </section>
+
+    {/* Tech Stack — 技術情報はAboutにのみ置く方針(同業者・紹介案件向けの控えめな置き場) */}
+    <Skills locale={locale} />
+    </>
   );
 }

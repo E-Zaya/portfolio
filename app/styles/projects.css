@@ -12,9 +12,9 @@
 }
 
 .badge-featured {
-  border-color: color-mix(in srgb, var(--accent-3) 35%, transparent);
-  background: color-mix(in srgb, var(--accent-3) 12%, transparent);
-  color: var(--accent-3);
+  border-color: color-mix(in srgb, var(--accent-1) 35%, transparent);
+  background: color-mix(in srgb, var(--accent-1) 12%, transparent);
+  color: var(--accent-1);
 }
 
 /* ── Project card ── */

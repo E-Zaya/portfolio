@@ -36,19 +36,19 @@ export default function Header({ locale }: { locale: Locale }) {
       className={cn(
         "sticky top-0 z-50 transition-all duration-300",
         hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
-        scrolled ? "py-2" : "py-4",
+        scrolled ? "py-1.5" : "py-2.5",
       )}
     >
       <div className="container-custom">
         <div
           className={cn(
             "header-shell relative rounded-2xl transition-all duration-300",
-            scrolled ? "px-3 py-3 sm:px-5" : "px-3 py-4 sm:px-5",
+            scrolled ? "px-3 py-1.5 sm:px-5" : "px-3 py-2 sm:px-5",
           )}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-violet-500/6 via-transparent to-cyan-400/6" />
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-indigo-400/8 via-transparent to-cyan-400/6" />
 
-          <div className="relative flex min-h-16 items-center justify-between gap-3 sm:gap-4">
+          <div className="relative flex min-h-12 items-center justify-between gap-3 sm:gap-4">
             <Link
               href={withLocale(locale, "/")}
               className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3 transition"
@@ -59,7 +59,7 @@ export default function Header({ locale }: { locale: Locale }) {
               </div>
 
               <div className="min-w-0 leading-none">
-                <span className="block truncate bg-linear-to-r from-violet-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
+                <span className="block truncate bg-linear-to-r from-indigo-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
                   Zaya
                 </span>
                 <span className="block truncate text-xs text-soft">

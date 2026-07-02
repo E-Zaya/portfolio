@@ -2,16 +2,18 @@ import Card from "@/components/ui/Card";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";
 import HeroContent from "./HeroContent";
-import HeroVisual from "./HeroVisual";
+// HeroVisual(Zaya Studioプレビュー)は温存中 — 気に入っているので別の場所で再利用予定。
+// 戻す場合: import HeroVisual from "./HeroVisual" にして下のHeroShowcaseと入れ替えるだけ。
+import HeroShowcase from "./HeroShowcase";
 
 export default function Hero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).hero;
 
   return (
-    <SectionShell className="pt-6 sm:pt-8">
+    <SectionShell className="pt-1 sm:pt-2">
       <Card
         gradientBorder
-        className="relative overflow-hidden rounded-3xl sm:rounded-4xl px-4 py-6 sm:px-5 sm:py-8 md:px-10 md:py-14 lg:px-14 lg:py-16"
+        className="relative overflow-hidden rounded-3xl sm:rounded-4xl px-4 py-5 sm:px-5 sm:py-6 md:px-10 md:py-9 lg:px-14 lg:py-10"
       >
         {/* subtle grid */}
         <div
@@ -30,7 +32,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           className="pointer-events-none absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full"
           style={{
             background:
-              "conic-gradient(from 220deg at 60% 40%, color-mix(in srgb, var(--accent-1) 60%, transparent), color-mix(in srgb, var(--accent-3) 40%, transparent), transparent 40%)",
+              "conic-gradient(from 220deg at 60% 40%, color-mix(in srgb, var(--accent-1) 60%, transparent), color-mix(in srgb, var(--accent-2) 40%, transparent), transparent 40%)",
             filter: "blur(64px)",
             opacity: 0.35,
           }}
@@ -41,12 +43,12 @@ export default function Hero({ locale }: { locale: Locale }) {
           className="pointer-events-none absolute inset-x-0 top-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent 5%, color-mix(in srgb, var(--accent-1) 70%, transparent) 40%, color-mix(in srgb, var(--accent-3) 60%, transparent) 65%, transparent 95%)",
+              "linear-gradient(90deg, transparent 5%, color-mix(in srgb, var(--accent-1) 70%, transparent) 40%, color-mix(in srgb, var(--accent-2) 60%, transparent) 65%, transparent 95%)",
           }}
         />
 
         {/* meta bar — editorial */}
-        <div className="relative z-10 mb-8 flex flex-wrap items-center justify-between gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted md:mb-10 md:text-[11px]">
+        <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted md:mb-5 md:text-[11px]">
           <div className="flex items-center gap-2">
             <span className="relative inline-flex h-1.5 w-1.5">
               <span
@@ -76,7 +78,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         {/* hairline divider under meta bar */}
         <div
           aria-hidden
-          className="relative z-10 mb-10 h-px md:mb-14"
+          className="relative z-10 mb-6 h-px md:mb-8"
           style={{
             background:
               "linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 14%, transparent) 50%, transparent)",
@@ -88,8 +90,8 @@ export default function Hero({ locale }: { locale: Locale }) {
           <div className="min-w-0 lg:col-span-7">
             <HeroContent locale={locale} />
           </div>
-          <div className="min-w-0 pb-10 sm:pb-14 lg:col-span-5 lg:pb-0">
-            <HeroVisual/>
+          <div className="min-w-0 pb-14 pt-10 sm:pb-16 lg:col-span-5 lg:pb-4 lg:pt-0">
+            <HeroShowcase locale={locale} />
           </div>
         </div>
       </Card>

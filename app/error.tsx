@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Button from "@/components/ui/Button";
 
 export default function RootError({
   error,
@@ -22,8 +23,8 @@ export default function RootError({
         alignItems: "center",
         justifyContent: "center",
         padding: "2rem",
-        background: "#081120",
-        color: "#f8fafc",
+        background: "var(--background)",
+        color: "var(--foreground)",
         fontFamily: "system-ui, sans-serif",
         textAlign: "center",
       }}
@@ -36,9 +37,7 @@ export default function RootError({
             textTransform: "uppercase",
             letterSpacing: "0.34em",
             marginBottom: "1rem",
-            background: "linear-gradient(90deg, #f87171, #f472b6)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
+            color: "var(--color-error)",
           }}
         >
           Something went wrong
@@ -57,7 +56,7 @@ export default function RootError({
 
         <p
           style={{
-            color: "rgba(226,232,240,0.80)",
+            color: "var(--text-muted)",
             lineHeight: 1.8,
             marginBottom: "2.5rem",
           }}
@@ -67,22 +66,9 @@ export default function RootError({
           An unexpected error occurred. Please try again.
         </p>
 
-        <button
-          onClick={reset}
-          style={{
-            padding: "0.875rem 2rem",
-            borderRadius: "9999px",
-            background: "linear-gradient(135deg, #38bdf8, #818cf8, #a855f7)",
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: "0.875rem",
-            cursor: "pointer",
-            border: "none",
-            boxShadow: "0 8px 32px rgba(56,189,248,0.35)",
-          }}
-        >
+        <Button onClick={reset} variant="primary" className="font-bold">
           再試行 / Try Again
-        </button>
+        </Button>
       </div>
     </div>
   );

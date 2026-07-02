@@ -24,12 +24,12 @@ body {
     ),
     radial-gradient(
       circle at 90% 20%,
-      color-mix(in srgb, var(--accent-3) 20%, transparent),
+      color-mix(in srgb, var(--accent-2) 20%, transparent),
       transparent 22%
     ),
     radial-gradient(
       circle at 50% 100%,
-      color-mix(in srgb, var(--accent-4) 16%, transparent),
+      color-mix(in srgb, var(--accent-2) 12%, transparent),
       transparent 26%
     ),
     linear-gradient(135deg, var(--background), var(--background-2) 55%, #111827);

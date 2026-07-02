@@ -67,7 +67,7 @@
   top: 22%;
   height: 6.5rem;
   width: 6.5rem;
-  background: color-mix(in srgb, var(--accent-3) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 30%, transparent);
 }
 
 .blog-detail-shell {

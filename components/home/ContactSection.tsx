@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Badge from "@/components/ui/Badge";
+import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ContactForm from "./ContactForm";
 import ContactSocials from "./ContactSocials";
@@ -37,10 +37,9 @@ export default function ContactSection({ locale }: { locale: Locale }) {
           className="mx-auto max-w-5xl"
         >
           <div className="mb-10 text-center">
-            <Badge className="text-muted">{t.eyebrow}</Badge>
-
             <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
-              {t.titleA} <span className="hero-gradient">{t.titleB}</span>
+              {t.titleA}{" "}
+              <MarkerHighlight delay={0.3}>{t.titleB}</MarkerHighlight>
             </h2>
 
             <div className="gradient-line mx-auto mt-5 h-px w-28" />

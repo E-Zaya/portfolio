@@ -1,6 +1,4 @@
 import Hero from "@/components/home/Hero";
-import Skills from "@/components/home/Skills";
-import SectionReveal from "@/components/Effects/SectionReveal";
 import ContactSection from "@/components/home/ContactSection";
 import ProjectsSection from "@/components/projects/ProjectsSection";
 import { isLocale, type Locale } from "@/lib/i18n";
@@ -23,9 +21,7 @@ export default async function HomePage({
       <Hero locale={locale} />
       <ServicesContent locale={locale} />
       <ProjectsSection locale={locale} />
-      <SectionReveal delay={0}>
-        <Skills locale={locale} />
-      </SectionReveal>
+      {/* Tech Stack(Skills)は「技術語はAboutのみ」方針に合わせてAboutページへ移動 */}
       <ContactSection locale={locale} />
     </>
   );

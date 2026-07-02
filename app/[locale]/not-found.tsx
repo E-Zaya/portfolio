@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useParams } from "next/navigation";
+import Button from "@/components/ui/Button";
 import { isLocale, type Locale } from "@/lib/i18n";
 
 const messages: Record<Locale, { eyebrow: string; title: string; description: string; cta: string }> = {
@@ -45,19 +45,13 @@ export default function LocaleNotFound() {
 
         <p className="mt-6 text-base leading-7 text-soft">{t.description}</p>
 
-        <Link
+        <Button
           href={`/${locale}`}
-          className="mt-10 inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition duration-200 hover:-translate-y-0.5"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--accent-1), var(--accent-2), var(--accent-3))",
-            color: "var(--button-foreground)",
-            boxShadow:
-              "0 8px 32px color-mix(in srgb, var(--accent-1) 35%, transparent)",
-          }}
+          variant="primary"
+          className="mt-10 font-bold"
         >
           ← {t.cta}
-        </Link>
+        </Button>
       </div>
     </main>
   );

@@ -1,31 +1,25 @@
 "use client";
 
 import { useState } from "react";
+import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { ProjectCard } from "./ProjectCard";
 import { ProjectModal } from "./ProjectModal";
-import { WipSection } from "./WipSection";
-import type { ProjectItem, WipItem } from "@/data/projects";
+import type { ProjectItem } from "@/data/projects";
 import type { Locale } from "@/lib/i18n";
-import type { ProjectMessageItem, WipMessageItem, ProjectsContent } from "@/lib/messages/types";
+import type { ProjectMessageItem, ProjectsContent } from "@/lib/messages/types";
 
 type ProjectEntry = {
   item: ProjectItem;
   text: ProjectMessageItem;
 };
 
-type WipEntry = {
-  item: WipItem;
-  text: WipMessageItem;
-};
-
 type Props = {
   locale: Locale;
   projects: ProjectEntry[];
-  wipProjects: WipEntry[];
   t: ProjectsContent;
 };
 
-export function ProjectsClient({ locale, projects, wipProjects, t }: Props) {
+export function ProjectsClient({ locale, projects, t }: Props) {
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const activeProject = projects.find((p) => p.item.slug === activeSlug) ?? null;
@@ -38,10 +32,10 @@ export function ProjectsClient({ locale, projects, wipProjects, t }: Props) {
           {t.titleA ? (
             <>
               <span>{t.titleA} </span>
-              <span>{t.titleB}</span>
+              <MarkerHighlight delay={0.25}>{t.titleB}</MarkerHighlight>
             </>
           ) : (
-            <span>{t.titleB}</span>
+            <MarkerHighlight delay={0.25}>{t.titleB}</MarkerHighlight>
           )}
         </h1>
         {t.description && (
@@ -63,11 +57,6 @@ export function ProjectsClient({ locale, projects, wipProjects, t }: Props) {
           />
         ))}
       </div>
-
-      {/* WIP section */}
-      {wipProjects.length > 0 && (
-        <WipSection projects={wipProjects} t={t} />
-      )}
 
       {/* Modal */}
       {activeProject && (

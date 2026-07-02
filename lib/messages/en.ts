@@ -19,21 +19,35 @@ export const en = {
     { label: "Contact", href: "/contact" },
   ],
   hero: {
-    eyebrow: "/ Custom Web Design / Fast Delivery / Practical Features /",
-    title: "Websites that show your business value,",
-    highlight: "designed from scratch.",
+    eyebrow: "/ Get chosen / Work lighter /",
+    title: "A business\npeople choose.\n",
+    highlight: "A workday that\nruns itself.",
     description:
-      "No generic templates. I design and build custom websites around your goals — from landing pages and company sites to small web apps with login, admin screens, and simple databases.",
+      "A trustworthy face for your business, and systems that make the daily grind disappear.\nBookings, payments, customers in other languages — the hard parts are my job.",
     badges: ["Custom Design", "Fast Delivery", "Practical Features"],
-    primaryCta: "Free Consultation",
-    secondaryCta: "View Work",
+    primaryCta: "Free consultation",
+    secondaryCta: "See projects",
     meta: {
-      status: "Available for Projects · 2026.06",
+      status: "Available for Projects · 2026.07",
       focus: "Websites & Web Apps",
       location: "Ulaanbaatar",
     },
     techLine: "Free consultation · Timeline from 2 weeks · JP/MN support",
     visualHint: "I build all of this",
+    showcase: {
+      liveBadge: "Live right now",
+      open: "Open the real site",
+      laptopLabel: "Getting chosen — a real example",
+      laptopCaption:
+        "A travel site where overseas guests read in their own language and apply on the spot",
+      phoneLabel: "Working lighter — a real example",
+      phoneCaption: "Logging a workday takes 3 seconds. On the app stores",
+      phoneTimerLabel: "Today",
+      phoneRows: [
+        { name: "Design", value: "3.2h" },
+        { name: "Build", value: "4.5h" },
+      ],
+    },
     features: [
       {
         title: "Custom Design",
@@ -105,6 +119,14 @@ export const en = {
     otherEyebrow: "Other Projects",
     otherTitle: "Other Work",
     featuredBadge: "Featured",
+    kindLabels: {
+      client: "Client work",
+      product: "Own product",
+      sample: "Concept work",
+    },
+    liveLabel: "Live",
+    openLive: "Open the real site",
+    detailHint: "See details",
     liveDemo: "View Demo",
     viewCode: "View Code",
     caseStudy: "Read Case Study",
@@ -120,7 +142,8 @@ export const en = {
       "workout-log": {
         title: "Workout Log App",
         description:
-          "A full-stack workout tracking app with volume analysis and exercise management.",
+          "Logging takes a few taps, progress shows in one glance — a workout log built to keep you coming back.",
+        tags: ["Log in a few taps", "Progress at a glance"],
         summary:
           "Built with Next.js, Prisma, and PostgreSQL. It includes workout logging, exercise management, and weekly training volume visualization, designed with usability in mind.",
         scope:
@@ -132,7 +155,8 @@ export const en = {
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
         description:
-          "A lookbook website designed to communicate the atmosphere and visual identity of a brand.",
+          "Pulls visitors into the brand's world before selling anything, then leads them naturally to socials and contact.",
+        tags: ["Sells with atmosphere", "Leads to socials"],
         summary:
           "Built not as an e-commerce site, but as a visual brand presentation with a clear path toward Instagram and contact links.",
         scope:
@@ -144,7 +168,8 @@ export const en = {
       "type-mon": {
         title: "TypeMon",
         description:
-          "A Mongolian typing tool that converts familiar Latin input into Cyrillic text.",
+          "Type in Latin letters, get proper Cyrillic Mongolian — a free tool that makes typing faster.",
+        tags: ["Converts as you type", "Free to use"],
         summary:
           "Built with Next.js and TypeScript. It supports Latin-to-Cyrillic conversion, local history, URL text loading, dark mode, and an AI polish feature with request limits.",
         scope:
@@ -156,7 +181,8 @@ export const en = {
       "sui-salon": {
         title: "Sui Salon LP",
         description:
-          "A single-page introduction site for a beauty salon, built as a sample of real client work.",
+          "One page that carries visitors from mood to booking, designed mobile-first.",
+        tags: ["Mood to booking in one page", "Mobile-first"],
         summary:
           "Designed from scratch with Next.js and Tailwind CSS, sized and scoped to match the kind of project I deliver in the 30,000–40,000 JPY range. Framer Motion adds light entry animations, and the page brings the salon's mood, menu, access, and booking flow together into one focused layout.",
         scope:
@@ -217,237 +243,195 @@ export const en = {
 
   // Services page content
   services: {
-    title: "Web Design & Development Services",
-    subtitle:
-      "I design and build websites from scratch for freelancers, small businesses, local shops, and creators who want to attract customers and build trust online.",
-    intro:
-      "From landing pages and business websites to admin screens, login features, and multilingual support, I build only what your project actually needs.",
-    ctaLabel: "Contact",
-    bottomCtaTitle: "You can start with a simple consultation",
-    bottomCtaText:
-      "Your idea does not need to be fully organized yet. I can help you clarify the structure, features, and budget based on your goals.",
-    introNote:
-      "Introductory pricing is available for the first 5 projects only.",
-    plans: {
-      simple: {
-        name: "Simple LP",
-        price: "¥40,000〜¥50,000",
-        description:
-          "A simple one-page landing page that introduces your service, shop, or offer clearly.",
-        details: [
-          "1-page layout",
-          "Original design",
-          "Social media links",
-          "Responsive design",
-          "Basic SEO",
-          "1 minor revision per month",
-        ],
-        timeline: "From 7 to 14 days",
-        note: "The process will be smoother if you can prepare the basic text and images in advance.",
-      },
-      starter: {
-        name: "Starter Website",
-        badge: "Recommended",
-        price: "¥80,000〜¥98,000",
-        description:
-          "Recommended for presenting your business properly with the essential pages.",
-        details: [
-          "3–4 pages",
-          "Original design",
-          "News update feature",
-          "Social media links",
-          "Responsive design",
-          "Basic SEO setup",
-          "2 minor revisions per month",
-        ],
-        timeline: "3 to 4 weeks",
-        note: "A practical structure that includes your business information, key content, contact flow, and an easy way to update announcements.",
-      },
-      custom: {
-        name: "Custom Development",
-        price: "From ¥150,000 / consultation required",
-        description:
-          "For websites and small web apps that need custom features.",
-        details: [
-          "Login functionality",
-          "Admin dashboard",
-          "Database integration",
-          "Payment integration",
-          "Advanced animations",
-          "Multilingual support",
-          "API integrations",
-        ],
-        note: "The structure will be planned individually based on your required features, content, and how the site will be operated.",
-      },
+    title: "Not what I can build.\nWhat gets easier.",
+    intro: [
+      "What I sell isn't tech jargon like \"websites\" or \"apps\". It's a face for your business that gets you chosen, and systems that make the daily grind disappear.",
+      "No difficult talk. Just look at what would change for your business.",
+    ],
+    ctaLabel: "Free consultation",
+    labels: {
+      before: "Now",
+      after: "After",
+      forms: "What this can look like",
+      proofs: "See the real thing",
+      price: "From",
     },
-    targetAudience: {
-      title: "Recommended for",
-      items: [
-        "People who feel limited by using social media alone",
-        "People who want to clearly explain their business, service, or offer",
-        "People who want a website tailored to their business instead of a generic template",
-        "People who want a high-quality website while keeping costs reasonable",
-        "People who want to keep improving their website after launch through consultation",
-      ],
-    },
-    reasons: {
-      title: "Why work with me",
-      items: [
-        {
-          title: "Designed from scratch",
-          description:
-            "I do not simply reuse templates. I plan the structure based on your business, target audience, and goals.",
-        },
-        {
-          title: "Built with inquiries in mind",
-          description:
-            "The design is not only about appearance. I also consider CTAs, page flow, and content structure so visitors can take action more easily.",
-        },
-        {
-          title: "Quality-focused, even at a lower price",
-          description:
-            "As introductory pricing, I handle planning, design, and implementation carefully from start to finish.",
-        },
-        {
-          title: "Frequent communication",
-          description:
-            "I keep communication clear during production, which helps reduce misunderstandings and keeps the final result close to your expectations.",
-        },
-      ],
-    },
-    philosophy: {
-      title: "What I value when building",
-      items: [
-        {
-          title: "Understanding your business",
-          description:
-            "I review your service, strengths, target audience, and competitors to clarify what the website should communicate.",
-        },
-        {
-          title: "A structure that leads to inquiries",
-          description:
-            "I think through the order of information, button placement, and user flow so visitors can move through the site without confusion.",
-        },
-        {
-          title: "Design and usability together",
-          description:
-            "I value visual quality, but also readability on mobile, clear text, and smooth operation.",
-        },
-      ],
+    pillars: [
+      {
+        name: "Get chosen",
+        tagline: "A face for your business",
+        lead: "When customers find you online, they decide in about 3 seconds whether you look trustworthy.",
+        beforeAfter: [
+          {
+            before: "Your only storefront is a social media profile",
+            after:
+              "People who search for you find a face that says: this place is legit",
+          },
+          {
+            before:
+              "Your atmosphere doesn't come through, so people compare on price",
+            after: "Your vibe comes through, and people choose you for it",
+          },
+          {
+            before: "You can't get your story across to foreign customers",
+            after: "Customers read about you in their own language",
+          },
+          {
+            before:
+              "You answer the same questions about hours and location every day",
+            after: "The answers are already there before anyone asks",
+          },
+        ],
+        forms: [
+          "A business website",
+          "A one-page introduction",
+          "A brand showcase site",
+          "Foreign-language versions",
+        ],
+        proofs: [
+          {
+            name: "Overland Beyond",
+            description:
+              "A travel site where overseas guests read in their own language and apply on the spot",
+            href: "https://overlandbeyond.com",
+          },
+          {
+            name: "Soul Skin",
+            description: "A brand site that sells with atmosphere",
+            href: "https://soul-skin-website.vercel.app/",
+          },
+          {
+            name: "Sui Salon",
+            description:
+              "A one-page salon site that carries you from mood to booking",
+            href: "https://sui-salon.vercel.app/",
+          },
+        ],
+        price: "¥30,000–88,000",
+        timeline: "1–4 weeks",
+      },
+      {
+        name: "Work lighter",
+        tagline: "Let systems handle the busywork",
+        lead: "Thirty minutes of daily hassle is about 180 hours a year. Systems can take that off your hands.",
+        beforeAfter: [
+          {
+            before: "Every phone call interrupts your work",
+            after: "Bookings pile up on their own, even while you sleep",
+          },
+          {
+            before:
+              "Customer info is scattered across notebooks, chat apps, and spreadsheets",
+            after: "Everything collects in one place, automatically",
+          },
+          {
+            before: "Month-end tallying eats half a day",
+            after: "You open it, and it's already done",
+          },
+          {
+            before: "You answer the same questions again and again",
+            after: "Customers find the answers themselves",
+          },
+        ],
+        forms: [
+          "Booking and application forms",
+          "Customer lists",
+          "Records and tallies",
+          "Your own mobile app",
+        ],
+        proofs: [
+          {
+            name: "Time-tracking app",
+            description:
+              "Logging a workday takes 3 seconds. On the App Store and Google Play",
+          },
+          {
+            name: "Overland Beyond application form",
+            description: "Answer four questions and the application is done",
+            href: "https://overlandbeyond.com/apply",
+          },
+        ],
+        price: "¥130,000– (depends on scope)",
+        timeline: "From 3 weeks",
+      },
+    ],
+    care: {
+      title: "Ongoing peace of mind",
+      description:
+        "Launch isn't the end. Small fixes, content updates, \"how do I do this?\" — I stay with you, month to month.",
+      price: "Monthly — let's talk",
     },
     process: {
-      title: "Process",
+      title: "How it works",
       steps: [
         {
-          title: "Contact",
+          title: "Talk (free)",
           description:
-            "First, tell me briefly what kind of website you want, your goal, and your rough budget.",
+            "Tell me what's bothering you. \"I just want to know what's possible\" is fine.",
         },
         {
-          title: "Discovery",
+          title: "Proposal and quote",
           description:
-            "I ask about your business, target audience, required pages, and necessary features.",
+            "I map out what to build, and what it will make easier for you.",
         },
         {
-          title: "Estimate",
+          title: "Build",
           description:
-            "I organize the production scope, price, and timeline, then send you a proposal.",
+            "Once a week, we look at the working version together and adjust.",
         },
         {
-          title: "Production",
+          title: "Launch and support",
           description:
-            "I work on the structure, design, and implementation. I will also check in with you when needed.",
-        },
-        {
-          title: "Review & Revision",
-          description:
-            "You review the website before launch, and I apply the necessary revisions.",
-        },
-        {
-          title: "Launch & Support",
-          description:
-            "I handle the launch process and can also support maintenance or minor updates if needed.",
+            "I handle the launch. After that, monthly support is there if you want it.",
         },
       ],
-    },
-    fees: {
-      title: "Cost Breakdown",
-      description:
-        "In addition to the plan price above, the following costs may apply depending on your project.",
-      production: {
-        title: "Production Fee",
-        description:
-          "The cost of building the website. The plan prices above are production fees.",
-      },
-      maintenance: {
-        title: "Maintenance Fee",
-        description:
-          "A fee for safely maintaining and updating the website after launch.",
-      },
-      external: {
-        title: "External Costs",
-        description:
-          "Actual costs for domain, hosting, and other third-party services.",
-      },
-      delivery: {
-        title: "Deliverables",
-        description:
-          "After production, I deliver the full codebase reflecting the design and content. If you need post-launch updates, operation support, or ongoing maintenance, a separate maintenance fee will apply.",
-      },
     },
     faq: {
       title: "FAQ",
       items: [
         {
-          question: "How many revisions are included?",
+          question: "What do I need to prepare?",
           answer:
-            "It depends on the plan. Minor revisions are included within each plan. Major layout changes or additional features will require a separate estimate.",
+            "Photos, and what you want to say. We can sort out the wording together.",
         },
         {
-          question: "When do I need to pay?",
+          question: "I'm not good with computers. Is that OK?",
           answer:
-            "In general, part of the payment is required before production starts, and the remaining balance is paid before delivery. This can be discussed depending on the project.",
+            "Yes. Anything you need to update is handed over in a form you can actually use.",
         },
         {
-          question: "What about domain and hosting?",
+          question: "When do I pay?",
           answer:
-            "Domain and hosting costs are separate from the production fee. I can also help with setup if needed.",
+            "Part at the start, the rest before delivery. Flexible depending on the project.",
         },
         {
-          question: "Can I update the website myself after launch?",
+          question: "What if my needs change midway?",
           answer:
-            "If we add a news update feature, you can update some content yourself. Regular static page edits are usually handled through maintenance support.",
+            "We adjust course at the weekly check-ins. Bigger changes get a fresh quote first.",
         },
         {
-          question: "What will I receive after production?",
+          question: "Can I hire you from far away or overseas?",
           answer:
-            "You will receive the full website code with the design and content applied. Publishing setup and operation support are also available if needed.",
-        },
-        {
-          question: "Why is the price this low?",
-          answer:
-            "This is introductory pricing for the first 5 projects only. Prices may be revised after more completed projects are added to my portfolio.",
-        },
-        {
-          question: "Do I need to prepare the photos and text myself?",
-          answer:
-            "In general, I ask clients to prepare the basic text and photos. If you are not sure what to write, I can help organize the content through the discovery process.",
+            "Yes. Everything can be done online, in Japanese, English, or Mongolian.",
         },
       ],
     },
+    bottomCtaTitle: "Starting with just a chat is fine",
+    bottomCtaText:
+      "Ask me: \"What would get easier for my business?\" We'll sort out what you need, around your goals and budget.",
   },
 
   contact: {
     eyebrow: "Contact",
-    titleA: "I build websites",
-    titleB: "that fit your business",
+    titleA: "Start with one question:",
+    titleB: "“what would get easier?”",
     description:
-      "I design and build websites with customer acquisition, trust, and clear inquiry flow in mind. I can support landing pages, business websites, portfolios, and small web applications from design to implementation.",
+      "A face for your business, and systems that make the busywork disappear. Consultation is free — I reply within 24 hours.",
 
     primaryLabel: "Free Consultation",
     primaryTitle: "Start with an email",
     primaryDescription:
-      "It is completely fine if you are not sure what to build yet or simply want to know what is possible within your budget.",
+      "“I want to take bookings online”, “I need a proper face for my business”, “I just want to know what's possible” — one line like that is enough. I reply within 24 hours.",
 
     emailLabel: "Email Address",
     copy: "Copy Address",
@@ -460,7 +444,7 @@ export const en = {
 
     availabilityLabel: "Available for New Projects",
     availability:
-      "I build affordable, clear, and practical websites for small businesses, independent professionals, and creators.",
+      "From the face of your business to booking and admin systems — helping small businesses get chosen, and work lighter.",
 
     form: {
       nameLabel: "Name",
@@ -469,7 +453,7 @@ export const en = {
       emailPlaceholder: "you@example.com",
       messageLabel: "Message",
       messagePlaceholder:
-        "Example: I want to create a website for a new cafe. My budget is around ¥100,000.",
+        "Example: Taking bookings by phone is getting overwhelming — I'd like to take them online. My budget is around ¥100,000.",
       sending: "Sending...",
       submit: "Send Message",
       success: "Your message has been sent.",
@@ -479,7 +463,7 @@ export const en = {
 
   footer: {
     title: "Zaya Web Development",
-    subtitle: "Next.js / Tailwind CSS / Framer Motion",
+    subtitle: "A face that gets chosen. Systems that lighten the work.",
     copyright: "© 2026 Designed & Built by Zaya",
   },
   langToggle: {

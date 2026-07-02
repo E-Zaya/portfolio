@@ -16,6 +16,7 @@ type Props = {
     ProjectsContent,
     | "status"
     | "featuredBadge"
+    | "kindLabels"
     | "liveDemo"
     | "viewCode"
     | "caseStudy"
@@ -107,6 +108,18 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           {/* Badges */}
           <div className="mb-4 flex flex-wrap items-center gap-2">
             <span
+              className="rounded-full px-3 py-1 text-xs font-bold"
+              style={{
+                color: "var(--accent-2)",
+                background:
+                  "color-mix(in srgb, var(--accent-2) 10%, transparent)",
+                border:
+                  "1px solid color-mix(in srgb, var(--accent-2) 30%, transparent)",
+              }}
+            >
+              {t.kindLabels[project.kind]}
+            </span>
+            <span
               className={`rounded-full border px-3 py-1 text-xs font-medium ${
                 project.status === "Completed" ? "badge-completed" : "badge-in-progress"
               }`}
@@ -124,6 +137,15 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           <h2 className="mb-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
             {itemText.title}
           </h2>
+
+          {/* クライアント・期間(実案件用) */}
+          {(itemText.client || itemText.duration) && (
+            <p className="mb-3 text-xs font-semibold tracking-wide text-muted">
+              {[itemText.client, itemText.duration]
+                .filter(Boolean)
+                .join(" ・ ")}
+            </p>
+          )}
 
           {/* Description */}
           <p className="mb-2 text-sm leading-7 text-soft sm:text-base sm:leading-8">
@@ -147,17 +169,10 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
             </div>
           </div>
 
-          {/* Tech tags */}
-          <div className="mb-6 flex flex-wrap gap-2">
-            {project.tech.map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground shadow-theme"
-              >
-                {tech}
-              </span>
-            ))}
-          </div>
+          {/* 使用技術 — 興味のある人向けの控えめな1行(技術語はメイン導線から排除する方針) */}
+          <p className="mb-6 font-mono text-[11px] tracking-wide text-muted">
+            {project.tech.join(" · ")}
+          </p>
 
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3">

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ReactCountryFlag from "react-country-flag";
 
@@ -32,7 +33,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
         <p className="eyebrow mb-3">{t.eyebrow}</p>
 
         <h1 className="text-4xl font-bold leading-tight text-foreground md:text-5xl">
-          {t.title}
+          <MarkerHighlight delay={0.3}>{t.title}</MarkerHighlight>
         </h1>
 
         <div className="gradient-line mt-4 h-px w-28" />
@@ -93,7 +94,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
         <div
           className="pointer-events-none absolute -right-5 top-8 h-28 w-28 rounded-full blur-3xl"
           style={{
-            background: "color-mix(in srgb, var(--accent-4) 18%, transparent)",
+            background: "color-mix(in srgb, var(--accent-2) 18%, transparent)",
           }}
         />
 

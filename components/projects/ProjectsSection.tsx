@@ -1,4 +1,4 @@
-import { projectItems, wipItems } from "@/data/projects";
+import { projectItems } from "@/data/projects";
 import { getMessages, type Locale } from "@/lib/i18n";
 import { ProjectsClient } from "@/components/projects/ProjectsClient";
 
@@ -17,26 +17,18 @@ export default function ProjectsSection({ locale }: { locale: Locale }) {
       text: t.items[project.slug]!,
     }));
 
-  const wipProjects = wipItems
-    .filter((wip) => Boolean(t.wip.items[wip.slug]))
-    .map((wip) => ({
-      item: wip,
-      text: t.wip.items[wip.slug]!,
-    }));
+  // 制作中(WIP)セクションは非表示に —
+  // 「未完成を抱えている」印象を避けるため。data/projects.ts の wipItems と
+  // WipSection.tsx は温存してあるので、復活させる場合はここに再接続するだけ。
 
-  if (projects.length === 0 && wipProjects.length === 0) {
+  if (projects.length === 0) {
     return null;
   }
 
   return (
     <section id="projects" className="section-space">
       <div className="container-custom">
-        <ProjectsClient
-          locale={locale}
-          projects={projects}
-          wipProjects={wipProjects}
-          t={t}
-        />
+        <ProjectsClient locale={locale} projects={projects} t={t} />
       </div>
     </section>
   );

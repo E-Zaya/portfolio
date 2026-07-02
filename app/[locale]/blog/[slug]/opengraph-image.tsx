@@ -39,7 +39,7 @@ export default async function BlogPostOG({
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        {/* グラデーショングロー（accent-1 → accent-3 のコーナー光） */}
+        {/* グラデーショングロー（accent-1 → accent-2 のコーナー光） */}
         <div
           style={{
             position: "absolute",
@@ -49,7 +49,7 @@ export default async function BlogPostOG({
             height: 600,
             borderRadius: 9999,
             background:
-              "radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(168, 85, 247, 0.18) 45%, transparent 75%)",
+              "radial-gradient(circle, rgba(56, 189, 248, 0.35) 0%, rgba(129, 140, 248, 0.18) 45%, transparent 75%)",
             filter: "blur(40px)",
           }}
         />
@@ -61,7 +61,7 @@ export default async function BlogPostOG({
               width: 44,
               height: 44,
               borderRadius: 12,
-              background: "linear-gradient(135deg, #a855f7, #38bdf8)",
+              background: "linear-gradient(135deg, #818cf8, #38bdf8)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",

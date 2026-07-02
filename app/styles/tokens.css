@@ -27,6 +27,10 @@
   --accent-3: #a855f7;
   --accent-4: #f472b6;
 
+  /* マーカー下線(MarkerHighlight)。ダークではインディゴが沈むので
+     Zazaの金色系で光らせる。ライトは html.light で上書き。 */
+  --marker: color-mix(in srgb, #fbbf24 45%, transparent);
+
   --surface-glow: rgba(255, 255, 255, 0.06);
   --surface-glow-strong: rgba(255, 255, 255, 0.1);
 
@@ -36,8 +40,9 @@
   --color-warning: #fbbf24;
   --color-error: #f87171;
 
-  --header-bg: rgba(8, 17, 32, 0.72);
-  --header-bg-strong: rgba(8, 17, 32, 0.84);
+  /* 透け感を抑えて、スクロール中もヘッダーの文字がちゃんと読めるように */
+  --header-bg: rgba(8, 17, 32, 0.92);
+  --header-bg-strong: rgba(8, 17, 32, 0.97);
   --header-border: rgba(255, 255, 255, 0.15);
   --header-divider: rgba(255, 255, 255, 0.1);
   --header-hover: rgba(255, 255, 255, 0.1);
@@ -46,19 +51,19 @@
   --header-active-border: rgba(255, 255, 255, 0.1);
   --header-glow: linear-gradient(
     90deg,
-    rgba(168, 85, 247, 0.2),
+    rgba(129, 140, 248, 0.2),
     rgba(34, 211, 238, 0.2)
   );
   --header-bottom-line: linear-gradient(
     90deg,
     transparent,
-    rgba(168, 85, 247, 0.4),
+    rgba(129, 140, 248, 0.4),
     transparent
   );
   --header-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 
 --blog-blob-primary: color-mix(in srgb, var(--accent-1) 24%, transparent);
-  --blog-blob-secondary: color-mix(in srgb, var(--accent-4) 22%, transparent);
+  --blog-blob-secondary: color-mix(in srgb, var(--accent-2) 22%, transparent);
   --blog-blob-bottom: color-mix(in srgb, var(--foreground) 8%, transparent);
   --blog-link-underline: rgba(255, 255, 255, 0.28);
   --blog-link-underline-hover: rgba(255, 255, 255, 0.68);
@@ -108,6 +113,9 @@ html.light {
   --accent-3: #8b5cf6;
   --accent-4: #ec4899;
 
+  /* ライトは従来どおりインディゴのマーカー */
+  --marker: color-mix(in srgb, var(--accent-2) 30%, transparent);
+
   --surface-glow: rgba(255, 255, 255, 0.58);
   --surface-glow-strong: rgba(255, 255, 255, 0.8);
 
@@ -123,8 +131,8 @@ html.light {
   --brand-facebook: #1877f2;
   --brand-x: #000000;
 
-  --header-bg: rgba(255, 255, 255, 0.72);
-  --header-bg-strong: rgba(255, 255, 255, 0.88);
+  --header-bg: rgba(255, 255, 255, 0.92);
+  --header-bg-strong: rgba(255, 255, 255, 0.97);
   --header-border: rgba(100, 116, 139, 0.18);
   --header-divider: rgba(100, 116, 139, 0.16);
   --header-hover: rgba(255, 255, 255, 0.48);
@@ -133,7 +141,7 @@ html.light {
   --header-active-border: rgba(99, 102, 241, 0.14);
   --header-glow: linear-gradient(
     90deg,
-    rgba(139, 92, 246, 0.16),
+    rgba(99, 102, 241, 0.16),
     rgba(14, 165, 233, 0.16)
   );
   --header-bottom-line: linear-gradient(
@@ -145,7 +153,7 @@ html.light {
   --header-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
 
   --blog-blob-primary: color-mix(in srgb, var(--accent-1) 18%, transparent);
-  --blog-blob-secondary: color-mix(in srgb, var(--accent-4) 16%, transparent);
+  --blog-blob-secondary: color-mix(in srgb, var(--accent-2) 16%, transparent);
   --blog-blob-bottom: rgba(15, 23, 42, 0.08);
   --blog-link-underline: rgba(15, 23, 42, 0.22);
   --blog-link-underline-hover: rgba(15, 23, 42, 0.5);

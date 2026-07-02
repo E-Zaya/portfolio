@@ -1,5 +1,8 @@
 import type { ProjectStatus } from "@/lib/messages/types";
 
+// 実案件 / 自社プロダクト / 制作例 — バッジ表示に使う(表示名は messages の kindLabels)
+export type ProjectKind = "client" | "product" | "sample";
+
 export type ProjectItem = {
   slug: string;
   image: string;
@@ -8,6 +11,7 @@ export type ProjectItem = {
   demo?: string;
   status: ProjectStatus;
   featured?: boolean;
+  kind: ProjectKind;
 };
 
 export type WipItem = {
@@ -25,6 +29,7 @@ export const projectItems = [
     demo: "https://soul-skin-website.vercel.app/",
     status: "Completed",
     featured: true,
+    kind: "sample",
   },
   {
     // sui-salon: サロン紹介シングルページ。3-4万円帯の案件想定の制作例。
@@ -34,6 +39,7 @@ export const projectItems = [
     github: "https://github.com/E-Zaya/sui-salon",
     demo: "https://sui-salon.vercel.app/",
     status: "Completed",
+    kind: "sample",
   },
   {
     slug: "type-mon",
@@ -43,6 +49,7 @@ export const projectItems = [
     demo: "https://type-mon.vercel.app/",
     status: "Completed",
     featured: true,
+    kind: "product",
   },
   {
     slug: "workout-log",
@@ -52,6 +59,7 @@ export const projectItems = [
     demo: "https://workout-log-smoky.vercel.app/",
     status: "Completed",
     featured: true,
+    kind: "product",
   },
 ] as const satisfies readonly ProjectItem[];
 
