@@ -15,6 +15,13 @@ export default function HeroContent({ locale }: { locale: Locale }) {
   const titleLines = t.title.split("\n").filter((line) => line.trim());
   const highlightLines = t.highlight.split("\n").filter((line) => line.trim());
 
+  // モンゴル語(キリル文字)は語が長く、ja/enと同じサイズでは行が溢れるため
+  // mnのみ約75%スケール+字間を緩める。ja/enは従来のまま。
+  const headingSizeClass =
+    locale === "mn"
+      ? "text-[clamp(1.35rem,6vw,1.8rem)] leading-[1.5] tracking-[-0.02em] sm:text-[2rem] sm:leading-[1.22] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.2rem]"
+      : "text-[clamp(1.5rem,7vw,2rem)] leading-[1.5] tracking-[-0.05em] sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -23,7 +30,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
       className="flex min-w-0 flex-col items-start text-left"
     >
       {/* headline — モバイルは文単位で2行、sm以上は行ブロックで4行の大組み */}
-      <h1 className="jp-tight text-[clamp(1.5rem,7vw,2rem)] font-black leading-[1.5] tracking-[-0.05em] text-foreground sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]">
+      <h1 className={`jp-tight font-black text-foreground ${headingSizeClass}`}>
         <span className="block">
           {titleLines.map((line) => (
             <span key={line} className="inline sm:block">
