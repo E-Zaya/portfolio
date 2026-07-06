@@ -1,5 +1,14 @@
 import { isLocale, type Locale } from "@/lib/i18n";
 import ServicesContent from "@/components/services/ServicesContent";
+import { buildPageMetadata } from "@/lib/seo";
+
+export function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  return buildPageMetadata(params, "services", "/services");
+}
 
 /**
  データはすべてlibからとってきてる。*/

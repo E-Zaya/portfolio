@@ -9,6 +9,7 @@ import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
+import { altLanguages, OG_IMAGE } from "@/lib/seo";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 
@@ -44,38 +45,35 @@ export async function generateMetadata({
   const t = getMessages(locale);
 
   return {
-    title: t.meta.title,
+    title: {
+      // Home shows the full brand title; sub-pages set their own title and
+      // get "| Zaya" appended via this template.
+      default: t.meta.title,
+      template: "%s | Zaya",
+    },
     description: t.meta.description,
+    authors: [{ name: "Zaya E", url: "https://ezaya.dev" }],
+    creator: "Zaya E",
     alternates: {
       canonical: `/${locale}`,
-      // List all supported languages with Japanese first; this order hints
-      // search engines that Japanese is the preferred default.
-      languages: {
-        ja: "/ja",
-        mn: "/mn",
-        en: "/en",
-      },
+      // All supported languages + x-default (Japanese is the primary
+      // language, so it doubles as the default variant).
+      languages: altLanguages(""),
     },
     openGraph: {
       title: t.meta.title,
       description: t.meta.description,
+      siteName: "Zaya",
       type: "website",
       url: `/${locale}`,
       locale: locale === "ja" ? "ja_JP" : locale === "mn" ? "mn_MN" : "en_US",
-      images: [
-        {
-          url: "/og-image.png",
-          width: 1200,
-          height: 630,
-          alt: "Zaya-dev OGP image",
-        },
-      ],
+      images: [OG_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: t.meta.title,
       description: t.meta.description,
-      images: ["/og-image.png"],
+      images: [OG_IMAGE.url],
     },
   };
 }

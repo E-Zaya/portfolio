@@ -11,6 +11,8 @@ import { getMessages, type Locale } from "@/lib/i18n";
 const OVERLAND_URL = "https://overlandbeyond.com";
 // TODO: ストアリンクが確定したら差し替える(App Store / Google Play)
 const TIME_APP_URL: string | null = null;
+// 手書き注釈「さわってみて！」— 一旦非表示。復活させる場合は true にするだけ。
+const SHOW_HAND_NOTE = true;
 
 const ZAZA_IMAGE = "/Zaza/chira-zaza.png";
 
@@ -140,7 +142,8 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
         rows={t.phoneRows}
       />
 
-      {/* 手書き注釈 — 「さわってみて！」+ くるっとした矢印 */}
+      {/* 手書き注釈 — 「さわってみて！」+ くるっとした矢印(SHOW_HAND_NOTEで切替) */}
+      {SHOW_HAND_NOTE && (
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -bottom-16 left-2 z-0 flex items-end gap-1 sm:left-4"
@@ -177,6 +180,7 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
           {t.handNote}
         </span>
       </motion.div>
+      )}
     </motion.div>
   );
 }

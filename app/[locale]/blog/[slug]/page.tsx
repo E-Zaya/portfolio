@@ -8,6 +8,7 @@ import BlogPostTOC, { type BlogHeading } from "@/components/blog/BlogPostTOC";
 import RelatedPostsRow from "@/components/blog/RelatedPostsRow";
 import CodeCopy from "@/components/blog/CodeCopy";
 import { getMessages, isLocale, locales, type Locale } from "@/lib/i18n";
+import { altLanguages } from "@/lib/seo";
 import {
   escapeHtmlAttribute,
   getRelatedPosts,
@@ -55,9 +56,7 @@ export async function generateMetadata({
     description: post.summary || t.noSummary,
     alternates: {
       canonical: `/${locale}/blog/${slug}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `/${l}/blog/${slug}`])
-      ),
+      languages: altLanguages(`/blog/${slug}`),
     },
     openGraph: {
       title: post.title || t.notFoundTitle,

@@ -2,9 +2,36 @@ import type { HeroVisualContent, Messages } from "./types";
 
 export const en = {
   meta: {
-    title: "Zaya | Web Design & Development in Japanese and Mongolian",
+    title: "Zaya | Web & App Development — Get chosen, work lighter",
     description:
-      "I build clear, trustworthy websites for freelancers, small businesses, and creators in Japan and Mongolia. Japanese and Mongolian support available.",
+      "Bookings, payments, multilingual support and more. I design, build, and stay with small businesses past launch — a trustworthy face and systems that make the daily busywork disappear. Japanese, Mongolian, English.",
+    pages: {
+      about: {
+        title: "About — Background & Skills",
+        description:
+          "Web developer based in Ulaanbaatar. My background, tech stack (Next.js / TypeScript), and how I approach building for small businesses. Japanese, Mongolian, English.",
+      },
+      projects: {
+        title: "Projects — Websites & Web Apps",
+        description:
+          "Selected websites and web apps — designed, built, and supported past launch, end to end, with the tech stack behind each.",
+      },
+      services: {
+        title: "Services & Pricing",
+        description:
+          "Web and app development services: process, pricing, and timelines. Bookings, payments, multilingual support — systems that make daily busywork disappear.",
+      },
+      contact: {
+        title: "Contact",
+        description:
+          "Tell me about your project — quotes and consultations in Japanese, Mongolian, or English. I usually reply within 1–2 business days.",
+      },
+      blog: {
+        title: "Blog — Notes on Web Development",
+        description:
+          "Notes on web development, Next.js, and running multilingual sites.",
+      },
+    },
   },
   header: {
     subtitle: "Web Developer",
@@ -154,7 +181,7 @@ export const en = {
           "Logging takes a few taps, progress shows in one glance — a workout log built to keep you coming back.",
         tags: ["Log in a few taps", "Progress at a glance"],
         summary:
-          "Built with Next.js, Prisma, and PostgreSQL. It includes workout logging, exercise management, and weekly training volume visualization, designed with usability in mind.",
+          "A full-stack build I carried alone, from design and development to database and launch. A logging flow that ends in a few taps, graphs that show weekly progress at a glance — polished by using it myself every day, aiming for “sticks even for serial quitters.”",
         scope:
           "Handled planning, design, frontend, backend, database design, and deployment independently.",
         focus:
@@ -376,7 +403,7 @@ export const en = {
       title: "Ongoing peace of mind",
       description:
         "Launch isn't the end. Small fixes, content updates, \"how do I do this?\" — I stay with you, month to month.",
-      price: "Monthly — let's talk",
+      price: "From ¥5,000/month",
     },
     process: {
       title: "How it works",

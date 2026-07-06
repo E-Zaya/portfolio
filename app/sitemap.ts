@@ -30,9 +30,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [l, `${BASE_URL}/${l}${page.path}`])
-          ),
+          languages: {
+            ...Object.fromEntries(
+              locales.map((l) => [l, `${BASE_URL}/${l}${page.path}`])
+            ),
+            // 日本語が主言語 = 言語不明の訪問者にも /ja を既定として提示
+            "x-default": `${BASE_URL}/ja${page.path}`,
+          },
         },
       });
     }

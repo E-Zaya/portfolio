@@ -11,10 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
     background_color: "#081120",
     theme_color: "#081120",
     icons: [
+      // 正方形のブランドアイコン（PWAインストール用）。
+      // OG画像(1200x630)はアイコンとして不正だったため置き換え。
       {
-        src: "/og-image.png",
-        sizes: "1200x630",
-        type: "image/png",
+        src: "/icons/app-icon.svg",
+        sizes: "any",
+        type: "image/svg+xml",
         purpose: "any",
       },
     ],

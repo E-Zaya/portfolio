@@ -267,10 +267,23 @@ export type BlogContent = {
   };
 };
 
+export type MetaEntry = {
+  title: string;
+  description: string;
+};
+
 export type Messages = {
   meta: {
     title: string;
     description: string;
+    /** サブページ個別のtitle/description（SEO用）。titleはlayoutの"%s | Zaya"テンプレートでブランド名が付く */
+    pages: {
+      about: MetaEntry;
+      projects: MetaEntry;
+      services: MetaEntry;
+      contact: MetaEntry;
+      blog: MetaEntry;
+    };
   };
 
   header: {
