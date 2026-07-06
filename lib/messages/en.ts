@@ -175,6 +175,64 @@ export const en = {
       "In Progress": "In Progress",
     },
     items: {
+      "odootech-time": {
+        title: "OdooTech Time",
+        description:
+          "An enterprise time-attendance mobile app with GPS geofencing, device binding, and audit logs to prevent false punches.",
+        tags: ["Live mobile product", "GPS geofence punches", "iOS / Android release"],
+        client: "OdooTech",
+        summary:
+          "A production full-stack product built with a Flutter mobile client and a custom Odoo 17 backend. It covers check-in/out, work-area validation, leave requests, salary slips, work reports, team features, reminders, and admin notifications, and is distributed on both iOS and Android.",
+        scope:
+          "Handled Flutter app architecture, Riverpod state management, Odoo JSON-RPC integration, custom Odoo 17 backend module, geofencing, device binding, audit logs, and store-release support.",
+        focus:
+          "The core design goal was making each attendance punch happen from the right place, the right device, and the intended action. GPS, device IDs, work schedules, server-side intent validation, and audit logs work together to prevent buddy punching and accidental toggles.",
+        behind:
+          "A store review DNS issue on a .mn domain became a deep networking problem; I solved it with a custom DNS-over-HTTPS HTTP client and correct TLS/SNI handling.",
+      },
+      "overland-beyond": {
+        title: "Overland Beyond",
+        description:
+          "A travel site that turns Mongolia's landscapes and multilingual trip pages into a clear application flow.",
+        tags: ["Multilingual application flow", "Travel story made clear", "Odoo to Next.js rebuild"],
+        client: "Overland Beyond",
+        summary:
+          "I rebuilt an Odoo-based travel site in Next.js, preserving the expedition content while improving page structure, static pages, detail pages, and the application path. The goal was to keep the cinematic feeling of the original site while making it easier to maintain and navigate.",
+        scope:
+          "Parsed the existing Odoo site, converted content, rebuilt pages in Next.js, structured routes, and prepared the deployment.",
+        focus:
+          "Helping overseas travelers understand the trips without confusion and move straight into applying, while keeping the photography large and the pages practical to update.",
+        behind:
+          "The hard part was untangling the Odoo templates without losing the energy of the original travel site.",
+      },
+      futari: {
+        title: "Futari",
+        description:
+          "A private web app for couples to keep diaries, photos, wishes, and anniversaries in a space that belongs only to them.",
+        tags: ["Private couple space", "Photos and memories organized", "Invite partner by link"],
+        summary:
+          "A multi-tenant app for couples. It includes sign-up, partner invites, daily diaries, wish lists, memory calendar, gallery, slideshow-style lookbacks, PWA support, and a local demo mode when Supabase is not configured.",
+        scope:
+          "Handled product planning, UI design, frontend, Supabase Auth / DB / Storage, RLS policies, PWA behavior, and demo-mode data storage.",
+        focus:
+          "Because the app handles personal memories, I focused on both warmth and trust: clear data separation, private storage paths, and mobile flows that feel easy enough to use every day.",
+        behind:
+          "I wanted it to feel less like 'logging data' and more like coming back home, so I kept tuning spacing, words, and small moments.",
+      },
+      "zaza-lab": {
+        title: "Zaza Lab",
+        description:
+          "A JLPT N1/N2 study app that helps learners practice kanji, vocabulary, reading, listening, and weak points.",
+        tags: ["Review weak points", "PWA learning flow", "Audio questions"],
+        summary:
+          "A PWA for Japanese learners with N1/N2 kanji, four-character idioms, onomatopoeia, grammar, reading, listening, dictionary, progress, review, achievements, session restore, and backup. The app handles local learning data and audio assets with a fast mobile-first flow.",
+        scope:
+          "Designed the study flow, quiz engine, dictionary, progress storage, PWA setup, audio integration, and full UI.",
+        focus:
+          "Learning apps only matter if people return to them, so I kept the path short: today's word, review due items, weak-point practice, and small celebrations.",
+        behind:
+          "As the question set grew, the challenge became keeping the app dense but never tiring to open.",
+      },
       "workout-log": {
         title: "Workout Log App",
         description:
@@ -233,6 +291,34 @@ export const en = {
           "Built around a clear flow — show the vibe, communicate the offer, lead to a booking. Mobile readability and tap-friendly CTAs were the top priorities.",
         behind:
           "I imagined the exact spot a thumb would rest at the moment of booking, and moved the button there.",
+      },
+      suijaku: {
+        title: "Suijaku",
+        description:
+          "A memory card game built around satisfying flips, quick rounds, and saved personal records.",
+        tags: ["Quick to play", "Saved records", "Mobile-ready"],
+        summary:
+          "A Next.js memory game with a start screen, play state, clear result, leaderboard, and localStorage-backed records. It is intentionally light so players can replay short rounds without friction.",
+        scope:
+          "Handled game UI, card state, scoring, leaderboard, persistence, and responsive layout.",
+        focus:
+          "The moment a card flips, the feedback for match/miss, and the result screen all needed to feel clear enough to make 'one more round' natural.",
+        behind:
+          "With simple rules, the feeling lives in timing and whitespace. That was the fun part.",
+      },
+      minesweeper: {
+        title: "Minesweeper",
+        description:
+          "A classic Minesweeper web game with names, difficulty, themes, language switching, and local rankings.",
+        tags: ["Difficulty selection", "Saved rankings", "English/Japanese"],
+        summary:
+          "A Next.js implementation of Minesweeper with safe first click, flag mode, difficulty selection, timer, leaderboard, how-to-play modal, English/Japanese UI, and light/dark themes. The board is tuned to stay playable on both desktop and mobile.",
+        scope:
+          "Handled game logic, state management, board UI, leaderboard storage, language switching, themes, and responsive behavior.",
+        focus:
+          "Keeping the board readable and tap-friendly on phones, and letting players inspect the board after the result instead of immediately losing context.",
+        behind:
+          "Classic games do not need much decoration. They need clicks, cells, and feedback to feel exactly right.",
       },
     },
     wip: {

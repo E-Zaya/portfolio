@@ -21,7 +21,8 @@ type Props = {
 
 export function ProjectCard({ project, itemText, t, onClick }: Props) {
   // 「公開中」= デモが実在して稼働している証拠。完了ステータスより強い訴求。
-  const isLive = Boolean(project.demo) && project.status === "Completed";
+  const primaryHref = project.demo ?? project.links?.[0]?.href;
+  const isLive = Boolean(primaryHref) && project.status === "Completed";
   const kindLabel = t.kindLabels[project.kind];
 
   return (
@@ -164,9 +165,9 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
               {t.detailHint}
             </span>
 
-            {project.demo && (
+            {primaryHref && (
               <a
-                href={project.demo}
+                href={primaryHref}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}

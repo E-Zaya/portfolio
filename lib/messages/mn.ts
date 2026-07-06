@@ -185,6 +185,64 @@ export const mn = {
       "In Progress": "Хөгжүүлж байна",
     },
     items: {
+      "odootech-time": {
+        title: "OdooTech Time",
+        description:
+          "GPS geofence, device binding, audit log ашиглан буруу болон орлох ирцийг хаадаг байгууллагын цаг бүртгэлийн mobile app.",
+        tags: ["Бодит хэрэглээнд ажиллаж байна", "GPS geofence ирц", "iOS / Android release"],
+        client: "OdooTech",
+        summary:
+          "Flutter mobile client болон Odoo 17 custom backend module дээр бүтсэн full-stack бүтээгдэхүүн. Check-in/out, ажлын бүс шалгах, чөлөөний хүсэлт, цалингийн мэдээлэл, ажлын тайлан, team функц, reminder, admin notification зэргийг хамарч, iOS болон Android дээр түгээгдсэн.",
+        scope:
+          "Flutter app architecture, Riverpod state management, Odoo JSON-RPC integration, Odoo 17 custom module, geofence, device binding, audit log, store release support хүртэл хариуцсан.",
+        focus:
+          "Ирц бүр зөв байршил, зөв төхөөрөмж, зөв үйлдлийн санаатай хийгдэх ёстой гэсэн зарчим. GPS, device ID, schedule, server-side intent validation, audit log-ийг давхарлуулж орлох ирц болон санамсаргүй toggle алдааг хаасан.",
+        behind:
+          ".mn домэйны DNS асуудлаас болж store review дээр login тасалдах эрсдэл гарсан. Үүнийг custom DNS-over-HTTPS client болон TLS/SNI зөв handling-аар шийдсэн.",
+      },
+      "overland-beyond": {
+        title: "Overland Beyond",
+        description:
+          "Монголын аяллын уур амьсгал, олон хэлний мэдээлэл, захиалгын урсгалыг нэг дор цэгцэлсэн аяллын сайт.",
+        tags: ["Олон хэлээр захиална", "Аяллын үнэ цэнэ тодорхой", "Odoo-с Next.js рүү"],
+        client: "Overland Beyond",
+        summary:
+          "Odoo дээр байсан аяллын сайтыг Next.js рүү шилжүүлсэн. Expedition-ийн мэдээлэл, static pages, дэлгэрэнгүй хуудсууд болон apply хийх урсгалыг хадгалж, илүү уншихад ойлгомжтой, засварлахад хялбар бүтэц болгосон.",
+        scope:
+          "Одоо байгаа Odoo сайтын бүтэц унших, контент хөрвүүлэх, Next.js implementation, route/page structure, deploy бэлтгэл хүртэл хариуцсан.",
+        focus:
+          "Гадаад аялагчид аяллын мэдээллийг төөрөхгүй ойлгоод шууд apply хийх боломжтой байх. Том зурагны хүчийг хадгалж, хуудсуудыг засварлахад хялбар болгосон.",
+        behind:
+          "Odoo template-үүдийг задлахдаа, эх сайтын аяллын мэдрэмжийг Next.js дээр алдахгүй авчрахыг хамгийн их анхаарсан.",
+      },
+      futari: {
+        title: "Futari",
+        description:
+          "Хосуудын өдрийн тэмдэглэл, зураг, хүсэл, тэмдэглэлт өдрийг зөвхөн хоёр хүнд зориулсан орчинд хадгалдаг Web app.",
+        tags: ["Хосын хувийн орчин", "Зураг ба дурсамж цэгцтэй", "Invite link-ээр нэгдэнэ"],
+        summary:
+          "Хосуудад зориулсан multi-tenant Web app. Бүртгэл, partner invite, өдөр тутмын diary, wish list, memory calendar, gallery, slideshow lookback, PWA, Supabase тохируулаагүй үед local demo mode хүртэл оруулсан.",
+        scope:
+          "Product planning, UI дизайн, frontend, Supabase Auth / DB / Storage, RLS, PWA, demo mode storage хүртэл хариуцсан.",
+        focus:
+          "Хувийн дурсамж хадгалдаг апп учраас дулаахан UI-гаас гадна зөвхөн хоёр хүнд харагдах data separation, mobile дээр өдөр бүр ашиглахад хөнгөн урсгалыг чухалчилсан.",
+        behind:
+          "Зүгээр нэг мэдээлэл бүртгэх хэрэгсэл биш, буцаад ормоор санагддаг газар болгохын тулд үг, зай, жижиг хөдөлгөөн бүрийг зассан.",
+      },
+      "zaza-lab": {
+        title: "Zaza Lab",
+        description:
+          "JLPT N1・N2-ийн ханз, үг, унших, сонсох, сул талын давтлагыг нэг дор хийдэг япон хэлний апп.",
+        tags: ["Сул талаа давтана", "PWA learning flow", "Audio-той асуулт"],
+        summary:
+          "Япон хэл сурч буй хүмүүст зориулсан PWA. N1/N2 ханз, дөрвөн ханзтай хэлц, onomatopoeia, grammar, reading, listening, dictionary, progress, review, achievement, session restore, backup зэргийг нэг апп болгон нэгтгэсэн. Learning data болон audio assets-ийг local дээр хурдан ажиллахаар зохион байгуулсан.",
+        scope:
+          "Learning flow, quiz engine, dictionary, progress storage, PWA, audio integration, UI implementation хүртэл хариуцсан.",
+        focus:
+          "Сургалтын аппын хамгийн чухал нь дахин нээх хүсэл төрүүлэх. Тиймээс today's word, давтах зүйл, сул талын дасгал, жижиг амжилтын мэдрэмжийг богино урсгалд оруулсан.",
+        behind:
+          "Асуултын тоо их болох тусам апп хүнд санагдах эрсдэлтэй байсан тул, өдөр бүр нээхэд ядаргаагүй нягтралд тааруулсан.",
+      },
       "workout-log": {
         title: "Workout Log",
         description:
@@ -243,6 +301,34 @@ export const mn = {
           "Үзэгчид уур амьсгалыг мэдэрч → үйлчилгээг ойлгож → захиалга өгөх тодорхой урсгал. Гар утсан дээрх уншихад хялбар байдал болон даралтад тав тухтай CTA-г нэн тэргүүнд авч үзсэн.",
         behind:
           "Захиалга дарах агшинд эрхий хуруу яг хаана байхыг төсөөлөөд, товчлуурыг тийш нь зөөсөн.",
+      },
+      suijaku: {
+        title: "Suijaku",
+        description:
+          "Картаа эргүүлэх мэдрэмж, богино тоглолт, хувийн рекорд хадгалах боломжтой memory card game.",
+        tags: ["Шууд тоглоно", "Рекорд хадгална", "Mobile ready"],
+        summary:
+          "Next.js дээр хийсэн memory card game. Start screen, play state, clear result, leaderboard, localStorage record зэрэгтэй. Богино хугацаанд олон дахин тоглоход хөнгөн байхаар бүтээсэн.",
+        scope:
+          "Game UI, card state management, scoring, leaderboard, persistence, responsive layout хүртэл хариуцсан.",
+        focus:
+          "Картаа эргүүлэх мөч, таарсан/таараагүй feedback, result screen нь “дахиад нэг удаа” гэж бодогдуулахуйц тод байхыг анхаарсан.",
+        behind:
+          "Дүрэм энгийн байх тусам tempo ба whitespace тоглоомын мэдрэмжийг өөрчилдөг нь сонирхолтой байсан.",
+      },
+      minesweeper: {
+        title: "Minesweeper",
+        description:
+          "Нэр, difficulty, theme, ranking, хэл солих боломжтой classic Minesweeper Web game.",
+        tags: ["Difficulty сонгоно", "Ranking хадгална", "EN/JP дэмжинэ"],
+        summary:
+          "Next.js дээр хийсэн Minesweeper. Safe first click, flag mode, difficulty selection, timer, leaderboard, how-to-play modal, English/Japanese UI, light/dark theme зэргийг багтаасан. Desktop болон mobile дээр тоглоход тохиромжтой board sizing хийсэн.",
+        scope:
+          "Game logic, state management, board UI, leaderboard storage, language switching, theme, responsive behavior хүртэл хариуцсан.",
+        focus:
+          "Гар утсан дээр буруу даралт багатай, board уншихад амар байх. Мөн тоглоом дууссаны дараа шууд алга болгохгүй, board-оо шалгах урсгалыг оруулсан.",
+        behind:
+          "Classic game-д чимэглэлээс илүү click feel, cell layout, feedback яг зөв байх нь чухал гэдгийг мэдэрсэн.",
       },
     },
 

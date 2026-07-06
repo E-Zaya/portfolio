@@ -210,6 +210,17 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                 {t.liveDemo}
               </Button>
             )}
+            {project.links?.map((link) => (
+              <Button
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                variant="primary"
+              >
+                {link.label}
+              </Button>
+            ))}
             {project.github && (
               <Button
                 href={project.github}
