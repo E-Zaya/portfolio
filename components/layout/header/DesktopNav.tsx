@@ -18,7 +18,7 @@ export default function DesktopNav({ locale, currentPath, items }: DesktopNavPro
     <nav className="ml-auto mr-1 hidden items-center gap-2 md:flex">
       {items.map((item) => {
         const target = withLocale(locale, item.href);
-        const active = currentPath === item.href;
+        const active = currentPath === item.href || currentPath.startsWith(`${item.href}/`);
 
         return (
           <Link

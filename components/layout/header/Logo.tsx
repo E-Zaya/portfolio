@@ -1,8 +1,13 @@
+"use client";
+
+import { useId } from "react";
+
 type LogoProps = {
   size?: number;
 };
 
 export default function Logo({ size = 46 }: LogoProps) {
+  const gradientId = `zaya-logo-${useId().replace(/:/g, "")}`;
   const isCustom = size !== 46;
   const svgSize = Math.round(size * (28 / 46));
   const shellRadius = Math.round(size * (14 / 46));
@@ -27,7 +32,7 @@ export default function Logo({ size = 46 }: LogoProps) {
             aria-label="Logo"
           >
             <defs>
-              <linearGradient id="startup" x1="0%" y1="0%" x2="100%" y2="100%">
+              <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stopColor="#7C3AED" />
                 <stop offset="100%" stopColor="#22D3EE" />  
               </linearGradient>
@@ -35,7 +40,7 @@ export default function Logo({ size = 46 }: LogoProps) {
 
             <path
               d="M12 48 L36 16 L18 16 L42 16 L18 48 L42 48"
-              stroke="url(#startup)"
+              stroke={`url(#${gradientId})`}
               strokeWidth="4"
               fill="none"
               strokeLinecap="round"

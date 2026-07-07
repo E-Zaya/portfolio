@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
@@ -38,7 +39,12 @@ const LANGS: LangItem[] = [
   },
 ];
 
-export default function LangToggle({ locale }: { locale: Locale }) {
+type LangToggleProps = {
+  locale: Locale;
+  variant?: "header" | "dock";
+};
+
+export default function LangToggle({ locale, variant = "header" }: LangToggleProps) {
   const pathname = usePathname();
   const cleanPath = stripLocaleFromPathname(pathname);
 
@@ -46,6 +52,7 @@ export default function LangToggle({ locale }: { locale: Locale }) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   const current = LANGS.find((lang) => lang.code === locale) ?? LANGS[0];
+  const isDock = variant === "dock";
 
   // 外側クリック・Escape で閉じる
   useEffect(() => {
@@ -70,7 +77,7 @@ export default function LangToggle({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <div ref={rootRef} className="relative inline-flex">
+    <div ref={rootRef} className={cn("relative inline-flex", isDock && "w-full")}>
       {/* === ボタン本体（ミニマル路線） === */}
       <button
         type="button"
@@ -78,35 +85,48 @@ export default function LangToggle({ locale }: { locale: Locale }) {
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label={`Language: ${current.label}`}
-        className={cn(
-          "group inline-flex h-9 items-center gap-2 rounded-full",
-          "border px-3 backdrop-blur-xl",
-          "font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground",
-          "transition-[transform,background,border-color,box-shadow] duration-200",
-          "hover:-translate-y-0.5",
-          "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]",
-        )}
+        className={
+          isDock
+            ? "desktop-dock-item desktop-dock-lang w-full"
+            : cn(
+                "group inline-flex h-9 items-center gap-2 rounded-full",
+                "border px-3 backdrop-blur-xl",
+                "font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground",
+                "transition-[transform,background,border-color,box-shadow] duration-200",
+                "hover:-translate-y-0.5",
+                "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]",
+              )
+        }
         style={{
-          borderColor: `color-mix(in srgb, ${current.accent} 55%, var(--border))`,
-          background: "color-mix(in srgb, var(--header-bg) 88%, transparent)",
-          boxShadow: `0 0 14px color-mix(in srgb, ${current.accent} 18%, transparent)`,
+          ...(!isDock
+            ? {
+                borderColor: `color-mix(in srgb, ${current.accent} 55%, var(--border))`,
+                background: "color-mix(in srgb, var(--header-bg) 88%, transparent)",
+                boxShadow: `0 0 14px color-mix(in srgb, ${current.accent} 18%, transparent)`,
+              }
+            : {}),
         }}
       >
-        <Image
-          src={current.flagSrc}
-          alt=""
-          width={20}
-          height={14}
-          aria-hidden="true"
-          className="h-3.5 w-5 rounded-[3px] object-cover"
-        />
+        <span className={cn(isDock && "desktop-dock-icon")} aria-hidden="true">
+          <Image
+            src={current.flagSrc}
+            alt=""
+            width={20}
+            height={14}
+            aria-hidden="true"
+            className="h-3.5 w-5 rounded-[3px] object-cover"
+          />
+        </span>
 
-        <span>{current.code.toUpperCase()}</span>
+        <span className={cn(isDock && "desktop-dock-label")}>
+          {isDock ? current.label : current.code.toUpperCase()}
+        </span>
 
         <ChevronDown
           aria-hidden="true"
           className={cn(
             "h-3.5 w-3.5 transition-transform duration-200",
+            isDock && "desktop-dock-chevron ml-auto",
             open && "rotate-180",
           )}
           style={{ color: current.accent }}
@@ -124,7 +144,10 @@ export default function LangToggle({ locale }: { locale: Locale }) {
             role="menu"
             aria-label="Select language"
             className={cn(
-              "absolute right-0 top-[calc(100%+8px)] z-50 min-w-[200px]",
+              "absolute z-50 min-w-[200px]",
+              isDock
+                ? "bottom-[calc(100%+8px)] left-0 w-full min-w-full"
+                : "right-0 top-[calc(100%+8px)]",
               "overflow-hidden rounded-2xl border p-1.5 backdrop-blur-xl",
             )}
             style={{
@@ -153,7 +176,7 @@ export default function LangToggle({ locale }: { locale: Locale }) {
                     {
                       // CSS変数として渡しておくと、:hover の中で参照できる
                       "--lang-accent": lang.accent,
-                    } as React.CSSProperties
+                    } as CSSProperties
                   }
                 >
                   {/* アクティブ時の左バー */}

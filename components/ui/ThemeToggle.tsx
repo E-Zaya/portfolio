@@ -3,6 +3,7 @@
 import { useRef, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { cn } from "@/lib/cn";
 
 const subscribeToMount = () => () => {};
 const getClientSnapshot = () => true;
@@ -15,7 +16,13 @@ const getServerSnapshot = () => false;
  * dark / light を切り替えるアニメーションを行う。対応していないブラウザでは
  * 通常通り即時切替されるだけで、UI は壊れない。
  */
-export default function ThemeToggle() {
+type ThemeToggleProps = {
+  variant?: "header" | "dock";
+};
+
+export default function ThemeToggle({
+  variant = "header",
+}: ThemeToggleProps) {
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(
     subscribeToMount,
@@ -26,6 +33,7 @@ export default function ThemeToggle() {
 
   // When not yet mounted, assume dark to avoid hydration mismatch
   const isDark = mounted ? resolvedTheme !== "light" : true;
+  const isDock = variant === "dock";
 
   const toggleTheme = (event: React.MouseEvent<HTMLButtonElement>) => {
     const next = isDark ? "light" : "dark";
@@ -79,6 +87,39 @@ export default function ThemeToggle() {
       });
   };
 
+  const icon = (
+    <>
+      <Sun
+        className={cn(
+          "relative z-10 hidden h-4 w-4 transition-transform duration-300 dark:block",
+          !isDock && "group-hover:rotate-12 group-hover:scale-110",
+        )}
+      />
+      <Moon
+        className={cn(
+          "relative z-10 h-4 w-4 transition-transform duration-300 dark:hidden",
+          !isDock && "group-hover:-rotate-12 group-hover:scale-110",
+        )}
+      />
+    </>
+  );
+
+  if (isDock) {
+    return (
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={toggleTheme}
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        className="desktop-dock-theme-toggle"
+      >
+        <span className="desktop-dock-icon" aria-hidden="true">
+          {icon}
+        </span>
+      </button>
+    );
+  }
+
   return (
     <button
       ref={buttonRef}
@@ -96,8 +137,7 @@ export default function ThemeToggle() {
         }}
       />
       {/* icon changes with theme */}
-      <Sun className="relative z-10 hidden h-4 w-4 transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110 dark:block" />
-      <Moon className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:-rotate-12 group-hover:scale-110 dark:hidden" />
+      {icon}
     </button>
   );
 }

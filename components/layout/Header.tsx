@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
 import ThemeToggle from "../ui/ThemeToggle";
 import LangToggle from "../ui/LangToggle";
 import DesktopNav from "./header/DesktopNav";
+import DesktopDock from "./header/DesktopDock";
 import MobileMenu from "./header/MobileMenu";
 import Logo from "./header/Logo";
 import { useHeaderScroll } from "@/hooks/useHeaderScroll";
@@ -39,13 +40,20 @@ export default function Header({ locale }: { locale: Locale }) {
   }, []);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 transition-all duration-300",
-        hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
-        scrolled ? "py-1.5" : "py-2.5",
-      )}
-    >
+    <>
+      <DesktopDock
+        locale={locale}
+        currentPath={cleanPath}
+        items={t.nav}
+      />
+
+      <header
+        className={cn(
+          "sticky top-0 z-50 transition-all duration-300 xl:hidden",
+          hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
+          scrolled ? "py-1.5" : "py-2.5",
+        )}
+      >
       <div className="container-custom">
         <div
           className={cn(
@@ -58,20 +66,11 @@ export default function Header({ locale }: { locale: Locale }) {
           <div className="relative flex min-h-12 items-center justify-between gap-3 sm:gap-4">
             <Link
               href={withLocale(locale, "/")}
-              className="group flex min-w-0 flex-1 items-center gap-2 sm:gap-3 transition"
+              className="group flex shrink-0 items-center transition"
               aria-label={t.header.logoAria}
             >
               <div className="shrink-0 transition duration-300 group-hover:scale-105 group-hover:rotate-3">
                 <Logo />
-              </div>
-
-              <div className="min-w-0 leading-none">
-                <span className="block truncate bg-linear-to-r from-indigo-400 to-cyan-300 bg-clip-text text-base font-semibold tracking-[-0.02em] text-transparent sm:text-lg">
-                  Zaya
-                </span>
-                <span className="block truncate text-xs text-soft">
-                  {t.header.subtitle}
-                </span>
               </div>
 {/* ノイズになってたので、今は消す。いつかヒーローセクションで復活させる！ */}
  {/* <ZazaHeaderAnimations
@@ -103,19 +102,20 @@ export default function Header({ locale }: { locale: Locale }) {
             </div>
           </div>
 
-          {mobileOpen && (
-            <MobileMenu
-              locale={locale}
-              currentPath={cleanPath}
-              primaryItems={primaryNavItems}
-              items={drawerNavItems}
-              onClose={closeMobileMenu}
-            />
-          )}
-
           <div className="header-bottom-line pointer-events-none absolute bottom-0 left-0 h-px w-full" />
         </div>
       </div>
-    </header>
+      </header>
+
+      {mobileOpen && (
+        <MobileMenu
+          locale={locale}
+          currentPath={cleanPath}
+          primaryItems={primaryNavItems}
+          items={drawerNavItems}
+          onClose={closeMobileMenu}
+        />
+      )}
+    </>
   );
 }

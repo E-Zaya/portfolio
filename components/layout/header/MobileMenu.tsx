@@ -138,6 +138,10 @@ const focusableSelector = [
   '[tabindex]:not([tabindex="-1"])',
 ].join(",");
 
+function isActivePath(currentPath: string, href: string) {
+  return currentPath === href || currentPath.startsWith(`${href}/`);
+}
+
 export default function MobileMenu({
   locale,
   currentPath,
@@ -265,7 +269,7 @@ export default function MobileMenu({
 
   const renderCard = (card: (typeof menuCards)[number]) => {
     const target = withLocale(locale, card.href);
-    const active = currentPath === card.href;
+    const active = isActivePath(currentPath, card.href);
     const Icon = card.icon;
 
     return (
@@ -339,10 +343,10 @@ export default function MobileMenu({
               href={withLocale(locale, projectsItem.href)}
               scroll
               onClick={() => closeMenu({ restoreFocus: false })}
-              aria-current={currentPath === projectsItem.href ? "page" : undefined}
+              aria-current={isActivePath(currentPath, projectsItem.href) ? "page" : undefined}
               className={cn(
                 "spotlight-menu-card spotlight-menu-feature group relative flex min-h-[21rem] overflow-hidden rounded-3xl p-5 md:col-span-3 md:row-span-2",
-                currentPath === projectsItem.href && "spotlight-menu-active",
+                isActivePath(currentPath, projectsItem.href) && "spotlight-menu-active",
               )}
             >
               <Image
