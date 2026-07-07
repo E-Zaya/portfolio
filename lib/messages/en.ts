@@ -9,7 +9,7 @@ export const en = {
       about: {
         title: "About — Background & Skills",
         description:
-          "Web developer based in Ulaanbaatar. My background, tech stack (Next.js / TypeScript), and how I approach building for small businesses. Japanese, Mongolian, English.",
+          "AI-Native Product Engineer based in Ulaanbaatar. My background, tech stack (Next.js / TypeScript), and how I approach building for small businesses. Japanese, Mongolian, English.",
       },
       projects: {
         title: "Projects — Websites & Web Apps",
@@ -29,12 +29,12 @@ export const en = {
       blog: {
         title: "Blog — Notes on Web Development",
         description:
-          "Notes on web development, Next.js, and running multilingual sites.",
+          "Notes on building useful websites, product decisions, and running multilingual sites.",
       },
     },
   },
   header: {
-    subtitle: "Web Developer",
+    subtitle: "AI-Native Product Engineer",
     logoAria: "Back to home",
     menuAria: "Open menu",
   },
@@ -593,7 +593,7 @@ export const en = {
   },
 
   footer: {
-    title: "Zaya Web Development",
+    title: "Zaya — AI-Native Product Engineer",
     subtitle: "A face that gets chosen. Systems that lighten the work.",
     copyright: "© 2026 Designed & Built by Zaya",
   },

@@ -34,20 +34,7 @@ export function WipSection({ projects, t }: Props) {
             {/* Title */}
             <h3 className="mb-2 font-medium text-foreground">{text.title}</h3>
 
-            {/* Description */}
             <p className="mb-4 text-sm leading-6 text-soft">{text.description}</p>
-
-            {/* Tech tags */}
-            <div className="flex flex-wrap gap-2">
-              {item.tech.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-full border border-border bg-card px-2.5 py-1 text-xs text-muted"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
           </div>
         ))}
       </div>

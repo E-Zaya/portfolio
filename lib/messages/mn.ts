@@ -9,7 +9,7 @@ export const mn = {
       about: {
         title: "Миний тухай — Туршлага, ур чадвар",
         description:
-          "Улаанбаатарт төвтэй вэб хөгжүүлэгч Zaya. Туршлага, техник стек (Next.js / TypeScript), жижиг бизнест зориулж бүтээх арга барил. Япон, монгол, англи хэлээр.",
+          "Улаанбаатарт төвтэй AI-Native Product Engineer Zaya. Туршлага, техник стек (Next.js / TypeScript), жижиг бизнест зориулж бүтээх арга барил. Япон, монгол, англи хэлээр.",
       },
       projects: {
         title: "Бүтээлүүд — Вэб ба апп төслүүд",
@@ -29,13 +29,13 @@ export const mn = {
       blog: {
         title: "Блог — Вэб хөгжүүлэлтийн тэмдэглэл",
         description:
-          "Вэб ба апп хөгжүүлэлт, Next.js, олон хэлт сайт ажиллуулах тухай тэмдэглэлүүд.",
+          "Вэб ба апп бүтээх, бүтээгдэхүүний шийдвэр, олон хэлт сайт ажиллуулах тухай тэмдэглэлүүд.",
       },
     },
   },
 
   header: {
-    subtitle: "Web Developer",
+    subtitle: "AI-Native Product Engineer",
     logoAria: "Нүүр хуудас",
     menuAria: "Цэс нээх",
   },
@@ -600,7 +600,7 @@ export const mn = {
   },
 
   footer: {
-    title: "Zaya Web Development",
+    title: "Zaya — AI-Native Product Engineer",
     subtitle: "Сонгогдох нүүр царай, хөнгөвчлөх систем",
     copyright: "© 2026 Designed & Built by Zaya",
   },

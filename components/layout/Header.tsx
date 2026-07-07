@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -18,18 +18,25 @@ import {
   type Locale,
 } from "@/lib/i18n";
 
+const primaryNavHrefs = ["/services", "/projects", "/blog"] as const;
 
 export default function Header({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const cleanPath = stripLocaleFromPathname(pathname);
   const t = getMessages(locale);
+  const primaryNavItems = t.nav.filter((item) =>
+    primaryNavHrefs.includes(item.href as (typeof primaryNavHrefs)[number]),
+  );
+  const drawerNavItems = t.nav.filter(
+    (item) => !primaryNavHrefs.includes(item.href as (typeof primaryNavHrefs)[number]),
+  );
 
   const [mobileOpen, setMobileOpen] = useState(false);
   const { scrolled, hidden } = useHeaderScroll();
-
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  const closeMobileMenu = useCallback(() => setMobileOpen(false), []);
+  const toggleMobileMenu = useCallback(() => {
+    setMobileOpen((prev) => !prev);
+  }, []);
 
   return (
     <header
@@ -77,18 +84,18 @@ export default function Header({ locale }: { locale: Locale }) {
 /> */}
             </Link>
 
-            <DesktopNav locale={locale} currentPath={cleanPath} items={t.nav} />
+            <DesktopNav locale={locale} currentPath={cleanPath} items={primaryNavItems} />
 
             <div className="flex shrink-0 items-center gap-2">
               <LangToggle locale={locale} />
               <ThemeToggle />
 
               <button
-                onClick={() => setMobileOpen((prev) => !prev)}
-                className="header-icon-button inline-flex h-11 w-11 items-center justify-center p-0 md:hidden"
+                onClick={toggleMobileMenu}
+                className="header-icon-button inline-flex h-11 w-11 items-center justify-center p-0"
                 aria-label={t.header.menuAria}
                 aria-expanded={mobileOpen}
-                aria-controls="mobile-nav"
+                aria-controls="site-drawer"
                 type="button"
               >
                 {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -97,14 +104,13 @@ export default function Header({ locale }: { locale: Locale }) {
           </div>
 
           {mobileOpen && (
-            <div id="mobile-nav" className="md:hidden">
-              <MobileMenu
-                locale={locale}
-                currentPath={cleanPath}
-                items={t.nav}
-                onNavigate={() => setMobileOpen(false)}
-              />
-            </div>
+            <MobileMenu
+              locale={locale}
+              currentPath={cleanPath}
+              primaryItems={primaryNavItems}
+              items={drawerNavItems}
+              onClose={closeMobileMenu}
+            />
           )}
 
           <div className="header-bottom-line pointer-events-none absolute bottom-0 left-0 h-px w-full" />

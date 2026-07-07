@@ -101,7 +101,7 @@ export default async function LocaleLayout({
       "https://www.instagram.com/ezaya977/",
       "https://www.facebook.com/profile.php?id=61578100397690",
     ],
-    jobTitle: "Web Developer",
+    jobTitle: "AI-Native Product Engineer",
     knowsLanguage: ["ja", "mn", "en"],
   };
 

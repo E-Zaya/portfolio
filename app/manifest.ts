@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Zaya Dev — Portfolio",
     short_name: "Zaya Dev",
     description:
-      "Zaya's portfolio — Web developer specializing in Next.js, TypeScript, and design.",
+      "Zaya's portfolio — AI-Native Product Engineer building useful digital products and business systems.",
     start_url: "/ja",
     display: "standalone",
     background_color: "#081120",

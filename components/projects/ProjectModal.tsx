@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import type { ProjectItem } from "@/data/projects";
 import type { Locale } from "@/lib/i18n";
@@ -32,11 +33,29 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
   const caseStudyHref = itemText.caseStudy
     ? `/${locale}/blog/${itemText.caseStudy}`
     : null;
+  const gallery = project.gallery?.length ? project.gallery : [project.image];
+  const hasGalleryControls = gallery.length > 1;
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const scrollYRef = useRef(0);
+
+  const showPreviousImage = useCallback(() => {
+    setActiveImageIndex((current) =>
+      current === 0 ? gallery.length - 1 : current - 1,
+    );
+  }, [gallery.length]);
+
+  const showNextImage = useCallback(() => {
+    setActiveImageIndex((current) =>
+      current === gallery.length - 1 ? 0 : current + 1,
+    );
+  }, [gallery.length]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (!hasGalleryControls) return;
+      if (e.key === "ArrowLeft") showPreviousImage();
+      if (e.key === "ArrowRight") showNextImage();
     };
     document.addEventListener("keydown", handler);
 
@@ -66,7 +85,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
         document.documentElement.style.overflow = "";
       }
     };
-  }, [onClose]);
+  }, [hasGalleryControls, onClose, showNextImage, showPreviousImage]);
 
   const modal = (
     <div
@@ -92,16 +111,96 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           ✕
         </button>
 
-        {/* Hero image */}
-        <div className="relative h-44 w-full overflow-hidden rounded-t-3xl sm:h-60 sm:rounded-t-4xl">
-          <Image
-            src={project.image}
-            alt={itemText.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 768px"
-            className="object-cover object-top"
-          />
-          <div className="project-image-overlay" />
+        {/* Preview slider */}
+        <div className="relative overflow-hidden rounded-t-3xl bg-card-strong sm:rounded-t-4xl">
+          <div className="project-modal-slider relative h-56 w-full overflow-hidden sm:h-72">
+            <div
+              className="flex h-full transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${activeImageIndex * 100}%)` }}
+            >
+              {gallery.map((src, index) => (
+                <div
+                  key={src}
+                  className="relative h-full min-w-full bg-card-strong"
+                >
+                  <Image
+                    src={src}
+                    alt={`${itemText.title} preview ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 768px"
+                    className="object-contain"
+                    priority={index === 0}
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="project-modal-slider-shade pointer-events-none absolute inset-0" />
+
+            {hasGalleryControls && (
+              <>
+                <button
+                  type="button"
+                  onClick={showPreviousImage}
+                  className="project-modal-slider-button absolute left-3 top-1/2 z-10 -translate-y-1/2"
+                  aria-label="前の画像"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={showNextImage}
+                  className="project-modal-slider-button absolute right-3 top-1/2 z-10 -translate-y-1/2"
+                  aria-label="次の画像"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
+
+                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/20 bg-black/35 px-2.5 py-1.5 backdrop-blur-md">
+                  {gallery.map((src, index) => (
+                    <button
+                      key={src}
+                      type="button"
+                      onClick={() => setActiveImageIndex(index)}
+                      className={`h-1.5 rounded-full transition-all ${
+                        index === activeImageIndex
+                          ? "w-5 bg-white"
+                          : "w-1.5 bg-white/45 hover:bg-white/80"
+                      }`}
+                      aria-label={`画像 ${index + 1} を表示`}
+                      aria-current={index === activeImageIndex ? "true" : undefined}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+
+          {hasGalleryControls && (
+            <div className="project-modal-thumbnails flex gap-2 overflow-x-auto border-t border-border bg-card px-3 py-3">
+              {gallery.map((src, index) => (
+                <button
+                  key={src}
+                  type="button"
+                  onClick={() => setActiveImageIndex(index)}
+                  className={`project-modal-thumbnail relative h-14 w-24 shrink-0 overflow-hidden rounded-xl border ${
+                    index === activeImageIndex
+                      ? "project-modal-thumbnail-active"
+                      : "border-border"
+                  }`}
+                  aria-label={`画像 ${index + 1} を表示`}
+                  aria-current={index === activeImageIndex ? "true" : undefined}
+                >
+                  <Image
+                    src={src}
+                    alt=""
+                    fill
+                    sizes="88px"
+                    className="object-cover object-top"
+                  />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Content */}

@@ -11,6 +11,7 @@ export type ProjectLink = {
 export type ProjectItem = {
   slug: string;
   image: string;
+  gallery?: readonly string[];
   tech: readonly string[];
   github?: string;
   demo?: string;
@@ -30,6 +31,13 @@ export const projectItems = [
   {
     slug: "odootech-time",
     image: "/project-images/odootech-time-map.png",
+    gallery: [
+      "/project-images/odootech-time-map.png",
+      "/project-images/odootech-time-login.png",
+      "/project-images/odootech-time-1.png",
+      "/project-images/odootech-time-2.png",
+      "/project-images/odootech-time-3.png",
+    ],
     tech: ["Flutter", "Dart", "Riverpod", "Odoo 17", "Python", "OpenStreetMap"],
     links: [
       {
@@ -48,6 +56,10 @@ export const projectItems = [
   {
     slug: "overland-beyond",
     image: "/project-images/overland-hero.png",
+    gallery: [
+      "/project-images/overland-hero.png",
+      "/project-images/overland-1.png",
+    ],
     tech: ["Next.js", "TypeScript", "Odoo", "Python", "Sass"],
     demo: "https://overlandbeyond.com/",
     status: "Completed",
@@ -57,6 +69,19 @@ export const projectItems = [
   {
     slug: "futari",
     image: "/project-images/futari-home-desktop.png",
+    gallery: [
+      "/project-images/futari-home-desktop.png",
+      "/project-images/futari-home-mobile.png",
+      "/project-images/futari-login-mobile.png",
+      "/project-images/futari-setting-desktop.png",
+      "/project-images/futari-setting-mobile.png",
+      "/project-images/01-home-private-space.png",
+      "/project-images/02-diary-everyday.png",
+      "/project-images/03-wishes-promise.png",
+      "/project-images/04-calendar-look-back.png",
+      "/project-images/05-gallery-private.png",
+      "/project-images/06-memories-become-treasure.png",
+    ],
     tech: ["Next.js", "TypeScript", "Supabase", "Tailwind CSS", "MapLibre GL"],
     demo: "https://futari.ezaya.dev/",
     status: "Completed",
@@ -66,6 +91,15 @@ export const projectItems = [
   {
     slug: "zaza-lab",
     image: "/project-images/zaza-lab-home.png",
+    gallery: [
+      "/project-images/zaza-lab-home.png",
+      "/project-images/zaza-lab-loading.png",
+      "/project-images/zaza-lab-menu.png",
+      "/project-images/zaza-lab-activity.png",
+      "/project-images/zaza-lab-activity-2.png",
+      "/project-images/zaza-lab-search.png",
+      "/project-images/zaza-lab-wrong-answer.png",
+    ],
     tech: ["Next.js", "TypeScript", "PWA", "Tailwind CSS", "LocalStorage"],
     demo: "https://zaza-lab.ezaya.dev/",
     status: "Completed",
@@ -115,6 +149,11 @@ export const projectItems = [
   {
     slug: "suijaku",
     image: "/project-images/suijaku-playing.png",
+    gallery: [
+      "/project-images/suijaku-home.png",
+      "/project-images/suijaku-playing.png",
+      "/project-images/suijaku-result.png",
+    ],
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "localStorage"],
     demo: "https://suijaku-minigame.vercel.app/",
     status: "Completed",
@@ -123,6 +162,10 @@ export const projectItems = [
   {
     slug: "minesweeper",
     image: "/project-images/ms-playing.png",
+    gallery: [
+      "/project-images/ms-playing.png",
+      "/project-images/ms-result.png",
+    ],
     tech: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
     demo: "https://mine-sweeper-orpin.vercel.app/minesweeper",
     status: "Completed",

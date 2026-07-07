@@ -58,10 +58,12 @@ export default function LoadingScreen({ showOnce = true }: LoadingScreenProps) {
 
     if (showOnce) safeSet(STORAGE_KEY, "true");
 
-    setPhase("visible");
-
     let fadeTimer: ReturnType<typeof setTimeout>;
     let hideTimer: ReturnType<typeof setTimeout>;
+
+    const startTimer = setTimeout(() => {
+      setPhase("visible");
+    }, 0);
 
     const loadTimer = setTimeout(() => {
       setProgress(100);
@@ -75,6 +77,7 @@ export default function LoadingScreen({ showOnce = true }: LoadingScreenProps) {
     }, LOADING_DURATION_MS);
 
     return () => {
+      clearTimeout(startTimer);
       clearTimeout(loadTimer);
       clearTimeout(fadeTimer);
       clearTimeout(hideTimer);

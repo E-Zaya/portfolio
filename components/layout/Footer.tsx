@@ -4,6 +4,7 @@ import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const t = getMessages(locale).footer;
+  const hasSubtitle = t.subtitle.trim().length > 0;
 
   return (
     <footer className="pb-6 pt-3 md:pb-10 md:pt-4">
@@ -17,9 +18,11 @@ export default function Footer({ locale }: { locale: Locale }) {
               </p>
 
               <div className="mt-2 flex flex-col gap-1 text-xs text-soft/70 sm:flex-row sm:items-center sm:gap-2">
-                <span>{t.subtitle}</span>
+                {hasSubtitle && <span>{t.subtitle}</span>}
 
-                <span className="hidden h-1 w-1 rounded-full bg-soft/30 sm:block" />
+                {hasSubtitle && (
+                  <span className="hidden h-1 w-1 rounded-full bg-soft/30 sm:block" />
+                )}
 
                 <span>{t.copyright}</span>
               </div>

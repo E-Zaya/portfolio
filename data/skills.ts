@@ -1,4 +1,3 @@
-import { FaReact, FaFigma } from "react-icons/fa";
 import { RiNextjsFill, RiTailwindCssFill } from "react-icons/ri";
 import { SiTypescript, SiPostgresql, SiPrisma, SiVercel } from "react-icons/si";
 

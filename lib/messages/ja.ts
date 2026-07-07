@@ -10,7 +10,7 @@ export const ja = {
       about: {
         title: "私について — 経歴・スキル",
         description:
-          "ウランバートル拠点のWeb開発者Zayaの経歴、技術スタック（Next.js / TypeScript）、制作に対する考え方を紹介します。日本語・モンゴル語・英語対応。",
+          "ウランバートル拠点のAI-Native Product Engineer、Zayaの経歴、技術スタック（Next.js / TypeScript）、制作に対する考え方を紹介します。日本語・モンゴル語・英語対応。",
       },
       projects: {
         title: "制作実績 — Web・アプリ開発事例",
@@ -30,12 +30,12 @@ export const ja = {
       blog: {
         title: "ブログ — Web制作の記録",
         description:
-          "Web制作・Next.js・多言語サイト運用についての記事。開発の記録と学びを発信しています。",
+          "Web制作・プロダクトづくり・多言語サイト運用についての記事。開発の記録と学びを発信しています。",
       },
     },
   },
   header: {
-    subtitle: "Web Developer",
+    subtitle: "AI-Native Product Engineer",
     logoAria: "トップページへ移動",
     menuAria: "メニューを開く",
   },
@@ -140,35 +140,7 @@ export const ja = {
       description:
         "このサイトのあちこちからひょっこり覗いている犬。仕事は、あなたの背中をそっと押すこと。私がサボっていると鳴きます。",
     },
-    // 以前入れてたけど、あまりに個人的な内容だったので削除した経歴セクションの内容。必要なら復活させる。
-    // journeyEyebrow: "歩み",
-    // journeyTitle: "これまでの道のり",
-    // journey: [
-    //   {
-    //     year: "2016",
-    //     title: "新天地での挑戦",
-    //     description:
-    //       "日本へ留学。異文化の中で多様な価値観に触れ、自分の枠を広げる土台を築いた10年間。",
-    //   },
-    //   {
-    //     year: "2026",
-    //     title: "創造への転換点",
-    //     description:
-    //       "変化のない日々に危機感を抱き、「消費する側」から「創造する側」へ。エンジニアとして生きる道を選択",
-    //   },
-    //   {
-    //     year: "現在",
-    //     title: "IO Institute",
-    //     description:
-    //       "昨日できなかったことを今日可能にする。毎日が成長に直結する環境で、フルスタックのスキルを研鑽中。",
-    //   },
-    //   {
-    //     year: "目指す先",
-    //     title: "Global Developer",
-    //     description:
-    //       "言葉の壁も、\n デバイスの境界も超えて、 誰かの日常を「革新」するプロダクトを。世界水準の「創る人」になる。",
-    //   },
-    // ],
+
   },
   projects: {
     eyebrow: "",
@@ -602,8 +574,8 @@ export const ja = {
   },
 
   footer: {
-    title: "Zaya Web Development",
-    subtitle: "Next.js / Tailwind CSS / Framer Motion",
+    title: "Zaya — AI-Native Product Engineer",
+    subtitle: "",
     copyright: "© 2026 Designed & Built by Zaya",
   },
   langToggle: {

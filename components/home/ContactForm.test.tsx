@@ -1,10 +1,12 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { getMessages } from "@/lib/i18n";
 import ContactForm from "./ContactForm";
 
 describe("ContactForm", () => {
   let fetchMock: ReturnType<typeof vi.fn>;
+  const submitLabel = getMessages("ja").contact.form.submit;
 
   beforeEach(() => {
     fetchMock = vi.fn();
@@ -21,7 +23,7 @@ describe("ContactForm", () => {
     expect(screen.getByLabelText("お名前")).toBeInTheDocument();
     expect(screen.getByLabelText("メールアドレス")).toBeInTheDocument();
     expect(screen.getByLabelText("ご相談内容")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "送信する" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: submitLabel })).toBeInTheDocument();
   });
 
   it("Form input hiij bolj baigaa eseh.", async () => {
@@ -50,7 +52,7 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText("お名前"), "山田太郎");
     await user.type(screen.getByLabelText("メールアドレス"), "test@example.com");
     await user.type(screen.getByLabelText("ご相談内容"), "お問い合わせ内容です");
-    await user.click(screen.getByRole("button", { name: "送信する" }));
+    await user.click(screen.getByRole("button", { name: submitLabel }));
 
     await waitFor(() => {
       expect(fetchMock).toHaveBeenCalledWith("/api/contact", {
@@ -82,7 +84,7 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText("お名前"), "山田太郎");
     await user.type(screen.getByLabelText("メールアドレス"), "test@example.com");
     await user.type(screen.getByLabelText("ご相談内容"), "お問い合わせ内容です");
-    await user.click(screen.getByRole("button", { name: "送信する" }));
+    await user.click(screen.getByRole("button", { name: submitLabel }));
 
     expect(await screen.findByText("送信できませんでした。")).toBeInTheDocument();
   });
