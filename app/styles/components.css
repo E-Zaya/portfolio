@@ -388,8 +388,14 @@ html.light .mouse-glow::before {
     transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* 展開条件:
+   - hover中
+   - キーボード操作のフォーカス(:focus-visible)のみ。クリック後に残る通常フォーカスでは
+     展開を維持しない（ページ遷移後に開きっぱなしになるバグの修正）
+   - 言語ドロップダウンが開いている間 */
 .desktop-dock:hover,
-.desktop-dock:focus-within {
+.desktop-dock:has(:focus-visible),
+.desktop-dock:has([aria-expanded="true"]) {
   width: 232px;
 }
 
@@ -526,7 +532,8 @@ html.light .mouse-glow::before {
 }
 
 .desktop-dock:hover .desktop-dock-label,
-.desktop-dock:focus-within .desktop-dock-label {
+.desktop-dock:has(:focus-visible) .desktop-dock-label,
+.desktop-dock:has([aria-expanded="true"]) .desktop-dock-label {
   max-width: 9.5rem;
   opacity: 1;
   transform: translateX(0);
@@ -540,7 +547,8 @@ html.light .mouse-glow::before {
 }
 
 .desktop-dock:hover .desktop-dock-chevron,
-.desktop-dock:focus-within .desktop-dock-chevron {
+.desktop-dock:has(:focus-visible) .desktop-dock-chevron,
+.desktop-dock:has([aria-expanded="true"]) .desktop-dock-chevron {
   opacity: 1;
 }
 
@@ -565,24 +573,37 @@ html.light .mouse-glow::before {
   gap: 0.45rem;
 }
 
+/* 常に3.45remの正方形（レイアウトは切り替えない）。
+   位置は margin-left だけで制御する:
+   - 縮小時: 0.1rem → 中のアイコンが上のナビアイコン列と同じ軸に揃う
+   - 展開時: calc(50% - 1.725rem) → レール中央（従来デザイン）
+   margin-left は数値同士なので滑らかにアニメーションする。 */
 .desktop-dock-theme-toggle {
   position: relative;
   z-index: 1;
-  display: flex;
-  width: 100%;
-  min-height: 3.05rem;
-  align-items: center;
-  gap: 0.78rem;
+  display: grid;
+  width: 3.45rem;
+  height: 3.45rem;
+  min-height: 3.45rem;
+  margin-left: 0.1rem;
+  place-items: center;
   overflow: hidden;
   border: 1px solid transparent;
-  border-radius: 1.25rem;
-  padding: 0.35rem 0.5rem;
+  border-radius: 1.2rem;
+  padding: 0;
   color: var(--accent-2);
   background: transparent;
   transition:
+    margin-left 260ms cubic-bezier(0.22, 1, 0.36, 1),
     border-color 180ms ease,
     background 180ms ease,
     color 180ms ease;
+}
+
+.desktop-dock:hover .desktop-dock-theme-toggle,
+.desktop-dock:has(:focus-visible) .desktop-dock-theme-toggle,
+.desktop-dock:has([aria-expanded="true"]) .desktop-dock-theme-toggle {
+  margin-left: calc(50% - 1.725rem);
 }
 
 .desktop-dock-theme-toggle:hover,
@@ -598,18 +619,6 @@ html.light .mouse-glow::before {
   box-shadow:
     0 0 18px color-mix(in srgb, var(--accent-2) 16%, transparent),
     inset 0 1px 0 color-mix(in srgb, var(--foreground) 10%, transparent);
-}
-
-.desktop-dock:hover .desktop-dock-theme-toggle,
-.desktop-dock:focus-within .desktop-dock-theme-toggle {
-  display: grid;
-  width: 3.45rem;
-  height: 3.45rem;
-  min-height: 3.45rem;
-  margin-inline: auto;
-  place-items: center;
-  border-radius: 1.2rem;
-  padding: 0;
 }
 
 .desktop-dock-spacer {

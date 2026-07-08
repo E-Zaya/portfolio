@@ -588,7 +588,7 @@ export const en = {
       submit: "Send it over",
       success: "Your message has been sent.",
       error: "Failed to send your message. Please try again later.",
-      note: "Nothing needs to be decided yet. I write every reply myself.",
+      note: "Nothing needs to be decided yet. Let's figure it out together.",
     },
   },
 
