@@ -383,6 +383,7 @@ export type Messages = {
 
   skills: {
     eyebrow: string;
+    title: string;
   };
 
   about: {

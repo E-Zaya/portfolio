@@ -126,6 +126,7 @@ export const en = {
 
   skills: {
     eyebrow: "Tech Stack",
+    title: "Tools I build with",
   },
   about: {
     eyebrow: "About",

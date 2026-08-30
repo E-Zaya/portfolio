@@ -134,6 +134,7 @@ export const mn = {
 
   skills: {
     eyebrow: "Tech Stack",
+    title: "Өдөр тутам ашигладаг хэрэгслүүд",
   },
 
   about: {

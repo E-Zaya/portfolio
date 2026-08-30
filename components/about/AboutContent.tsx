@@ -1,13 +1,12 @@
 import Image from "next/image";
 import AboutHero from "@/components/about/AboutHero";
-import AboutSocialLinks from "@/components/about/AboutSocialLinks";
 import AboutStrengths from "@/components/about/AboutStrengths";
 import Skills from "@/components/home/Skills";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function AboutContent({ locale }: { locale: Locale }) {
   return (
-    <>
+    <div className="section-flow">
     <section className="section-space">
       <div className="container-custom">
         <div className="apple-panel gradient-border relative overflow-hidden rounded-3xl px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
@@ -26,11 +25,12 @@ export default function AboutContent({ locale }: { locale: Locale }) {
             }}
           />
 
+          {/* SNSリンクは直下のフッターと同一アイコン群が重複していたため
+              カード内からは削除(AboutSocialLinks.tsx は温存) */}
           <div className="relative z-10 space-y-14 md:space-y-16">
             <AboutHero locale={locale} />
             <AboutStrengths locale={locale} />
             <ZazaCard locale={locale} />
-            <AboutSocialLinks />
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
 
     {/* Tech Stack — 技術情報はAboutにのみ置く方針(同業者・紹介案件向けの控えめな置き場) */}
     <Skills locale={locale} />
-    </>
+    </div>
   );
 }
 

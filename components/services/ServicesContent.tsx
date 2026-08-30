@@ -152,7 +152,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
   const [titleLine1, titleLine2 = ""] = t.title.split("\n");
 
   return (
-    <div className="services-flow">
+    <div className="section-flow">
       {/* ── イントロ ── */}
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-6 text-center">

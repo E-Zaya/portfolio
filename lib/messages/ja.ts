@@ -123,6 +123,7 @@ export const ja = {
 
   skills: {
     eyebrow: "Tech Stack",
+    title: "普段つかっている道具",
   },
   about: {
     eyebrow: "私について",

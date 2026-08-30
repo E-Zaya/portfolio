@@ -64,17 +64,16 @@
   inset: 0;
 }
 
+/* Aboutのガラスパネル背景。明るすぎると本文のコントラストが
+   落ちるので、装飾として感じる程度まで抑える */
 .hero-bg::before {
   background: radial-gradient(at 75% 70%, var(--accent-2) 0%, transparent 45%);
-
-
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 .hero-bg::after {
   background: radial-gradient(at 25% 40%, var(--accent-1) 10%, transparent 55%);
-
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 
@@ -156,28 +155,28 @@
 /* サービスページのように1ページ内にセクションが多数並ぶ場合、
    .section-space (6rem) をそのまま重ねると間延びするので、
    ページ内リズムを約半分に圧縮する(先頭・末尾はページ余白として残す) */
-.services-flow .section-space {
+.section-flow .section-space {
   padding-block: 2.5rem;
 }
 
-.services-flow > section:first-child {
+.section-flow > section:first-child {
   padding-top: 4rem;
 }
 
-.services-flow > section:last-child {
+.section-flow > section:last-child {
   padding-bottom: 5rem;
 }
 
 @media (min-width: 48rem) {
-  .services-flow .section-space {
+  .section-flow .section-space {
     padding-block: 3.5rem;
   }
 
-  .services-flow > section:first-child {
+  .section-flow > section:first-child {
     padding-top: 6rem;
   }
 
-  .services-flow > section:last-child {
+  .section-flow > section:last-child {
     padding-bottom: 7rem;
   }
 }
