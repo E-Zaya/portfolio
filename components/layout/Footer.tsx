@@ -1,5 +1,8 @@
+import Link from "next/link";
+import { Phone } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { socialLinks } from "@/data/portfolio";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/lib/contact";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function Footer({ locale }: { locale: Locale }) {
@@ -25,11 +28,28 @@ export default function Footer({ locale }: { locale: Locale }) {
                 )}
 
                 <span>{t.copyright}</span>
+
+                <span className="hidden h-1 w-1 rounded-full bg-soft/30 sm:block" />
+
+                <Link
+                  href={`/${locale}/privacy`}
+                  className="underline-offset-2 transition-colors hover:text-foreground hover:underline"
+                >
+                  {t.privacy}
+                </Link>
               </div>
             </div>
 
-            {/* social links */}
+            {/* phone + social links */}
             <div className="flex flex-wrap gap-3 md:justify-end">
+              <Button
+                href={PHONE_HREF}
+                className="inline-flex items-center gap-2 px-4 py-3"
+                aria-label={PHONE_DISPLAY}
+              >
+                <Phone className="h-4 w-4 shrink-0" style={{ color: "var(--accent-2)" }} />
+                <span className="text-sm">{PHONE_DISPLAY}</span>
+              </Button>
               {socialLinks.map((item) => {
                 const Icon = item.icon;
                 const isEmail = item.name === "Email";

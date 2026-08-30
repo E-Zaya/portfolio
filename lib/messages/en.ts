@@ -26,6 +26,11 @@ export const en = {
         description:
           "Tell me about your project — quotes and consultations in Japanese, Mongolian, or English. I usually reply within 1–2 business days.",
       },
+      privacy: {
+        title: "Privacy Policy",
+        description:
+          "How personal information is handled on this site (contact form and analytics).",
+      },
       blog: {
         title: "Blog — Notes on Web Development",
         description:
@@ -282,21 +287,6 @@ export const en = {
         behind:
           "As the question set grew, the challenge became keeping the app dense but never tiring to open.",
       },
-      "workout-log": {
-        title: "Workout Log App",
-        description:
-          "Logging takes a few taps, progress shows in one glance — a workout log built to keep you coming back.",
-        tags: ["Log in a few taps", "Progress at a glance"],
-        summary:
-          "A full-stack build I carried alone, from design and development to database and launch. A logging flow that ends in a few taps, graphs that show weekly progress at a glance — polished by using it myself every day, aiming for “sticks even for serial quitters.”",
-        scope:
-          "Handled planning, design, frontend, backend, database design, and deployment independently.",
-        focus:
-          "Making workout logging simple and weekly progress easy to understand at a glance.",
-        behind:
-          "I kept rebuilding the UI with myself as the test subject — what would make even a serial quitter come back?",
-        caseStudy: "workout-log-case-study",
-      },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
         description:
@@ -340,34 +330,6 @@ export const en = {
           "Built around a clear flow — show the vibe, communicate the offer, lead to a booking. Mobile readability and tap-friendly CTAs were the top priorities.",
         behind:
           "I imagined the exact spot a thumb would rest at the moment of booking, and moved the button there.",
-      },
-      suijaku: {
-        title: "Suijaku",
-        description:
-          "A memory card game built around satisfying flips, quick rounds, and saved personal records.",
-        tags: ["Quick to play", "Saved records", "Mobile-ready"],
-        summary:
-          "A Next.js memory game with a start screen, play state, clear result, leaderboard, and localStorage-backed records. It is intentionally light so players can replay short rounds without friction.",
-        scope:
-          "Handled game UI, card state, scoring, leaderboard, persistence, and responsive layout.",
-        focus:
-          "The moment a card flips, the feedback for match/miss, and the result screen all needed to feel clear enough to make 'one more round' natural.",
-        behind:
-          "With simple rules, the feeling lives in timing and whitespace. That was the fun part.",
-      },
-      minesweeper: {
-        title: "Minesweeper",
-        description:
-          "A classic Minesweeper web game with names, difficulty, themes, language switching, and local rankings.",
-        tags: ["Difficulty selection", "Saved rankings", "English/Japanese"],
-        summary:
-          "A Next.js implementation of Minesweeper with safe first click, flag mode, difficulty selection, timer, leaderboard, how-to-play modal, English/Japanese UI, and light/dark themes. The board is tuned to stay playable on both desktop and mobile.",
-        scope:
-          "Handled game logic, state management, board UI, leaderboard storage, language switching, themes, and responsive behavior.",
-        focus:
-          "Keeping the board readable and tap-friendly on phones, and letting players inspect the board after the result instead of immediately losing context.",
-        behind:
-          "Classic games do not need much decoration. They need clicks, cells, and feedback to feel exactly right.",
       },
     },
     wip: {
@@ -699,6 +661,7 @@ export const en = {
     subtitle: "A face that gets chosen. Systems that lighten the work.",
     copyright: "© 2026 Designed & Built by Zaya",
     emailLabel: "Email",
+    privacy: "Privacy Policy",
   },
   langToggle: {
     en: "EN",

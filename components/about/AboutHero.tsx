@@ -122,7 +122,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
               className="overflow-hidden"
             >
               <Image
-                src="/IMG_6346.JPEG"
+                src="/images/zaya-portrait.jpeg"
                 alt="Zaya portrait"
                 width={300}
                 height={400}

@@ -1,0 +1,39 @@
+# Zaya — Web & App Development (ezaya.dev)
+
+> Portfolio of Zaya, an AI-Native Product Engineer based in Ulaanbaatar, Mongolia.
+> I design and build websites and apps for small businesses — "a face that gets
+> chosen, and systems that make daily busywork disappear." I work in Japanese,
+> Mongolian, and English, and stay with clients past launch.
+
+## What I offer
+
+- Launch Website (¥30,000–88,000, 1–2 weeks): a focused one-page site for small shops.
+- Business Website (¥130,000–300,000, 3–5 weeks): multi-page, multilingual sites with booking/inquiry flows and CMS.
+- Business System / App (from ¥400,000): custom systems — bookings, staff, billing, login, admin dashboards, mobile apps.
+- Ongoing care available (from ¥5,000/month).
+
+## Selected work
+
+- OdooTech Time — attendance app for OdooTech LLC (Flutter + Odoo 17, GPS geofencing, device binding). Live on the App Store and Google Play.
+- OdooTech Corporate Site — official website of Mongolia's Odoo partner (Next.js static export, custom design system): https://odootech-website.vercel.app/
+- Overland Beyond — multilingual luxury-expedition travel site (Odoo → Next.js rebuild): https://overlandbeyond.com/
+- Zaza Lab — free JLPT N1/N2 study PWA (1,800+ kanji with meanings, SRS review). Built and used for my own N1: passed with 171/180 (vocabulary 60/60).
+
+## Pages
+
+- Home: https://ezaya.dev/ja
+- Services & pricing: https://ezaya.dev/ja/services
+- Projects: https://ezaya.dev/ja/projects
+- About: https://ezaya.dev/ja/about
+- Blog: https://ezaya.dev/ja/blog
+- Contact: https://ezaya.dev/ja/contact
+- Privacy policy: https://ezaya.dev/ja/privacy
+
+English pages live under /en and Mongolian under /mn (e.g. https://ezaya.dev/en).
+
+## Contact
+
+- Contact form: https://ezaya.dev/ja/contact (replies within 24 hours)
+- Phone: +976 9912 4615
+- Location: Ulaanbaatar, Mongolia
+- Tech stack: Next.js, TypeScript, React, Tailwind CSS, Flutter, Odoo, Python.

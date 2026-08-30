@@ -133,7 +133,7 @@ export const projectItems = [
   {
     slug: "soul-skin-brand-lookbook",
     category: "website",
-    image: "/soul-skin-brand-lookbook.png",
+    image: "/project-images/soul-skin-hero.png",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/SoulSkin-Website",
     demo: "https://soul-skin-website.vercel.app/",
@@ -145,7 +145,7 @@ export const projectItems = [
     // sui-salon: サロン紹介シングルページ。3-4万円帯の案件想定の制作例。
     slug: "sui-salon",
     category: "website",
-    image: "/image.png",
+    image: "/project-images/sui-salon-hero.png",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/E-Zaya/sui-salon",
     demo: "https://sui-salon.vercel.app/",
@@ -162,44 +162,6 @@ export const projectItems = [
     status: "Completed",
     featured: true,
     kind: "product",
-  },
-  {
-    slug: "workout-log",
-    category: "app",
-    image: "/projects/workout-log.png",
-    tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
-    github: "https://github.com/E-Zaya/workout_log",
-    demo: "https://workout-log-smoky.vercel.app/",
-    status: "Completed",
-    featured: true,
-    kind: "product",
-  },
-  {
-    slug: "suijaku",
-    category: "app",
-    image: "/project-images/suijaku-playing.png",
-    gallery: [
-      "/project-images/suijaku-home.png",
-      "/project-images/suijaku-playing.png",
-      "/project-images/suijaku-result.png",
-    ],
-    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS", "localStorage"],
-    demo: "https://suijaku-minigame.vercel.app/",
-    status: "Completed",
-    kind: "product",
-  },
-  {
-    slug: "minesweeper",
-    category: "app",
-    image: "/project-images/ms-playing.png",
-    gallery: [
-      "/project-images/ms-playing.png",
-      "/project-images/ms-result.png",
-    ],
-    tech: ["Next.js", "TypeScript", "React", "Tailwind CSS"],
-    demo: "https://mine-sweeper-orpin.vercel.app/minesweeper",
-    status: "Completed",
-    kind: "sample",
   },
 ] as const satisfies readonly ProjectItem[];
 

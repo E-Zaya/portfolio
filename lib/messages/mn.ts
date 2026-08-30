@@ -26,6 +26,11 @@ export const mn = {
         description:
           "Төслийн зөвлөгөө, үнийн санал энд. Япон, монгол, англи хэлээр. 24 цагийн дотор хариулна.",
       },
+      privacy: {
+        title: "Нууцлалын бодлого",
+        description:
+          "Энэ сайт дээрх хувийн мэдээллийн боловсруулалт (холбоо барих маягт, аналитик)-ын тухай.",
+      },
       blog: {
         title: "Блог — Вэб хөгжүүлэлтийн тэмдэглэл",
         description:
@@ -292,21 +297,6 @@ export const mn = {
         behind:
           "Асуултын тоо их болох тусам апп хүнд санагдах эрсдэлтэй байсан тул, өдөр бүр нээхэд ядаргаагүй нягтралд тааруулсан.",
       },
-      "workout-log": {
-        title: "Workout Log",
-        description:
-          "Бүртгэл хэдхэн товшилт, ахиц нэг харцаар — үргэлжлүүлмээр санагдуулахаар бүтээсэн дасгалын бүртгэлийн апп.",
-        tags: ["Хэдхэн товшилтоор бүртгэнэ", "Ахиц нэг харцаар"],
-        summary:
-          "Загвар, дизайн, хөгжүүлэлт, өгөгдлийн сан, нээлт хүртэл ганцаараа бүрэн хийсэн бүтээл. Хэдхэн товшилтоор дуусдаг бүртгэл, долоо хоногийн ахицыг нэг харцаар харуулдаг график — «гурав хоноод орхидог хүнд ч үргэлжилдэг» байхыг зорьж, өөрөө өдөр бүр хэрэглэж байж өнгөлсөн.",
-        scope:
-          "Бүтэц, дизайн, frontend, backend, DB загвар, deploy хүртэл бүгдийг ганцаараа хариуцсан.",
-        focus:
-          "Бүртгэхэд хялбар байдал болон 7 хоногийн графикийн ойлгомжтой байдал. Үргэлжлүүлэн ашиглах сэдэл төрүүлэх UI бүтээхийг зорьсон",
-        behind:
-          "Гурав хоноод л орхидог өөрийгөө туршилтын хулгана болгоод, UI-гаа дахин дахин шинээр хийсэн.",
-        caseStudy: "workout-log-case-study",
-      },
       "soul-skin-brand-lookbook": {
         title: "Soul Skin Brand Lookbook",
         description:
@@ -350,34 +340,6 @@ export const mn = {
           "Үзэгчид уур амьсгалыг мэдэрч → үйлчилгээг ойлгож → захиалга өгөх тодорхой урсгал. Гар утсан дээрх уншихад хялбар байдал болон даралтад тав тухтай CTA-г нэн тэргүүнд авч үзсэн.",
         behind:
           "Захиалга дарах агшинд эрхий хуруу яг хаана байхыг төсөөлөөд, товчлуурыг тийш нь зөөсөн.",
-      },
-      suijaku: {
-        title: "Suijaku",
-        description:
-          "Картаа эргүүлэх мэдрэмж, богино тоглолт, хувийн рекорд хадгалах боломжтой memory card game.",
-        tags: ["Шууд тоглоно", "Рекорд хадгална", "Mobile ready"],
-        summary:
-          "Next.js дээр хийсэн memory card game. Start screen, play state, clear result, leaderboard, localStorage record зэрэгтэй. Богино хугацаанд олон дахин тоглоход хөнгөн байхаар бүтээсэн.",
-        scope:
-          "Game UI, card state management, scoring, leaderboard, persistence, responsive layout хүртэл хариуцсан.",
-        focus:
-          "Картаа эргүүлэх мөч, таарсан/таараагүй feedback, result screen нь “дахиад нэг удаа” гэж бодогдуулахуйц тод байхыг анхаарсан.",
-        behind:
-          "Дүрэм энгийн байх тусам tempo ба whitespace тоглоомын мэдрэмжийг өөрчилдөг нь сонирхолтой байсан.",
-      },
-      minesweeper: {
-        title: "Minesweeper",
-        description:
-          "Нэр, difficulty, theme, ranking, хэл солих боломжтой classic Minesweeper Web game.",
-        tags: ["Difficulty сонгоно", "Ranking хадгална", "EN/JP дэмжинэ"],
-        summary:
-          "Next.js дээр хийсэн Minesweeper. Safe first click, flag mode, difficulty selection, timer, leaderboard, how-to-play modal, English/Japanese UI, light/dark theme зэргийг багтаасан. Desktop болон mobile дээр тоглоход тохиромжтой board sizing хийсэн.",
-        scope:
-          "Game logic, state management, board UI, leaderboard storage, language switching, theme, responsive behavior хүртэл хариуцсан.",
-        focus:
-          "Гар утсан дээр буруу даралт багатай, board уншихад амар байх. Мөн тоглоом дууссаны дараа шууд алга болгохгүй, board-оо шалгах урсгалыг оруулсан.",
-        behind:
-          "Classic game-д чимэглэлээс илүү click feel, cell layout, feedback яг зөв байх нь чухал гэдгийг мэдэрсэн.",
       },
     },
 
@@ -712,6 +674,7 @@ export const mn = {
     subtitle: "Сонгогдох нүүр царай, хөнгөвчлөх систем",
     copyright: "© 2026 Designed & Built by Zaya",
     emailLabel: "Имэйл",
+    privacy: "Нууцлалын бодлого",
   },
 
   langToggle: {
