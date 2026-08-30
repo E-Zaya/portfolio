@@ -57,20 +57,8 @@ export const projectItems = [
     kind: "client",
   },
   {
-    slug: "overland-beyond",
-    category: "website",
-    image: "/project-images/overland-hero.png",
-    gallery: [
-      "/project-images/overland-hero.png",
-      "/project-images/overland-1.png",
-    ],
-    tech: ["Next.js", "TypeScript", "Odoo", "Python", "Sass"],
-    demo: "https://overlandbeyond.com/",
-    status: "Completed",
-    featured: true,
-    kind: "client",
-  },
-  {
+    // ホームのピックアップは kind:"client" の先頭2件 —
+    // Overlandより公式サイトを見せたいので、この順序を維持すること
     slug: "odootech-website",
     category: "website",
     image: "/project-images/odootech-web-hero.png",
@@ -83,6 +71,21 @@ export const projectItems = [
     tech: ["Next.js", "TypeScript", "React", "Static Export", "Custom Design System"],
     demo: "https://odootech-website.vercel.app/",
     status: "Completed",
+    featured: true,
+    kind: "client",
+  },
+  {
+    slug: "overland-beyond",
+    category: "website",
+    image: "/project-images/overland-hero.png",
+    gallery: [
+      "/project-images/overland-hero.png",
+      "/project-images/overland-1.png",
+    ],
+    tech: ["Next.js", "TypeScript", "Odoo", "Python", "Sass"],
+    demo: "https://overlandbeyond.com/",
+    status: "Completed",
+    featured: true,
     kind: "client",
   },
   {

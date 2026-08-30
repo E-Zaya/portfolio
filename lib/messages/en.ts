@@ -124,7 +124,7 @@ export const en = {
     projectsEyebrow: "CLIENT WORK",
     projectsTitle: "Built for real businesses and real users.",
     projectsDescription:
-      "Start with a mobile app shipped to both stores and a multilingual travel website accepting live inquiries.",
+      "Start with a mobile app shipped to both stores and the corporate site of Mongolia's official Odoo partner.",
     projectsLink: "View all projects",
     contactEyebrow: "START A PROJECT",
     contactTitle: "Tell me the one thing slowing your business down.",

@@ -132,7 +132,7 @@ export const mn = {
     projectsEyebrow: "БОДИТ АЖИЛ",
     projectsTitle: "Бодит бизнест ажиллаж буй шийдлүүд.",
     projectsDescription:
-      "App Store, Google Play дээр түгээгдсэн апп болон олон хэлт аяллын сайтаас эхэлж үзээрэй.",
+      "App Store, Google Play дээр түгээгдсэн апп болон Монгол дахь Odoo-гийн албан ёсны түншийн корпорат сайтаас эхэлж үзээрэй.",
     projectsLink: "Бүх төслийг үзэх",
     contactEyebrow: "ТӨСӨЛ ЭХЛҮҮЛЭХ",
     contactTitle: "Танд хамгийн төвөгтэй байгаа нэг зүйлээс эхэлье.",

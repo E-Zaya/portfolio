@@ -121,7 +121,7 @@ export const ja = {
     projectsEyebrow: "CLIENT WORK",
     projectsTitle: "実際の仕事で動いているもの。",
     projectsDescription:
-      "App Store・Google Playで配信中のアプリと、多言語で予約を受け付ける旅行サイトをご覧ください。",
+      "App Store・Google Playで配信中のアプリと、モンゴルのOdoo公式パートナーのコーポレートサイトをご覧ください。",
     projectsLink: "すべての実績を見る",
     contactEyebrow: "START A PROJECT",
     contactTitle: "いちばん困っていることを、一つ聞かせてください。",
