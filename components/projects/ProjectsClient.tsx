@@ -40,7 +40,7 @@ export function ProjectsClient({ locale, projects, t }: Props) {
     <>
       {/* Section header */}
       <div className="mb-12 text-center">
-        <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+        <h1 className="heading-display text-4xl text-foreground sm:text-5xl">
           {t.titleA ? (
             <>
               <span>{t.titleA} </span>

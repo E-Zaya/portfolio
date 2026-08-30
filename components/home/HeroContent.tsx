@@ -33,7 +33,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
       className="flex min-w-0 flex-col items-start text-left"
     >
       {/* headline — 翻訳側で決めた改行を保ち、長いMN文言も画面内に収める */}
-      <h1 className={`jp-tight font-black text-foreground ${headingSizeClass}`}>
+      <h1 className={`heading-display jp-tight text-foreground ${headingSizeClass}`}>
         <span className="block">
           {titleLines.map((line) => (
             <span key={line} className="block">

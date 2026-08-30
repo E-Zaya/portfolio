@@ -41,7 +41,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
           <p className="home-story-index font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-muted">
             01 / 03
           </p>
-          <h2 className="home-statement-title mt-5 text-4xl font-bold leading-[1.14] text-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display home-statement-title mt-5 text-4xl leading-[1.2] text-foreground sm:text-5xl lg:text-6xl">
             {statementLines.map((line, index) => (
               <span
                 key={line}
@@ -94,7 +94,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 </span>
                 {t.projectsEyebrow}
               </p>
-              <h2 className="text-balance mt-4 text-3xl font-bold leading-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className="heading-display text-balance mt-4 text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
                 {t.projectsTitle}
               </h2>
               <p className="mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
@@ -206,7 +206,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 </span>
                 {t.servicesEyebrow}
               </p>
-              <h2 className="mt-4 max-w-4xl text-3xl font-bold leading-tight text-foreground sm:text-4xl xl:max-w-xl">
+              <h2 className="heading-display mt-4 max-w-4xl text-3xl leading-tight text-foreground sm:text-4xl xl:max-w-xl">
                 {t.servicesTitle}
               </h2>
             </div>
@@ -324,7 +324,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
             <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
               {t.contactEyebrow}
             </p>
-            <h2 className="text-balance mt-3 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+            <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
               {t.contactTitle}
             </h2>
             <p className="mt-4 text-sm leading-7 text-soft sm:text-base">

@@ -28,7 +28,7 @@ export default function BeforeAfterShowcase({ locale }: { locale: Locale }) {
           <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
             {t.eyebrow}
           </p>
-          <h2 className="text-balance mt-3 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
+          <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
             {t.title}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">

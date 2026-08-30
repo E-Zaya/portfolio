@@ -134,3 +134,18 @@ h6,
   }
 }
 
+
+/* ── 見出し書体「heading-display」 ──
+   日本語ロケール: 明朝(Noto Serif JP) — 教科書の品と作家性
+   EN/MN: セリフが不自然なので、太めのサンセリフ+詰めトラッキングで対比を作る */
+.heading-display {
+  font-family: var(--font-en), var(--font-ja), system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+[data-locale="ja"] .heading-display {
+  font-family: var(--font-serif-ja), var(--font-ja), "Hiragino Mincho ProN", serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}

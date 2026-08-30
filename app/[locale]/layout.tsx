@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Sans_JP } from "next/font/google";
+import { Inter, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingConsultPill from "@/components/layout/FloatingConsultPill";
@@ -22,6 +22,16 @@ const notoSansJp = Noto_Sans_JP({
   subsets: ["latin"],
   variable: "--font-ja",
   display: "swap",
+});
+
+// 日本語見出し用の明朝。教科書的な品を出す「墨と金」の柱のひとつ。
+// 使うウェイトだけ読み込んで転送量を抑える
+const notoSerifJp = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-serif-ja",
+  display: "swap",
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -129,7 +139,7 @@ export default async function LocaleLayout({
       <ThemeProvider>
         <MotionProvider>
           <div
-            className={`${inter.variable} ${notoSansJp.variable}`}
+            className={`${inter.variable} ${notoSansJp.variable} ${notoSerifJp.variable}`}
             data-locale={locale}
           >
             <LoadingScreen />

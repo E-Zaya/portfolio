@@ -20,7 +20,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
           className="mx-auto max-w-5xl"
         >
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
+            <h2 className="heading-display text-3xl text-foreground sm:text-5xl">
               {t.titleA}{" "}
               <MarkerHighlight delay={0.3}>{t.titleB}</MarkerHighlight>
             </h2>

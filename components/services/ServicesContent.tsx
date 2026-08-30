@@ -156,7 +156,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── イントロ ── */}
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-6 text-center">
-          <h1 className="section-title">
+          <h1 className="heading-display section-title">
             <motion.span
               className="block text-soft"
               initial={reduce ? false : { opacity: 0, y: 14 }}
@@ -272,7 +272,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
                 {packages.eyebrow}
               </p>
-              <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">
+              <h2 className="heading-display mt-3 text-3xl text-foreground sm:text-4xl">
                 {packages.title}
               </h2>
               <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
@@ -416,7 +416,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     </span>
                   </div>
 
-                  <h2 className="mt-4 text-4xl font-black tracking-tight text-foreground sm:text-5xl">
+                  <h2 className="heading-display mt-4 text-4xl text-foreground sm:text-5xl">
                     <MarkerHighlight delay={0.2}>{pillar.name}</MarkerHighlight>
                   </h2>
 
