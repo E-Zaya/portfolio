@@ -57,8 +57,11 @@ export function ProjectsClient({ locale, projects, t }: Props) {
         )}
       </div>
 
+      {/* カテゴリタブ: 全ブレークポイント共通。
+          旧: デスクトップは左右2レーン常時表示 → 件数差(3 vs 7)で
+          片側に巨大な空白ができていたため、タブ切替に統一 */}
       <div
-        className="project-board-tabs mb-5 grid grid-cols-2 rounded-lg border border-border p-1 lg:hidden"
+        className="project-board-tabs mb-6 grid grid-cols-2 rounded-lg border border-border p-1 lg:mx-auto lg:mb-10 lg:max-w-xl"
         role="tablist"
         aria-label={t.titleB}
       >
@@ -109,9 +112,8 @@ export function ProjectsClient({ locale, projects, t }: Props) {
         })}
       </div>
 
-      <div className="project-board border-y border-border lg:grid lg:grid-cols-2">
-        {lanes.map(({ category, icon: LaneIcon }, laneIndex) => {
-          const label = t.laneLabels[category];
+      <div className="project-board">
+        {lanes.map(({ category }) => {
           const laneProjects = projects.filter(
             ({ item }) => item.category === category,
           );
@@ -123,31 +125,9 @@ export function ProjectsClient({ locale, projects, t }: Props) {
               id={`project-lane-${category}`}
               role="tabpanel"
               aria-labelledby={`project-tab-${category}`}
-              className={`project-board-lane py-6 lg:block lg:py-8 ${
-                isActive ? "block" : "hidden"
-              } ${
-                laneIndex === 0
-                  ? "lg:border-r lg:border-border lg:pr-7"
-                  : "lg:pl-7"
-              }`}
+              className={isActive ? "block" : "hidden"}
             >
-              <div
-                className={`project-lane-heading project-lane-heading-${category} mb-5 hidden items-center gap-3 overflow-hidden rounded-lg border border-border px-4 py-3.5 lg:flex`}
-              >
-                <span className="project-lane-heading-icon grid h-9 w-9 shrink-0 place-items-center rounded-md border">
-                  <LaneIcon aria-hidden size={17} strokeWidth={1.8} />
-                </span>
-                <h2 className="text-sm font-bold text-foreground">{label}</h2>
-                <span className="project-lane-heading-count font-mono text-sm">
-                  {String(laneProjects.length).padStart(2, "0")}
-                </span>
-                <span
-                  className="project-lane-heading-rule h-px flex-1"
-                  aria-hidden
-                />
-              </div>
-
-              <div className="space-y-6">
+              <div className="grid gap-6 lg:grid-cols-2">
                 {laneProjects.map(({ item, text }) => (
                   <ProjectCard
                     key={item.slug}
