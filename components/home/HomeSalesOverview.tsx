@@ -106,7 +106,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               href={`/${locale}/projects`}
               eventName="Home All Projects Click"
               eventProperties={{ locale }}
-              className="home-inline-link inline-flex items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
+              className="home-inline-link inline-flex items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] lg:mb-1"
             >
               {t.projectsLink}
               <span

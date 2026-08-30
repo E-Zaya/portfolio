@@ -83,7 +83,9 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
           </span>
         </div>
 
-        <div className="px-5 pb-5 pt-5 sm:px-6">
+        {/* pr: 右に重なるスマホ(幅160px, ラップトップに約88pxかかる)の下に
+            テキストが潜り込んで見切れないよう余白を確保 */}
+        <div className="py-5 pl-5 pr-24 sm:pl-6 sm:pr-28">
           <p
             className="text-[9px] font-semibold tracking-[0.26em]"
             style={{ color: "#9db8ad" }}
@@ -116,7 +118,7 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
         </div>
 
         <div
-          className="flex flex-col gap-0.5 border-t px-5 py-2.5 sm:px-6"
+          className="flex flex-col gap-0.5 border-t py-2.5 pl-5 pr-24 sm:pl-6 sm:pr-28"
           style={{ borderColor: "#1d3a31" }}
         >
           <span className="text-[10px] font-bold" style={{ color: "#cfe0d8" }}>

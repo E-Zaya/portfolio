@@ -14,7 +14,7 @@ export default function Hero({ locale }: { locale: Locale }) {
     <SectionShell className="pt-1 sm:pt-2">
       <Card
         gradientBorder
-        className="relative overflow-hidden rounded-3xl px-4 py-5 sm:px-5 sm:py-6 md:px-10 md:py-9 lg:px-14 lg:py-10"
+        className="relative overflow-hidden rounded-3xl px-5 py-6 sm:px-6 sm:py-7 md:px-10 md:py-9 lg:px-14 lg:py-10"
       >
         {/* subtle grid */}
         <div
@@ -91,7 +91,9 @@ export default function Hero({ locale }: { locale: Locale }) {
           <div className="min-w-0 lg:col-span-7">
             <HeroContent locale={locale} />
           </div>
-          <div className="min-w-0 pb-14 pt-10 sm:pb-16 lg:col-span-5 lg:pb-4 lg:pt-0">
+          {/* pt: Zazaのはみ出し(-top-12=48px)分 / pb: 手書き注釈(-bottom-16=64px)分。
+              Cardがoverflow-hiddenなので不足すると見切れる */}
+          <div className="min-w-0 pb-16 pt-12 lg:col-span-5 lg:pb-8 lg:pt-0">
             <HeroShowcase locale={locale} />
           </div>
         </div>
