@@ -49,7 +49,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
             width={144}
             height={144}
             priority
-            className="size-14 rounded-full border-2 md:size-[72px]"
+            className="size-20 rounded-full border-2 md:size-[104px]"
             style={{ borderColor: "var(--card)" }}
           />
         </motion.span>
