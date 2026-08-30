@@ -182,3 +182,69 @@ html.light {
   --blog-copy-border: rgba(15, 23, 42, 0.1);
 }
 
+
+/* ══════════════════════════════════════════════════════════════
+   パレット比較プレビュー(ホーム確認用)。
+   html[data-palette="gold" | "lavender"] で切替。
+   採用決定後はどちらかを :root 本体に昇格させ、このブロックは削除する。
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── 案1: 墨と金 (Ink & Gold) ── */
+[data-palette="gold"] {
+  --background: #171310;
+  --background-2: #1e1915;
+  --foreground: #f4efe4;
+  --text-soft: rgba(244, 239, 228, 0.88);
+  --text-muted: rgba(244, 239, 228, 0.68);
+  --card: #1e1a15;
+  --card-strong: #262019;
+  --border: rgba(244, 239, 228, 0.16);
+  --border-soft: rgba(244, 239, 228, 0.09);
+  --hairline: rgba(244, 239, 228, 0.06);
+  --accent-1: #8fa9b5;
+  --accent-2: #e3ac4c;
+  --marker: color-mix(in srgb, #e3ac4c 40%, transparent);
+  --marker-ink: #e3ac4c;
+  --surface-glow: rgba(244, 239, 228, 0.03);
+  --surface-glow-strong: rgba(244, 239, 228, 0.05);
+  --button-foreground: #201808;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --header-bg: rgba(23, 19, 16, 0.92);
+  --header-bg-strong: rgba(23, 19, 16, 0.97);
+  --header-border: rgba(244, 239, 228, 0.14);
+  --header-divider: rgba(244, 239, 228, 0.1);
+  --header-hover: rgba(244, 239, 228, 0.08);
+  --header-hover-strong: rgba(244, 239, 228, 0.12);
+  --header-active: rgba(244, 239, 228, 0.12);
+  --header-active-border: rgba(227, 172, 76, 0.25);
+}
+
+/* ── 案2: ラベンダー (夜のラベンダー×署名の金マーカー) ── */
+[data-palette="lavender"] {
+  --background: #161320;
+  --background-2: #1c1828;
+  --foreground: #f1eef8;
+  --text-soft: rgba(241, 238, 248, 0.88);
+  --text-muted: rgba(241, 238, 248, 0.66);
+  --card: #1e1a2b;
+  --card-strong: #262138;
+  --border: rgba(241, 238, 248, 0.16);
+  --border-soft: rgba(241, 238, 248, 0.09);
+  --hairline: rgba(241, 238, 248, 0.06);
+  --accent-1: #8fb8c9;
+  --accent-2: #c3aff0;
+  --marker: color-mix(in srgb, #e8b04b 40%, transparent);
+  --marker-ink: #e8b04b;
+  --surface-glow: rgba(241, 238, 248, 0.03);
+  --surface-glow-strong: rgba(241, 238, 248, 0.05);
+  --button-foreground: #1d1530;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
+  --header-bg: rgba(22, 19, 32, 0.92);
+  --header-bg-strong: rgba(22, 19, 32, 0.97);
+  --header-border: rgba(241, 238, 248, 0.14);
+  --header-divider: rgba(241, 238, 248, 0.1);
+  --header-hover: rgba(241, 238, 248, 0.08);
+  --header-hover-strong: rgba(241, 238, 248, 0.12);
+  --header-active: rgba(241, 238, 248, 0.12);
+  --header-active-border: rgba(195, 175, 240, 0.25);
+}
