@@ -65,7 +65,7 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
 
   return (
     <aside
-      className="rounded-[22px] border border-border bg-card p-4 shadow-theme backdrop-blur-xl sm:p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
+      className="rounded-2xl border border-border bg-card p-4 shadow-theme backdrop-blur-xl sm:p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
     >
       <h2 className="mb-3 text-sm font-semibold tracking-[0.08em] text-foreground sm:mb-4">
         {t.toc}

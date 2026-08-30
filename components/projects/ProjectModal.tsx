@@ -93,7 +93,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-3xl sm:rounded-4xl"
+        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-3xl"
         style={{
           maxHeight: "90dvh",
           background: "var(--background-2)",

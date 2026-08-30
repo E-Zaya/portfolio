@@ -59,7 +59,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   return (
     <Card
       gradientBorder
-      className="relative overflow-hidden rounded-3xl sm:rounded-4xl p-5 sm:p-7 md:p-9"
+      className="relative overflow-hidden rounded-3xl p-5 sm:p-7 md:p-9"
     >
       <div
         className="absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl"

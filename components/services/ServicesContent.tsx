@@ -284,7 +284,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               {packages.items.map((item) => (
                 <article
                   key={item.name}
-                  className="relative flex min-h-full flex-col overflow-hidden rounded-lg border p-6 sm:p-7"
+                  className="relative flex min-h-full flex-col overflow-hidden rounded-3xl border p-6 sm:p-7"
                   style={{
                     borderColor: item.recommended
                       ? "color-mix(in srgb, var(--accent-2) 62%, var(--border))"

@@ -271,7 +271,7 @@ function TimeAppPhone({
   );
 
   const frameClass =
-    "absolute -bottom-10 right-0 z-20 block w-[160px] overflow-hidden rounded-[24px] border backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1";
+    "absolute -bottom-10 right-0 z-20 block w-[160px] overflow-hidden rounded-2xl border backdrop-blur-xl transition-transform duration-300 hover:-translate-y-1";
   const frameStyle = {
     borderColor: "color-mix(in srgb, var(--foreground) 18%, transparent)",
     background: "color-mix(in srgb, var(--background-2) 92%, transparent)",

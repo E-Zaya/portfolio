@@ -14,7 +14,7 @@ export default function Hero({ locale }: { locale: Locale }) {
     <SectionShell className="pt-1 sm:pt-2">
       <Card
         gradientBorder
-        className="relative overflow-hidden rounded-3xl sm:rounded-4xl px-4 py-5 sm:px-5 sm:py-6 md:px-10 md:py-9 lg:px-14 lg:py-10"
+        className="relative overflow-hidden rounded-3xl px-4 py-5 sm:px-5 sm:py-6 md:px-10 md:py-9 lg:px-14 lg:py-10"
       >
         {/* subtle grid */}
         <div

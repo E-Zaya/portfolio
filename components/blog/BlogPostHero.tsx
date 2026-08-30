@@ -80,7 +80,7 @@ export default function BlogPostHero({ post, locale }: Props) {
 
       {/* [cover] article cover */}
       {post.cover && (
-        <div className="relative h-[180px] w-full overflow-hidden rounded-[22px] border border-border bg-card sm:h-[220px] md:h-[280px] lg:h-[320px]">
+        <div className="relative h-[180px] w-full overflow-hidden rounded-2xl border border-border bg-card sm:h-[220px] md:h-[280px] lg:h-[320px]">
           <Image
             src={post.cover}
             alt={title}

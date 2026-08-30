@@ -30,7 +30,7 @@ export default function Skills({ locale }: { locale: Locale }) {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.45, delay: index * 0.08 }}
               whileHover={{ y: -8, scale: 1.05 }}
-              className="glass group flex min-h-10 flex-col items-center justify-center rounded-[28px] p-6 text-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+              className="glass group flex min-h-10 flex-col items-center justify-center rounded-2xl p-6 text-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
             >
               <Icon
                 aria-hidden="true"

@@ -34,7 +34,7 @@ export default function BlogCard({ post, locale }: Props) {
   const formattedDate = formatPostDate(post.date, locale) ?? t.noDate;
 
   return (
-    <article className="group h-full overflow-hidden rounded-[28px] border border-border bg-card shadow-theme backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
+    <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-theme backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
       <Link href={withLocale(locale, `/blog/${post.slug}`)} className="flex h-full flex-col">
         {post.cover ? (
           <div className="relative aspect-[1.75/1] overflow-hidden border-b border-border bg-card-strong">
@@ -50,7 +50,7 @@ export default function BlogCard({ post, locale }: Props) {
           <div className="blog-card-cover relative aspect-[1.75/1] overflow-hidden border-b border-border bg-card-strong">
             <div className="blog-card-cover-blob blog-card-cover-blob-primary" />
             <div className="blog-card-cover-blob blog-card-cover-blob-secondary" />
-            <div className="absolute inset-x-[14%] top-[18%] h-[52%] rounded-[18px] border border-border bg-card" />
+            <div className="absolute inset-x-[14%] top-[18%] h-[52%] rounded-2xl border border-border bg-card" />
             <div className="absolute left-[14%] top-[38%] pr-6 text-lg font-semibold tracking-[-0.04em] text-foreground">
               {category}
             </div>

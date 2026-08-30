@@ -110,7 +110,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
           }}
         />
 
-        <div className="gradient-border rounded-[26px] p-px">
+        <div className="gradient-border rounded-3xl p-px">
           <motion.div
             whileHover={{ y: -4, scale: 1.015 }}
             transition={{ type: "spring", stiffness: 220, damping: 22 }}

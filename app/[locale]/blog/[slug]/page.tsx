@@ -177,7 +177,7 @@ export default async function BlogDetailPage({
                   <BlogPostTOC headings={headings} locale={locale} mode="mobile" />
                 </div>
 
-                <article className="article-card rounded-[22px] border border-border bg-card-strong p-4 shadow-theme backdrop-blur-xl sm:rounded-[24px] sm:p-5 md:rounded-[28px] md:p-7">
+                <article className="article-card rounded-3xl border border-border bg-card-strong p-4 shadow-theme backdrop-blur-xl sm:p-5 md:p-7">
                   <CodeCopy locale={locale} />
                   <div
                     className="blog-article mx-auto max-w-[74ch]"

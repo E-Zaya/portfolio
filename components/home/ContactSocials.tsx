@@ -30,7 +30,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
       : snsLinks;
 
   return (
-    <Card strong className="rounded-3xl p-4 sm:rounded-4xl sm:p-6 md:p-7">
+    <Card strong className="rounded-3xl p-4 sm:p-6 md:p-7">
       <p className="text-sm uppercase tracking-[0.22em] text-muted">
         {t.socialTitle}
       </p>

@@ -319,7 +319,7 @@ export default function MobileMenu({
 
       <aside
         ref={panelRef}
-        className="spotlight-menu-panel relative flex max-h-[calc(100dvh-1.5rem)] w-[min(62rem,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-[2rem] p-4 sm:p-5 lg:p-6"
+        className="spotlight-menu-panel relative flex max-h-[calc(100dvh-1.5rem)] w-[min(62rem,calc(100vw-1.5rem))] flex-col overflow-hidden rounded-3xl p-4 sm:p-5 lg:p-6"
         role="dialog"
         aria-modal="true"
         aria-label={menuLabel}

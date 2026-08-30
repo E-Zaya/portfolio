@@ -139,16 +139,17 @@
 }
 
 .container-custom {
-  width: min(1080px, calc(100% - 2rem));
+  /* モバイルの左右余白は16pxだと窮屈なので20pxに */
+  width: min(1080px, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 
 .section-space {
-  padding: 32px 0;
+  padding: 4rem 0;
 }
 @media (min-width: 48rem) {
   .section-space {
-    padding: 56px 0;
+    padding: 6rem 0;
   }
 }
 
@@ -709,8 +710,10 @@ html.light .mouse-glow::before {
   position: relative;
 }
 
+/* ホームのセクション縦リズム: 隣接セクションと合算して
+   コンテンツ間が常に約7rem(デスクトップ)になるよう統一 */
 .home-story-intro {
-  padding-block: 6.5rem 7.5rem;
+  padding-block: 4rem 3.5rem;
 }
 
 .home-story-index {
@@ -766,11 +769,7 @@ html.light .mouse-glow::before {
 }
 
 .home-story-section {
-  padding-block: 7rem;
-}
-
-.home-projects-section {
-  padding-top: 4rem;
+  padding-block: 3.5rem;
 }
 
 .home-section-eyebrow {
@@ -799,7 +798,7 @@ html.light .mouse-glow::before {
 .home-services-board,
 .home-contact-panel {
   border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
-  border-radius: 0.75rem;
+  border-radius: 1.5rem;
   background:
     linear-gradient(
       180deg,
@@ -812,7 +811,7 @@ html.light .mouse-glow::before {
 }
 
 .home-project-billboard {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
   background: color-mix(in srgb, var(--card) 24%, transparent);
 }
 
@@ -821,7 +820,7 @@ html.light .mouse-glow::before {
 }
 
 .home-project-media {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-soft);
   background:
     linear-gradient(
       135deg,
@@ -870,7 +869,7 @@ html.light .mouse-glow::before {
 
 .home-service-tier {
   isolation: isolate;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border-soft);
   transition:
     background 220ms ease,
     transform 220ms ease;
@@ -925,8 +924,8 @@ html.light .mouse-glow::before {
 }
 
 .home-contact-section {
-  padding-top: 5rem;
-  padding-bottom: 8rem;
+  padding-top: 3.5rem;
+  padding-bottom: 6rem;
 }
 
 .home-contact-panel {
@@ -953,7 +952,7 @@ html.light .mouse-glow::before {
 @media (min-width: 48rem) {
   .home-service-tier {
     border-top: 0;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid var(--border-soft);
   }
 
   .home-service-tier:first-child {
@@ -968,7 +967,7 @@ html.light .mouse-glow::before {
 @media (min-width: 64rem) {
   .home-project-billboard {
     border-top: 0;
-    border-left: 1px solid var(--border);
+    border-left: 1px solid var(--border-soft);
   }
 
   .home-project-billboard:first-child {
@@ -978,26 +977,22 @@ html.light .mouse-glow::before {
 
 @media (max-width: 47.999rem) {
   .home-story-intro {
-    padding-block: 4.75rem 5.5rem;
+    padding-block: 3rem 2.5rem;
   }
 
   .home-story-section {
-    padding-block: 4.75rem;
-  }
-
-  .home-projects-section {
-    padding-top: 3rem;
+    padding-block: 2.5rem;
   }
 
   .home-contact-section {
-    padding-top: 3.5rem;
-    padding-bottom: 5.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 4rem;
   }
 
   .home-projects-board,
   .home-services-board,
   .home-contact-panel {
-    border-radius: 0.75rem;
+    border-radius: 1rem;
   }
 }
 
