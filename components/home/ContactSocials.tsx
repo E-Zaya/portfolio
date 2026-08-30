@@ -1,7 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { FaFacebookMessenger } from "react-icons/fa6";
+import { track } from "@vercel/analytics";
 import { socialLinks } from "@/data/portfolio";
 import Card from "@/components/ui/Card";
+import { MESSENGER_URL } from "@/lib/contact";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function ContactSocials({ locale }: { locale: Locale }) {
@@ -9,6 +14,20 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
 
   // SNS欄ではメールを除外する
   const snsLinks = socialLinks.filter((item) => item.name !== "Email");
+  const directLinks =
+    locale === "mn"
+      ? [
+          {
+            name: "Messenger",
+            icon: FaFacebookMessenger,
+            url: MESSENGER_URL,
+            color: "var(--brand-facebook)",
+          },
+          ...snsLinks.filter((item) =>
+            ["Facebook", "Instagram"].includes(item.name),
+          ),
+        ]
+      : snsLinks;
 
   return (
     <Card strong className="rounded-3xl p-4 sm:rounded-4xl sm:p-6 md:p-7">
@@ -17,7 +36,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
       </p>
 
       <div className="mt-6 space-y-3">
-        {snsLinks.map((item) => {
+        {directLinks.map((item) => {
           // social icon
           const Icon = item.icon;
 
@@ -27,8 +46,14 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
               href={item.url}
               target="_blank"
               rel="noreferrer"
-              aria-label={`${item.name} へのリンク (新しいタブで開く)`}
-              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 transition duration-300 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--accent-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:py-4"
+              aria-label={item.name}
+              onClick={() =>
+                track("Contact Channel Click", {
+                  locale,
+                  channel: item.name.toLowerCase(),
+                })
+              }
+              className="group flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 transition duration-300 hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent md:py-4"
             >
               <div className="flex items-center gap-4">
                 {/* icon */}

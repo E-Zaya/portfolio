@@ -2,6 +2,7 @@ import type { ProjectStatus } from "@/lib/messages/types";
 
 // 実案件 / 自社プロダクト / 制作例 — バッジ表示に使う(表示名は messages の kindLabels)
 export type ProjectKind = "client" | "product" | "sample";
+export type ProjectCategory = "website" | "app";
 
 export type ProjectLink = {
   label: string;
@@ -19,6 +20,7 @@ export type ProjectItem = {
   status: ProjectStatus;
   featured?: boolean;
   kind: ProjectKind;
+  category: ProjectCategory;
 };
 
 export type WipItem = {
@@ -30,6 +32,7 @@ export const projectItems = [
 
   {
     slug: "odootech-time",
+    category: "app",
     image: "/project-images/odootech-time-map.png",
     gallery: [
       "/project-images/odootech-time-map.png",
@@ -55,6 +58,7 @@ export const projectItems = [
   },
   {
     slug: "overland-beyond",
+    category: "website",
     image: "/project-images/overland-hero.png",
     gallery: [
       "/project-images/overland-hero.png",
@@ -68,6 +72,7 @@ export const projectItems = [
   },
   {
     slug: "futari",
+    category: "app",
     image: "/project-images/futari-home-desktop.png",
     gallery: [
       "/project-images/futari-home-desktop.png",
@@ -90,6 +95,7 @@ export const projectItems = [
   },
   {
     slug: "zaza-lab",
+    category: "app",
     image: "/project-images/zaza-lab-home.png",
     gallery: [
       "/project-images/zaza-lab-home.png",
@@ -108,6 +114,7 @@ export const projectItems = [
   },
   {
     slug: "soul-skin-brand-lookbook",
+    category: "website",
     image: "/soul-skin-brand-lookbook.png",
     tech: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/SoulSkin-Website",
@@ -119,6 +126,7 @@ export const projectItems = [
   {
     // sui-salon: サロン紹介シングルページ。3-4万円帯の案件想定の制作例。
     slug: "sui-salon",
+    category: "website",
     image: "/image.png",
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
     github: "https://github.com/E-Zaya/sui-salon",
@@ -128,6 +136,7 @@ export const projectItems = [
   },
   {
     slug: "type-mon",
+    category: "app",
     image: "/images/blog/type-mon-case-study.png",
     tech: ["Next.js", "TypeScript", "Gemini API", "Upstash Redis", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/type-mon",
@@ -138,6 +147,7 @@ export const projectItems = [
   },
   {
     slug: "workout-log",
+    category: "app",
     image: "/projects/workout-log.png",
     tech: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Tailwind CSS"],
     github: "https://github.com/E-Zaya/workout_log",
@@ -148,6 +158,7 @@ export const projectItems = [
   },
   {
     slug: "suijaku",
+    category: "app",
     image: "/project-images/suijaku-playing.png",
     gallery: [
       "/project-images/suijaku-home.png",
@@ -161,6 +172,7 @@ export const projectItems = [
   },
   {
     slug: "minesweeper",
+    category: "app",
     image: "/project-images/ms-playing.png",
     gallery: [
       "/project-images/ms-playing.png",

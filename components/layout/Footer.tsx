@@ -54,7 +54,7 @@ export default function Footer({ locale }: { locale: Locale }) {
                     />
 
                     {/* email label */}
-                    {isEmail && <span>メール</span>}
+                    {isEmail && <span>{t.emailLabel}</span>}
                   </Button>
                 );
               })}

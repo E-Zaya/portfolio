@@ -2,10 +2,13 @@
 
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
+import { Clock3, MessageCircle } from "lucide-react";
+import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import SectionShell from "@/components/ui/SectionShell";
+import { getConsultHref, getConsultLinkProps } from "@/lib/contact";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 /* ─────────────────────────── icons ─────────────────────────── */
@@ -140,7 +143,9 @@ function MiniHeading({ children }: { children: React.ReactNode }) {
 
 export default function ServicesContent({ locale }: { locale: Locale }) {
   const t = getMessages(locale).services;
-  const ctaHref = `/${locale}/contact`;
+  const ctaHref = getConsultHref(locale);
+  const consultLinkProps = getConsultLinkProps(locale);
+  const packages = t.packages;
   const reduce = useReducedMotion();
 
   // タイトルを2行に分解: 1行目(比較対象)は控えめ、2行目(主張)にマーカーが走る
@@ -259,6 +264,113 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </div>
         </div>
       </SectionShell>
+
+      {packages && (
+        <SectionShell>
+          <div className="mx-auto max-w-6xl">
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
+                {packages.eyebrow}
+              </p>
+              <h2 className="mt-3 text-3xl font-bold text-foreground sm:text-4xl">
+                {packages.title}
+              </h2>
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+                {packages.description}
+              </p>
+            </div>
+
+            <div className="mt-10 grid gap-5 lg:grid-cols-3">
+              {packages.items.map((item) => (
+                <article
+                  key={item.name}
+                  className="relative flex min-h-full flex-col overflow-hidden rounded-lg border p-6 sm:p-7"
+                  style={{
+                    borderColor: item.recommended
+                      ? "color-mix(in srgb, var(--accent-2) 62%, var(--border))"
+                      : "var(--border)",
+                    background: item.recommended
+                      ? "color-mix(in srgb, var(--accent-2) 9%, var(--card-strong))"
+                      : "var(--card-strong)",
+                    boxShadow: item.recommended
+                      ? "0 20px 60px color-mix(in srgb, var(--accent-2) 14%, transparent)"
+                      : "var(--shadow)",
+                  }}
+                >
+                  {item.recommended && (
+                    <span
+                      className="mb-5 self-start rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]"
+                      style={{
+                        borderColor:
+                          "color-mix(in srgb, var(--accent-2) 42%, transparent)",
+                        background:
+                          "color-mix(in srgb, var(--accent-2) 14%, transparent)",
+                        color: "var(--accent-2)",
+                      }}
+                    >
+                      {packages.recommendedLabel}
+                    </span>
+                  )}
+
+                  <h3 className="text-xl font-bold text-foreground">
+                    {item.name}
+                  </h3>
+                  <p className="mt-3 min-h-20 text-sm leading-7 text-soft">
+                    {item.description}
+                  </p>
+
+                  <p className="mt-6 text-3xl font-black tracking-tight text-foreground">
+                    {item.price}
+                  </p>
+                  <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
+                    <Clock3 aria-hidden size={15} strokeWidth={1.8} />
+                    {item.timeline}
+                  </p>
+
+                  <ul className="my-7 space-y-3 border-t border-border pt-6">
+                    {item.features.map((feature) => (
+                      <li
+                        key={feature}
+                        className="flex items-start gap-3 text-sm leading-6 text-soft"
+                      >
+                        <span
+                          aria-hidden
+                          className="mt-1 grid h-4.5 w-4.5 shrink-0 place-items-center rounded-full"
+                          style={{
+                            background:
+                              "color-mix(in srgb, var(--accent-2) 16%, transparent)",
+                            color: "var(--accent-2)",
+                          }}
+                        >
+                          <CheckIcon />
+                        </span>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Button
+                    href={ctaHref}
+                    {...consultLinkProps}
+                    variant={item.recommended ? "primary" : "secondary"}
+                    className="mt-auto w-full font-bold"
+                    onClick={() =>
+                      track("Service Package CTA Click", {
+                        locale,
+                        package: item.name,
+                        destination: locale === "mn" ? "messenger" : "contact",
+                      })
+                    }
+                  >
+                    {t.ctaLabel}
+                    <MessageCircle aria-hidden size={16} strokeWidth={1.9} />
+                  </Button>
+                </article>
+              ))}
+            </div>
+          </div>
+        </SectionShell>
+      )}
 
       {/* ── 2本柱: 選ばれる / 楽になる ── */}
       <SectionShell>
@@ -551,6 +663,12 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         rel="noopener noreferrer"
                         className={`${sharedClass} transition-all duration-200 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent-2)_45%,var(--border))]`}
                         style={sharedStyle}
+                        onClick={() =>
+                          track("Service Proof Click", {
+                            locale,
+                            proof: proof.name,
+                          })
+                        }
                       >
                         {inner}
                       </a>
@@ -594,8 +712,16 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   </div>
                   <Button
                     href={ctaHref}
+                    {...consultLinkProps}
                     variant="primary"
                     className="w-full shrink-0 font-bold sm:w-auto"
+                    onClick={() =>
+                      track("Service Pillar CTA Click", {
+                        locale,
+                        pillar: pillar.name,
+                        destination: locale === "mn" ? "messenger" : "contact",
+                      })
+                    }
                   >
                     {t.ctaLabel}
                     <ArrowIcon />
@@ -628,6 +754,18 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-muted">
                 {t.care.description}
               </p>
+              {t.care.details && (
+                <ul className="mt-4 grid gap-2 text-sm text-soft sm:grid-cols-2">
+                  {t.care.details.map((detail) => (
+                    <li key={detail} className="flex items-start gap-2">
+                      <span aria-hidden style={{ color: "var(--accent-2)" }}>
+                        •
+                      </span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
             <p
               className="self-start whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-bold sm:self-center"
@@ -740,9 +878,16 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </p>
           <Button
             href={ctaHref}
+            {...consultLinkProps}
             variant="primary"
             size="lg"
             className="font-semibold"
+            onClick={() =>
+              track("Service Bottom CTA Click", {
+                locale,
+                destination: locale === "mn" ? "messenger" : "contact",
+              })
+            }
           >
             {t.ctaLabel}
             <ArrowIcon />

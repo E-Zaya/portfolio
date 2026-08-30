@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import { getMessages, type Locale } from "@/lib/i18n";
@@ -15,6 +16,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   const [state, setState] = useState<FormState>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+  const startedRef = useRef(false);
 
   async function handleSubmit(formData: FormData) {
     setState("loading");
@@ -44,8 +46,10 @@ export default function ContactForm({ locale }: { locale: Locale }) {
 
       setState("success");
       formRef.current?.reset();
+      track("Contact Form Submit", { locale, result: "success" });
     } catch (error) {
       setState("error");
+      track("Contact Form Submit", { locale, result: "error" });
       setErrorMessage(
         error instanceof Error ? error.message : "Failed to send message.",
       );
@@ -80,6 +84,11 @@ export default function ContactForm({ locale }: { locale: Locale }) {
         <form
           ref={formRef}
           className="mt-8 space-y-4"
+          onFocusCapture={() => {
+            if (startedRef.current) return;
+            startedRef.current = true;
+            track("Contact Form Start", { locale });
+          }}
           action={async (formData) => {
             await handleSubmit(formData);
           }}
@@ -133,7 +142,12 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           </label>
 
           <div className="flex flex-wrap items-center gap-3">
-            <Button type="submit" variant="primary" className="px-5 py-3">
+            <Button
+              type="submit"
+              variant="primary"
+              className="px-5 py-3"
+              disabled={state === "loading"}
+            >
               {state === "loading" ? t.form.sending : t.form.submit}
             </Button>
           </div>

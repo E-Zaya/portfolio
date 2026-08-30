@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { track } from "@vercel/analytics";
+import { getConsultHref, getConsultLinkProps } from "@/lib/contact";
 import {
   getMessages,
   stripLocaleFromPathname,
@@ -22,6 +24,8 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   const cleanPath = stripLocaleFromPathname(pathname);
   const reduce = useReducedMotion();
+  const consultHref = getConsultHref(locale);
+  const consultLinkProps = getConsultLinkProps(locale);
 
   const [visible, setVisible] = useState(false);
   const [bubble, setBubble] = useState(false);
@@ -124,7 +128,14 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
           </motion.span>
 
           <Link
-            href={`/${locale}/contact`}
+            href={consultHref}
+            {...consultLinkProps}
+            onClick={() =>
+              track("Floating Consult Click", {
+                locale,
+                destination: locale === "mn" ? "messenger" : "contact",
+              })
+            }
             className="services-primary-button relative z-10 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
             style={{
               boxShadow:

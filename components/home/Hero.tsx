@@ -1,6 +1,7 @@
 import Card from "@/components/ui/Card";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";
+import HeroAvailabilityStatus from "./HeroAvailabilityStatus";
 import HeroContent from "./HeroContent";
 // HeroVisual(Zaya Studioプレビュー)は温存中 — 気に入っているので別の場所で再利用予定。
 // 戻す場合: import HeroVisual from "./HeroVisual" にして下のHeroShowcaseと入れ替えるだけ。
@@ -49,7 +50,7 @@ export default function Hero({ locale }: { locale: Locale }) {
 
         {/* meta bar — editorial */}
         <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted md:mb-5 md:text-[11px]">
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="relative inline-flex h-1.5 w-1.5">
               <span
                 className="absolute inset-0 rounded-full"
@@ -64,7 +65,7 @@ export default function Hero({ locale }: { locale: Locale }) {
                 style={{ background: "var(--accent-1)", opacity: 0.6 }}
               />
             </span>
-            <span style={{ color: "var(--foreground)" }}>{t.meta.status}</span>
+            <HeroAvailabilityStatus status={t.meta.status} />
             <span className="hidden md:inline" aria-hidden>
               ·
             </span>

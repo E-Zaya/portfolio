@@ -55,8 +55,8 @@ export const en = {
     primaryCta: "Free consultation",
     secondaryCta: "See projects",
     meta: {
-      status: "Available for Projects · 2026.07",
-      focus: "Websites & Web Apps",
+      status: "Available for Projects",
+      focus: "Websites & Apps",
       location: "Ulaanbaatar",
     },
     techLine: "Free consultation · Timeline from 2 weeks · JP/MN support",
@@ -105,6 +105,25 @@ export const en = {
       ],
     },
   },
+  homeOverview: {
+    servicesEyebrow: "SERVICES",
+    servicesTitle: "Websites that earn trust. Systems that reduce busywork.",
+    servicesDescription:
+      "From a focused one-page website to multilingual booking flows and internal systems, each project starts with a clear scope, price, and timeline.",
+    servicesLink: "View services and pricing",
+    projectsEyebrow: "CLIENT WORK",
+    projectsTitle: "Built for real businesses and real users.",
+    projectsDescription:
+      "Start with a mobile app shipped to both stores and a multilingual travel website accepting live inquiries.",
+    projectsLink: "View all projects",
+    contactEyebrow: "START A PROJECT",
+    contactTitle: "Tell me the one thing slowing your business down.",
+    contactDescription:
+      "You do not need a finished brief. Send a short note and I will reply personally within 24 hours.",
+    contactLink: "Open the contact page",
+    messengerLink: "Message me on Messenger",
+  },
+
   skills: {
     eyebrow: "Tech Stack",
   },
@@ -158,6 +177,10 @@ export const en = {
       client: "Client work",
       product: "Own product",
       sample: "Concept work",
+    },
+    laneLabels: {
+      website: "WEBSITES",
+      app: "APPS",
     },
     liveLabel: "Live",
     openLive: "Open the real site",
@@ -485,6 +508,58 @@ export const en = {
         timeline: "From 3 weeks",
       },
     ],
+    packages: {
+      eyebrow: "SERVICE PACKAGES",
+      title: "Scope, price, and timeline — clear from day one.",
+      description:
+        "These are starting figures. The final quote depends on content volume, number of languages, and the features you need, and I confirm it after the free consultation.",
+      recommendedLabel: "Most businesses start here",
+      items: [
+        {
+          name: "Launch Website",
+          description:
+            "A single-page site for a small business: what you do, where you are, what it costs, and how to reach you.",
+          price: "¥30,000–88,000",
+          timeline: "1–2 weeks",
+          features: [
+            "1 page, 1 language",
+            "Custom design with a mobile layout",
+            "Contact form or social link",
+            "Help connecting your domain",
+            "Basic SEO and analytics",
+          ],
+        },
+        {
+          name: "Business Website",
+          description:
+            "The main site for a growing business — several services, more than one language, and a path to booking.",
+          price: "¥130,000–300,000",
+          timeline: "3–5 weeks",
+          recommended: true,
+          features: [
+            "5–8 pages",
+            "2–3 language versions",
+            "Booking or enquiry flow",
+            "Simple CMS for content updates",
+            "SEO, analytics, and launch support",
+          ],
+        },
+        {
+          name: "Business System / App",
+          description:
+            "A custom system that runs the daily work in one place: bookings, customers, staff, and reporting.",
+          price: "From ¥400,000",
+          timeline: "From 6 weeks",
+          features: [
+            "Requirements and workflow mapping",
+            "Login, roles, and an admin screen",
+            "Database and API integration",
+            "Web app or mobile app",
+            "Testing, launch, and handover",
+          ],
+        },
+      ],
+    },
     care: {
       title: "Ongoing peace of mind",
       description:
@@ -596,6 +671,7 @@ export const en = {
     title: "Zaya — AI-Native Product Engineer",
     subtitle: "A face that gets chosen. Systems that lighten the work.",
     copyright: "© 2026 Designed & Built by Zaya",
+    emailLabel: "Email",
   },
   langToggle: {
     en: "EN",

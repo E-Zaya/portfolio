@@ -11,6 +11,8 @@ export function proxy(request: NextRequest) {
   if (
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
+    // app/icon.tsx が生成する拡張子なしのルート。増えたらここに追加する。
+    pathname === "/icon" ||
     PUBLIC_FILE.test(pathname)
   ) {
     return NextResponse.next();

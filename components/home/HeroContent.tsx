@@ -1,14 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
+import { getConsultHref, getConsultLinkProps } from "@/lib/contact";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 export default function HeroContent({ locale }: { locale: Locale }) {
   const t = getMessages(locale).hero;
 
-  const contactHref = `/${locale}/contact`;
+  const contactHref = getConsultHref(locale);
+  const consultLinkProps = getConsultLinkProps(locale);
   const projectsHref = `/${locale}/projects`;
 
   // モバイルでは文単位で自然に流し、sm以上では行ごとにブロック表示(4行の大組み)
@@ -29,24 +32,22 @@ export default function HeroContent({ locale }: { locale: Locale }) {
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="flex min-w-0 flex-col items-start text-left"
     >
-      {/* headline — モバイルは文単位で2行、sm以上は行ブロックで4行の大組み */}
+      {/* headline — 翻訳側で決めた改行を保ち、長いMN文言も画面内に収める */}
       <h1 className={`jp-tight font-black text-foreground ${headingSizeClass}`}>
         <span className="block">
           {titleLines.map((line) => (
-            <span key={line} className="inline sm:block">
+            <span key={line} className="block">
               {line}
             </span>
           ))}
         </span>
         <span className="block">
           {highlightLines.map((line, index) => (
-            <MarkerHighlight
-              key={line}
-              delay={0.6 + index * 0.18}
-              className="sm:table"
-            >
-              {line}
-            </MarkerHighlight>
+            <span key={line} className="block w-fit max-w-full">
+              <MarkerHighlight delay={0.6 + index * 0.18}>
+                {line}
+              </MarkerHighlight>
+            </span>
           ))}
         </span>
       </h1>
@@ -55,13 +56,20 @@ export default function HeroContent({ locale }: { locale: Locale }) {
         {t.description}
       </p>
 
-      {/* CTAs — モバイルは同幅2列グリッドで1行(改行禁止)、sm以上は従来のlgサイズ */}
-      <div className="mt-6 grid w-full grid-cols-2 items-center gap-3 sm:mt-10 sm:flex sm:w-auto sm:flex-row">
+      {/* CTAs — 長い翻訳でも切れないよう、モバイルは縦並び */}
+      <div className="mt-6 grid w-full grid-cols-1 items-center gap-3 sm:mt-10 sm:flex sm:w-auto sm:flex-row">
         <Button
           href={contactHref}
+          {...consultLinkProps}
           variant="primary"
           size="compact"
-          className="group w-full whitespace-nowrap font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          className="group min-h-12 w-full font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          onClick={() =>
+            track("Hero CTA Click", {
+              locale,
+              destination: locale === "mn" ? "messenger" : "contact",
+            })
+          }
         >
           {t.primaryCta}
           <svg
@@ -82,7 +90,8 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           href={projectsHref}
           variant="secondary"
           size="compact"
-          className="w-full whitespace-nowrap font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          className="min-h-12 w-full font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          onClick={() => track("Hero Projects Click", { locale })}
         >
           {t.secondaryCta}
         </Button>

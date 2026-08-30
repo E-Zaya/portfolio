@@ -56,8 +56,8 @@ export const ja = {
     primaryCta: "無料相談",
     secondaryCta: "プロジェクトを見る",
     meta: {
-      status: "案件受付中 · 2026.07",
-      focus: "Websites & Web Apps",
+      status: "案件受付中",
+      focus: "Websites & Apps",
       location: "Ulaanbaatar",
     },
     techLine: "無料相談受付中 ・ 最短1週間〜 ・ JP / MN対応",
@@ -102,6 +102,25 @@ export const ja = {
       ],
     },
   },
+  homeOverview: {
+    servicesEyebrow: "SERVICES",
+    servicesTitle: "選ばれるサイトと、手間を減らす仕組み。",
+    servicesDescription:
+      "1ページのWebサイトから、多言語の予約サイト、業務システムまで。必要な規模を明確な価格と期間で提案します。",
+    servicesLink: "サービスと料金を見る",
+    projectsEyebrow: "CLIENT WORK",
+    projectsTitle: "実際の仕事で動いているもの。",
+    projectsDescription:
+      "App Store・Google Playで配信中のアプリと、多言語で予約を受け付ける旅行サイトをご覧ください。",
+    projectsLink: "すべての実績を見る",
+    contactEyebrow: "START A PROJECT",
+    contactTitle: "いちばん困っていることを、一つ聞かせてください。",
+    contactDescription:
+      "まだ要件が決まっていなくても大丈夫です。ご相談には24時間以内を目安に本人が返信します。",
+    contactLink: "お問い合わせページへ",
+    messengerLink: "Messengerで無料相談",
+  },
+
   skills: {
     eyebrow: "Tech Stack",
   },
@@ -157,6 +176,10 @@ export const ja = {
       client: "実案件",
       product: "自社プロダクト",
       sample: "制作例",
+    },
+    laneLabels: {
+      website: "Webサイト",
+      app: "アプリ・システム",
     },
     liveLabel: "公開中",
     openLive: "実物を見る",
@@ -473,6 +496,58 @@ export const ja = {
         timeline: "3週間〜",
       },
     ],
+    packages: {
+      eyebrow: "サービスパッケージ",
+      title: "規模も、金額も、期間も、最初からはっきり。",
+      description:
+        "下記は目安の金額です。ページ数・言語数・必要な機能によって変わるので、最終的なお見積もりは無料相談のあとにお出しします。",
+      recommendedLabel: "いちばん選ばれています",
+      items: [
+        {
+          name: "Launch Website",
+          description:
+            "サービス内容・場所・料金・連絡先を、1ページでわかりやすく伝える小さなお店向けのサイト。",
+          price: "¥30,000〜88,000",
+          timeline: "1〜2週間",
+          features: [
+            "1ページ / 1言語",
+            "オリジナルデザイン + スマホ最適化",
+            "お問い合わせフォーム、またはSNS導線",
+            "独自ドメイン設定のサポート",
+            "基本のSEOとアクセス解析",
+          ],
+        },
+        {
+          name: "Business Website",
+          description:
+            "サービスが複数ある、多言語で見せたい、申込まで受けたい——伸びている事業の本体サイト。",
+          price: "¥130,000〜300,000",
+          timeline: "3〜5週間",
+          recommended: true,
+          features: [
+            "5〜8ページ",
+            "2〜3言語対応",
+            "予約・申込の受付導線",
+            "かんたんな更新機能(CMS)",
+            "SEO・アクセス解析・公開作業まで",
+          ],
+        },
+        {
+          name: "Business System / App",
+          description:
+            "予約・顧客・スタッフ・集計など、毎日の業務をまとめて回すオーダーメイドの仕組み。",
+          price: "¥400,000〜",
+          timeline: "6週間〜",
+          features: [
+            "業務の流れの整理と設計",
+            "ログイン・権限・管理画面",
+            "データベースと外部サービス連携",
+            "Webアプリ、またはスマホアプリ",
+            "テスト・公開・使い方サポート",
+          ],
+        },
+      ],
+    },
     care: {
       title: "続けて、安心",
       description:
@@ -577,6 +652,7 @@ export const ja = {
     title: "Zaya — AI-Native Product Engineer",
     subtitle: "",
     copyright: "© 2026 Designed & Built by Zaya",
+    emailLabel: "メール",
   },
   langToggle: {
     en: "EN",

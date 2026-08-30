@@ -105,40 +105,47 @@ export default async function LocaleLayout({
     knowsLanguage: ["ja", "mn", "en"],
   };
 
+  // ルートレイアウト(app/layout.tsx)が <html>/<body> を持つため、ここでは出さない。
+  // ここに <html>/<body> を書くと Next 側で破棄され、<head> に入れた要素の順序が
+  // サーバー/クライアントでズレて hydration mismatch になる。
+  // <Analytics /> もルート側にあるので、ここで重ねると計測が二重になる。
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
-      </head>
-      <body>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}}catch(e){}`,
-          }}
-        />
-        <ThemeProvider>
-          <MotionProvider>
-            <div
-              className={`${inter.variable} ${notoSansJp.variable}`}
-              data-locale={locale}
-            >
-              <LoadingScreen />
-              <ScrollProgress />
-              <MouseGlow />
-              <div className="site-content">
-                <Header locale={locale} />
-                <main>{children}</main>
-                <Footer locale={locale} />
-                <FloatingConsultPill locale={locale} />
-              </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+      />
+      {/*
+        パース時に同期実行される。lang はルートレイアウトが "ja" 固定で出しており
+        (app/layout.tsx はルート専用なので params を読めない)、mn / en でも ja のままに
+        なってしまうため、ここで実際のロケールに直す。
+        SSR の HTML ソース自体を正しくするには [locale]/layout.tsx をルートレイアウトに
+        昇格させる必要があり、それは別途対応。
+      */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `document.documentElement.lang=${JSON.stringify(locale)};try{if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}}catch(e){}`,
+        }}
+      />
+      <ThemeProvider>
+        <MotionProvider>
+          <div
+            className={`${inter.variable} ${notoSansJp.variable}`}
+            data-locale={locale}
+          >
+            <LoadingScreen />
+            <ScrollProgress />
+            <MouseGlow />
+            <div className="site-content">
+              <Header locale={locale} />
+              <main>{children}</main>
+              <Footer locale={locale} />
+              <FloatingConsultPill locale={locale} />
             </div>
-          </MotionProvider>
-        </ThemeProvider>
-         <SpeedInsights />
-      </body>
-    </html>
+          </div>
+        </MotionProvider>
+      </ThemeProvider>
+      <SpeedInsights />
+    </>
   );
 }

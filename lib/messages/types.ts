@@ -50,6 +50,15 @@ export type ServicesPillar = {
   timeline: string;
 };
 
+export type ServicesPackage = {
+  name: string;
+  description: string;
+  price: string;
+  timeline: string;
+  features: string[];
+  recommended?: boolean;
+};
+
 export type ServicesContent = {
   title: string;
   intro: string[];
@@ -65,10 +74,19 @@ export type ServicesContent = {
 
   pillars: ServicesPillar[];
 
+  packages?: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    recommendedLabel: string;
+    items: ServicesPackage[];
+  };
+
   care: {
     title: string;
     description: string;
     price: string;
+    details?: string[];
   };
 
   process: {
@@ -124,6 +142,11 @@ export type ProjectsContent = {
     client: string;
     product: string;
     sample: string;
+  };
+  /** Websites / Apps の2レーン見出し */
+  laneLabels: {
+    website: string;
+    app: string;
   };
   liveLabel: string;
   openLive: string;
@@ -342,6 +365,22 @@ export type Messages = {
     };
   };
 
+  homeOverview: {
+    servicesEyebrow: string;
+    servicesTitle: string;
+    servicesDescription: string;
+    servicesLink: string;
+    projectsEyebrow: string;
+    projectsTitle: string;
+    projectsDescription: string;
+    projectsLink: string;
+    contactEyebrow: string;
+    contactTitle: string;
+    contactDescription: string;
+    contactLink: string;
+    messengerLink: string;
+  };
+
   skills: {
     eyebrow: string;
   };
@@ -377,6 +416,7 @@ export type Messages = {
     title: string;
     subtitle: string;
     copyright: string;
+    emailLabel: string;
   };
 
   langToggle: {
