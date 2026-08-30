@@ -1,23 +1,71 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { getMessages, type Locale } from "@/lib/i18n";
 
-// Heroの右側: 架空プレビューではなく「実際に動いているもの」を見せるショーケース。
-// PC = Overland Beyond(「選ばれる」の実例) / スマホ = タイムアプリ(「楽になる」の実例)
-// ※旧 HeroVisual(Zaya Studioプレビュー)は温存中 — 別の場所で再利用予定。
+// Heroの右側:「生きているモック」— 静止画ではなく、モック自身が働き続ける。
+// ラップトップ = 言語が自動で切り替わる(多言語対応の実演)
+// スマホ = タイマーが実時間で進み、数秒おきに打刻トーストが入る(楽になるの実演)
+// タップでもトーストが出るので「さわってみて！」が本当になる。
 
 const OVERLAND_URL = "https://overlandbeyond.com";
-// TODO: ストアリンクが確定したら差し替える(App Store / Google Play)
-const TIME_APP_URL: string | null = null;
-// 手書き注釈「さわってみて！」— 一旦非表示。復活させる場合は true にするだけ。
 const SHOW_HAND_NOTE = true;
 
 const ZAZA_IMAGE = "/Zaza/chira-zaza.png";
 
+/* ラップトップ内の多言語ループ(モック内の架空コピー) */
+const LAPTOP_LANGS = [
+  { chip: "EN", eyebrow: "MONGOLIA · LUXURY EXPEDITIONS", title: "Travel beyond limits", cta: "Apply for expedition →" },
+  { chip: "中文", eyebrow: "蒙古 · 奢华远征之旅", title: "超越极限的旅程", cta: "立即申请远征 →" },
+  { chip: "한국어", eyebrow: "몽골 · 럭셔리 원정 여행", title: "한계를 넘는 여행", cta: "원정 신청하기 →" },
+] as const;
+
+const LANG_INTERVAL_MS = 3200;
+const TOAST_INTERVAL_MS = 6400;
+const TOAST_VISIBLE_MS = 2400;
+
 export default function HeroShowcase({ locale }: { locale: Locale }) {
   const t = getMessages(locale).hero.showcase;
+  const reduce = useReducedMotion();
+
+  // 言語ループ
+  const [langIndex, setLangIndex] = useState(0);
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(
+      () => setLangIndex((i) => (i + 1) % LAPTOP_LANGS.length),
+      LANG_INTERVAL_MS,
+    );
+    return () => window.clearInterval(id);
+  }, [reduce]);
+
+  // 打刻トースト(自動 + タップでも発火) — Zazaもいっしょに反応する
+  const [toastVisible, setToastVisible] = useState(false);
+  useEffect(() => {
+    if (reduce) return;
+    let hideId: number | undefined;
+    const show = () => {
+      setToastVisible(true);
+      hideId = window.setTimeout(() => setToastVisible(false), TOAST_VISIBLE_MS);
+    };
+    const firstId = window.setTimeout(show, 2200);
+    const loopId = window.setInterval(show, TOAST_INTERVAL_MS);
+    return () => {
+      window.clearTimeout(firstId);
+      window.clearInterval(loopId);
+      if (hideId) window.clearTimeout(hideId);
+    };
+  }, [reduce]);
+
+  function pokePhone() {
+    setToastVisible(true);
+    window.setTimeout(() => setToastVisible(false), TOAST_VISIBLE_MS);
+  }
+
+  const lang = LAPTOP_LANGS[langIndex];
 
   return (
     <motion.div
@@ -26,14 +74,16 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
       transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
       className="relative mx-auto w-full max-w-[460px] lg:mx-0 lg:ml-auto"
     >
-      {/* Zaza — ラップトップの上から覗く */}
+      {/* Zaza — ラップトップの上から覗く。トーストが出るとぴょこんと跳ねる */}
       <Image
         src={ZAZA_IMAGE}
         alt=""
         aria-hidden
         width={140}
         height={140}
-        className="pointer-events-none absolute -top-12 right-8 z-0 w-24 rotate-6 md:-top-14 md:w-28"
+        className={`pointer-events-none absolute -top-12 right-8 z-0 w-24 rotate-6 md:-top-14 md:w-28 ${
+          toastVisible ? "animate-zaza-hop" : ""
+        }`}
       />
 
       {/* LIVE バッジ */}
@@ -54,7 +104,7 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
         {t.liveBadge}
       </span>
 
-      {/* ラップトップ: Overland Beyond(実案件) */}
+      {/* ラップトップ: Overland Beyond(実案件) — 言語が自動で切り替わる */}
       <a
         href={OVERLAND_URL}
         target="_blank"
@@ -87,33 +137,40 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
             テキストが潜り込んで見切れないよう余白を確保 */}
         <div className="py-5 pl-5 pr-24 sm:pl-6 sm:pr-28">
           <p
-            className="text-[9px] font-semibold tracking-[0.26em]"
+            key={`eyebrow-${langIndex}`}
+            className="hero-mock-fade text-[9px] font-semibold tracking-[0.26em]"
             style={{ color: "#9db8ad" }}
           >
-            MONGOLIA · LUXURY EXPEDITIONS
+            {lang.eyebrow}
           </p>
           <p
-            className="mt-2 text-xl font-bold leading-snug sm:text-2xl"
+            key={`title-${langIndex}`}
+            className="hero-mock-fade mt-2 min-h-[3.6em] text-xl font-bold leading-snug sm:text-2xl"
             style={{ color: "#f4f7f5" }}
           >
-            Travel beyond limits
+            {lang.title}
           </p>
           <div className="mt-3 flex gap-1.5">
-            {["EN", "中文", "한국어"].map((lang) => (
+            {LAPTOP_LANGS.map((l, i) => (
               <span
-                key={lang}
-                className="rounded-full border px-2.5 py-0.5 text-[9px]"
-                style={{ borderColor: "#3a5a4e", color: "#cfe0d8" }}
+                key={l.chip}
+                className="rounded-full border px-2.5 py-0.5 text-[9px] transition-colors duration-300"
+                style={
+                  i === langIndex
+                    ? { borderColor: "#e8b04b", color: "#0d1b17", background: "#e8b04b", fontWeight: 700 }
+                    : { borderColor: "#3a5a4e", color: "#cfe0d8" }
+                }
               >
-                {lang}
+                {l.chip}
               </span>
             ))}
           </div>
           <span
-            className="mt-4 inline-block rounded-md px-3.5 py-1.5 text-[11px] font-bold"
+            key={`cta-${langIndex}`}
+            className="hero-mock-cta hero-mock-fade mt-4 inline-block rounded-md px-3.5 py-1.5 text-[11px] font-bold"
             style={{ background: "#e8b04b", color: "#0d1b17" }}
           >
-            Apply for expedition →
+            {lang.cta}
           </span>
         </div>
 
@@ -136,12 +193,16 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
         </div>
       </a>
 
-      {/* スマホ: タイムアプリ(ストア公開中) */}
+      {/* スマホ: タイムアプリ(ストア公開中) — タイマーが実時間で進む */}
       <TimeAppPhone
         label={t.phoneLabel}
         caption={t.phoneCaption}
         timerLabel={t.phoneTimerLabel}
         rows={t.phoneRows}
+        toast={t.phoneToast}
+        toastVisible={toastVisible}
+        onPoke={pokePhone}
+        reduce={!!reduce}
       />
 
       {/* 手書き注釈 — 「さわってみて！」+ くるっとした矢印(SHOW_HAND_NOTEで切替) */}
@@ -187,19 +248,75 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
   );
 }
 
+/** 「07:42:15」を起点に実時間で進む稼働タイマー */
+function useTickingTimer(reduce: boolean) {
+  const [seconds, setSeconds] = useState(7 * 3600 + 42 * 60 + 15);
+  useEffect(() => {
+    if (reduce) return;
+    const id = window.setInterval(() => setSeconds((s) => s + 1), 1000);
+    return () => window.clearInterval(id);
+  }, [reduce]);
+  const h = String(Math.floor(seconds / 3600)).padStart(2, "0");
+  const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, "0");
+  const sec = String(seconds % 60).padStart(2, "0");
+  return `${h}:${m}:${sec}`;
+}
+
 function TimeAppPhone({
   label,
   caption,
   timerLabel,
   rows,
+  toast,
+  toastVisible,
+  onPoke,
+  reduce,
 }: {
   label: string;
   caption: string;
   timerLabel: string;
   rows: { name: string; value: string }[];
+  toast: string;
+  toastVisible: boolean;
+  onPoke: () => void;
+  reduce: boolean;
 }) {
-  const body = (
-    <>
+  const time = useTickingTimer(reduce);
+
+  return (
+    <button
+      type="button"
+      onClick={onPoke}
+      aria-label={label}
+      className="absolute -bottom-10 right-0 z-20 block w-[160px] cursor-pointer overflow-hidden rounded-2xl border text-left transition-transform duration-300 hover:-translate-y-1 active:scale-[0.98]"
+      style={{
+        borderColor: "color-mix(in srgb, var(--foreground) 18%, transparent)",
+        background: "color-mix(in srgb, var(--background-2) 92%, transparent)",
+        boxShadow: "var(--shadow)",
+      }}
+    >
+      {/* 打刻トースト — 自動+タップで上からスッと入る */}
+      <div
+        aria-live="polite"
+        className={`pointer-events-none absolute inset-x-2 top-2 z-10 flex items-center gap-1.5 rounded-lg border px-2 py-1.5 transition-all duration-300 ${
+          toastVisible ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0"
+        }`}
+        style={{
+          borderColor: "color-mix(in srgb, var(--color-success) 40%, transparent)",
+          background: "color-mix(in srgb, var(--color-success) 14%, var(--background))",
+        }}
+      >
+        <span
+          className="grid size-3.5 shrink-0 place-items-center rounded-full"
+          style={{ background: "var(--color-success)", color: "var(--background)" }}
+        >
+          <Check className="size-2.5" strokeWidth={3} />
+        </span>
+        <span className="text-[9px] font-bold" style={{ color: "var(--color-success)" }}>
+          {toast}
+        </span>
+      </div>
+
       <div className="flex justify-center pt-2.5">
         <span
           className="h-1.5 w-12 rounded-full"
@@ -212,7 +329,7 @@ function TimeAppPhone({
       <div className="px-4 pb-3 pt-2.5">
         <p className="text-[10px] text-muted">{timerLabel}</p>
         <p className="mt-0.5 font-mono text-[22px] font-bold leading-none text-foreground">
-          07:42:15
+          {time}
         </p>
         <div
           className="mt-2.5 h-1.5 overflow-hidden rounded-full"
@@ -269,35 +386,6 @@ function TimeAppPhone({
           {caption}
         </span>
       </div>
-    </>
-  );
-
-  const frameClass =
-    "absolute -bottom-10 right-0 z-20 block w-[160px] overflow-hidden rounded-2xl border transition-transform duration-300 hover:-translate-y-1";
-  const frameStyle = {
-    borderColor: "color-mix(in srgb, var(--foreground) 18%, transparent)",
-    background: "color-mix(in srgb, var(--background-2) 92%, transparent)",
-    boxShadow: "var(--shadow)",
-  } as const;
-
-  // ストアリンク確定後は <a> に切り替わる
-  if (TIME_APP_URL) {
-    return (
-      <a
-        href={TIME_APP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={frameClass}
-        style={frameStyle}
-      >
-        {body}
-      </a>
-    );
-  }
-
-  return (
-    <div className={frameClass} style={frameStyle}>
-      {body}
-    </div>
+    </button>
   );
 }

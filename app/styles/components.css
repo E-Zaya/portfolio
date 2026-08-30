@@ -1803,3 +1803,73 @@ html[data-loading] .site-content {
   border-radius: 9999px;
   background: color-mix(in srgb, var(--foreground) 16%, transparent);
 }
+
+/* ── トンボ(印刷のコーナーマーク) — ヒーローカードの四隅 ── */
+.crop-mark {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  color: color-mix(in srgb, var(--foreground) 34%, transparent);
+}
+
+.crop-mark::before,
+.crop-mark::after {
+  content: "";
+  position: absolute;
+  background: currentColor;
+}
+
+.crop-mark::before {
+  width: 14px;
+  height: 1px;
+}
+
+.crop-mark::after {
+  width: 1px;
+  height: 14px;
+}
+
+.crop-mark-tl { left: -7px; top: -7px; }
+.crop-mark-tl::before { left: 0; top: 7px; }
+.crop-mark-tl::after { left: 7px; top: 0; }
+
+.crop-mark-tr { right: -7px; top: -7px; }
+.crop-mark-tr::before { right: 0; top: 7px; }
+.crop-mark-tr::after { right: 7px; top: 0; }
+
+.crop-mark-bl { left: -7px; bottom: -7px; }
+.crop-mark-bl::before { left: 0; bottom: 7px; }
+.crop-mark-bl::after { left: 7px; bottom: 0; }
+
+.crop-mark-br { right: -7px; bottom: -7px; }
+.crop-mark-br::before { right: 0; bottom: 7px; }
+.crop-mark-br::after { right: 7px; bottom: 0; }
+
+/* ── 生きているモック用アニメーション ── */
+@keyframes zaza-hop {
+  0%, 100% { transform: rotate(6deg) translateY(0); }
+  30% { transform: rotate(2deg) translateY(-10px); }
+  55% { transform: rotate(8deg) translateY(0); }
+  75% { transform: rotate(5deg) translateY(-4px); }
+}
+
+.animate-zaza-hop {
+  animation: zaza-hop 0.7s cubic-bezier(0.3, 1.2, 0.4, 1) both;
+}
+
+@keyframes hero-mock-fade {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-mock-fade {
+  animation: hero-mock-fade 0.45s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-zaza-hop,
+  .hero-mock-fade {
+    animation: none;
+  }
+}

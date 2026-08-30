@@ -16,40 +16,10 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background:
-    radial-gradient(
-      circle at 10% 20%,
-      color-mix(in srgb, var(--accent-1) 22%, transparent),
-      transparent 25%
-    ),
-    radial-gradient(
-      circle at 90% 20%,
-      color-mix(in srgb, var(--accent-2) 20%, transparent),
-      transparent 22%
-    ),
-    radial-gradient(
-      circle at 50% 100%,
-      color-mix(in srgb, var(--accent-2) 12%, transparent),
-      transparent 26%
-    ),
-    linear-gradient(135deg, var(--background), var(--background-2) 55%, #111827);
-}
-
-html.light body {
-  background:
-    radial-gradient(
-      circle at 14% 16%,
-      color-mix(in srgb, var(--accent-1) 12%, transparent),
-      transparent 20%
-    ),
-    radial-gradient(
-      circle at 82% 14%,
-      color-mix(in srgb, var(--accent-2) 10%, transparent),
-      transparent 18%
-    ),
-    radial-gradient(circle at 50% 100%, rgba(148, 163, 184, 0.1), transparent 26%),
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.26), transparent 60%),
-    linear-gradient(180deg, #f3f6fa 0%, #e8eef5 52%, #dde6ef 100%);
+  /* 「墨と金」の紙 — グラデやブロブは使わず、無地+ごく薄い紙の繊維だけ。
+     カードは不透明なので、質感は余白にだけ静かに現れる */
+  background-color: var(--background);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
 html[data-locale="ja"] body,

@@ -11,30 +11,30 @@ export default function Hero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).hero;
 
   return (
-    <SectionShell className="pt-1 sm:pt-2">
+    <SectionShell className="pt-3 sm:pt-4">
+      {/* トンボ(印刷のコーナーマーク) — 「入稿された原稿」の記号。
+          カードがoverflow-hiddenなので外側のラッパーに置く */}
+      <div className="relative">
+        <span className="crop-mark crop-mark-tl" aria-hidden />
+        <span className="crop-mark crop-mark-tr" aria-hidden />
+        <span className="crop-mark crop-mark-bl" aria-hidden />
+        <span className="crop-mark crop-mark-br" aria-hidden />
       <Card
         gradientBorder
         className="relative overflow-hidden rounded-3xl px-5 py-6 sm:px-6 sm:py-7 md:px-10 md:py-9 lg:px-14 lg:py-10"
       >
-        {/* subtle grid */}
+        {/* 帳簿のマージン罫 — 左端に1本だけ金の縦線 */}
         <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px),
-              linear-gradient(90deg, color-mix(in srgb, var(--foreground) 4%, transparent) 1px, transparent 1px)
-            `,
-            backgroundSize: "72px 72px",
-          }}
+          className="pointer-events-none absolute bottom-0 top-0 hidden w-px md:left-7 md:block"
+          style={{ background: "color-mix(in srgb, var(--accent-2) 22%, transparent)" }}
         />
-
 
         {/* top rule */}
         <div
           className="pointer-events-none absolute inset-x-0 top-0 h-px"
           style={{
             background:
-              "linear-gradient(90deg, transparent 5%, color-mix(in srgb, var(--accent-1) 70%, transparent) 40%, color-mix(in srgb, var(--accent-2) 60%, transparent) 65%, transparent 95%)",
+              "linear-gradient(90deg, transparent 5%, color-mix(in srgb, var(--accent-2) 55%, transparent) 50%, transparent 95%)",
           }}
         />
 
@@ -84,6 +84,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           </div>
         </div>
       </Card>
+      </div>
     </SectionShell>
   );
 }

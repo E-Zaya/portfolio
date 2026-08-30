@@ -353,6 +353,8 @@ export type Messages = {
       phoneRows: { name: string; value: string }[];
       /** 手書き風の注釈(「さわってみて！」) */
       handNote: string;
+      /** 生きているモック: 数秒おきに入る打刻トースト */
+      phoneToast: string;
     };
 
 

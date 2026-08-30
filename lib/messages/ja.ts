@@ -80,6 +80,7 @@ export const ja = {
         { name: "開発", value: "4.5h" },
       ],
       handNote: "さわってみて！",
+      phoneToast: "打刻を記録しました",
     },
     features: [
       {

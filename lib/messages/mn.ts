@@ -85,6 +85,7 @@ export const mn = {
         { name: "Хөгжүүлэлт", value: "4.5h" },
       ],
       handNote: "дараад үзээрэй!",
+      phoneToast: "Бүртгэгдлээ",
     },
 
     features: [

@@ -80,6 +80,7 @@ export const en = {
         { name: "Build", value: "4.5h" },
       ],
       handNote: "go on, try it!",
+      phoneToast: "Clocked in",
     },
     features: [
       {
