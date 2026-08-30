@@ -30,7 +30,7 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
       : snsLinks;
 
   return (
-    <Card strong className="rounded-3xl p-4 sm:p-6 md:p-7">
+    <Card strong className="flex h-full flex-col rounded-3xl p-5 sm:p-6 md:p-7">
       <p className="text-sm uppercase tracking-[0.22em] text-muted">
         {t.socialTitle}
       </p>
@@ -80,11 +80,14 @@ export default function ContactSocials({ locale }: { locale: Locale }) {
         })}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-border bg-card-strong p-3 shadow-theme md:p-4">
+      {/* mt-auto でカード下端に固定 → フォーム側と下端が揃う */}
+      <div className="mt-auto pt-6">
+      <div className="rounded-2xl border border-border bg-card-strong p-4 shadow-theme">
         <p className="text-xs uppercase tracking-[0.18em] text-muted">
           {t.availabilityLabel}
         </p>
         <p className="mt-2 text-sm leading-7 text-soft">{t.availability}</p>
+      </div>
       </div>
     </Card>
   );

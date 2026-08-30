@@ -10,7 +10,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
 
   return (
-    <section className="relative overflow-hidden py-16 sm:py-24 md:py-28">
+    <section className="section-space relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
         <div
           className="absolute left-1/2 top-0 h-105 w-105 -translate-x-1/2 rounded-full blur-3xl"
@@ -36,20 +36,17 @@ export default function ContactSection({ locale }: { locale: Locale }) {
           transition={{ duration: 0.65, ease: "easeOut" }}
           className="mx-auto max-w-5xl"
         >
-          <div className="mb-10 text-center">
-            <h2 className="mt-4 text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
+          <div className="mb-12 text-center">
+            <h2 className="text-3xl font-semibold tracking-[-0.03em] text-foreground sm:text-5xl">
               {t.titleA}{" "}
               <MarkerHighlight delay={0.3}>{t.titleB}</MarkerHighlight>
             </h2>
 
             <div className="gradient-line mx-auto mt-5 h-px w-28" />
-
-            <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-soft sm:text-base">
-              {/* {t.description} ちょっと情報量多すぎるのでとりあえず　コメントアウト　*/}
-            </p>
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          {/* items-stretch + h-full で左右カラムの下端を揃える */}
+          <div className="grid items-stretch gap-6 lg:grid-cols-[1.2fr_0.8fr]">
             <motion.div
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -60,6 +57,7 @@ export default function ContactSection({ locale }: { locale: Locale }) {
             </motion.div>
 
             <motion.div
+              className="h-full"
               initial={{ opacity: 0, y: 28 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}

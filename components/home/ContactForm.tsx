@@ -145,7 +145,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             <Button
               type="submit"
               variant="primary"
-              className="px-5 py-3"
+              className="w-full px-7 font-bold sm:w-auto"
               disabled={state === "loading"}
             >
               {state === "loading" ? t.form.sending : t.form.submit}
@@ -153,7 +153,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           </div>
 
           {/* 安心のひとこと — 送るハードルを下げるマイクロコピー */}
-          <p className="text-xs leading-relaxed text-muted">{t.form.note}</p>
+          <p className="text-[13px] leading-relaxed text-muted">{t.form.note}</p>
 
           <div aria-live="polite" className="min-h-6 text-sm">
             {state === "success" && (
