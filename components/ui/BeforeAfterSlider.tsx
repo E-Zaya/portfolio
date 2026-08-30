@@ -13,10 +13,8 @@ import {
 import { animate, useReducedMotion } from "framer-motion";
 import { ChevronsLeftRight } from "lucide-react";
 
-const MIN = 10;
-const MAX = 90;
-/** 初期位置: Before(左)が3割ちょい見えて、本命のAfterが主役でいられる位置 */
-const INITIAL = 32;
+const MIN = 8;
+const MAX = 92;
 
 type Labels = {
   before: string;
@@ -25,22 +23,23 @@ type Labels = {
 };
 
 /**
- * Hero全体のBefore/Afterスライダー。
- * 同じHeroコンテンツを2回描画し、左を「よくある古いページ風」(.hero-before)、
- * 右を通常デザインとして clip-path で分割。仕切りをドラッグすると
- * 「Zayaに頼むと何が変わるか」をページ自身が実演する。
+ * 汎用Before/Afterスライダー。
+ * before/after を全面重ねて clip-path で分割し、仕切りのドラッグ/矢印キーで
+ * 見比べられる。ホームの「よくあるページ vs Zayaがつくる顔」デモで使用。
  */
-export default function HeroBeforeAfter({
+export default function BeforeAfterSlider({
   before,
   after,
   labels,
+  initial = 50,
 }: {
   before: ReactNode;
   after: ReactNode;
   labels: Labels;
+  initial?: number;
 }) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const xRef = useRef(INITIAL);
+  const xRef = useRef(initial);
   const draggingRef = useRef(false);
   const [interacted, setInteracted] = useState(false);
   const reduce = useReducedMotion();
@@ -61,13 +60,13 @@ export default function HeroBeforeAfter({
     if (reduce) return;
     const timer = setTimeout(() => {
       if (draggingRef.current) return;
-      const controls = animate(INITIAL, 46, {
+      const controls = animate(initial, initial + 14, {
         duration: 0.8,
         ease: "easeInOut",
         onUpdate: setX,
         onComplete: () => {
           if (draggingRef.current) return;
-          animate(46, INITIAL, {
+          animate(initial + 14, initial, {
             duration: 0.8,
             ease: "easeInOut",
             onUpdate: setX,
@@ -77,7 +76,7 @@ export default function HeroBeforeAfter({
       return () => controls.stop();
     }, 1400);
     return () => clearTimeout(timer);
-  }, [reduce, setX]);
+  }, [initial, reduce, setX]);
 
   const moveTo = useCallback(
     (clientX: number) => {
@@ -114,23 +113,15 @@ export default function HeroBeforeAfter({
   return (
     <div
       ref={rootRef}
-      className="hero-ba relative"
-      style={{ "--ba-x": `${INITIAL}%` } as CSSProperties}
+      className="ba-root relative h-full"
+      style={{ "--ba-x": `${initial}%` } as CSSProperties}
     >
-      {/* Before: 装飾用の複製なので支援技術と操作からは切り離す */}
-      <div className="hero-before absolute inset-0 z-0" aria-hidden inert>
+      {/* Before: 見比べ用の複製面。支援技術と操作からは切り離す */}
+      <div className="ba-before absolute inset-0 z-0 overflow-hidden" aria-hidden inert>
         {before}
       </div>
 
-      <div className="hero-after relative z-10">{after}</div>
-
-      {/* 仕切り上部の新旧ラベル */}
-      <span className="hero-ba-label hero-ba-label-before" aria-hidden>
-        {labels.before}
-      </span>
-      <span className="hero-ba-label hero-ba-label-after" aria-hidden>
-        {labels.after}
-      </span>
+      <div className="ba-after relative z-10 h-full">{after}</div>
 
       {/* ドラッグ可能な仕切り */}
       <div
@@ -140,20 +131,20 @@ export default function HeroBeforeAfter({
         aria-orientation="horizontal"
         aria-valuemin={MIN}
         aria-valuemax={MAX}
-        aria-valuenow={INITIAL}
-        className="hero-ba-divider"
+        aria-valuenow={initial}
+        className="ba-divider"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
         onPointerCancel={handlePointerUp}
         onKeyDown={handleKeyDown}
       >
-        <span className="hero-ba-line" aria-hidden />
-        <span className="hero-ba-handle" aria-hidden>
+        <span className="ba-line" aria-hidden />
+        <span className="ba-handle" aria-hidden>
           <ChevronsLeftRight size={18} strokeWidth={2.2} />
         </span>
         {!interacted && (
-          <span className="hero-ba-hint" aria-hidden>
+          <span className="ba-hint" aria-hidden>
             {labels.hint}
           </span>
         )}

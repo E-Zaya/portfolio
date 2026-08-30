@@ -1628,91 +1628,39 @@ html[data-loading] .site-content {
   .loader-ambient { animation: none; }
 }
 
-/* ── Hero Before/After スライダー ──
-   Hero全体を2枚重ねにし、左を「よくある古いページ風」に変装させて
-   仕切りのドラッグで新旧を見比べさせる。ページ自身がポートフォリオになる仕掛け */
-.hero-ba {
+/* ── Before/After デモセクション(ホーム) ──
+   架空のカフェの「よくあるページ vs Zayaがつくる顔」を1枚のブラウザ枠に
+   重ね、仕切りのドラッグで見比べさせる */
+
+/* Hero直上に6remの余白が既にあるため、上は詰めて下だけリズムに乗せる */
+.home-ba-section {
+  padding-block: 0 2.5rem;
+}
+
+@media (min-width: 48rem) {
+  .home-ba-section {
+    padding-block: 0 3.5rem;
+  }
+}
+
+.ba-root {
   touch-action: pan-y;
 }
 
-.hero-after {
-  clip-path: inset(0 0 0 var(--ba-x, 32%));
+.ba-after {
+  clip-path: inset(0 0 0 var(--ba-x, 50%));
 }
 
-/* Before面: 帳簿めいた罫線入りのベージュ紙 + 素朴なフォント + 角丸なし。
-   CSS変数を丸ごと差し替えて、子孫のトークン参照ごと2010年代に戻す */
-.hero-before {
-  overflow: hidden;
-  clip-path: inset(0 calc(100% - var(--ba-x, 32%)) 0 0);
-  background:
-    repeating-linear-gradient(
-      transparent 0 27px,
-      rgba(90, 120, 160, 0.14) 27px 28px
-    ),
-    linear-gradient(
-      90deg,
-      transparent 0 44px,
-      rgba(200, 90, 80, 0.3) 44px 45px,
-      transparent 45px
-    ),
-    #f1ead8;
-  font-family: "Comic Sans MS", "Chalkboard SE", "MS PGothic",
-    "Hiragino Maru Gothic ProN", sans-serif;
-  --marker: #ffe95c;
-  --marker-ink: #8a7a00;
-  --accent-1: #7b7b7b;
-  --accent-2: #24409a;
-  --foreground: #2f2a20;
-  --text-soft: rgba(47, 42, 32, 0.85);
-  --text-muted: rgba(47, 42, 32, 0.6);
-  --border: rgba(60, 50, 30, 0.35);
-  --card: rgba(255, 255, 255, 0.5);
-  --card-strong: rgba(255, 255, 255, 0.75);
-  --color-success: #2c7a2c;
-  --background: #f1ead8;
-  --background-2: #e6dcc4;
-  --button-foreground: #ffffff;
-  --shadow: none;
-}
-
-.hero-before * {
-  font-family: inherit !important;
-  border-radius: 0 !important;
-  box-shadow: none !important;
-  text-shadow: none !important;
-  backdrop-filter: none !important;
-  letter-spacing: 0 !important;
-}
-
-/* グリッド背景・コーナーグロー等の今風の装飾は昔のページには無い */
-.hero-before .hero-decor {
-  display: none;
-}
-
-.hero-before h1 {
-  color: #24409a !important;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.14) !important;
-}
-
-.hero-before img {
-  filter: grayscale(0.85) sepia(0.2) contrast(0.9);
-}
-
-.hero-before a,
-.hero-before button,
-.hero-before .hero-mock-cta {
-  background: linear-gradient(#fefefe, #d5d5d5) !important;
-  border: 1px solid #8b8b8b !important;
-  color: #24409a !important;
-  text-decoration: underline;
+.ba-before {
+  clip-path: inset(0 calc(100% - var(--ba-x, 50%)) 0 0);
 }
 
 /* ── 仕切り ── */
-.hero-ba-divider {
+.ba-divider {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: var(--ba-x, 32%);
+  left: var(--ba-x, 50%);
   z-index: 30;
   display: flex;
   align-items: center;
@@ -1725,7 +1673,7 @@ html[data-loading] .site-content {
   outline: none;
 }
 
-.hero-ba-line {
+.ba-line {
   position: absolute;
   inset: 0 auto 0 50%;
   width: 2px;
@@ -1733,14 +1681,14 @@ html[data-loading] .site-content {
   background: linear-gradient(
     180deg,
     transparent,
-    var(--marker-ink) 16%,
-    var(--marker-ink) 84%,
+    var(--marker-ink) 10%,
+    var(--marker-ink) 90%,
     transparent
   );
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-.hero-ba-handle {
+.ba-handle {
   position: relative;
   z-index: 1;
   display: grid;
@@ -1755,66 +1703,203 @@ html[data-loading] .site-content {
   transition: transform 160ms ease;
 }
 
-.hero-ba-divider:hover .hero-ba-handle {
+.ba-divider:hover .ba-handle {
   transform: scale(1.08);
 }
 
-.hero-ba-divider:focus-visible .hero-ba-handle {
+.ba-divider:focus-visible .ba-handle {
   box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 55%, transparent);
 }
 
-/* 手書き風の誘導コピー(初回ドラッグで消える) */
-.hero-ba-hint {
+/* 手書き風の誘導コピー(初回ドラッグで消える)。
+   下のコンテンツと重なっても読めるよう背景ピルを敷く */
+.ba-hint {
   position: absolute;
-  top: calc(50% + 32px);
+  top: calc(50% + 34px);
   left: 50%;
   transform: translateX(-50%) rotate(-2deg);
   white-space: nowrap;
+  padding: 3px 12px;
+  border-radius: 9999px;
+  background: rgba(8, 17, 32, 0.78);
   font-size: 0.8rem;
   font-style: italic;
   font-weight: 700;
-  color: var(--marker-ink);
+  color: #fbbf24;
   pointer-events: none;
 }
 
-/* ── 新旧ラベル(仕切りに追従・モバイルでは非表示) ── */
-.hero-ba-label {
-  position: absolute;
-  top: 4.25rem;
-  z-index: 25;
-  display: none;
-  padding: 0.3rem 0.7rem;
+/* ── 新旧の凡例(ブラウザ枠の外に置き、中身と重ならない) ── */
+.ba-legend-before {
+  color: var(--text-muted);
+}
+
+.ba-legend-after {
+  color: #e8b04b;
+}
+
+.ba-legend-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 9999px;
-  font-size: 10px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  pointer-events: none;
+  background: currentColor;
+  opacity: 0.8;
 }
 
-@media (min-width: 48rem) {
-  .hero-ba-label {
-    display: inline-flex;
+/* ── Before面: 2010年代の「よくあるお店のページ」 ── */
+.ba-retro {
+  background:
+    repeating-linear-gradient(
+      transparent 0 27px,
+      rgba(90, 120, 160, 0.12) 27px 28px
+    ),
+    #f1ead8;
+  color: #2f2a20;
+  font-family: "Times New Roman", "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+.ba-retro-marquee-wrap {
+  overflow: hidden;
+  background: #24409a;
+  color: #ffffff;
+}
+
+.ba-retro-marquee {
+  display: inline-block;
+  padding: 4px 0;
+  font-size: 11px;
+  white-space: nowrap;
+  animation: ba-marquee 16s linear infinite;
+}
+
+@keyframes ba-marquee {
+  from {
+    transform: translateX(55%);
+  }
+  to {
+    transform: translateX(-105%);
   }
 }
 
-.hero-ba-label-before {
-  right: calc(100% - var(--ba-x, 32%) + 16px);
-  color: #6b6250;
-  border: 1px solid rgba(80, 70, 40, 0.4);
-  background: rgba(255, 253, 244, 0.85);
+.ba-retro-title {
+  color: #24409a;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
 }
 
-.hero-ba-label-after {
-  left: calc(var(--ba-x, 32%) + 16px);
-  color: var(--marker-ink);
-  border: 1px solid color-mix(in srgb, var(--marker-ink) 45%, transparent);
-  background: color-mix(in srgb, var(--background) 82%, transparent);
+.ba-retro-hr {
+  border: none;
+  border-top: 3px double #a05a9a;
+}
+
+.ba-retro-photo {
+  border: 1px solid #8b8b8b;
+  background: #dcd6c6;
+  color: #6b6250;
+}
+
+.ba-retro-table th,
+.ba-retro-table td {
+  border: 1px solid #555;
+  padding: 4px 12px;
+  font-weight: 400;
+}
+
+.ba-retro-table th {
+  background: #e3dcc8;
+}
+
+.ba-retro-counter {
+  margin-inline: 4px;
+  padding: 1px 5px;
+  background: #111;
+  color: #7cfc00;
+  font-family: monospace;
+  letter-spacing: 2px;
+}
+
+.ba-retro-updated {
+  color: #8a8069;
+}
+
+/* ── After面: Zayaが作り直した同じ店 ── */
+.ba-modern {
+  background:
+    radial-gradient(
+      120% 90% at 82% 8%,
+      rgba(142, 90, 45, 0.55),
+      transparent 58%
+    ),
+    radial-gradient(
+      90% 70% at 12% 95%,
+      rgba(232, 176, 75, 0.18),
+      transparent 55%
+    ),
+    linear-gradient(160deg, #2a1c12, #150e08);
+  color: #f5efe7;
+}
+
+.ba-modern-logo {
+  color: #e8b04b;
+}
+
+.ba-modern-tagline {
+  color: #f8f3ea;
+}
+
+.ba-modern-lang {
+  border-color: rgba(245, 239, 231, 0.25);
+  color: rgba(245, 239, 231, 0.7);
+}
+
+.ba-modern-lang-active {
+  border-color: rgba(232, 176, 75, 0.6);
+  background: rgba(232, 176, 75, 0.14);
+  color: #e8b04b;
+}
+
+.ba-modern-cta {
+  background: #e8b04b;
+  color: #241609;
+  box-shadow: 0 8px 28px rgba(232, 176, 75, 0.3);
+}
+
+.ba-modern-meta {
+  color: rgba(245, 239, 231, 0.75);
+}
+
+.ba-modern-open-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 2px;
+  border-radius: 9999px;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+  vertical-align: 1px;
+}
+
+.ba-modern-toast {
+  border: 1px solid rgba(232, 176, 75, 0.4);
+  background: rgba(20, 14, 8, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.ba-modern-toast-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.22);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-ba-handle {
+  .ba-handle {
     transition: none;
+  }
+
+  .ba-retro-marquee {
+    animation: none;
+    transform: none;
   }
 }

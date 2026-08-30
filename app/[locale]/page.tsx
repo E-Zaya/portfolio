@@ -1,3 +1,4 @@
+import BeforeAfterShowcase from "@/components/home/BeforeAfterShowcase";
 import Hero from "@/components/home/Hero";
 import HomeSalesOverview from "@/components/home/HomeSalesOverview";
 import { isLocale, type Locale } from "@/lib/i18n";
@@ -17,6 +18,7 @@ export default async function HomePage({
   return (
     <div className="home-page">
       <Hero locale={locale} />
+      <BeforeAfterShowcase locale={locale} />
       <HomeSalesOverview locale={locale} />
     </div>
   );

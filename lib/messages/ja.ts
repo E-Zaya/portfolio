@@ -76,12 +76,6 @@ export const ja = {
       ],
       handNote: "さわってみて！",
     },
-
-    beforeAfter: {
-      before: "よくあるページ",
-      after: "Zayaがつくる顔",
-      hint: "引っぱってみて",
-    },
     features: [
       {
         title: "Custom Design",
@@ -108,6 +102,36 @@ export const ja = {
       ],
     },
   },
+  baDemo: {
+    eyebrow: "Before / After",
+    title: "同じお店が、ページでここまで変わる。",
+    description:
+      "架空のカフェを例に、「よくあるページ」と「Zayaがつくるページ」を1枚に重ねました。真ん中の仕切りを動かして、お客様から見えている世界を見比べてみてください。",
+    before: "よくあるページ",
+    after: "Zayaがつくる顔",
+    hint: "引っぱってみて",
+    url: "cafe-naran.mn",
+    retro: {
+      title: "ようこそ！カフェ・ナランのホームページへ",
+      marquee:
+        "☆ 本日も元気に営業中です ☆ お知らせ：特にありません ☆ リンクはご自由にどうぞ ☆",
+      photo: "（お店の写真：準備中）",
+      hoursLabel: "営業時間",
+      hoursValue: "9:00〜20:00（不定休）",
+      phone: "ご予約はお電話にて ☎ 7011-2233（営業時間内のみ）",
+      counter: "あなたは 0012847 人目のお客様です",
+      updated: "更新履歴：2019.04.01 ホームページを公開しました",
+    },
+    modern: {
+      name: "Cafe Naran",
+      tagline: "今日のひと息を、\nナランで。",
+      cta: "席をオンライン予約",
+      rating: "★ 4.9 · クチコミ 128件",
+      hours: "本日 9:00–20:00 · 営業中",
+      toast: "新しい予約 — 14:00 / 2名様",
+    },
+  },
+
   homeOverview: {
     servicesEyebrow: "SERVICES",
     servicesTitle: "選ばれるサイトと、手間を減らす仕組み。",

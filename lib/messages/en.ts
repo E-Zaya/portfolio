@@ -76,12 +76,6 @@ export const en = {
       ],
       handNote: "go on, try it!",
     },
-
-    beforeAfter: {
-      before: "A typical site",
-      after: "The face Zaya builds",
-      hint: "drag me",
-    },
     features: [
       {
         title: "Custom Design",
@@ -111,6 +105,36 @@ export const en = {
       ],
     },
   },
+  baDemo: {
+    eyebrow: "Before / After",
+    title: "Same shop. A whole different story.",
+    description:
+      "A fictional cafe, two websites layered into one: the usual page, and the one Zaya builds. Drag the divider and compare what your customers actually see.",
+    before: "A typical site",
+    after: "The face Zaya builds",
+    hint: "drag me",
+    url: "cafe-naran.mn",
+    retro: {
+      title: "Welcome to Cafe Naran's homepage!",
+      marquee:
+        "☆ We are open today as usual ☆ News: nothing new ☆ Feel free to link to us ☆",
+      photo: "(shop photo: coming soon)",
+      hoursLabel: "Opening hours",
+      hoursValue: "9:00–20:00 (irregular holidays)",
+      phone: "Reservations by phone only ☎ 7011-2233 (during opening hours)",
+      counter: "You are visitor no. 0012847",
+      updated: "Updates: 2019.04.01 — homepage published",
+    },
+    modern: {
+      name: "Cafe Naran",
+      tagline: "Your daily pause,\nat Naran.",
+      cta: "Book a table online",
+      rating: "★ 4.9 · 128 reviews",
+      hours: "Today 9:00–20:00 · Open now",
+      toast: "New booking — 14:00, 2 guests",
+    },
+  },
+
   homeOverview: {
     servicesEyebrow: "SERVICES",
     servicesTitle: "Websites that earn trust. Systems that reduce busywork.",

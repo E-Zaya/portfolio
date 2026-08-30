@@ -352,15 +352,6 @@ export type Messages = {
       handNote: string;
     };
 
-    /** Hero全体のBefore/Afterスライダー(仕切りをドラッグして新旧を見比べる) */
-    beforeAfter: {
-      /** 左側(古いページ風)のラベル */
-      before: string;
-      /** 右側(Zayaのデザイン)のラベル */
-      after: string;
-      /** 仕切りハンドルの誘導コピー(「引っぱってみて」) */
-      hint: string;
-    };
 
     features: {
       title: string;
@@ -372,6 +363,42 @@ export type Messages = {
       title: string;
       items: string[];
       captions: string[];
+    };
+  };
+
+  /** ホームのBefore/Afterデモセクション —
+      架空のカフェで「よくあるページ vs Zayaがつくるページ」を見比べさせる */
+  baDemo: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    /** 左面(昔のページ)のラベル */
+    before: string;
+    /** 右面(Zayaのデザイン)のラベル */
+    after: string;
+    /** 仕切りハンドルの誘導コピー */
+    hint: string;
+    /** ブラウザ枠に表示する架空URL */
+    url: string;
+    /** 昔のページ面の文言 */
+    retro: {
+      title: string;
+      marquee: string;
+      photo: string;
+      hoursLabel: string;
+      hoursValue: string;
+      phone: string;
+      counter: string;
+      updated: string;
+    };
+    /** Zaya面の文言 */
+    modern: {
+      name: string;
+      tagline: string;
+      cta: string;
+      rating: string;
+      hours: string;
+      toast: string;
     };
   };
 

@@ -110,7 +110,7 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
             ))}
           </div>
           <span
-            className="hero-mock-cta mt-4 inline-block rounded-md px-3.5 py-1.5 text-[11px] font-bold"
+            className="mt-4 inline-block rounded-md px-3.5 py-1.5 text-[11px] font-bold"
             style={{ background: "#e8b04b", color: "#0d1b17" }}
           >
             Apply for expedition →
