@@ -71,6 +71,21 @@ export const projectItems = [
     kind: "client",
   },
   {
+    slug: "odootech-website",
+    category: "website",
+    image: "/project-images/odootech-web-hero.png",
+    gallery: [
+      "/project-images/odootech-web-hero.png",
+      "/project-images/odootech-web-services.png",
+      "/project-images/odootech-web-integration.png",
+      "/project-images/odootech-web-mobile.png",
+    ],
+    tech: ["Next.js", "TypeScript", "React", "Static Export", "Custom Design System"],
+    demo: "https://odootech-website.vercel.app/",
+    status: "Completed",
+    kind: "client",
+  },
+  {
     slug: "futari",
     category: "app",
     image: "/project-images/futari-home-desktop.png",

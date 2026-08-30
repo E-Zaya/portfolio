@@ -239,6 +239,21 @@ export const en = {
         behind:
           "The hard part was untangling the Odoo templates without losing the energy of the original travel site.",
       },
+      "odootech-website": {
+        title: "OdooTech Corporate Site",
+        description:
+          "A corporate site that makes ten years of ERP delivery — and deep eBarimt and bank integrations — visible at a glance.",
+        tags: ["A face that builds trust", "Instant static-export loads", "Services to integrations, in one story"],
+        client: "OdooTech LLC",
+        summary:
+          "I built the official website for OdooTech LLC, Mongolia's Odoo partner with 10+ years of ERP delivery, from scratch in Next.js. 200+ implementations, eBarimt, five-bank and payment integrations — all organized into one story a business owner can follow without getting lost.",
+        scope:
+          "Information architecture, a custom design system, Next.js implementation, full static export, and deployment.",
+        focus:
+          "Making a hard-to-sell product like ERP feel trustworthy within seconds: numbers (200+ projects, 10 years) and real integration partners up front, building credibility section by section.",
+        behind:
+          "To get the enterprise feel right I built a design system from first principles, then subset the fonts and shipped a fully static export so it opens instantly on any connection.",
+      },
       futari: {
         title: "Futari",
         description:
