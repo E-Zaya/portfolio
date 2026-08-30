@@ -66,7 +66,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 href="#home-services"
                 className="home-outcome-link group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-border px-5 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
               >
-                <span className="font-mono text-[10px] text-[color:var(--accent-2)]">
+                <span className="font-mono text-[10px] text-muted">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{pillar.name}</span>
@@ -89,7 +89,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="max-w-3xl">
               <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-[color:var(--accent-2)]">
+                <span className="font-mono text-[10px] text-muted">
                   02 / 03
                 </span>
                 {t.projectsEyebrow}
@@ -201,7 +201,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
           <div className="relative grid gap-7 xl:grid-cols-[minmax(0,1fr)_minmax(24rem,0.72fr)] xl:items-end xl:gap-16">
             <div>
               <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-[color:var(--accent-2)]">
+                <span className="font-mono text-[10px] text-muted">
                   03 / 03
                 </span>
                 {t.servicesEyebrow}

@@ -1,139 +1,145 @@
+/* ══════════════════════════════════════════════════════════════
+   カラーシステム「墨と金 (Ink & Gold)」
+   - ベース: 夜の書斎の温かい墨色(ダーク) / 温かい紙色(ライト)
+   - アクセント: Zaya Gold — マーカー・Zazaの毛色と同族のアンティークゴールド。
+     使ってよいのは ①主CTA ②マーカー/手書き ③選択・現在地 の3役のみ。
+     装飾に乱用しない(上品さは金の「少なさ」で作る)。
+   ══════════════════════════════════════════════════════════════ */
+
 :root {
   color-scheme: dark;
-   
-  --background: #081120;
-  --background-2: #111827;
-  --foreground: #f8fafc;
 
-  --text-soft: rgba(241, 245, 249, 0.84);
-  --text-muted: rgba(226, 232, 240, 0.80);
+  --background: #171310;
+  --background-2: #1e1915;
+  --foreground: #f2ecdf;
 
-  --card: rgba(255, 255, 255, 0.08);
-  --card-strong: rgba(255, 255, 255, 0.12);
-  /* ボーダー3階層: 外枠 > 内部区切り > 装飾ヘアライン。
-     全部 --border だと線が多重に見えるので役割で濃度を分ける */
-  --border: rgba(255, 255, 255, 0.18);
-  --border-soft: rgba(255, 255, 255, 0.10);
-  --hairline: rgba(255, 255, 255, 0.06);
+  --text-soft: rgba(242, 236, 223, 0.88);
+  --text-muted: rgba(242, 236, 223, 0.66);
+
+  /* カードは不透明(ガラス乱用をやめ、素材感を面で出す) */
+  --card: #1e1a15;
+  --card-strong: #262019;
+  /* ボーダー3階層: 外枠 > 内部区切り > 装飾ヘアライン */
+  --border: rgba(242, 236, 223, 0.16);
+  --border-soft: rgba(242, 236, 223, 0.09);
+  --hairline: rgba(242, 236, 223, 0.06);
 
   /* social brand colors */
   --brand-email: #ea4335;
-  --brand-github: #ffffff;
+  --brand-github: #f2ecdf;
   --brand-instagram: #e4405f;
   --brand-facebook: #1877f2;
-  --brand-x: #ffffff;
+  --brand-x: #f2ecdf;
 
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
 
-  --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+  /* accent-1: 補助の青灰(情報系、主張しない色)
+     accent-2: Zaya Gold(主役) — 旧インディゴの置き換え先
+     accent-3/4: ほぼ未使用の予備(金と喧嘩しない同系) */
+  --accent-1: #8fa9b5;
+  --accent-2: #dca84f;
+  --accent-3: #b58434;
+  --accent-4: #c97b5a;
 
-  --accent-1: #38bdf8;
-  --accent-2: #818cf8;
-  --accent-3: #a855f7;
-  --accent-4: #f472b6;
+  /* マーカーと手書きインクはアクセントと同族の金 */
+  --marker: color-mix(in srgb, #dca84f 40%, transparent);
+  --marker-ink: #dca84f;
 
-  /* マーカー下線(MarkerHighlight)。ダークではインディゴが沈むので
-     Zazaの金色系で光らせる。ライトは html.light で上書き。 */
-  --marker: color-mix(in srgb, #fbbf24 45%, transparent);
-  /* 手書き文字用のインク色(署名・注釈)。マーカーと同系統の濃い色 */
-  --marker-ink: #fbbf24;
+  --surface-glow: rgba(242, 236, 223, 0.03);
+  --surface-glow-strong: rgba(242, 236, 223, 0.05);
 
-  --surface-glow: rgba(255, 255, 255, 0.06);
-  --surface-glow-strong: rgba(255, 255, 255, 0.1);
+  /* 金ボタンの上は墨文字(白抜きにしない) */
+  --button-foreground: #221a0a;
 
-  --button-foreground: #ffffff;
+  --color-success: #4fae7a;
+  --color-warning: #dca84f;
+  --color-error: #e07856;
 
-  --color-success: #34d399;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
-
-  /* 透け感を抑えて、スクロール中もヘッダーの文字がちゃんと読めるように */
-  --header-bg: rgba(8, 17, 32, 0.92);
-  --header-bg-strong: rgba(8, 17, 32, 0.97);
-  --header-border: rgba(255, 255, 255, 0.15);
-  --header-divider: rgba(255, 255, 255, 0.1);
-  --header-hover: rgba(255, 255, 255, 0.1);
-  --header-hover-strong: rgba(255, 255, 255, 0.14);
-  --header-active: rgba(255, 255, 255, 0.14);
-  --header-active-border: rgba(255, 255, 255, 0.1);
+  --header-bg: rgba(23, 19, 16, 0.92);
+  --header-bg-strong: rgba(23, 19, 16, 0.97);
+  --header-border: rgba(242, 236, 223, 0.14);
+  --header-divider: rgba(242, 236, 223, 0.1);
+  --header-hover: rgba(242, 236, 223, 0.08);
+  --header-hover-strong: rgba(242, 236, 223, 0.12);
+  --header-active: rgba(242, 236, 223, 0.12);
+  --header-active-border: rgba(220, 168, 79, 0.28);
   --header-glow: linear-gradient(
     90deg,
-    rgba(129, 140, 248, 0.2),
-    rgba(34, 211, 238, 0.2)
+    rgba(220, 168, 79, 0.14),
+    rgba(220, 168, 79, 0.05)
   );
   --header-bottom-line: linear-gradient(
     90deg,
     transparent,
-    rgba(129, 140, 248, 0.4),
+    rgba(220, 168, 79, 0.35),
     transparent
   );
-  --header-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  --header-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
 
---blog-blob-primary: color-mix(in srgb, var(--accent-1) 24%, transparent);
-  --blog-blob-secondary: color-mix(in srgb, var(--accent-2) 22%, transparent);
-  --blog-blob-bottom: color-mix(in srgb, var(--foreground) 8%, transparent);
-  --blog-link-underline: rgba(255, 255, 255, 0.28);
-  --blog-link-underline-hover: rgba(255, 255, 255, 0.68);
-  --blog-divider: rgba(255, 255, 255, 0.12);
-  --blog-blockquote-bg: rgba(255, 255, 255, 0.04);
-  --blog-blockquote-border: rgba(255, 255, 255, 0.16);
-  --blog-inline-code-bg: rgba(255, 255, 255, 0.08);
-  --blog-code-bg: #0b1220;
-  --blog-code-border: rgba(255, 255, 255, 0.1);
+  --blog-blob-primary: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  --blog-blob-secondary: color-mix(in srgb, var(--accent-1) 12%, transparent);
+  --blog-blob-bottom: color-mix(in srgb, var(--foreground) 6%, transparent);
+  --blog-link-underline: rgba(242, 236, 223, 0.28);
+  --blog-link-underline-hover: rgba(242, 236, 223, 0.68);
+  --blog-divider: rgba(242, 236, 223, 0.12);
+  --blog-blockquote-bg: rgba(242, 236, 223, 0.04);
+  --blog-blockquote-border: rgba(220, 168, 79, 0.4);
+  --blog-inline-code-bg: rgba(242, 236, 223, 0.08);
+  --blog-code-bg: #131009;
+  --blog-code-border: rgba(242, 236, 223, 0.1);
   --blog-code-dot-red: #ff5f56;
   --blog-code-dot-yellow: #ffbd2e;
   --blog-code-dot-green: #27c93f;
-  --blog-table-head: rgba(255, 255, 255, 0.05);
-  --blog-table-cell-border: rgba(255, 255, 255, 0.08);
-  --blog-copy-bg: rgba(255, 255, 255, 0.08);
-  --blog-copy-border: rgba(255, 255, 255, 0.12);
+  --blog-table-head: rgba(242, 236, 223, 0.05);
+  --blog-table-cell-border: rgba(242, 236, 223, 0.08);
+  --blog-copy-bg: rgba(242, 236, 223, 0.08);
+  --blog-copy-border: rgba(242, 236, 223, 0.12);
 
-/* feature card glow tokens */
---feature-glow-strong: color-mix(in srgb, var(--accent-1) 46%, transparent);
---feature-glow-medium: color-mix(in srgb, var(--accent-2) 34%, transparent);
---feature-glow-soft: color-mix(in srgb, var(--accent-3) 26%, transparent);
+  /* feature card tokens(発光は廃止方向 — 低強度の金縁のみ) */
+  --feature-glow-strong: color-mix(in srgb, var(--accent-2) 22%, transparent);
+  --feature-glow-medium: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  --feature-glow-soft: color-mix(in srgb, var(--accent-2) 8%, transparent);
 
---feature-border-strong: color-mix(in srgb, var(--accent-1) 70%, var(--border));
---feature-border-medium: color-mix(in srgb, var(--accent-2) 56%, var(--border));
---feature-border-soft: color-mix(in srgb, var(--accent-3) 44%, var(--border));
+  --feature-border-strong: color-mix(in srgb, var(--accent-2) 55%, var(--border));
+  --feature-border-medium: color-mix(in srgb, var(--accent-2) 40%, var(--border));
+  --feature-border-soft: color-mix(in srgb, var(--accent-2) 28%, var(--border));
 }
-
 
 html.light {
   color-scheme: light;
 
-  --background: #eef3f8;
-  --background-2: #dfe7f0;
-  --foreground: #0f172a;
+  --background: #f7f2e9;
+  --background-2: #efe7d8;
+  --foreground: #262015;
 
-  --text-soft: rgba(15, 23, 42, 0.84);
-  --text-muted: rgba(30, 41, 59, 0.80);
+  --text-soft: rgba(38, 32, 21, 0.86);
+  --text-muted: rgba(38, 32, 21, 0.62);
 
-  --card: rgba(255, 255, 255, 0.55);
-  --card-strong: rgba(255, 255, 255, 0.72);
-  /* ライトはボーダーが背景に溶けやすいので少し濃いめに */
-  --border: rgba(100, 116, 139, 0.30);
-  --border-soft: rgba(100, 116, 139, 0.16);
-  --hairline: rgba(15, 23, 42, 0.08);
+  --card: #fdfaf3;
+  --card-strong: #fffdf7;
+  --border: rgba(90, 75, 45, 0.25);
+  --border-soft: rgba(90, 75, 45, 0.14);
+  --hairline: rgba(90, 75, 45, 0.08);
 
-  --shadow: 0 20px 60px rgba(15, 23, 42, 0.1);
+  --shadow: 0 16px 40px rgba(60, 45, 20, 0.1);
 
-  --accent-1: #0ea5e9;
-  --accent-2: #6366f1;
-  --accent-3: #8b5cf6;
-  --accent-4: #ec4899;
+  /* ライトの金は読める濃さ(コントラスト確保)まで沈める */
+  --accent-1: #4e7285;
+  --accent-2: #8a6516;
+  --accent-3: #7a5a1c;
+  --accent-4: #a65c3c;
 
-  /* ライトは従来どおりインディゴのマーカー */
-  --marker: color-mix(in srgb, var(--accent-2) 30%, transparent);
-  --marker-ink: var(--accent-2);
+  --marker: color-mix(in srgb, #e3ac4c 38%, transparent);
+  --marker-ink: #8a6516;
 
-  --surface-glow: rgba(255, 255, 255, 0.58);
-  --surface-glow-strong: rgba(255, 255, 255, 0.8);
+  --surface-glow: rgba(255, 253, 247, 0.6);
+  --surface-glow-strong: rgba(255, 253, 247, 0.85);
 
-  --button-foreground: #ffffff;
+  --button-foreground: #fbf7ec;
 
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
+  --color-success: #2e8b57;
+  --color-warning: #a87b17;
+  --color-error: #c05635;
 
   --brand-email: #ea4335;
   --brand-github: #181717;
@@ -141,110 +147,43 @@ html.light {
   --brand-facebook: #1877f2;
   --brand-x: #000000;
 
-  --header-bg: rgba(255, 255, 255, 0.92);
-  --header-bg-strong: rgba(255, 255, 255, 0.97);
-  --header-border: rgba(100, 116, 139, 0.18);
-  --header-divider: rgba(100, 116, 139, 0.16);
-  --header-hover: rgba(255, 255, 255, 0.48);
-  --header-hover-strong: rgba(255, 255, 255, 0.72);
-  --header-active: rgba(255, 255, 255, 0.86);
-  --header-active-border: rgba(99, 102, 241, 0.14);
+  --header-bg: rgba(253, 250, 243, 0.92);
+  --header-bg-strong: rgba(253, 250, 243, 0.97);
+  --header-border: rgba(90, 75, 45, 0.2);
+  --header-divider: rgba(90, 75, 45, 0.14);
+  --header-hover: rgba(255, 253, 247, 0.55);
+  --header-hover-strong: rgba(255, 253, 247, 0.8);
+  --header-active: rgba(255, 253, 247, 0.9);
+  --header-active-border: rgba(138, 101, 22, 0.22);
   --header-glow: linear-gradient(
     90deg,
-    rgba(99, 102, 241, 0.16),
-    rgba(14, 165, 233, 0.16)
+    rgba(138, 101, 22, 0.1),
+    rgba(138, 101, 22, 0.04)
   );
   --header-bottom-line: linear-gradient(
     90deg,
     transparent,
-    rgba(99, 102, 241, 0.28),
+    rgba(138, 101, 22, 0.25),
     transparent
   );
-  --header-shadow: 0 8px 30px rgba(15, 23, 42, 0.08);
+  --header-shadow: 0 8px 30px rgba(60, 45, 20, 0.08);
 
-  --blog-blob-primary: color-mix(in srgb, var(--accent-1) 18%, transparent);
-  --blog-blob-secondary: color-mix(in srgb, var(--accent-2) 16%, transparent);
-  --blog-blob-bottom: rgba(15, 23, 42, 0.08);
-  --blog-link-underline: rgba(15, 23, 42, 0.22);
-  --blog-link-underline-hover: rgba(15, 23, 42, 0.5);
-  --blog-divider: rgba(15, 23, 42, 0.12);
-  --blog-blockquote-bg: rgba(255, 255, 255, 0.68);
-  --blog-blockquote-border: rgba(15, 23, 42, 0.14);
-  --blog-inline-code-bg: rgba(15, 23, 42, 0.06);
-  --blog-code-bg: rgba(15, 23, 42, 0.045);
-  --blog-code-border: rgba(15, 23, 42, 0.1);
+  --blog-blob-primary: color-mix(in srgb, #e3ac4c 16%, transparent);
+  --blog-blob-secondary: color-mix(in srgb, var(--accent-1) 12%, transparent);
+  --blog-blob-bottom: rgba(38, 32, 21, 0.07);
+  --blog-link-underline: rgba(38, 32, 21, 0.22);
+  --blog-link-underline-hover: rgba(38, 32, 21, 0.5);
+  --blog-divider: rgba(38, 32, 21, 0.12);
+  --blog-blockquote-bg: rgba(255, 253, 247, 0.7);
+  --blog-blockquote-border: rgba(138, 101, 22, 0.4);
+  --blog-inline-code-bg: rgba(38, 32, 21, 0.06);
+  --blog-code-bg: rgba(38, 32, 21, 0.045);
+  --blog-code-border: rgba(38, 32, 21, 0.1);
   --blog-code-dot-red: #ff5f56;
   --blog-code-dot-yellow: #ffbd2e;
   --blog-code-dot-green: #27c93f;
-  --blog-table-head: rgba(15, 23, 42, 0.04);
-  --blog-table-cell-border: rgba(15, 23, 42, 0.08);
-  --blog-copy-bg: rgba(15, 23, 42, 0.05);
-  --blog-copy-border: rgba(15, 23, 42, 0.1);
-}
-
-
-/* ══════════════════════════════════════════════════════════════
-   パレット比較プレビュー(ホーム確認用)。
-   html[data-palette="gold" | "lavender"] で切替。
-   採用決定後はどちらかを :root 本体に昇格させ、このブロックは削除する。
-   ══════════════════════════════════════════════════════════════ */
-
-/* ── 案1: 墨と金 (Ink & Gold) ── */
-[data-palette="gold"] {
-  --background: #171310;
-  --background-2: #1e1915;
-  --foreground: #f4efe4;
-  --text-soft: rgba(244, 239, 228, 0.88);
-  --text-muted: rgba(244, 239, 228, 0.68);
-  --card: #1e1a15;
-  --card-strong: #262019;
-  --border: rgba(244, 239, 228, 0.16);
-  --border-soft: rgba(244, 239, 228, 0.09);
-  --hairline: rgba(244, 239, 228, 0.06);
-  --accent-1: #8fa9b5;
-  --accent-2: #e3ac4c;
-  --marker: color-mix(in srgb, #e3ac4c 40%, transparent);
-  --marker-ink: #e3ac4c;
-  --surface-glow: rgba(244, 239, 228, 0.03);
-  --surface-glow-strong: rgba(244, 239, 228, 0.05);
-  --button-foreground: #201808;
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  --header-bg: rgba(23, 19, 16, 0.92);
-  --header-bg-strong: rgba(23, 19, 16, 0.97);
-  --header-border: rgba(244, 239, 228, 0.14);
-  --header-divider: rgba(244, 239, 228, 0.1);
-  --header-hover: rgba(244, 239, 228, 0.08);
-  --header-hover-strong: rgba(244, 239, 228, 0.12);
-  --header-active: rgba(244, 239, 228, 0.12);
-  --header-active-border: rgba(227, 172, 76, 0.25);
-}
-
-/* ── 案2: ラベンダー (夜のラベンダー×署名の金マーカー) ── */
-[data-palette="lavender"] {
-  --background: #161320;
-  --background-2: #1c1828;
-  --foreground: #f1eef8;
-  --text-soft: rgba(241, 238, 248, 0.88);
-  --text-muted: rgba(241, 238, 248, 0.66);
-  --card: #1e1a2b;
-  --card-strong: #262138;
-  --border: rgba(241, 238, 248, 0.16);
-  --border-soft: rgba(241, 238, 248, 0.09);
-  --hairline: rgba(241, 238, 248, 0.06);
-  --accent-1: #8fb8c9;
-  --accent-2: #c3aff0;
-  --marker: color-mix(in srgb, #e8b04b 40%, transparent);
-  --marker-ink: #e8b04b;
-  --surface-glow: rgba(241, 238, 248, 0.03);
-  --surface-glow-strong: rgba(241, 238, 248, 0.05);
-  --button-foreground: #1d1530;
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.38);
-  --header-bg: rgba(22, 19, 32, 0.92);
-  --header-bg-strong: rgba(22, 19, 32, 0.97);
-  --header-border: rgba(241, 238, 248, 0.14);
-  --header-divider: rgba(241, 238, 248, 0.1);
-  --header-hover: rgba(241, 238, 248, 0.08);
-  --header-hover-strong: rgba(241, 238, 248, 0.12);
-  --header-active: rgba(241, 238, 248, 0.12);
-  --header-active-border: rgba(195, 175, 240, 0.25);
+  --blog-table-head: rgba(38, 32, 21, 0.04);
+  --blog-table-cell-border: rgba(38, 32, 21, 0.08);
+  --blog-copy-bg: rgba(38, 32, 21, 0.05);
+  --blog-copy-border: rgba(38, 32, 21, 0.1);
 }

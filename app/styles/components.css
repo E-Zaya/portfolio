@@ -195,7 +195,7 @@
   text-transform: uppercase;
   letter-spacing: 0.34em;
   /* hero-gradient / primaryボタンと同じ accent-2 単色に統一 */
-  color: var(--accent-2);
+  color: var(--text-muted);
 }
 
 .grid-auto {
@@ -757,7 +757,7 @@ html.light .mouse-glow::before {
   align-items: center;
   justify-content: center;
   gap: 0.8rem;
-  color: var(--accent-2);
+  color: var(--text-muted);
 }
 
 .home-story-index::before,
@@ -765,7 +765,7 @@ html.light .mouse-glow::before {
   content: "";
   width: 2.25rem;
   height: 1px;
-  background: color-mix(in srgb, var(--accent-2) 52%, transparent);
+  background: var(--border);
 }
 
 .home-statement-highlight {
@@ -819,7 +819,7 @@ html.light .mouse-glow::before {
   width: 2rem;
   height: 1px;
   flex: 0 0 auto;
-  background: color-mix(in srgb, var(--accent-2) 68%, transparent);
+  background: var(--border);
 }
 
 .home-inline-link:hover span,
@@ -1725,7 +1725,7 @@ html[data-loading] .site-content {
   font-size: 0.8rem;
   font-style: italic;
   font-weight: 700;
-  color: #fbbf24;
+  color: var(--marker-ink);
   pointer-events: none;
 }
 /* ── 左面: いまの毎日(くすんだ空気) ── */
@@ -1736,7 +1736,7 @@ html[data-loading] .site-content {
       rgba(148, 163, 184, 0.14),
       transparent 55%
     ),
-    linear-gradient(160deg, #2b3140, #191d26);
+    linear-gradient(160deg, #221e19, #171310);
   color: rgba(226, 232, 240, 0.88);
 }
 
@@ -1757,12 +1757,12 @@ html[data-loading] .site-content {
       color-mix(in srgb, var(--accent-1) 18%, transparent),
       transparent 55%
     ),
-    linear-gradient(160deg, #1d2540, #12182c);
+    linear-gradient(160deg, #262019, #1a1611);
   color: #eef2ff;
 }
 
 .ba-future-label {
-  color: #c7d2fe;
+  color: color-mix(in srgb, var(--accent-2) 55%, var(--foreground));
 }
 
 /* ── 今/これからの行 —
