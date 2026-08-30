@@ -36,7 +36,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
               href={withLocale(locale, `/blog/${post.slug}`)}
               className="group block"
             >
-              <article className="h-full rounded-2xl border border-border bg-card p-4 shadow-theme backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
+              <article className="h-full rounded-2xl border border-border bg-card p-4 shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
                 <div className="text-xs text-muted">{formattedDate}</div>
 
                 <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-[1.2] tracking-[-0.04em] text-foreground">

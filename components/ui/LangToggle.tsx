@@ -90,7 +90,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
             ? "desktop-dock-item desktop-dock-lang w-full"
             : cn(
                 "group inline-flex h-9 items-center gap-2 rounded-full",
-                "border px-3 backdrop-blur-xl",
+                "border px-3",
                 "font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground",
                 "transition-[transform,background,border-color,box-shadow] duration-200",
                 "hover:-translate-y-0.5",
@@ -148,7 +148,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
               isDock
                 ? "bottom-[calc(100%+8px)] left-0 w-full min-w-full"
                 : "right-0 top-[calc(100%+8px)]",
-              "overflow-hidden rounded-2xl border p-1.5 backdrop-blur-xl",
+              "overflow-hidden rounded-2xl border p-1.5",
             )}
             style={{
               borderColor: `color-mix(in srgb, ${current.accent} 38%, var(--border))`,

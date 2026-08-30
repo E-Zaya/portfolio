@@ -4,7 +4,6 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingConsultPill from "@/components/layout/FloatingConsultPill";
 import LoadingScreen from "@/components/layout/LoadingScreen";
-import MouseGlow from "@/components/Effects/MouseGlow";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
@@ -135,7 +134,6 @@ export default async function LocaleLayout({
           >
             <LoadingScreen />
             <ScrollProgress />
-            <MouseGlow />
             <div className="site-content">
               <Header locale={locale} />
               <main>{children}</main>

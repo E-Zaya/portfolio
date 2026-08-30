@@ -63,7 +63,7 @@ export default function HeroVisual() {
 
       {/* browser frame */}
       <div
-        className="relative overflow-hidden rounded-3xl border backdrop-blur-xl"
+        className="relative overflow-hidden rounded-3xl border"
         style={{
           borderColor: "color-mix(in srgb, var(--foreground) 14%, transparent)",
           background:
@@ -153,7 +153,7 @@ export default function HeroVisual() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -3 }}
                 transition={{ duration: 0.3 }}
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold backdrop-blur"
+                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--foreground) 12%, transparent)",
@@ -224,7 +224,7 @@ export default function HeroVisual() {
       >
         {/* speech bubble */}
         <div
-          className="mb-2 max-w-[160px] rounded-2xl px-3 py-2 text-[11px] font-bold leading-tight backdrop-blur"
+          className="mb-2 max-w-[160px] rounded-2xl px-3 py-2 text-[11px] font-bold leading-tight"
           style={{
             background:
               "linear-gradient(135deg, color-mix(in srgb, var(--accent-1) 18%, var(--card-strong)), color-mix(in srgb, var(--accent-3) 14%, var(--card-strong)))",

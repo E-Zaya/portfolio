@@ -155,7 +155,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/20 bg-black/35 px-2.5 py-1.5 backdrop-blur-md">
+                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/20 bg-black/35 px-2.5 py-1.5">
                   {gallery.map((src, index) => (
                     <button
                       key={src}

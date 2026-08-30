@@ -81,12 +81,6 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       gradientBorder
       className="relative overflow-hidden rounded-3xl p-5 sm:p-7 md:p-9"
     >
-      <div
-        className="absolute -right-16 -top-16 h-44 w-44 rounded-full blur-3xl"
-        style={{
-          background: "color-mix(in srgb, var(--accent-1) 18%, transparent)",
-        }}
-      />
 
       <div className="relative z-10">
         <p className="text-sm uppercase tracking-[0.22em] text-muted">

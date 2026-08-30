@@ -163,7 +163,7 @@ export default async function BlogDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container-custom">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-4 pb-4 pt-4 sm:px-5 sm:pb-6 sm:pt-5 md:px-8 md:pb-8 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-4 pb-4 pt-4 sm:px-5 sm:pb-6 sm:pt-5 md:px-8 md:pb-8 md:pt-7 xl:px-10 xl:pb-12 shadow-theme">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
 
@@ -177,7 +177,7 @@ export default async function BlogDetailPage({
                   <BlogPostTOC headings={headings} locale={locale} mode="mobile" />
                 </div>
 
-                <article className="article-card rounded-3xl border border-border bg-card-strong p-4 shadow-theme backdrop-blur-xl sm:p-5 md:p-7">
+                <article className="article-card rounded-3xl border border-border bg-card-strong p-4 shadow-theme sm:p-5 md:p-7">
                   <CodeCopy locale={locale} />
                   <div
                     className="blog-article mx-auto max-w-[74ch]"

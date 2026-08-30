@@ -34,7 +34,7 @@ export default function BlogCard({ post, locale }: Props) {
   const formattedDate = formatPostDate(post.date, locale) ?? t.noDate;
 
   return (
-    <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-theme backdrop-blur-xl transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
+    <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
       <Link href={withLocale(locale, `/blog/${post.slug}`)} className="flex h-full flex-col">
         {post.cover ? (
           <div className="relative aspect-[1.75/1] overflow-hidden border-b border-border bg-card-strong">

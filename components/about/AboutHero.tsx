@@ -74,7 +74,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: 0.55 + index * 0.1 }}
               whileHover={{ scale: 1.07, y: -2 }}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs shadow-sm backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs shadow-sm"
             >
               <ReactCountryFlag
                 countryCode={lang.country}
@@ -97,18 +97,6 @@ export default function AboutHero({ locale }: { locale: Locale }) {
         transition={{ duration: 0.8, delay: 0.12 }}
         className="relative flex justify-center lg:justify-end"
       >
-        <div
-          className="pointer-events-none absolute -left-5 bottom-8 h-28 w-28 rounded-full blur-3xl"
-          style={{
-            background: "color-mix(in srgb, var(--accent-1) 18%, transparent)",
-          }}
-        />
-        <div
-          className="pointer-events-none absolute -right-5 top-8 h-28 w-28 rounded-full blur-3xl"
-          style={{
-            background: "color-mix(in srgb, var(--accent-2) 18%, transparent)",
-          }}
-        />
 
         <div className="gradient-border rounded-3xl p-px">
           <motion.div

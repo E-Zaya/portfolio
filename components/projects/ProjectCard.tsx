@@ -40,7 +40,7 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
           <div className="project-image-overlay" />
 
           {isLive && (
-            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold backdrop-blur-md">
+            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold">
               <span className="project-live-dot h-1.5 w-1.5 rounded-full" />
               {t.liveLabel}
             </span>

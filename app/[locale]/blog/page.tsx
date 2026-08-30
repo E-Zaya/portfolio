@@ -30,7 +30,7 @@ export default async function BlogPage({
   return (
     <main className="section-space pb-12 sm:pb-16 md:pb-20">
       <section className="container-custom">
-        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-4 pb-6 pt-4 sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12 shadow-theme backdrop-blur-xl">
+        <div className="relative overflow-hidden rounded-3xl border border-border bg-card px-4 pb-6 pt-4 sm:px-5 sm:pb-8 sm:pt-6 md:px-8 md:pb-10 md:pt-7 xl:px-10 xl:pb-12 shadow-theme">
           <div className="blog-shell-blob blog-shell-blob-primary" />
           <div className="blog-shell-blob blog-shell-blob-secondary" />
           <div className="blog-shell-blob blog-shell-blob-bottom" />

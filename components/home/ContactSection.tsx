@@ -11,23 +11,6 @@ export default function ContactSection({ locale }: { locale: Locale }) {
 
   return (
     <section className="section-space relative overflow-hidden">
-      <div className="absolute inset-0 -z-10">
-        <div
-          className="absolute left-1/2 top-0 h-105 w-105 -translate-x-1/2 rounded-full blur-3xl"
-          style={{
-            background:
-              "color-mix(in srgb, var(--accent-1) 20%, transparent)",
-          }}
-        />
-        <div
-          className="absolute bottom-0 right-0 h-70 w-70 rounded-full blur-3xl"
-          style={{
-            background:
-              "color-mix(in srgb, var(--accent-2) 16%, transparent)",
-          }}
-        />
-      </div>
-
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 26 }}

@@ -28,16 +28,6 @@ export default function Hero({ locale }: { locale: Locale }) {
           }}
         />
 
-        {/* corner glow */}
-        <div
-          className="pointer-events-none absolute -right-32 -top-32 h-[480px] w-[480px] rounded-full"
-          style={{
-            background:
-              "conic-gradient(from 220deg at 60% 40%, color-mix(in srgb, var(--accent-1) 60%, transparent), color-mix(in srgb, var(--accent-2) 40%, transparent), transparent 40%)",
-            filter: "blur(64px)",
-            opacity: 0.35,
-          }}
-        />
 
         {/* top rule */}
         <div
