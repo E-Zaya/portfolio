@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
@@ -14,9 +15,27 @@ export default function ContactForm({ locale }: { locale: Locale }) {
   const t = getMessages(locale).contact;
   const zaza = getMessages(locale).zaza;
   const [state, setState] = useState<FormState>("idle");
+  // 送信完了は1行表示だと気づきにくいので、ポップアップで確実に伝える
+  const [showSuccess, setShowSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
   const startedRef = useRef(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // ポップアップ表示中: Escで閉じる・背面スクロール停止・ダイアログへフォーカス
+  useEffect(() => {
+    if (!showSuccess) return;
+    dialogRef.current?.focus();
+    document.documentElement.style.overflow = "hidden";
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowSuccess(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.documentElement.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [showSuccess]);
 
   async function handleSubmit(formData: FormData) {
     setState("loading");
@@ -45,6 +64,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
       }
 
       setState("success");
+      setShowSuccess(true);
       formRef.current?.reset();
       track("Contact Form Submit", { locale, result: "success" });
     } catch (error) {
@@ -156,30 +176,6 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           <p className="text-[13px] leading-relaxed text-muted">{t.form.note}</p>
 
           <div aria-live="polite" className="min-h-6 text-sm">
-            {state === "success" && (
-              <motion.div
-                className="flex items-center gap-3"
-                initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ type: "spring", stiffness: 300, damping: 18 }}
-              >
-                {/* Zazaが喜ぶ */}
-                <Image
-                  src="/Zaza/mascot/zaza-celebrate.png"
-                  alt=""
-                  aria-hidden
-                  width={56}
-                  height={56}
-                  className="w-11 shrink-0"
-                />
-                <div>
-                  <p className="font-bold text-foreground">
-                    {zaza.formSuccess}
-                  </p>
-                  <p className="mt-0.5 text-xs text-muted">{t.form.success}</p>
-                </div>
-              </motion.div>
-            )}
             {state === "error" && (
               <p className="text-[var(--color-error)]">
                 {errorMessage || t.form.error}
@@ -188,6 +184,61 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           </div>
         </form>
       </div>
+
+      {/* 送信完了ポップアップ — Zazaが喜んで知らせる。
+          Cardのbackdrop-filterがfixedの基準を変えてしまうため、
+          createPortalでbody直下に描画して画面中央に確実に出す */}
+      {showSuccess &&
+        createPortal(
+        <div
+          className="project-modal-backdrop fixed inset-0 z-9000 flex items-center justify-center p-4"
+          onClick={() => setShowSuccess(false)}
+        >
+          <motion.div
+            ref={dialogRef}
+            role="dialog"
+            aria-modal="true"
+            tabIndex={-1}
+            aria-labelledby="contact-success-title"
+            aria-describedby="contact-success-body"
+            className="project-modal-panel relative w-full max-w-sm rounded-3xl p-7 text-center outline-none sm:p-9"
+            initial={{ opacity: 0, y: 24, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Image
+              src="/Zaza/mascot/zaza-celebrate.png"
+              alt=""
+              aria-hidden
+              width={140}
+              height={140}
+              className="mx-auto w-24 sm:w-28"
+            />
+            <p
+              id="contact-success-title"
+              className="mt-4 text-xl font-bold text-foreground sm:text-2xl"
+            >
+              {zaza.formSuccess}
+            </p>
+            <p
+              id="contact-success-body"
+              className="mt-2 text-sm leading-7 text-soft"
+            >
+              {t.form.success}
+            </p>
+            <Button
+              type="button"
+              variant="primary"
+              className="mt-6 w-full font-bold"
+              onClick={() => setShowSuccess(false)}
+            >
+              {t.form.close}
+            </Button>
+          </motion.div>
+        </div>,
+        document.body,
+      )}
     </Card>
   );
 }

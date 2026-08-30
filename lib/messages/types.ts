@@ -232,6 +232,8 @@ export type ContactFormContent = {
   error: string;
   /** 送信ボタン下の安心ひとこと */
   note: string;
+  /** 送信完了ポップアップの閉じるボタン */
+  close: string;
 };
 
 export type ContactContent = {
