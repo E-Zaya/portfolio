@@ -1627,3 +1627,194 @@ html[data-loading] .site-content {
 @media (prefers-reduced-motion: reduce) {
   .loader-ambient { animation: none; }
 }
+
+/* ── Hero Before/After スライダー ──
+   Hero全体を2枚重ねにし、左を「よくある古いページ風」に変装させて
+   仕切りのドラッグで新旧を見比べさせる。ページ自身がポートフォリオになる仕掛け */
+.hero-ba {
+  touch-action: pan-y;
+}
+
+.hero-after {
+  clip-path: inset(0 0 0 var(--ba-x, 32%));
+}
+
+/* Before面: 帳簿めいた罫線入りのベージュ紙 + 素朴なフォント + 角丸なし。
+   CSS変数を丸ごと差し替えて、子孫のトークン参照ごと2010年代に戻す */
+.hero-before {
+  overflow: hidden;
+  clip-path: inset(0 calc(100% - var(--ba-x, 32%)) 0 0);
+  background:
+    repeating-linear-gradient(
+      transparent 0 27px,
+      rgba(90, 120, 160, 0.14) 27px 28px
+    ),
+    linear-gradient(
+      90deg,
+      transparent 0 44px,
+      rgba(200, 90, 80, 0.3) 44px 45px,
+      transparent 45px
+    ),
+    #f1ead8;
+  font-family: "Comic Sans MS", "Chalkboard SE", "MS PGothic",
+    "Hiragino Maru Gothic ProN", sans-serif;
+  --marker: #ffe95c;
+  --marker-ink: #8a7a00;
+  --accent-1: #7b7b7b;
+  --accent-2: #24409a;
+  --foreground: #2f2a20;
+  --text-soft: rgba(47, 42, 32, 0.85);
+  --text-muted: rgba(47, 42, 32, 0.6);
+  --border: rgba(60, 50, 30, 0.35);
+  --card: rgba(255, 255, 255, 0.5);
+  --card-strong: rgba(255, 255, 255, 0.75);
+  --color-success: #2c7a2c;
+  --background: #f1ead8;
+  --background-2: #e6dcc4;
+  --button-foreground: #ffffff;
+  --shadow: none;
+}
+
+.hero-before * {
+  font-family: inherit !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+  letter-spacing: 0 !important;
+}
+
+/* グリッド背景・コーナーグロー等の今風の装飾は昔のページには無い */
+.hero-before .hero-decor {
+  display: none;
+}
+
+.hero-before h1 {
+  color: #24409a !important;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.14) !important;
+}
+
+.hero-before img {
+  filter: grayscale(0.85) sepia(0.2) contrast(0.9);
+}
+
+.hero-before a,
+.hero-before button,
+.hero-before .hero-mock-cta {
+  background: linear-gradient(#fefefe, #d5d5d5) !important;
+  border: 1px solid #8b8b8b !important;
+  color: #24409a !important;
+  text-decoration: underline;
+}
+
+/* ── 仕切り ── */
+.hero-ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--ba-x, 32%);
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  margin-left: -22px;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+  outline: none;
+}
+
+.hero-ba-line {
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: 2px;
+  margin-left: -1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    var(--marker-ink) 16%,
+    var(--marker-ink) 84%,
+    transparent
+  );
+  opacity: 0.85;
+}
+
+.hero-ba-handle {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 2px solid var(--marker-ink);
+  background: var(--background);
+  color: var(--marker-ink);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform 160ms ease;
+}
+
+.hero-ba-divider:hover .hero-ba-handle {
+  transform: scale(1.08);
+}
+
+.hero-ba-divider:focus-visible .hero-ba-handle {
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-2) 55%, transparent);
+}
+
+/* 手書き風の誘導コピー(初回ドラッグで消える) */
+.hero-ba-hint {
+  position: absolute;
+  top: calc(50% + 32px);
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  font-style: italic;
+  font-weight: 700;
+  color: var(--marker-ink);
+  pointer-events: none;
+}
+
+/* ── 新旧ラベル(仕切りに追従・モバイルでは非表示) ── */
+.hero-ba-label {
+  position: absolute;
+  top: 4.25rem;
+  z-index: 25;
+  display: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 9999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+@media (min-width: 48rem) {
+  .hero-ba-label {
+    display: inline-flex;
+  }
+}
+
+.hero-ba-label-before {
+  right: calc(100% - var(--ba-x, 32%) + 16px);
+  color: #6b6250;
+  border: 1px solid rgba(80, 70, 40, 0.4);
+  background: rgba(255, 253, 244, 0.85);
+}
+
+.hero-ba-label-after {
+  left: calc(var(--ba-x, 32%) + 16px);
+  color: var(--marker-ink);
+  border: 1px solid color-mix(in srgb, var(--marker-ink) 45%, transparent);
+  background: color-mix(in srgb, var(--background) 82%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ba-handle {
+    transition: none;
+  }
+}

@@ -76,6 +76,12 @@ export const ja = {
       ],
       handNote: "さわってみて！",
     },
+
+    beforeAfter: {
+      before: "よくあるページ",
+      after: "Zayaがつくる顔",
+      hint: "引っぱってみて",
+    },
     features: [
       {
         title: "Custom Design",

@@ -352,6 +352,16 @@ export type Messages = {
       handNote: string;
     };
 
+    /** Hero全体のBefore/Afterスライダー(仕切りをドラッグして新旧を見比べる) */
+    beforeAfter: {
+      /** 左側(古いページ風)のラベル */
+      before: string;
+      /** 右側(Zayaのデザイン)のラベル */
+      after: string;
+      /** 仕切りハンドルの誘導コピー(「引っぱってみて」) */
+      hint: string;
+    };
+
     features: {
       title: string;
       description: string;

@@ -82,6 +82,12 @@ export const mn = {
       handNote: "дараад үзээрэй!",
     },
 
+    beforeAfter: {
+      before: "Энгийн хуучин сайт",
+      after: "Zaya-гийн бүтээх төрх",
+      hint: "чирж үзээрэй",
+    },
+
     features: [
       {
         title: "Custom Design",

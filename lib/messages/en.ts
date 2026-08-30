@@ -76,6 +76,12 @@ export const en = {
       ],
       handNote: "go on, try it!",
     },
+
+    beforeAfter: {
+      before: "A typical site",
+      after: "The face Zaya builds",
+      hint: "drag me",
+    },
     features: [
       {
         title: "Custom Design",
