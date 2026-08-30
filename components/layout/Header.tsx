@@ -61,7 +61,7 @@ export default function Header({ locale }: { locale: Locale }) {
             scrolled ? "px-3 py-1.5 sm:px-5" : "px-3 py-2 sm:px-5",
           )}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#dca84f]/8 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[#7fa8f0]/8 via-transparent to-transparent" />
 
           <div className="relative flex min-h-12 items-center justify-between gap-3 sm:gap-4">
             <Link

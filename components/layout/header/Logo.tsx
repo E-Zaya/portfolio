@@ -16,7 +16,7 @@ export default function Logo({ size = 46 }: LogoProps) {
 
   return (
     <div className="relative">
-      <div className="absolute inset-0 rounded-full bg-linear-to-r from-[#dca84f]/20 to-transparent blur-xl" />
+      <div className="absolute inset-0 rounded-full bg-linear-to-r from-[#7fa8f0]/20 to-transparent blur-xl" />
       <div
         className="logo-shell relative"
         style={isCustom ? { borderRadius: shellRadius } : undefined}
@@ -34,8 +34,8 @@ export default function Logo({ size = 46 }: LogoProps) {
           >
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#E9BB63" />
-                <stop offset="100%" stopColor="#C08A2E" />  
+                <stop offset="0%" stopColor="#9DBCF5" />
+                <stop offset="100%" stopColor="#3B66D6" />  
               </linearGradient>
             </defs>
 
