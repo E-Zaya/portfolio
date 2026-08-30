@@ -153,6 +153,35 @@
   }
 }
 
+/* サービスページのように1ページ内にセクションが多数並ぶ場合、
+   .section-space (6rem) をそのまま重ねると間延びするので、
+   ページ内リズムを約半分に圧縮する(先頭・末尾はページ余白として残す) */
+.services-flow .section-space {
+  padding-block: 2.5rem;
+}
+
+.services-flow > section:first-child {
+  padding-top: 4rem;
+}
+
+.services-flow > section:last-child {
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 48rem) {
+  .services-flow .section-space {
+    padding-block: 3.5rem;
+  }
+
+  .services-flow > section:first-child {
+    padding-top: 6rem;
+  }
+
+  .services-flow > section:last-child {
+    padding-bottom: 7rem;
+  }
+}
+
 .eyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -1443,7 +1472,7 @@ html.light .mouse-glow::before {
 .services-faq-summary {
   list-style: none;
   cursor: pointer;
-  padding: 1.125rem 0;
+  padding: 1.35rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1460,8 +1489,8 @@ html.light .mouse-glow::before {
 
 .services-faq-icon {
   flex-shrink: 0;
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1479,7 +1508,7 @@ html.light .mouse-glow::before {
 }
 
 .services-faq-answer {
-  padding-bottom: 1.125rem;
+  padding-bottom: 1.35rem;
   font-size: 0.875rem;
   line-height: 1.75;
   color: var(--text-muted);

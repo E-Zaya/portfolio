@@ -152,7 +152,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
   const [titleLine1, titleLine2 = ""] = t.title.split("\n");
 
   return (
-    <>
+    <div className="services-flow">
       {/* ── イントロ ── */}
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-6 text-center">
@@ -297,20 +297,24 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       : "var(--shadow)",
                   }}
                 >
-                  {item.recommended && (
-                    <span
-                      className="mb-5 self-start rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]"
-                      style={{
-                        borderColor:
-                          "color-mix(in srgb, var(--accent-2) 42%, transparent)",
-                        background:
-                          "color-mix(in srgb, var(--accent-2) 14%, transparent)",
-                        color: "var(--accent-2)",
-                      }}
-                    >
-                      {packages.recommendedLabel}
-                    </span>
-                  )}
+                  {/* チップの有無でタイトル開始位置がズレないよう、
+                      3枚とも同じ高さのスロットを確保する */}
+                  <div className="mb-5 min-h-[26px]">
+                    {item.recommended && (
+                      <span
+                        className="inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]"
+                        style={{
+                          borderColor:
+                            "color-mix(in srgb, var(--accent-2) 42%, transparent)",
+                          background:
+                            "color-mix(in srgb, var(--accent-2) 14%, transparent)",
+                          color: "var(--accent-2)",
+                        }}
+                      >
+                        {packages.recommendedLabel}
+                      </span>
+                    )}
+                  </div>
 
                   <h3 className="text-xl font-bold text-foreground">
                     {item.name}
@@ -806,10 +810,10 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-bold services-step-circle">
                     {index + 1}
                   </div>
-                  <p className="mt-3 px-2 text-center text-xs font-semibold leading-snug text-soft">
+                  <p className="mt-3 px-2 text-center text-sm font-semibold leading-snug text-soft">
                     {step.title}
                   </p>
-                  <p className="mt-1 px-2 text-center text-xs leading-snug text-muted">
+                  <p className="mt-1.5 px-2 text-center text-xs leading-relaxed text-muted">
                     {step.description}
                   </p>
                 </div>
@@ -894,6 +898,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </Button>
         </div>
       </SectionShell>
-    </>
+    </div>
   );
 }
