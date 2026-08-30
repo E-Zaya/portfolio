@@ -34,6 +34,6 @@ English pages live under /en and Mongolian under /mn (e.g. https://ezaya.dev/en)
 ## Contact
 
 - Contact form: https://ezaya.dev/ja/contact (replies within 24 hours)
-- Phone: +976 9912 4615
+- Phone: +976 5055 3540
 - Location: Ulaanbaatar, Mongolia
 - Tech stack: Next.js, TypeScript, React, Tailwind CSS, Flutter, Odoo, Python.
