@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { X } from "lucide-react";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ReactCountryFlag from "react-country-flag";
@@ -24,8 +27,31 @@ const languages = [
  * 大きなポートレートはやめて、差出人の顔として小さな丸アバターを
  * 挨拶の左に置く。本文は1カラムで手紙のように流れ、署名で締まる。
  */
+const zoomLabels: Record<Locale, string> = {
+  ja: "写真を拡大表示",
+  en: "View full photo",
+  mn: "Зургийг томоор харах",
+};
+
 export default function AboutHero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).about;
+  const [photoOpen, setPhotoOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  const close = useCallback(() => setPhotoOpen(false), []);
+
+  useEffect(() => {
+    if (!photoOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
+    window.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [photoOpen, close]);
 
   return (
     <motion.div {...fadeUp} className="mx-auto max-w-2xl">
@@ -33,12 +59,18 @@ export default function AboutHero({ locale }: { locale: Locale }) {
 
       {/* 差出人 — 小さな顔 + 挨拶 */}
       <div className="flex items-center gap-4 md:gap-5">
-        <motion.span
+        <motion.button
+          type="button"
+          onClick={() => setPhotoOpen(true)}
+          aria-label={zoomLabels[locale]}
+          title={zoomLabels[locale]}
           initial={{ opacity: 0, scale: 0.7 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.15 }}
-          className="shrink-0 rounded-full p-0.5"
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.96 }}
+          className="shrink-0 cursor-zoom-in rounded-full border-0 bg-transparent p-0.5"
           style={{
             background: "color-mix(in srgb, var(--accent-2) 45%, transparent)",
           }}
@@ -52,7 +84,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
             className="size-20 rounded-full border-2 md:size-[104px]"
             style={{ borderColor: "var(--card)" }}
           />
-        </motion.span>
+        </motion.button>
 
         <h1 className="heading-display text-balance text-4xl leading-tight text-foreground md:text-5xl">
           <MarkerHighlight delay={0.3}>{t.title}</MarkerHighlight>
@@ -110,6 +142,59 @@ export default function AboutHero({ locale }: { locale: Locale }) {
           </motion.div>
         ))}
       </div>
+
+      {/* ライトボックス — アバターを押すと元のポートレートを大きく表示。
+          Card等のfilter系の巻き込みを避けるためbody直下へポータル */}
+      {mounted &&
+        createPortal(
+          <AnimatePresence>
+            {photoOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={close}
+                role="dialog"
+                aria-modal="true"
+                aria-label={zoomLabels[locale]}
+                className="fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center p-4 sm:p-8"
+                style={{ background: "rgba(10, 12, 16, 0.82)", backdropFilter: "blur(8px)" }}
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.92, y: 12 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, y: 8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                  className="relative"
+                >
+                  <Image
+                    src="/images/zaya-portrait.jpeg"
+                    alt="Zaya"
+                    width={1400}
+                    height={1050}
+                    className="max-h-[85vh] w-auto rounded-2xl object-contain shadow-2xl"
+                    style={{ border: "1px solid rgba(240, 242, 245, 0.14)" }}
+                  />
+                  <button
+                    type="button"
+                    onClick={close}
+                    aria-label="Close"
+                    className="absolute -right-2 -top-2 flex size-9 cursor-pointer items-center justify-center rounded-full border shadow-lg transition-transform hover:scale-110"
+                    style={{
+                      background: "var(--card-strong)",
+                      borderColor: "var(--border)",
+                      color: "var(--foreground)",
+                    }}
+                  >
+                    <X className="size-4" />
+                  </button>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
+        )}
     </motion.div>
   );
 }
