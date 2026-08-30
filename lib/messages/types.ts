@@ -367,39 +367,18 @@ export type Messages = {
   };
 
   /** ホームのBefore/Afterデモセクション —
-      架空のカフェで「よくあるページ vs Zayaがつくるページ」を見比べさせる */
+      servicesの「今/これから」の行を1枚に重ね、仕切りのドラッグで
+      悩みがその場で解決後の姿に変身する。行データは services.pillars を再利用 */
   baDemo: {
     eyebrow: string;
     title: string;
     description: string;
-    /** 左面(昔のページ)のラベル */
-    before: string;
-    /** 右面(Zayaのデザイン)のラベル */
-    after: string;
+    /** 左面のラベル(「今」) */
+    now: string;
+    /** 右面のラベル(「これから」) */
+    future: string;
     /** 仕切りハンドルの誘導コピー */
     hint: string;
-    /** ブラウザ枠に表示する架空URL */
-    url: string;
-    /** 昔のページ面の文言 */
-    retro: {
-      title: string;
-      marquee: string;
-      photo: string;
-      hoursLabel: string;
-      hoursValue: string;
-      phone: string;
-      counter: string;
-      updated: string;
-    };
-    /** Zaya面の文言 */
-    modern: {
-      name: string;
-      tagline: string;
-      cta: string;
-      rating: string;
-      hours: string;
-      toast: string;
-    };
   };
 
   homeOverview: {

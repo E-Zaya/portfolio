@@ -107,32 +107,12 @@ export const en = {
   },
   baDemo: {
     eyebrow: "Before / After",
-    title: "Same shop. A whole different story.",
+    title: "Your days now — and from now on.",
     description:
-      "A fictional cafe, two websites layered into one: the usual page, and the one Zaya builds. Drag the divider and compare what your customers actually see.",
-    before: "A typical site",
-    after: "The face Zaya builds",
+      "On the left, a typical workday. On the right, the same day with systems in place. Drag the divider and watch each worry turn into its outcome.",
+    now: "Today",
+    future: "From now on",
     hint: "drag me",
-    url: "cafe-naran.mn",
-    retro: {
-      title: "Welcome to Cafe Naran's homepage!",
-      marquee:
-        "☆ We are open today as usual ☆ News: nothing new ☆ Feel free to link to us ☆",
-      photo: "(shop photo: coming soon)",
-      hoursLabel: "Opening hours",
-      hoursValue: "9:00–20:00 (irregular holidays)",
-      phone: "Reservations by phone only ☎ 7011-2233 (during opening hours)",
-      counter: "You are visitor no. 0012847",
-      updated: "Updates: 2019.04.01 — homepage published",
-    },
-    modern: {
-      name: "Cafe Naran",
-      tagline: "Your daily pause,\nat Naran.",
-      cta: "Book a table online",
-      rating: "★ 4.9 · 128 reviews",
-      hours: "Today 9:00–20:00 · Open now",
-      toast: "New booking — 14:00, 2 guests",
-    },
   },
 
   homeOverview: {

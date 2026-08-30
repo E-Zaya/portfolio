@@ -1,14 +1,25 @@
+import Image from "next/image";
 import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";
+import type { ServicesBeforeAfter } from "@/lib/messages/types";
 
 /**
- * ホームの「よくあるページ vs Zayaがつくる顔」デモセクション。
- * 架空のカフェ(Cafe Naran)の2つのサイトを1枚のブラウザ枠に重ね、
- * 仕切りのドラッグで見比べさせる — ポートフォリオが自分で実演する営業装置。
+ * ホームの「今 vs これから」デモセクション。
+ * servicesの今/これからの行を両面で同じ高さに重ね、仕切りのドラッグで
+ * 悩みがその場で解決後の姿に変身する。左＝困っているZaya、右＝笑顔のZaya。
  */
 export default function BeforeAfterShowcase({ locale }: { locale: Locale }) {
-  const t = getMessages(locale).baDemo;
+  const messages = getMessages(locale);
+  const t = messages.baDemo;
+
+  // 行データはservicesと共通(重複管理を避ける)。
+  // 「選ばれる」から3行 + 「楽になる」から2行のいいとこ取り
+  const pillars = messages.services.pillars;
+  const rows: ServicesBeforeAfter[] = [
+    ...(pillars[0]?.beforeAfter.slice(0, 3) ?? []),
+    ...(pillars[1]?.beforeAfter.slice(0, 2) ?? []),
+  ];
 
   return (
     <SectionShell className="home-ba-section">
@@ -25,168 +36,97 @@ export default function BeforeAfterShowcase({ locale }: { locale: Locale }) {
           </p>
         </div>
 
-        {/* ブラウザ枠 — 「同じ店のサイトが入れ替わる」ことを示す不変のフレーム */}
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border bg-card shadow-theme">
-          <div className="flex items-center gap-1.5 border-b border-border px-4 py-2.5">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]" />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]" />
-            <span className="mx-auto rounded-md border border-border bg-card px-4 py-0.5 font-mono text-[11px] tracking-[0.08em] text-muted">
-              {t.url}
-            </span>
-            {/* 中央寄せを保つためのダミー */}
-            <span className="w-[52px]" aria-hidden />
-          </div>
-
-          <div className="relative h-[430px] sm:h-[470px] md:h-[510px]">
+        <div className="mt-10 overflow-hidden rounded-3xl border border-border shadow-theme">
+          <div className="relative h-[470px] sm:h-[470px] md:h-[490px]">
             <BeforeAfterSlider
-              initial={54}
-              labels={{ before: t.before, after: t.after, hint: t.hint }}
-              before={<RetroSite t={t.retro} />}
-              after={<ModernSite t={t.modern} />}
+              initial={50}
+              labels={{ before: t.now, after: t.future, hint: t.hint }}
+              before={<NowFace label={t.now} rows={rows} />}
+              after={<FutureFace label={t.future} rows={rows} />}
             />
           </div>
-        </div>
-
-        {/* 凡例 — クリップ領域の外に置いてコンテンツと重ならないようにする */}
-        <div className="mt-4 flex items-center justify-between gap-4 text-[11px] font-bold uppercase tracking-[0.14em]">
-          <span className="ba-legend-before inline-flex items-center gap-2">
-            <span className="ba-legend-dot" aria-hidden />
-            {t.before}
-          </span>
-          <span className="ba-legend-after inline-flex items-center gap-2 text-right">
-            {t.after}
-            <span className="ba-legend-dot" aria-hidden />
-          </span>
         </div>
       </div>
     </SectionShell>
   );
 }
 
-/* ── Before面: 2010年代の「よくあるお店のページ」を本気で再現 ── */
-function RetroSite({
-  t,
+/* ── 左面: いまの毎日(困っている) ── */
+function NowFace({
+  label,
+  rows,
 }: {
-  t: {
-    title: string;
-    marquee: string;
-    photo: string;
-    hoursLabel: string;
-    hoursValue: string;
-    phone: string;
-    counter: string;
-    updated: string;
-  };
+  label: string;
+  rows: ServicesBeforeAfter[];
 }) {
-  // 「0012847 人目」のような数字部分だけカウンター風に装飾する
-  const counterMatch = t.counter.match(/^(.*?)(\d[\d,]*)(.*)$/);
-
   return (
-    <div className="ba-retro flex h-full flex-col">
-      <div className="ba-retro-marquee-wrap" aria-hidden>
-        <p className="ba-retro-marquee">{t.marquee}</p>
+    <div className="ba-now flex h-full flex-col px-5 py-5 sm:px-7 sm:py-6">
+      {/* ヘッダー高さは右面と完全に揃える(行の変身を成立させるため) */}
+      <div className="flex h-16 items-center gap-3 sm:h-20">
+        <Image
+          src="/Zaza/mascot/zaza-oops.png"
+          alt=""
+          aria-hidden
+          width={96}
+          height={96}
+          className="w-14 shrink-0 -rotate-3 sm:w-[4.5rem]"
+        />
+        <p className="ba-now-label text-2xl font-black tracking-wide sm:text-3xl">
+          {label}
+        </p>
       </div>
 
-      <div className="flex flex-1 flex-col items-center gap-4 overflow-hidden px-5 py-6 text-center sm:gap-5 sm:py-8">
-        <h3 className="ba-retro-title text-lg font-bold leading-snug sm:text-2xl">
-          {t.title}
-        </h3>
-        <hr className="ba-retro-hr w-4/5" />
-
-        <div className="ba-retro-photo grid h-24 w-52 place-items-center text-xs sm:h-28 sm:w-64">
-          {t.photo}
-        </div>
-
-        <table className="ba-retro-table text-xs sm:text-sm">
-          <tbody>
-            <tr>
-              <th>{t.hoursLabel}</th>
-              <td>{t.hoursValue}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <p className="text-sm font-bold sm:text-base">{t.phone}</p>
-
-        <p className="text-xs sm:text-sm">
-          {counterMatch ? (
-            <>
-              {counterMatch[1]}
-              <span className="ba-retro-counter">{counterMatch[2]}</span>
-              {counterMatch[3]}
-            </>
-          ) : (
-            t.counter
-          )}
-        </p>
-
-        <p className="ba-retro-updated mt-auto text-[11px]">{t.updated}</p>
+      <div className="mt-4 flex flex-1 flex-col justify-evenly gap-2">
+        {rows.map((row) => (
+          <div key={row.before} className="ba-row ba-row-now">
+            <span className="ba-row-icon ba-row-icon-now" aria-hidden>
+              ✕
+            </span>
+            <span className="line-clamp-2 text-xs leading-snug sm:text-sm">
+              {row.before}
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-/* ── After面: 同じ店をZayaが作り直した姿 ── */
-function ModernSite({
-  t,
+/* ── 右面: これからの毎日(楽になって笑顔) ── */
+function FutureFace({
+  label,
+  rows,
 }: {
-  t: {
-    name: string;
-    tagline: string;
-    cta: string;
-    rating: string;
-    hours: string;
-    toast: string;
-  };
+  label: string;
+  rows: ServicesBeforeAfter[];
 }) {
   return (
-    <div className="ba-modern relative flex h-full flex-col overflow-hidden">
-      {/* 仕切りが左〜中央にある間も見えるよう、コンテンツは右寄せで組む */}
-      {/* ヘッダー: ロゴ + 言語切替(その場で多言語対応が伝わる) */}
-      <div className="relative z-10 flex items-center justify-end gap-4 px-5 py-4 sm:px-8">
-        <p className="ba-modern-logo text-sm font-black tracking-[0.18em] sm:text-base">
-          {t.name.toUpperCase()}
+    <div className="ba-future flex h-full flex-col px-5 py-5 sm:px-7 sm:py-6">
+      <div className="flex h-16 items-center justify-end gap-3 sm:h-20">
+        <p className="ba-future-label text-2xl font-black tracking-wide sm:text-3xl">
+          {label}
         </p>
-        <div className="flex gap-1.5">
-          {["JA", "EN", "MN"].map((lang, index) => (
-            <span
-              key={lang}
-              className={`rounded-full border px-2.5 py-0.5 text-[10px] font-semibold ${
-                index === 0 ? "ba-modern-lang-active" : "ba-modern-lang"
-              }`}
-            >
-              {lang}
+        <Image
+          src="/Zaza/mascot/zaza-celebrate.png"
+          alt=""
+          aria-hidden
+          width={96}
+          height={96}
+          className="w-14 shrink-0 rotate-3 sm:w-[4.5rem]"
+        />
+      </div>
+
+      <div className="mt-4 flex flex-1 flex-col justify-evenly gap-2">
+        {rows.map((row) => (
+          <div key={row.after} className="ba-row ba-row-future">
+            <span className="line-clamp-2 text-right text-xs font-semibold leading-snug sm:text-sm">
+              {row.after}
             </span>
-          ))}
-        </div>
-      </div>
-
-      {/* メイン: タグライン + オンライン予約 */}
-      <div className="relative z-10 flex flex-1 flex-col items-end justify-center px-5 pb-14 text-right sm:px-8">
-        <p className="ba-modern-tagline whitespace-pre-line text-3xl font-black leading-[1.15] tracking-tight sm:text-4xl md:text-[2.8rem]">
-          {t.tagline}
-        </p>
-
-        <div className="mt-6 flex flex-wrap items-center justify-end gap-3">
-          <span className="ba-modern-meta text-xs font-semibold sm:text-[13px]">
-            {t.rating}
-          </span>
-          <span className="ba-modern-cta inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold">
-            {t.cta}
-            <span aria-hidden>→</span>
-          </span>
-        </div>
-
-        <p className="ba-modern-meta mt-3 text-xs font-semibold sm:text-[13px]">
-          <span className="ba-modern-open-dot" aria-hidden /> {t.hours}
-        </p>
-      </div>
-
-      {/* 予約トースト — 「仕組みが勝手に働いている」瞬間 */}
-      <div className="ba-modern-toast absolute bottom-4 right-4 z-10 flex items-center gap-2.5 rounded-2xl px-4 py-3 sm:bottom-6 sm:right-6">
-        <span className="ba-modern-toast-dot" aria-hidden />
-        <span className="text-xs font-bold sm:text-[13px]">{t.toast}</span>
+            <span className="ba-row-icon ba-row-icon-future" aria-hidden>
+              ✓
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );

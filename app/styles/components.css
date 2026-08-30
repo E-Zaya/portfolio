@@ -1728,178 +1728,90 @@ html[data-loading] .site-content {
   color: #fbbf24;
   pointer-events: none;
 }
-
-/* ── 新旧の凡例(ブラウザ枠の外に置き、中身と重ならない) ── */
-.ba-legend-before {
-  color: var(--text-muted);
-}
-
-.ba-legend-after {
-  color: #e8b04b;
-}
-
-.ba-legend-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background: currentColor;
-  opacity: 0.8;
-}
-
-/* ── Before面: 2010年代の「よくあるお店のページ」 ── */
-.ba-retro {
-  background:
-    repeating-linear-gradient(
-      transparent 0 27px,
-      rgba(90, 120, 160, 0.12) 27px 28px
-    ),
-    #f1ead8;
-  color: #2f2a20;
-  font-family: "Times New Roman", "Hiragino Mincho ProN", "Yu Mincho", serif;
-}
-
-.ba-retro-marquee-wrap {
-  overflow: hidden;
-  background: #24409a;
-  color: #ffffff;
-}
-
-.ba-retro-marquee {
-  display: inline-block;
-  padding: 4px 0;
-  font-size: 11px;
-  white-space: nowrap;
-  animation: ba-marquee 16s linear infinite;
-}
-
-@keyframes ba-marquee {
-  from {
-    transform: translateX(55%);
-  }
-  to {
-    transform: translateX(-105%);
-  }
-}
-
-.ba-retro-title {
-  color: #24409a;
-  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
-}
-
-.ba-retro-hr {
-  border: none;
-  border-top: 3px double #a05a9a;
-}
-
-.ba-retro-photo {
-  border: 1px solid #8b8b8b;
-  background: #dcd6c6;
-  color: #6b6250;
-}
-
-.ba-retro-table th,
-.ba-retro-table td {
-  border: 1px solid #555;
-  padding: 4px 12px;
-  font-weight: 400;
-}
-
-.ba-retro-table th {
-  background: #e3dcc8;
-}
-
-.ba-retro-counter {
-  margin-inline: 4px;
-  padding: 1px 5px;
-  background: #111;
-  color: #7cfc00;
-  font-family: monospace;
-  letter-spacing: 2px;
-}
-
-.ba-retro-updated {
-  color: #8a8069;
-}
-
-/* ── After面: Zayaが作り直した同じ店 ── */
-.ba-modern {
+/* ── 左面: いまの毎日(くすんだ空気) ── */
+.ba-now {
   background:
     radial-gradient(
-      120% 90% at 82% 8%,
-      rgba(142, 90, 45, 0.55),
+      110% 80% at 15% 10%,
+      rgba(148, 163, 184, 0.14),
+      transparent 55%
+    ),
+    linear-gradient(160deg, #2b3140, #191d26);
+  color: rgba(226, 232, 240, 0.88);
+}
+
+.ba-now-label {
+  color: rgba(203, 213, 225, 0.75);
+}
+
+/* ── 右面: これからの毎日(明るい空気) ── */
+.ba-future {
+  background:
+    radial-gradient(
+      110% 85% at 85% 8%,
+      color-mix(in srgb, var(--accent-2) 34%, transparent),
       transparent 58%
     ),
     radial-gradient(
-      90% 70% at 12% 95%,
-      rgba(232, 176, 75, 0.18),
+      90% 70% at 20% 100%,
+      color-mix(in srgb, var(--accent-1) 18%, transparent),
       transparent 55%
     ),
-    linear-gradient(160deg, #2a1c12, #150e08);
-  color: #f5efe7;
+    linear-gradient(160deg, #1d2540, #12182c);
+  color: #eef2ff;
 }
 
-.ba-modern-logo {
-  color: #e8b04b;
+.ba-future-label {
+  color: #c7d2fe;
 }
 
-.ba-modern-tagline {
-  color: #f8f3ea;
+/* ── 今/これからの行 —
+   両面で高さを揃え、仕切りをまたいだ瞬間に「悩み→解決後」へ変身させる ── */
+.ba-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 3.1rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.9rem;
+  border: 1px solid transparent;
 }
 
-.ba-modern-lang {
-  border-color: rgba(245, 239, 231, 0.25);
-  color: rgba(245, 239, 231, 0.7);
+.ba-row-now {
+  justify-content: flex-start;
+  border-color: rgba(148, 163, 184, 0.16);
+  background: rgba(148, 163, 184, 0.07);
 }
 
-.ba-modern-lang-active {
-  border-color: rgba(232, 176, 75, 0.6);
-  background: rgba(232, 176, 75, 0.14);
-  color: #e8b04b;
+.ba-row-future {
+  justify-content: flex-end;
+  border-color: color-mix(in srgb, var(--accent-2) 30%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 10%, transparent);
 }
 
-.ba-modern-cta {
-  background: #e8b04b;
-  color: #241609;
-  box-shadow: 0 8px 28px rgba(232, 176, 75, 0.3);
-}
-
-.ba-modern-meta {
-  color: rgba(245, 239, 231, 0.75);
-}
-
-.ba-modern-open-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  margin-right: 2px;
+.ba-row-icon {
+  display: grid;
+  place-items: center;
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
   border-radius: 9999px;
-  background: #34d399;
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
-  vertical-align: 1px;
+  font-size: 0.7rem;
+  font-weight: 700;
 }
 
-.ba-modern-toast {
-  border: 1px solid rgba(232, 176, 75, 0.4);
-  background: rgba(20, 14, 8, 0.88);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+.ba-row-icon-now {
+  background: rgba(148, 163, 184, 0.18);
+  color: rgba(203, 213, 225, 0.8);
 }
 
-.ba-modern-toast-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background: #34d399;
-  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.22);
+.ba-row-icon-future {
+  background: color-mix(in srgb, #34d399 22%, transparent);
+  color: #34d399;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .ba-handle {
     transition: none;
-  }
-
-  .ba-retro-marquee {
-    animation: none;
-    transform: none;
   }
 }
