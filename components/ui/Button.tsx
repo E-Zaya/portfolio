@@ -39,7 +39,7 @@ const sizes: Record<Size, string> = {
   default: "px-6 py-3 text-sm",
   lg: "px-8 py-4 text-base",
   // モバイルで2つ横並びにする用。sm:以上はclassNameで上書き拡大できる
-  compact: "px-3 py-3.5 text-[13px]",
+  compact: "px-4 py-3 text-[13px]",
 };
 
 export default function Button(props: ButtonProps | LinkProps) {

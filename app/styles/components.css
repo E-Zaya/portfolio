@@ -143,6 +143,14 @@
   margin-inline: auto;
 }
 
+/* 左ドック(88px + left 20px)が出現するxl直後の幅帯では、
+   1080pxコンテナとドックが数px重なるため、左右対称に少しだけ縮める */
+@media (min-width: 80rem) and (max-width: 87.5rem) {
+  .container-custom {
+    width: min(1080px, calc(100% - 14rem));
+  }
+}
+
 .section-space {
   padding: 4rem 0;
 }
