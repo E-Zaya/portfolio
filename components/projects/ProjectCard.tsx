@@ -20,6 +20,8 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
   const primaryHref = project.demo ?? project.links?.[0]?.href;
   const isLive = Boolean(primaryHref) && project.status === "Completed";
   const kindLabel = t.kindLabels[project.kind];
+  // ブラウザ枠に出す実URLのホスト名(デモが無い作品は省略)
+  const demoHost = project.demo ? new URL(project.demo).hostname : null;
 
   return (
     <article className="project-card group relative overflow-hidden rounded-lg border border-border bg-card-strong">
@@ -29,6 +31,21 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
         onClick={onClick}
         aria-label={`${itemText.title} - ${t.detailHint}`}
       >
+        {/* スクショの寄せ集めに見えないよう、共通のブラウザ枠で統一する */}
+        <div
+          className="flex items-center gap-1.5 border-b px-3.5 py-2"
+          style={{ borderColor: "var(--border-soft)", background: "var(--card-strong)" }}
+          aria-hidden
+        >
+          <span className="thumb-dot" />
+          <span className="thumb-dot" />
+          <span className="thumb-dot" />
+          {demoHost && (
+            <span className="ml-auto truncate font-mono text-[10px] tracking-[0.08em] text-muted">
+              {demoHost}
+            </span>
+          )}
+        </div>
         <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-card">
           <Image
             src={project.image}
@@ -40,7 +57,7 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
           <div className="project-image-overlay" />
 
           {isLive && (
-            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-[11px] font-bold">
+            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded border px-2.5 py-1 text-[11px] font-bold tracking-[0.06em]">
               <span className="project-live-dot h-1.5 w-1.5 rounded-full" />
               {t.liveLabel}
             </span>
@@ -85,7 +102,7 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
             {itemText.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-border px-2.5 py-1 text-[11px] font-semibold text-soft"
+                className="rounded border border-border px-2.5 py-1 text-[11px] font-semibold tracking-[0.04em] text-soft"
               >
                 {tag}
               </span>

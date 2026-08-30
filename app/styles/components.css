@@ -1789,3 +1789,17 @@ html[data-loading] .site-content {
     transition: none;
   }
 }
+
+/* ── 明度リズム: 実績セクションを一段明るい墨の帯にして景色を変える ── */
+.home-projects-section {
+  background: var(--background-2);
+  border-block: 1px solid var(--hairline);
+}
+
+/* 実績サムネのブラウザ枠のドット */
+.thumb-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--foreground) 16%, transparent);
+}

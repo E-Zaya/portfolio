@@ -56,10 +56,6 @@ export default function Hero({ locale }: { locale: Locale }) {
               />
             </span>
             <HeroAvailabilityStatus status={t.meta.status} />
-            <span className="hidden md:inline" aria-hidden>
-              ·
-            </span>
-            <span className="hidden md:inline">{t.meta.location}</span>
           </div>
           <div className="font-mono text-[10px] tracking-[0.18em] md:text-[11px]">
             {t.meta.focus}
