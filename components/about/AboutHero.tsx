@@ -169,12 +169,12 @@ export default function AboutHero({ locale }: { locale: Locale }) {
                   className="relative"
                 >
                   <Image
-                    src="/images/zaya-portrait.jpeg"
+                    src="/images/zaya-photo.jpeg"
                     alt="Zaya"
-                    width={1400}
-                    height={1050}
-                    className="max-h-[85vh] w-auto rounded-2xl object-contain shadow-2xl"
-                    style={{ border: "1px solid rgba(240, 242, 245, 0.14)" }}
+                    width={900}
+                    height={900}
+                    className="size-[min(85vw,60vh,30rem)] rounded-full object-cover shadow-2xl"
+                    style={{ border: "2px solid rgba(240, 242, 245, 0.18)" }}
                   />
                   <button
                     type="button"
