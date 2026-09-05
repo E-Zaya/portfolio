@@ -1,14 +1,15 @@
 "use client";
 
+import { useId } from "react";
+
 type LogoProps = {
   size?: number;
 };
 
-/* グラデーション定義は全インスタンスで同一なので、固定IDにして
-   SSR/CSR間のhydration mismatchを防ぐ(useIdはレンダー順で変わる) */
-const gradientId = "zaya-logo-gradient";
-
 export default function Logo({ size = 46 }: LogoProps) {
+  // A page renders multiple Logo instances (desktop dock, mobile header, loader).
+  // A unique, SSR-stable ID keeps each SVG from resolving another hidden logo's gradient.
+  const gradientId = useId();
   const isCustom = size !== 46;
   const svgSize = Math.round(size * (28 / 46));
   const shellRadius = Math.round(size * (14 / 46));
