@@ -7,11 +7,12 @@ import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
+import { briefLabels } from "@/lib/contact-brief";
 import { getMessages, type Locale } from "@/lib/i18n";
 
 type FormState = "idle" | "loading" | "success" | "error";
 
-export default function ContactForm({ locale }: { locale: Locale }) {
+export default function ContactForm({ locale, initialMessage = "" }: { locale: Locale; initialMessage?: string }) {
   const t = getMessages(locale).contact;
   const zaza = getMessages(locale).zaza;
   const [state, setState] = useState<FormState>("idle");
@@ -147,6 +148,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
           <label className="block">
             <span className="mb-2 block text-sm text-soft">{t.form.messageLabel}</span>
             <textarea
+              defaultValue={initialMessage}
               name="message"
               rows={6}
               required
@@ -155,6 +157,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
             />
           </label>
 
+          {initialMessage && <p className="text-sm text-muted">{briefLabels[locale].note}</p>}
           <div className="flex flex-wrap items-center gap-3">
             <Button
               type="submit"

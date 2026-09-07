@@ -1,3 +1,4 @@
+import { getBriefHref, briefLabels } from "@/lib/contact-brief";
 import Image from "next/image";
 import {
   ArrowDown,
@@ -132,7 +133,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     : project.image;
 
                 return (
-                  <article key={project.slug} className="home-project-billboard group">
+                  <article
+                    key={project.slug}
+                    className="home-project-billboard group"
+                  >
                     <TrackedLink
                       href={href}
                       target="_blank"
@@ -184,7 +188,11 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                           </p>
                         </div>
                         <span className="home-project-arrow mt-1 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-border text-muted transition">
-                          <ArrowUpRight aria-hidden size={18} strokeWidth={1.8} />
+                          <ArrowUpRight
+                            aria-hidden
+                            size={18}
+                            strokeWidth={1.8}
+                          />
                         </span>
                       </div>
                     </TrackedLink>
@@ -260,7 +268,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                   >
                     {recommended && (
                       <p className="home-service-recommended flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em]">
-                        <span aria-hidden className="h-1.5 w-1.5 rounded-full" />
+                        <span
+                          aria-hidden
+                          className="h-1.5 w-1.5 rounded-full"
+                        />
                         {messages.services.packages?.recommendedLabel}
                       </p>
                     )}
@@ -309,6 +320,17 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                           </li>
                         ))}
                       </ul>
+                    )}
+                    {packages && (
+                      <TrackedLink
+                        href={getBriefHref(locale, { plan: String(index) })}
+                        eventName="Home Package CTA Click"
+                        eventProperties={{ locale, package: item.name }}
+                        className="brief-plan-link"
+                      >
+                        {briefLabels[locale].consult}
+                        <ArrowUpRight size={16} aria-hidden />
+                      </TrackedLink>
                     )}
                   </article>
                 );

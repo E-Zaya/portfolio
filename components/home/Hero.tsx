@@ -77,9 +77,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           <div className="min-w-0 lg:col-span-7">
             <HeroContent locale={locale} />
           </div>
-          {/* pt: Zazaのはみ出し(-top-12=48px)分 / pb: 手書き注釈(-bottom-16=64px)分。
-              Cardがoverflow-hiddenなので不足すると見切れる */}
-          <div className="min-w-0 pb-16 pt-12 lg:col-span-5 lg:pb-8 lg:pt-0">
+          <div className="min-w-0 lg:col-span-5">
             <HeroShowcase locale={locale} />
           </div>
         </div>

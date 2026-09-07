@@ -1,0 +1,158 @@
+/* Scoped to the three requested features. Existing color tokens are unchanged. */
+.real-work-showcase {
+  min-width: 0;
+}
+.real-work-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.real-work-tabs button {
+  min-height: 44px;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 12px;
+  background: transparent;
+}
+.real-work-tabs button[aria-selected="true"] {
+  background: var(--accent-2);
+  color: var(--button-foreground);
+  border-color: var(--accent-2);
+}
+.real-work-image {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--background-2);
+}
+.real-work-web img {
+  object-fit: cover;
+}
+.real-work-app img {
+  object-fit: contain;
+  padding: 1rem;
+}
+.real-work-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 1rem;
+}
+.real-work-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1rem;
+  margin-top: 0.4rem;
+}
+.real-work-links a,
+.brief-plan-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  font-size: 12px;
+  color: var(--accent-2);
+}
+.brief-plan-link {
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.real-work-links a:hover,
+.brief-plan-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.real-work-showcase [role="tabpanel"]:not([hidden]) {
+  animation: work-switch 0.2s ease-out;
+}
+@keyframes work-switch {
+  from {
+    opacity: 0.6;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.compact-menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--background) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+.compact-menu-panel {
+  width: min(100%, 30rem);
+  max-height: calc(100dvh - 2rem);
+  overflow: auto;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--background-2);
+  color: var(--foreground);
+  font-family: system-ui, sans-serif;
+}
+.compact-menu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.compact-menu-top h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.compact-menu-top button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.compact-menu-panel nav a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: 58px;
+  padding: 0.8rem 0.2rem;
+  border-top: 1px solid var(--border);
+  font-size: 18px;
+}
+.compact-menu-panel nav a > svg {
+  margin-left: auto;
+}
+.compact-menu-number {
+  font: 11px monospace;
+  color: var(--text-muted);
+}
+.compact-menu-panel nav a[aria-current="page"],
+.compact-menu-panel nav a:hover {
+  color: var(--accent-2);
+}
+.compact-menu-panel :focus-visible,
+.real-work-showcase :focus-visible,
+.brief-plan-link:focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+}
+@media (max-width: 767px) {
+  .real-work-image {
+    height: 250px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .real-work-showcase [role="tabpanel"]:not([hidden]) {
+    animation: none;
+  }
+}

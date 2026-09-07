@@ -1,5 +1,6 @@
 "use client";
 
+import { getBriefHref, briefLabels } from "@/lib/contact-brief";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
@@ -167,7 +168,9 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                           : "w-1.5 bg-white/45 hover:bg-white/80"
                       }`}
                       aria-label={`画像 ${index + 1} を表示`}
-                      aria-current={index === activeImageIndex ? "true" : undefined}
+                      aria-current={
+                        index === activeImageIndex ? "true" : undefined
+                      }
                     />
                   ))}
                 </div>
@@ -221,7 +224,9 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
             </span>
             <span
               className={`rounded-full border px-3 py-1 text-xs font-medium ${
-                project.status === "Completed" ? "badge-completed" : "badge-in-progress"
+                project.status === "Completed"
+                  ? "badge-completed"
+                  : "badge-in-progress"
               }`}
             >
               {status}
@@ -251,7 +256,9 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           <p className="mb-2 text-sm leading-7 text-soft sm:text-base sm:leading-8">
             {itemText.description}
           </p>
-          <p className="mb-6 text-sm leading-6 text-muted">{itemText.summary}</p>
+          <p className="mb-6 text-sm leading-6 text-muted">
+            {itemText.summary}
+          </p>
 
           {/* Scope + Focus */}
           <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -299,6 +306,12 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
 
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3">
+            <Button
+              href={getBriefHref(locale, { project: project.slug })}
+              variant="secondary"
+            >
+              {briefLabels[locale].consult}
+            </Button>
             {project.demo && (
               <Button
                 href={project.demo}

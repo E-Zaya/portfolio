@@ -6,7 +6,13 @@ import { getMessages, type Locale } from "@/lib/i18n";
 import ContactForm from "./ContactForm";
 import ContactSocials from "./ContactSocials";
 
-export default function ContactSection({ locale }: { locale: Locale }) {
+export default function ContactSection({
+  locale,
+  initialMessage = "",
+}: {
+  locale: Locale;
+  initialMessage?: string;
+}) {
   const t = getMessages(locale).contact;
 
   return (
@@ -36,7 +42,11 @@ export default function ContactSection({ locale }: { locale: Locale }) {
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
             >
-              <ContactForm locale={locale} />
+              <ContactForm
+                key={initialMessage}
+                locale={locale}
+                initialMessage={initialMessage}
+              />
             </motion.div>
 
             <motion.div

@@ -17,6 +17,21 @@ describe("ContactForm", () => {
     vi.unstubAllGlobals();
   });
 
+  it("lets the visitor edit a carried-over project before submitting", async () => {
+    render(
+      <ContactForm
+        locale="ja"
+        initialMessage="参考にしたい実績：OdooTech Time"
+      />,
+    );
+    const field = screen.getByLabelText("ご相談内容");
+    expect(field).toHaveValue("参考にしたい実績：OdooTech Time");
+    const user = userEvent.setup();
+    await user.clear(field);
+    await user.type(field, "自分のお店向けに相談したいです");
+    expect(field).toHaveValue("自分のお店向けに相談したいです");
+  });
+
   it("Form field haragdaj baigaa eseh.", () => {
     render(<ContactForm locale="ja" />);
 

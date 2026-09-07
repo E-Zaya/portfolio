@@ -1,5 +1,6 @@
 "use client";
 
+import { getBriefHref } from "@/lib/contact-brief";
 import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Clock3, MessageCircle } from "lucide-react";
@@ -131,8 +132,7 @@ function MiniHeading({ children }: { children: React.ReactNode }) {
         aria-hidden
         className="h-px flex-1"
         style={{
-          background:
-            "linear-gradient(90deg, var(--border), transparent)",
+          background: "linear-gradient(90deg, var(--border), transparent)",
         }}
       />
     </div>
@@ -281,7 +281,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
             </div>
 
             <div className="mt-10 grid gap-5 lg:grid-cols-3">
-              {packages.items.map((item) => (
+              {packages.items.map((item, index) => (
                 <article
                   key={item.name}
                   className="relative flex min-h-full flex-col overflow-hidden rounded-3xl border p-6 sm:p-7"
@@ -354,15 +354,14 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   </ul>
 
                   <Button
-                    href={ctaHref}
-                    {...consultLinkProps}
+                    href={getBriefHref(locale, { plan: String(index) })}
                     variant={item.recommended ? "primary" : "secondary"}
                     className="mt-auto w-full font-bold"
                     onClick={() =>
                       track("Service Package CTA Click", {
                         locale,
                         package: item.name,
-                        destination: locale === "mn" ? "messenger" : "contact",
+                        destination: "contact",
                       })
                     }
                   >
