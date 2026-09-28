@@ -14,9 +14,11 @@ type Props = {
     "kindLabels" | "liveLabel" | "openLive" | "detailHint"
   >;
   onClick: () => void;
+  /** 最初に見えるカードだけ true(画像を先に読み込む) */
+  priority?: boolean;
 };
 
-export function ProjectCard({ project, itemText, t, onClick }: Props) {
+export function ProjectCard({ project, itemText, t, onClick, priority = false }: Props) {
   const primaryHref = project.demo ?? project.links?.[0]?.href;
   const isLive = Boolean(primaryHref) && project.status === "Completed";
   const kindLabel = t.kindLabels[project.kind];
@@ -51,6 +53,7 @@ export function ProjectCard({ project, itemText, t, onClick }: Props) {
             src={project.image}
             alt={itemText.title}
             fill
+            priority={priority}
             sizes="(max-width: 1023px) 100vw, 42vw"
             className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.025]"
           />

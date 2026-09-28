@@ -294,7 +294,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     </p>
 
                     <div className="mt-7">
-                      <p className="text-2xl font-black text-foreground sm:text-[1.7rem]">
+                      <p className="text-2xl font-black tabular-nums text-foreground sm:text-[1.7rem]">
                         {item.price}
                       </p>
                       <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">

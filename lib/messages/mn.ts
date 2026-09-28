@@ -43,6 +43,7 @@ export const mn = {
     subtitle: "AI-Native Product Engineer",
     logoAria: "Нүүр хуудас",
     menuAria: "Цэс нээх",
+    skipToContent: "Үндсэн агуулга руу очих",
   },
 
   nav: [

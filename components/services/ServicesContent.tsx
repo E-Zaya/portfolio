@@ -323,7 +323,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     {item.description}
                   </p>
 
-                  <p className="mt-6 text-3xl font-black tracking-tight text-foreground">
+                  <p className="mt-6 text-3xl font-black tabular-nums tracking-tight text-foreground">
                     {item.price}
                   </p>
                   <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
@@ -637,7 +637,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         </div>
                         {isLink && (
                           <span
-                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-200 group-hover:border-transparent group-hover:bg-[var(--accent-2)] group-hover:text-[var(--button-foreground)]"
+                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border transition duration-200 group-hover:border-transparent group-hover:bg-[var(--accent-2)] group-hover:text-[var(--button-foreground)]"
                             style={{
                               borderColor: "var(--border)",
                               color: "var(--accent-2)",
@@ -664,7 +664,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         href={proof.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`${sharedClass} transition-all duration-200 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent-2)_45%,var(--border))]`}
+                        className={`${sharedClass} transition duration-200 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent-2)_45%,var(--border))]`}
                         style={sharedStyle}
                         onClick={() =>
                           track("Service Proof Click", {
@@ -705,7 +705,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       {t.labels.price}
                     </p>
                     <p className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">
+                      <span className="text-2xl font-black tabular-nums tracking-tight text-foreground sm:text-3xl">
                         {pillar.price}
                       </span>
                       <span className="text-xs font-bold text-muted">

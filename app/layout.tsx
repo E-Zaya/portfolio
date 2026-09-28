@@ -11,11 +11,11 @@ export const metadata: Metadata = {
 };
 
 // スマホブラウザのアドレスバー色を、ライト/ダーク両方の配色トークンに合わせる。
-// dark の #081120 = --background, light の #eef3f8 = --background。
+// dark の #131519 = --background, light の #f6f5f1 = --background(tokens.css)。
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef3f8" },
-    { media: "(prefers-color-scheme: dark)", color: "#081120" },
+    { media: "(prefers-color-scheme: light)", color: "#f6f5f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#131519" },
   ],
   colorScheme: "dark light",
 };

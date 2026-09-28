@@ -22,7 +22,7 @@ type LinkProps = SharedProps &
   };
 
 const baseClass =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition duration-200 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
 
 const variants: Record<Variant, string> = {
   // primary はサービスの「お問い合わせ」ボタンと同じソリッドな accent-2。

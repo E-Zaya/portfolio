@@ -26,9 +26,9 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-[clamp(22px,2.4vw,30px)] font-semibold tracking-[-0.04em] text-foreground">
+        <h1 className="text-[clamp(22px,2.4vw,30px)] font-semibold tracking-[-0.04em] text-foreground">
           <MarkerHighlight delay={0.2}>{t.browseTitle}</MarkerHighlight>
-        </h2>
+        </h1>
       </div>
 
       <BlogFilter

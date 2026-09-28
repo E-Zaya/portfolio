@@ -91,7 +91,7 @@ export default function HeroShowcase({ locale }: { locale: Locale }) {
                 }
               />
             </div>
-            <h3 className="real-work-title">{content.title}</h3>
+            <h2 className="real-work-title">{content.title}</h2>
             <div className="real-work-links">
               <Link href={getBriefHref(locale, { project: project.slug })}>
                 {briefLabels[locale].consult}

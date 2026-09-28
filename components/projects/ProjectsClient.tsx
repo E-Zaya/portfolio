@@ -128,9 +128,10 @@ export function ProjectsClient({ locale, projects, t }: Props) {
               className={isActive ? "block" : "hidden"}
             >
               <div className="grid gap-6 lg:grid-cols-2">
-                {laneProjects.map(({ item, text }) => (
+                {laneProjects.map(({ item, text }, index) => (
                   <ProjectCard
                     key={item.slug}
+                    priority={isActive && index < 2}
                     project={item}
                     itemText={text}
                     t={t}

@@ -26,10 +26,10 @@ export default function ContactSection({
           className="mx-auto max-w-5xl"
         >
           <div className="mb-12 text-center">
-            <h2 className="heading-display text-3xl text-foreground sm:text-5xl">
+            <h1 className="heading-display text-3xl text-foreground sm:text-5xl">
               {t.titleA}{" "}
               <MarkerHighlight delay={0.3}>{t.titleB}</MarkerHighlight>
-            </h2>
+            </h1>
 
             <div className="gradient-line mx-auto mt-5 h-px w-28" />
           </div>

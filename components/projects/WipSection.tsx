@@ -23,7 +23,7 @@ export function WipSection({ projects, t }: Props) {
         {projects.map(({ item, text }) => (
           <div
             key={item.slug}
-            className="glass rounded-3xl p-6 transition-all duration-300 hover:border-border"
+            className="glass rounded-3xl p-6 transition duration-300 hover:border-border"
           >
             {/* Status indicator */}
             <div className="mb-4 flex items-center gap-2">

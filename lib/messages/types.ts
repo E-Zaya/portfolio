@@ -316,6 +316,7 @@ export type Messages = {
     subtitle: string;
     logoAria: string;
     menuAria: string;
+    skipToContent: string;
   };
 
   nav: {

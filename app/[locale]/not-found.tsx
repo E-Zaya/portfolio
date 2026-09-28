@@ -48,7 +48,7 @@ export default function LocaleNotFound() {
   const t = messages[locale];
 
   return (
-    <main className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
+    <div className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
       <div className="mx-auto max-w-lg text-center">
         {/* Zazaが謝る */}
         <div className="mb-4 flex flex-col items-center gap-2">
@@ -84,6 +84,6 @@ export default function LocaleNotFound() {
           ← {t.cta}
         </Button>
       </div>
-    </main>
+    </div>
   );
 }

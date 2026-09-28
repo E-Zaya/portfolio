@@ -52,7 +52,7 @@ export default function LocaleError({
   }, [error]);
 
   return (
-    <main className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
+    <div className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
       <div className="mx-auto max-w-lg text-center">
         <p className="eyebrow mb-6">{t.eyebrow}</p>
 
@@ -72,6 +72,6 @@ export default function LocaleError({
           </Button>
         </div>
       </div>
-    </main>
+    </div>
   );
 }

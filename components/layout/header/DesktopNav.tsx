@@ -25,7 +25,7 @@ export default function DesktopNav({ locale, currentPath, items }: DesktopNavPro
             key={item.href}
             href={target}
             className={cn(
-              "header-nav-link group relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300",
+              "header-nav-link group relative rounded-full px-4 py-2 text-sm font-medium transition duration-300",
               active ? "header-link-active text-foreground" : "text-soft hover:text-foreground",
             )}
           >

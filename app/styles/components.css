@@ -625,6 +625,11 @@ html.light .mouse-glow::before {
   background: transparent;
 }
 
+/* outline を消した代わりに、キーボード操作時だけ外枠を藍で出す */
+.desktop-dock-theme-toggle:focus-visible {
+  border-color: var(--accent-2);
+}
+
 .desktop-dock-theme-toggle .desktop-dock-icon {
   border-color: color-mix(in srgb, var(--accent-2) 30%, transparent);
   background: color-mix(in srgb, var(--accent-2) 10%, var(--background));

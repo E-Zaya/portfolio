@@ -157,7 +157,7 @@ export default async function BlogDetailPage({
   };
 
   return (
-    <main className="section-space pb-10 sm:pb-14 md:pb-16">
+    <div className="section-space pb-10 sm:pb-14 md:pb-16">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -196,6 +196,6 @@ export default async function BlogDetailPage({
           </div>
         </div>
       </div>
-    </main>
+    </div>
   );
 } 

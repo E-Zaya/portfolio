@@ -67,9 +67,9 @@ export default function BlogCard({ post, locale }: Props) {
             </span>
           </div>
 
-          <h3 className="line-clamp-2 text-[22px] font-semibold leading-[1.18] tracking-[-0.04em] text-foreground">
+          <h2 className="line-clamp-2 text-[22px] font-semibold leading-[1.18] tracking-[-0.04em] text-foreground">
             {title}
-          </h3>
+          </h2>
 
           {visibleTags.length > 0 ? (
             <div className="mt-3 flex flex-wrap gap-2">

@@ -43,6 +43,7 @@ export const ja = {
     subtitle: "AI-Native Product Engineer",
     logoAria: "トップページへ移動",
     menuAria: "メニューを開く",
+    skipToContent: "本文へスキップ",
   },
   nav: [
     { label: "サービス", href: "/services" },

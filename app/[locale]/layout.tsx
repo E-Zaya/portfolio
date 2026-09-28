@@ -98,6 +98,7 @@ export default async function LocaleLayout({
   // Use Japanese when no locale is specified or an unsupported value is
   // provided.  This keeps the UI consistent with the primary language.
   const locale: Locale = isLocale(rawLocale) ? rawLocale : "ja";
+  const t = getMessages(locale);
 
   const personJsonLd = {
     "@context": "https://schema.org",
@@ -144,9 +145,18 @@ export default async function LocaleLayout({
           >
             <LoadingScreen />
             <ScrollProgress />
+            {/* キーボード利用者向け。Tab を押したときだけ左上に出る */}
+            <a
+              href="#main"
+              className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-[var(--accent-2)] focus:px-5 focus:py-3 focus:text-base focus:font-bold focus:text-[var(--button-foreground)]"
+            >
+              {t.header.skipToContent}
+            </a>
             <div className="site-content">
               <Header locale={locale} />
-              <main>{children}</main>
+              <main id="main" tabIndex={-1} className="outline-none">
+                {children}
+              </main>
               <Footer locale={locale} />
               <FloatingConsultPill locale={locale} />
             </div>

@@ -42,6 +42,7 @@ export const en = {
     subtitle: "AI-Native Product Engineer",
     logoAria: "Back to home",
     menuAria: "Open menu",
+    skipToContent: "Skip to content",
   },
   nav: [
     { label: "Service", href: "/services" },

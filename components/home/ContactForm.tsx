@@ -88,9 +88,9 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
           {t.primaryLabel}
         </p>
 
-        <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+        <h2 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
           {t.primaryTitle}
-        </h3>
+        </h2>
 
         <p className="mt-4 max-w-xl text-sm leading-7 text-soft sm:text-base">
           {t.primaryDescription}
@@ -126,7 +126,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
                 type="text"
                 name="name"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.namePlaceholder}
                 autoComplete="name"
               />
@@ -138,7 +138,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
                 type="email"
                 name="email"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.emailPlaceholder}
                 autoComplete="email"
               />
@@ -152,7 +152,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
               name="message"
               rows={6}
               required
-              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
               placeholder={t.form.messagePlaceholder}
             />
           </label>

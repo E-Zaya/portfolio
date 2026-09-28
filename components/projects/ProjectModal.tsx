@@ -162,7 +162,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                       key={src}
                       type="button"
                       onClick={() => setActiveImageIndex(index)}
-                      className={`h-1.5 rounded-full transition-all ${
+                      className={`h-1.5 rounded-full transition-colors ${
                         index === activeImageIndex
                           ? "w-5 bg-white"
                           : "w-1.5 bg-white/45 hover:bg-white/80"
