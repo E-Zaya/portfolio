@@ -56,7 +56,7 @@ export default function LocaleError({
       <div className="mx-auto max-w-lg text-center">
         <p className="eyebrow mb-6">{t.eyebrow}</p>
 
-        <h1 className="whitespace-pre-line text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl">
+        <h1 className="whitespace-pre-line text-3xl font-bold leading-tight tracking-tight text-foreground sm:text-4xl">
           {t.title}
         </h1>
 
@@ -67,7 +67,7 @@ export default function LocaleError({
             {t.retry}
           </Button>
 
-          <Button href={`/${locale}`} variant="secondary" className="font-semibold">
+          <Button href={`/${locale}`} variant="secondary" className="font-bold">
             {t.home}
           </Button>
         </div>

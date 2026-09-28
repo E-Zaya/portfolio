@@ -187,3 +187,33 @@ html.light {
   --blog-copy-bg: rgba(31, 36, 46, 0.05);
   --blog-copy-border: rgba(31, 36, 46, 0.1);
 }
+
+/* ══════════════════════════════════════════════════════════════
+   形のトークン(文字・ウェイト・字間・行長) — Agents/rules/design.md 準拠
+   - 文字は 13/14/16/18/24/30/36/48 の8段。特大の表示サイズは Hero の h1 だけが持つ
+   - ウェイトは 400/500/700 の3種
+   - 角丸は 8px(rounded-lg: 小さい部品)/16px(rounded-2xl: カード・パネル)/pill の3段
+   段の外(text-xl・6xl 以上、semibold・black など)はユーティリティごと消し、
+   任意値が増えて段が崩れるのを防ぐ。
+   ══════════════════════════════════════════════════════════════ */
+@theme {
+  --text-xs: 0.8125rem; /* 13px: ラベル・注記の最小(和文が読める下限) */
+  --text-xl: initial;
+  --text-6xl: initial;
+  --text-7xl: initial;
+  --text-8xl: initial;
+  --text-9xl: initial;
+
+  --font-weight-thin: initial;
+  --font-weight-extralight: initial;
+  --font-weight-light: initial;
+  --font-weight-semibold: initial;
+  --font-weight-extrabold: initial;
+  --font-weight-black: initial;
+
+  --tracking-tighter: initial;
+  --tracking-widest: initial;
+  --tracking-label: 0.14em; /* 見出し前の小ラベル専用 */
+
+  --container-measure: 38em; /* 和文本文の1行 ≒ 38字 */
+}

@@ -14,7 +14,7 @@
   border-radius: 999px;
   color: var(--text-muted);
   cursor: pointer;
-  font-size: 12px;
+  font-size: var(--text-xs);
   background: transparent;
 }
 .real-work-tabs button[aria-selected="true"] {
@@ -38,7 +38,7 @@
   padding: 1rem;
 }
 .real-work-title {
-  font-size: 16px;
+  font-size: var(--text-base);
   font-weight: 700;
   margin-top: 1rem;
 }
@@ -54,7 +54,7 @@
   align-items: center;
   gap: 0.4rem;
   min-height: 44px;
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--accent-2);
 }
 .brief-plan-link {
@@ -95,7 +95,7 @@
   overflow: auto;
   padding: 1.25rem;
   border: 1px solid var(--border);
-  border-radius: 24px;
+  border-radius: var(--radius-2xl);
   background: var(--background-2);
   color: var(--foreground);
   font-family: system-ui, sans-serif;
@@ -108,7 +108,7 @@
   margin-bottom: 0.75rem;
 }
 .compact-menu-top h2 {
-  font-size: 20px;
+  font-size: var(--text-lg);
   font-weight: 700;
 }
 .compact-menu-top button {
@@ -127,7 +127,7 @@
   min-height: 58px;
   padding: 0.8rem 0.2rem;
   border-top: 1px solid var(--border);
-  font-size: 18px;
+  font-size: var(--text-lg);
 }
 .compact-menu-panel nav a > svg {
   margin-left: auto;

@@ -80,19 +80,19 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
   return (
     <Card
       gradientBorder
-      className="relative overflow-hidden rounded-3xl p-5 sm:p-7 md:p-9"
+      className="relative overflow-hidden rounded-2xl p-5 sm:p-7 md:p-9"
     >
 
       <div className="relative z-10">
-        <p className="text-sm uppercase tracking-[0.22em] text-muted">
+        <p className="text-sm uppercase tracking-label text-muted">
           {t.primaryLabel}
         </p>
 
-        <h2 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+        <h2 className="mt-4 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           {t.primaryTitle}
         </h2>
 
-        <p className="mt-4 max-w-xl text-sm leading-7 text-soft sm:text-base">
+        <p className="mt-4 max-w-xl text-base leading-7 text-soft">
           {t.primaryDescription}
         </p>
 
@@ -170,7 +170,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
           </div>
 
           {/* 安心のひとこと — 送るハードルを下げるマイクロコピー */}
-          <p className="text-[13px] leading-relaxed text-muted">{t.form.note}</p>
+          <p className="text-xs leading-relaxed text-muted">{t.form.note}</p>
 
           <div aria-live="polite" className="min-h-6 text-sm">
             {state === "error" && (
@@ -198,7 +198,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
             tabIndex={-1}
             aria-labelledby="contact-success-title"
             aria-describedby="contact-success-body"
-            className="project-modal-panel relative w-full max-w-sm rounded-3xl p-7 text-center outline-none sm:p-9"
+            className="project-modal-panel relative w-full max-w-sm rounded-2xl p-7 text-center outline-none sm:p-9"
             initial={{ opacity: 0, y: 24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
@@ -214,7 +214,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
             />
             <p
               id="contact-success-title"
-              className="mt-4 text-xl font-bold text-foreground sm:text-2xl"
+              className="mt-4 text-lg font-bold text-foreground sm:text-2xl"
             >
               {zaza.formSuccess}
             </p>

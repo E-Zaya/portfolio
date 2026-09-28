@@ -94,7 +94,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-3xl"
+        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-2xl"
         style={{
           maxHeight: "90dvh",
           background: "var(--background-2)",
@@ -113,7 +113,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
         </button>
 
         {/* Preview slider */}
-        <div className="relative overflow-hidden rounded-t-3xl bg-card-strong sm:rounded-t-4xl">
+        <div className="relative overflow-hidden rounded-t-2xl bg-card-strong sm:rounded-t-2xl">
           <div className="project-modal-slider relative h-56 w-full overflow-hidden sm:h-72">
             <div
               className="flex h-full transition-transform duration-500 ease-out"
@@ -185,7 +185,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                   key={src}
                   type="button"
                   onClick={() => setActiveImageIndex(index)}
-                  className={`project-modal-thumbnail relative h-14 w-24 shrink-0 overflow-hidden rounded-xl border ${
+                  className={`project-modal-thumbnail relative h-14 w-24 shrink-0 overflow-hidden rounded-2xl border ${
                     index === activeImageIndex
                       ? "project-modal-thumbnail-active"
                       : "border-border"
@@ -239,13 +239,13 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           </div>
 
           {/* Title */}
-          <h2 className="mb-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="mb-3 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
             {itemText.title}
           </h2>
 
           {/* クライアント・期間(実案件用) */}
           {(itemText.client || itemText.duration) && (
-            <p className="mb-3 text-xs font-semibold tracking-wide text-muted">
+            <p className="mb-3 text-xs font-bold tracking-wide text-muted">
               {[itemText.client, itemText.duration]
                 .filter(Boolean)
                 .join(" ・ ")}
@@ -253,7 +253,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           )}
 
           {/* Description */}
-          <p className="mb-2 text-sm leading-7 text-soft sm:text-base sm:leading-8">
+          <p className="mb-2 text-base leading-7 text-soft sm:leading-8">
             {itemText.description}
           </p>
           <p className="mb-6 text-sm leading-6 text-muted">
@@ -263,13 +263,13 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           {/* Scope + Focus */}
           <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <div className="project-info-block rounded-2xl border border-border p-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
+              <p className="mb-2 text-xs font-medium uppercase tracking-label text-muted">
                 {t.scopeLabel}
               </p>
               <p className="text-sm leading-6 text-soft">{itemText.scope}</p>
             </div>
             <div className="project-info-block rounded-2xl border border-border p-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
+              <p className="mb-2 text-xs font-medium uppercase tracking-label text-muted">
                 {t.focusLabel}
               </p>
               <p className="text-sm leading-6 text-soft">{itemText.focus}</p>
@@ -288,7 +288,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
               }}
             >
               <p
-                className="mb-1.5 text-xs font-bold uppercase tracking-widest"
+                className="mb-1.5 text-xs font-bold uppercase tracking-label"
                 style={{ color: "var(--marker-ink)" }}
               >
                 {t.behindLabel}
@@ -300,7 +300,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           )}
 
           {/* 使用技術 — 興味のある人向けの控えめな1行(技術語はメイン導線から排除する方針) */}
-          <p className="mb-6 font-mono text-[11px] tracking-wide text-muted">
+          <p className="mb-6 font-mono text-xs tracking-wide text-muted">
             {project.tech.join(" · ")}
           </p>
 

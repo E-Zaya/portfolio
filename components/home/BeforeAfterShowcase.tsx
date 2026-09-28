@@ -25,18 +25,18 @@ export default function BeforeAfterShowcase({ locale }: { locale: Locale }) {
     <SectionShell className="home-ba-section">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
+          <p className="text-xs font-bold uppercase tracking-label text-muted">
             {t.eyebrow}
           </p>
           <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
             {t.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+          <p className="mx-auto mt-4 max-w-measure text-base leading-7 text-soft">
             {t.description}
           </p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border shadow-theme">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-theme">
           <div className="relative h-[470px] sm:h-[470px] md:h-[490px]">
             <BeforeAfterSlider
               initial={50}
@@ -71,7 +71,7 @@ function NowFace({
           height={96}
           className="w-14 shrink-0 -rotate-3 sm:w-[4.5rem]"
         />
-        <p className="ba-now-label text-2xl font-black tracking-wide sm:text-3xl">
+        <p className="ba-now-label text-2xl font-bold tracking-wide sm:text-3xl">
           {label}
         </p>
       </div>
@@ -103,7 +103,7 @@ function FutureFace({
   return (
     <div className="ba-future flex h-full flex-col px-5 py-5 sm:px-7 sm:py-6">
       <div className="flex h-16 items-center justify-end gap-3 sm:h-20">
-        <p className="ba-future-label text-2xl font-black tracking-wide sm:text-3xl">
+        <p className="ba-future-label text-2xl font-bold tracking-wide sm:text-3xl">
           {label}
         </p>
         <Image
@@ -119,7 +119,7 @@ function FutureFace({
       <div className="mt-4 flex flex-1 flex-col justify-evenly gap-2">
         {rows.map((row) => (
           <div key={row.after} className="ba-row ba-row-future">
-            <span className="line-clamp-2 text-right text-xs font-semibold leading-snug sm:text-sm">
+            <span className="line-clamp-2 text-right text-xs font-bold leading-snug sm:text-sm">
               {row.after}
             </span>
             <span className="ba-row-icon ba-row-icon-future" aria-hidden>

@@ -21,7 +21,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         <span className="crop-mark crop-mark-br" aria-hidden />
       <Card
         gradientBorder
-        className="relative overflow-hidden rounded-3xl px-5 py-6 sm:px-6 sm:py-7 md:px-10 md:py-9 lg:px-14 lg:py-10"
+        className="relative overflow-hidden rounded-2xl px-5 py-6 sm:px-6 sm:py-7 md:px-10 md:py-9 lg:px-14 lg:py-10"
       >
         {/* 帳簿のマージン罫 — 左端に1本だけ金の縦線 */}
         <div
@@ -39,7 +39,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         />
 
         {/* meta bar — editorial */}
-        <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted md:mb-5 md:text-[11px]">
+        <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-y-2 text-xs font-bold uppercase tracking-label text-muted md:mb-5 md:text-xs">
           <div className="flex min-w-0 flex-wrap items-center gap-2">
             <span className="relative inline-flex h-1.5 w-1.5">
               <span
@@ -57,7 +57,7 @@ export default function Hero({ locale }: { locale: Locale }) {
             </span>
             <HeroAvailabilityStatus status={t.meta.status} />
           </div>
-          <div className="font-mono text-[10px] tracking-[0.18em] md:text-[11px]">
+          <div className="font-mono text-xs tracking-label md:text-xs">
             {t.meta.focus}
           </div>
         </div>

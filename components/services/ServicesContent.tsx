@@ -125,7 +125,7 @@ function ShieldIcon() {
 function MiniHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="mt-10 flex items-center gap-4">
-      <span className="whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
+      <span className="whitespace-nowrap text-xs font-bold uppercase tracking-label text-muted">
         {children}
       </span>
       <span
@@ -178,7 +178,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
           </h1>
 
           <motion.p
-            className="text-base leading-loose text-soft sm:text-lg"
+            className="mx-auto max-w-measure text-base leading-loose text-soft sm:text-lg"
             initial={reduce ? false : { opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -221,7 +221,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                 whileHover={reduce ? undefined : { y: -3 }}
               >
                 <span
-                  className="font-mono text-[10px] font-bold tracking-widest"
+                  className="font-mono text-xs font-bold tracking-label"
                   style={{ color: "var(--accent-2)" }}
                 >
                   {String(index + 1).padStart(2, "0")}
@@ -269,13 +269,13 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
         <SectionShell>
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
+              <p className="text-xs font-bold uppercase tracking-label text-muted">
                 {packages.eyebrow}
               </p>
               <h2 className="heading-display mt-3 text-3xl text-foreground sm:text-4xl">
                 {packages.title}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="mx-auto mt-4 max-w-measure text-base leading-7 text-soft">
                 {packages.description}
               </p>
             </div>
@@ -284,7 +284,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               {packages.items.map((item, index) => (
                 <article
                   key={item.name}
-                  className="relative flex min-h-full flex-col overflow-hidden rounded-3xl border p-6 sm:p-7"
+                  className="relative flex min-h-full flex-col overflow-hidden rounded-2xl border p-6 sm:p-7"
                   style={{
                     borderColor: item.recommended
                       ? "color-mix(in srgb, var(--accent-2) 62%, var(--border))"
@@ -302,7 +302,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <div className="mb-5 min-h-[26px]">
                     {item.recommended && (
                       <span
-                        className="inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]"
+                        className="inline-flex rounded-full border px-3 py-1 text-xs font-bold uppercase tracking-label"
                         style={{
                           borderColor:
                             "color-mix(in srgb, var(--accent-2) 42%, transparent)",
@@ -316,17 +316,17 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     )}
                   </div>
 
-                  <h3 className="text-xl font-bold text-foreground">
+                  <h3 className="text-2xl font-bold text-foreground">
                     {item.name}
                   </h3>
                   <p className="mt-3 min-h-20 text-sm leading-7 text-soft">
                     {item.description}
                   </p>
 
-                  <p className="mt-6 text-3xl font-black tabular-nums tracking-tight text-foreground">
+                  <p className="mt-6 text-3xl font-bold tabular-nums tracking-tight text-foreground">
                     {item.price}
                   </p>
-                  <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
+                  <p className="mt-2 flex items-center gap-2 text-xs font-bold text-muted">
                     <Clock3 aria-hidden size={15} strokeWidth={1.8} />
                     {item.timeline}
                   </p>
@@ -385,12 +385,12 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               <Card
                 key={pillar.name}
                 id={`pillar-${pillarIndex + 1}`}
-                className="relative scroll-mt-28 overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12"
+                className="relative scroll-mt-28 overflow-hidden rounded-2xl p-6 sm:p-10 lg:p-12"
               >
                 {/* 背景ウォーターマーク番号 */}
                 <span
                   aria-hidden
-                  className="pointer-events-none absolute -top-8 right-2 select-none font-mono text-[9rem] font-black leading-none tracking-tighter sm:-top-12 sm:text-[13rem]"
+                  className="pointer-events-none absolute -top-8 right-2 select-none font-mono text-[9rem] font-bold leading-none tracking-tight sm:-top-12 sm:text-[13rem]"
                   style={{
                     color:
                       "color-mix(in srgb, var(--accent-2) 7%, transparent)",
@@ -408,7 +408,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       style={{ background: "var(--accent-2)" }}
                     />
                     <span
-                      className="font-mono text-[11px] font-bold uppercase tracking-[0.3em]"
+                      className="font-mono text-xs font-bold uppercase tracking-label"
                       style={{ color: "var(--accent-2)" }}
                     >
                       {number}
@@ -422,7 +422,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <p className="mt-3 text-base font-bold text-soft sm:text-lg">
                     {pillar.tagline}
                   </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-[15px]">
+                  <p className="mt-3 max-w-measure text-base leading-relaxed text-muted">
                     {pillar.lead}
                   </p>
                 </div>
@@ -435,7 +435,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   {/* パネルヘッダー(デスクトップのみ) */}
                   <div className="hidden sm:grid sm:grid-cols-2">
                     <div
-                      className="px-6 py-3 text-[11px] font-bold uppercase tracking-[0.24em] text-muted"
+                      className="px-6 py-3 text-xs font-bold uppercase tracking-label text-muted"
                       style={{
                         background:
                           "color-mix(in srgb, var(--foreground) 5%, transparent)",
@@ -444,7 +444,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       {t.labels.before}
                     </div>
                     <div
-                      className="px-6 py-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+                      className="px-6 py-3 text-xs font-bold uppercase tracking-label"
                       style={{
                         background:
                           "color-mix(in srgb, var(--accent-2) 12%, transparent)",
@@ -481,7 +481,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         }}
                       >
                         <span className="mb-0 block sm:hidden">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted">
+                          <span className="text-xs font-bold uppercase tracking-label text-muted">
                             {t.labels.before}
                           </span>
                         </span>
@@ -549,7 +549,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       >
                         <span className="mb-0 block sm:hidden">
                           <span
-                            className="text-[9px] font-bold uppercase tracking-[0.2em]"
+                            className="text-xs font-bold uppercase tracking-label"
                             style={{ color: "var(--accent-2)" }}
                           >
                             {t.labels.after}
@@ -566,7 +566,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         >
                           <CheckIcon />
                         </span>
-                        <p className="text-sm font-semibold leading-relaxed text-foreground">
+                        <p className="text-sm font-bold leading-relaxed text-foreground">
                           {row.after}
                         </p>
                       </motion.div>
@@ -580,7 +580,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   {pillar.forms.map((form) => (
                     <span
                       key={form}
-                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold text-soft"
+                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-bold text-soft"
                       style={{
                         background:
                           "color-mix(in srgb, var(--accent-2) 8%, transparent)",
@@ -631,7 +631,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                             )}
                             <span className="truncate">{proof.name}</span>
                           </p>
-                          <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-muted">
+                          <p className="mt-1 text-balance text-xs leading-relaxed text-muted">
                             {proof.description}
                           </p>
                         </div>
@@ -651,7 +651,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     );
 
                     const sharedClass =
-                      "group relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 pl-6";
+                      "group relative flex items-center gap-4 overflow-hidden rounded-2xl border p-4 pl-6";
                     const sharedStyle = {
                       borderColor: "var(--border)",
                       background:
@@ -699,13 +699,13 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                 >
                   <div>
                     <p
-                      className="text-[11px] font-bold uppercase tracking-[0.24em]"
+                      className="text-xs font-bold uppercase tracking-label"
                       style={{ color: "var(--accent-2)" }}
                     >
                       {t.labels.price}
                     </p>
                     <p className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span className="text-2xl font-black tabular-nums tracking-tight text-foreground sm:text-3xl">
+                      <span className="text-2xl font-bold tabular-nums tracking-tight text-foreground sm:text-3xl">
                         {pillar.price}
                       </span>
                       <span className="text-xs font-bold text-muted">
@@ -738,7 +738,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
 
       {/* ── 保守・伴走 ── */}
       <SectionShell>
-        <Card className="mx-auto max-w-5xl rounded-3xl p-6 sm:p-8">
+        <Card className="mx-auto max-w-5xl rounded-2xl p-6 sm:p-8">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
             <div
               className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl"
@@ -751,7 +751,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               <ShieldIcon />
             </div>
             <div className="flex-1">
-              <h2 className="text-lg font-bold text-foreground sm:text-xl">
+              <h2 className="text-lg font-bold text-foreground sm:text-2xl">
                 {t.care.title}
               </h2>
               <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-muted">
@@ -789,7 +789,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── ご利用の流れ(4ステップ) ── */}
       <SectionShell>
         <div className="mx-auto max-w-4xl space-y-8">
-          <h2 className="text-center text-2xl font-semibold">
+          <h2 className="text-center text-2xl font-bold">
             {t.process.title}
           </h2>
 
@@ -809,7 +809,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border-2 text-sm font-bold services-step-circle">
                     {index + 1}
                   </div>
-                  <p className="mt-3 px-2 text-center text-sm font-semibold leading-snug text-soft">
+                  <p className="mt-3 px-2 text-center text-sm font-bold leading-snug text-soft">
                     {step.title}
                   </p>
                   <p className="mt-1.5 px-2 text-center text-xs leading-relaxed text-muted">
@@ -838,7 +838,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       .filter(Boolean)
                       .join(" ")}
                   >
-                    <p className="text-sm font-semibold leading-snug text-soft">
+                    <p className="text-sm font-bold leading-snug text-soft">
                       {step.title}
                     </p>
                     <p className="mt-1 text-xs leading-relaxed text-muted">
@@ -855,7 +855,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── よくある質問 ── */}
       <SectionShell>
         <div className="mx-auto max-w-2xl space-y-6">
-          <h2 className="text-center text-2xl font-semibold">{t.faq.title}</h2>
+          <h2 className="text-center text-2xl font-bold">{t.faq.title}</h2>
           <div className="services-faq-list">
             {t.faq.items.map((item) => (
               <details key={item.question} className="services-faq-item">
@@ -875,7 +875,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── 最後のCTA ── */}
       <SectionShell>
         <div className="mx-auto max-w-xl space-y-4 text-center">
-          <h2 className="text-2xl font-semibold">{t.bottomCtaTitle}</h2>
+          <h2 className="text-2xl font-bold">{t.bottomCtaTitle}</h2>
           <p className="text-base leading-relaxed text-soft">
             {t.bottomCtaText}
           </p>
@@ -884,7 +884,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
             {...consultLinkProps}
             variant="primary"
             size="lg"
-            className="font-semibold"
+            className="font-bold"
             onClick={() =>
               track("Service Bottom CTA Click", {
                 locale,

@@ -91,7 +91,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
             : cn(
                 "group inline-flex h-9 items-center gap-2 rounded-full",
                 "border px-3",
-                "font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground",
+                "font-mono text-xs font-bold uppercase tracking-label text-foreground",
                 "transition-[transform,background,border-color,box-shadow] duration-200",
                 "hover:-translate-y-0.5",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]",
@@ -169,7 +169,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className={cn(
-                    "relative flex h-11 w-full items-center gap-3 rounded-xl px-3",
+                    "relative flex h-11 w-full items-center gap-3 rounded-2xl px-3",
                     "transition-[background,color] duration-200",
                   )}
                   style={
@@ -205,7 +205,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                   <span className="flex min-w-0 flex-1 items-baseline gap-2">
                     <span
                       className={cn(
-                        "font-mono text-[11px] font-semibold uppercase tracking-[0.16em]",
+                        "font-mono text-xs font-bold uppercase tracking-label",
                         isCurrent ? "text-foreground" : "text-soft",
                       )}
                     >
@@ -213,7 +213,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                     </span>
                     <span
                       className={cn(
-                        "truncate text-[12px]",
+                        "truncate text-xs",
                         isCurrent ? "text-foreground" : "text-muted",
                       )}
                     >
@@ -252,7 +252,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   aria-label={lang.label}
-                  className="lang-row block focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:rounded-xl"
+                  className="lang-row block focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:rounded-2xl"
                 >
                   {item}
                 </Link>

@@ -34,7 +34,7 @@ export default function BlogCard({ post, locale }: Props) {
   const formattedDate = formatPostDate(post.date, locale) ?? t.noDate;
 
   return (
-    <article className="group h-full overflow-hidden rounded-3xl border border-border bg-card shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
+    <article className="group h-full overflow-hidden rounded-2xl border border-border bg-card shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
       <Link href={withLocale(locale, `/blog/${post.slug}`)} className="flex h-full flex-col">
         {post.cover ? (
           <div className="relative aspect-[1.75/1] overflow-hidden border-b border-border bg-card-strong">
@@ -51,7 +51,7 @@ export default function BlogCard({ post, locale }: Props) {
             <div className="blog-card-cover-blob blog-card-cover-blob-primary" />
             <div className="blog-card-cover-blob blog-card-cover-blob-secondary" />
             <div className="absolute inset-x-[14%] top-[18%] h-[52%] rounded-2xl border border-border bg-card" />
-            <div className="absolute left-[14%] top-[38%] pr-6 text-lg font-semibold tracking-[-0.04em] text-foreground">
+            <div className="absolute left-[14%] top-[38%] pr-6 text-lg font-bold tracking-tight text-foreground">
               {category}
             </div>
           </div>
@@ -67,7 +67,7 @@ export default function BlogCard({ post, locale }: Props) {
             </span>
           </div>
 
-          <h2 className="line-clamp-2 text-[22px] font-semibold leading-[1.18] tracking-[-0.04em] text-foreground">
+          <h2 className="line-clamp-2 text-2xl font-bold leading-[1.18] tracking-tight text-foreground">
             {title}
           </h2>
 
@@ -76,7 +76,7 @@ export default function BlogCard({ post, locale }: Props) {
               {visibleTags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-border bg-card-strong px-2.5 py-1 text-[11px] text-soft"
+                  className="rounded-full border border-border bg-card-strong px-2.5 py-1 text-xs text-soft"
                 >
                   #{tag}
                 </span>

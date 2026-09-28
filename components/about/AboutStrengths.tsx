@@ -20,7 +20,7 @@ export default function AboutStrengths({ locale }: { locale: Locale }) {
       className="space-y-6"
     >
       <div>
-        <p className="mb-2 text-sm uppercase tracking-[0.25em] hero-gradient">{t.strengthsEyebrow}</p>
+        <p className="mb-2 text-sm uppercase tracking-label hero-gradient">{t.strengthsEyebrow}</p>
         <h2 className="text-2xl font-bold text-foreground md:text-3xl">{t.strengthsTitle}</h2>
       </div>
 
@@ -32,9 +32,9 @@ export default function AboutStrengths({ locale }: { locale: Locale }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: index * 0.12 }}
-            className="apple-panel rounded-3xl p-5 transition duration-300 hover:-translate-y-1 md:p-6"
+            className="apple-panel rounded-2xl p-5 transition duration-300 hover:-translate-y-1 md:p-6"
           >
-            <h3 className="mb-3 text-xl font-semibold text-foreground">{item.title}</h3>
+            <h3 className="mb-3 text-lg font-bold text-foreground">{item.title}</h3>
             <p className="text-sm leading-7 text-soft" style={{ whiteSpace: "pre-line" }}>
               {item.description}
             </p>

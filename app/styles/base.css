@@ -12,7 +12,7 @@ body {
   overflow-x: hidden;
   color: var(--foreground);
   font-family: var(--font-en), var(--font-ja), system-ui, sans-serif;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,6 +31,15 @@ html[data-locale="ja"] body,
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* 段落の最終行に1〜2文字だけ残る折り返しをブラウザに避けさせる(非対応ブラウザは従来どおり)。
+   base レイヤーに置き、text-balance や whitespace-nowrap などのユーティリティが勝つようにする。
+   一括指定の text-wrap は折り返し禁止まで上書きするので、style だけを指定する */
+@layer base {
+  p {
+    text-wrap-style: pretty;
+  }
 }
 
 button,
@@ -54,7 +63,7 @@ h6,
   letter-spacing: -0.03em;
 }
 
-/* 日本語表示時はマイナストラッキングをやや緩める（行間崩れ防止） */
+/* 日本語の見出しは字間を詰めない(和文は負の字間で字面がぶつかる) */
 [data-locale="ja"] h1,
 [data-locale="ja"] h2,
 [data-locale="ja"] h3,
@@ -63,7 +72,7 @@ h6,
 [data-locale="ja"] h6,
 [data-locale="ja"] .section-title,
 [data-locale="ja"] .jp-tight {
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
 }
 
 /* ──────────────────────────────────────────────────────────────

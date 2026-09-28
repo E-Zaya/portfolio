@@ -101,7 +101,7 @@ export default function BlogPostHero({ post, locale }: Props) {
 
       {/* [header] title + meta */}
       <div className="space-y-3.5 md:space-y-4">
-        <h1 className="max-w-4xl text-[clamp(26px,7vw,42px)] font-semibold leading-[1.1] tracking-[-0.04em] text-foreground">
+        <h1 className="max-w-4xl text-[clamp(26px,7vw,42px)] font-bold leading-[1.1] tracking-tight text-foreground">
           {title}
         </h1>
 
@@ -120,7 +120,7 @@ export default function BlogPostHero({ post, locale }: Props) {
       </div>
 
       {/* [summary] short intro */}
-      <p className="max-w-3xl text-[15px] leading-7 text-soft md:text-base md:leading-8">
+      <p className="max-w-measure text-base leading-7 text-soft md:text-base md:leading-8">
         {summary}
       </p>
     </section>

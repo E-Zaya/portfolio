@@ -22,8 +22,8 @@ export default function HeroContent({ locale }: { locale: Locale }) {
   // mnのみ約75%スケール+字間を緩める。ja/enは従来のまま。
   const headingSizeClass =
     locale === "mn"
-      ? "text-[clamp(1.35rem,6vw,1.8rem)] leading-[1.5] tracking-[-0.02em] sm:text-[2rem] sm:leading-[1.22] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.2rem]"
-      : "text-[clamp(1.5rem,7vw,2rem)] leading-[1.5] tracking-[-0.05em] sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]";
+      ? "text-[clamp(1.35rem,6vw,1.8rem)] leading-[1.5] tracking-tight sm:text-[2rem] sm:leading-[1.22] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.2rem]"
+      : "text-[clamp(1.5rem,7vw,2rem)] leading-[1.5] tracking-tight sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]";
 
   return (
     <motion.div
@@ -52,7 +52,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
         </span>
       </h1>
       {/* description */}
-      <p className="mt-4 max-w-xl whitespace-pre-line text-[15px] leading-[1.8] text-soft sm:mt-7 md:text-base md:leading-8">
+      <p className="mt-4 max-w-xl whitespace-pre-line text-base leading-[1.8] text-soft sm:mt-7 md:text-base md:leading-8">
         {t.description}
       </p>
 
@@ -90,7 +90,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           href={projectsHref}
           variant="secondary"
           size="compact"
-          className="min-h-12 w-full font-semibold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          className="min-h-12 w-full font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
           onClick={() => track("Hero Projects Click", { locale })}
         >
           {t.secondaryCta}
@@ -108,7 +108,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           }}
         />
         <p
-          className="break-keep text-left text-[10px] font-medium uppercase leading-relaxed tracking-[0.14em] text-muted sm:tracking-[0.3em] md:text-[11px]"
+          className="break-keep text-left text-xs font-medium uppercase leading-relaxed tracking-label text-muted sm:tracking-label md:text-xs"
           style={{ fontFamily: "var(--font-mono, ui-monospace, monospace)" }}
         >
           {t.techLine}

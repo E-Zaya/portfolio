@@ -86,7 +86,7 @@
   min-width: 0;
   margin-inline: auto;
   color: var(--text-soft);
-  font-size: 16px;
+  font-size: var(--text-base);
   line-height: 1.85;
   word-break: break-word;
   overflow-wrap: anywhere;
@@ -104,26 +104,33 @@
 .blog-article h2,
 .blog-article h3 {
   color: var(--foreground) !important;
-  font-weight: 800 !important;
-  letter-spacing: -0.03em !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
   scroll-margin-top: 120px;
+}
+
+/* 和文の見出しは字間を詰めない */
+[data-locale="ja"] .blog-article h1,
+[data-locale="ja"] .blog-article h2,
+[data-locale="ja"] .blog-article h3 {
+  letter-spacing: 0 !important;
 }
 
 .blog-article h1 {
   margin: 0 0 18px !important;
-  font-size: 32px !important;
+  font-size: var(--text-3xl) !important;
   line-height: 1.16 !important;
 }
 
 .blog-article h2 {
   margin: 44px 0 14px !important;
-  font-size: 28px !important;
+  font-size: var(--text-2xl) !important;
   line-height: 1.2 !important;
 }
 
 .blog-article h3 {
   margin: 28px 0 10px !important;
-  font-size: 22px !important;
+  font-size: var(--text-lg) !important;
   line-height: 1.3 !important;
 }
 
@@ -196,7 +203,7 @@
   background: var(--blog-inline-code-bg);
   color: var(--foreground);
   font-size: 0.9em;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .blog-article pre {
@@ -204,11 +211,11 @@
   margin: 1.6rem 0;
   overflow-x: auto;
   border: 1px solid var(--blog-code-border);
-  border-radius: 18px;
+  border-radius: var(--radius-2xl);
   background: var(--blog-code-bg);
   padding: 2.6rem 1rem 1rem;
   line-height: 1.7;
-  font-size: 14px;
+  font-size: var(--text-sm);
   -webkit-overflow-scrolling: touch;
 }
 
@@ -246,7 +253,7 @@
   background: var(--blog-copy-bg);
   color: var(--foreground);
   padding: 0.35rem 0.7rem;
-  font-size: 12px;
+  font-size: var(--text-xs);
   line-height: 1;
   cursor: pointer;
   transition:
@@ -265,7 +272,7 @@
   height: auto;
   margin: 2rem 0;
   border: 1px solid var(--blog-code-border);
-  border-radius: 20px;
+  border-radius: var(--radius-2xl);
 }
 
 .blog-article table {
@@ -326,24 +333,12 @@
   }
 
   .blog-article {
-    font-size: 15px;
     line-height: 1.78;
-  }
-
-  .blog-article h1 {
-    font-size: 26px !important;
-    line-height: 1.14 !important;
   }
 
   .blog-article h2 {
     margin-top: 36px !important;
-    font-size: 23px !important;
     line-height: 1.22 !important;
-  }
-
-  .blog-article h3 {
-    font-size: 19px !important;
-    line-height: 1.3 !important;
   }
 
   .blog-article p {
@@ -368,7 +363,7 @@
     margin: 1.3rem 0;
     border-radius: 16px;
     padding: 2.45rem 0.85rem 0.9rem;
-    font-size: 12.5px;
+    font-size: var(--text-xs);
   }
 
   .blog-article img {

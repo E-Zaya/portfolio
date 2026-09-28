@@ -51,7 +51,7 @@ export function ProjectsClient({ locale, projects, t }: Props) {
           )}
         </h1>
         {t.description && (
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-soft">
+          <p className="mx-auto mt-4 max-w-measure text-base leading-8 text-soft">
             {t.description}
           </p>
         )}
@@ -93,7 +93,7 @@ export function ProjectsClient({ locale, projects, t }: Props) {
                 setActiveCategory(nextCategory);
                 document.getElementById(`project-tab-${nextCategory}`)?.focus();
               }}
-              className={`project-board-tab flex cursor-pointer items-center justify-center gap-2 rounded-md border px-3 py-3.5 text-sm font-bold ${
+              className={`project-board-tab flex cursor-pointer items-center justify-center gap-2 rounded-lg border px-3 py-3.5 text-sm font-bold ${
                 isActive ? "project-board-tab-active" : "text-muted"
               }`}
             >

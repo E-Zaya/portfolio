@@ -43,7 +43,7 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
           <span className="thumb-dot" />
           <span className="thumb-dot" />
           {demoHost && (
-            <span className="ml-auto truncate font-mono text-[10px] tracking-[0.08em] text-muted">
+            <span className="ml-auto truncate font-mono text-xs tracking-label text-muted">
               {demoHost}
             </span>
           )}
@@ -60,7 +60,7 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
           <div className="project-image-overlay" />
 
           {isLive && (
-            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded border px-2.5 py-1 text-[11px] font-bold tracking-[0.06em]">
+            <span className="project-live-badge absolute left-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-bold tracking-wider">
               <span className="project-live-dot h-1.5 w-1.5 rounded-full" />
               {t.liveLabel}
             </span>
@@ -71,10 +71,10 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
       <div className="p-5 sm:p-6">
         <div className="flex items-start justify-between gap-4">
           <div className="min-w-0">
-            <p className="text-[11px] font-bold uppercase text-muted">
+            <p className="text-xs font-bold uppercase text-muted">
               {kindLabel}
             </p>
-            <h2 className="mt-1.5 text-xl font-bold text-foreground sm:text-2xl">
+            <h2 className="mt-1.5 text-lg font-bold text-foreground sm:text-2xl">
               {itemText.title}
             </h2>
           </div>
@@ -89,7 +89,7 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
         </div>
 
         {(itemText.client || itemText.duration) && (
-          <p className="mt-1.5 text-xs font-semibold text-muted">
+          <p className="mt-1.5 text-xs font-bold text-muted">
             {[itemText.client, itemText.duration]
               .filter(Boolean)
               .join(" ・ ")}
@@ -105,7 +105,7 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
             {itemText.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="rounded border border-border px-2.5 py-1 text-[11px] font-semibold tracking-[0.04em] text-soft"
+                className="rounded-full border border-border px-2.5 py-1 text-xs font-bold tracking-wider text-soft"
               >
                 {tag}
               </span>
@@ -118,7 +118,7 @@ export function ProjectCard({ project, itemText, t, onClick, priority = false }:
         <button
           type="button"
           onClick={onClick}
-          className="project-detail-link inline-flex cursor-pointer items-center gap-2 text-sm font-semibold text-foreground"
+          className="project-detail-link inline-flex cursor-pointer items-center gap-2 text-sm font-bold text-foreground"
         >
           {t.detailHint}
           <ArrowRight aria-hidden size={15} strokeWidth={1.8} />

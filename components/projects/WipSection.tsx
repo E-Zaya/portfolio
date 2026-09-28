@@ -12,7 +12,7 @@ export function WipSection({ projects, t }: Props) {
       {/* Divider with title */}
       <div className="mb-8 flex items-center gap-4">
         <div className="h-px flex-1 bg-border opacity-30" />
-        <h2 className="text-xs font-medium uppercase tracking-widest text-muted">
+        <h2 className="text-xs font-medium uppercase tracking-label text-muted">
           {t.wipTitle}
         </h2>
         <div className="h-px flex-1 bg-border opacity-30" />
@@ -23,7 +23,7 @@ export function WipSection({ projects, t }: Props) {
         {projects.map(({ item, text }) => (
           <div
             key={item.slug}
-            className="glass rounded-3xl p-6 transition duration-300 hover:border-border"
+            className="glass rounded-2xl p-6 transition duration-300 hover:border-border"
           >
             {/* Status indicator */}
             <div className="mb-4 flex items-center gap-2">

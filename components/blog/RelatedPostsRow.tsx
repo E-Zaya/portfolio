@@ -20,7 +20,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-[clamp(24px,2.6vw,32px)] font-semibold tracking-[-0.045em] text-foreground">
+      <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
         {t.related}
       </h2>
 
@@ -39,7 +39,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
               <article className="h-full rounded-2xl border border-border bg-card p-4 shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
                 <div className="text-xs text-muted">{formattedDate}</div>
 
-                <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-[1.2] tracking-[-0.04em] text-foreground">
+                <h3 className="mt-2 line-clamp-2 text-lg font-bold leading-[1.2] tracking-tight text-foreground">
                   {title}
                 </h3>
 

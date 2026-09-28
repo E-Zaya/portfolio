@@ -12,7 +12,7 @@ export default function Footer({ locale }: { locale: Locale }) {
   return (
     <footer className="pb-6 pt-3 md:pb-10 md:pt-4">
       <div className="container-custom">
-        <div className="glass rounded-3xl px-4 py-5 sm:px-6 sm:py-6">
+        <div className="glass rounded-2xl px-4 py-5 sm:px-6 sm:py-6">
           <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             {/* footer text */}
             <div>

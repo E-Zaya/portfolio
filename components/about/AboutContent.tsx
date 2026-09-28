@@ -9,7 +9,7 @@ export default function AboutContent({ locale }: { locale: Locale }) {
     <div className="section-flow">
     <section className="section-space">
       <div className="container-custom">
-        <div className="apple-panel gradient-border relative overflow-hidden rounded-3xl px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
+        <div className="apple-panel gradient-border relative overflow-hidden rounded-2xl px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-10 lg:px-12 lg:py-12">
           <div className="hero-bg pointer-events-none absolute inset-0 z-0" />
 
 
@@ -36,7 +36,7 @@ function ZazaCard({ locale }: { locale: Locale }) {
 
   return (
     <div
-      className="mx-auto flex max-w-xl items-center gap-5 rounded-3xl border p-5 sm:p-6"
+      className="mx-auto flex max-w-xl items-center gap-5 rounded-2xl border p-5 sm:p-6"
       style={{
         borderColor: "color-mix(in srgb, var(--marker-ink) 30%, var(--border))",
         background: "color-mix(in srgb, var(--marker-ink) 6%, transparent)",
@@ -51,7 +51,7 @@ function ZazaCard({ locale }: { locale: Locale }) {
       />
       <div>
         <p className="flex flex-wrap items-baseline gap-x-2">
-          <span className="text-lg font-black text-foreground">{t.name}</span>
+          <span className="text-lg font-bold text-foreground">{t.name}</span>
           <span
             className="text-xs font-bold"
             style={{ color: "var(--marker-ink)" }}

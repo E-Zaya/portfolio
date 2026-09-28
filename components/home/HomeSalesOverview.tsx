@@ -39,10 +39,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
     <div className="home-story">
       <SectionShell className="home-story-intro">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="home-story-index font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-muted">
+          <p className="home-story-index font-mono text-xs font-bold uppercase tracking-label text-muted">
             01 / 03
           </p>
-          <h2 className="heading-display home-statement-title mt-5 text-4xl leading-[1.2] text-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display home-statement-title mt-5 text-4xl leading-[1.2] text-foreground sm:text-5xl">
             {statementLines.map((line, index) => (
               <span
                 key={line}
@@ -56,7 +56,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               </span>
             ))}
           </h2>
-          <p className="mx-auto mt-7 max-w-3xl text-sm leading-7 text-soft sm:text-base sm:leading-8">
+          <p className="mx-auto mt-7 max-w-measure text-base leading-7 text-soft sm:leading-8">
             {messages.services.intro[0]}
           </p>
 
@@ -67,7 +67,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 href="#home-services"
                 className="home-outcome-link group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-border px-5 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
               >
-                <span className="font-mono text-[10px] text-muted">
+                <span className="font-mono text-xs text-muted">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{pillar.name}</span>
@@ -89,8 +89,8 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-muted">
+              <p className="home-section-eyebrow text-xs font-bold uppercase tracking-label text-muted">
+                <span className="font-mono text-xs text-muted">
                   02 / 03
                 </span>
                 {t.projectsEyebrow}
@@ -98,7 +98,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               <h2 className="heading-display text-balance mt-4 text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
                 {t.projectsTitle}
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="mt-4 max-w-measure text-base leading-7 text-soft">
                 {t.projectsDescription}
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                           }
                         />
                         <div className="home-project-media-shade absolute inset-0" />
-                        <p className="absolute left-5 top-5 z-10 flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/80">
+                        <p className="absolute left-5 top-5 z-10 flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-label text-white/80">
                           <span>{String(index + 1).padStart(2, "0")}</span>
                           <span aria-hidden className="h-px w-5 bg-white/40" />
                           {messages.projects.laneLabels[project.category]}
@@ -177,7 +177,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
 
                       <div className="flex items-start justify-between gap-5 p-6 sm:p-7">
                         <div className="min-w-0">
-                          <p className="text-[11px] font-bold text-[color:var(--accent-2)]">
+                          <p className="text-xs font-bold text-[color:var(--accent-2)]">
                             {content.client}
                           </p>
                           <h3 className="mt-1 text-2xl font-bold text-foreground">
@@ -208,8 +208,8 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-6xl">
           <div className="relative grid gap-7 xl:grid-cols-[minmax(0,1fr)_minmax(24rem,0.72fr)] xl:items-end xl:gap-16">
             <div>
-              <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-muted">
+              <p className="home-section-eyebrow text-xs font-bold uppercase tracking-label text-muted">
+                <span className="font-mono text-xs text-muted">
                   03 / 03
                 </span>
                 {t.servicesEyebrow}
@@ -219,7 +219,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               </h2>
             </div>
             <div className="lg:pb-1">
-              <p className="max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="max-w-measure text-base leading-7 text-soft">
                 {t.servicesDescription}
               </p>
               <TrackedLink
@@ -267,7 +267,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     }`}
                   >
                     {recommended && (
-                      <p className="home-service-recommended flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em]">
+                      <p className="home-service-recommended flex items-center gap-2 text-xs font-bold uppercase tracking-label">
                         <span
                           aria-hidden
                           className="h-1.5 w-1.5 rounded-full"
@@ -280,7 +280,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                       <span className="font-mono text-xs font-bold text-muted">
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <span className="home-service-icon grid h-10 w-10 place-items-center rounded-md border border-border text-muted">
+                      <span className="home-service-icon grid h-10 w-10 place-items-center rounded-lg border border-border text-muted">
                         <PackageIcon aria-hidden size={18} strokeWidth={1.6} />
                       </span>
                     </div>
@@ -294,10 +294,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     </p>
 
                     <div className="mt-7">
-                      <p className="text-2xl font-black tabular-nums text-foreground sm:text-[1.7rem]">
+                      <p className="text-2xl font-bold tabular-nums text-foreground sm:text-3xl">
                         {item.price}
                       </p>
-                      <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
+                      <p className="mt-2 flex items-center gap-2 text-xs font-bold text-muted">
                         <Clock3 aria-hidden size={14} strokeWidth={1.8} />
                         {item.timeline}
                       </p>
@@ -308,7 +308,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                         {features.map((feature) => (
                           <li
                             key={feature}
-                            className="flex items-start gap-2.5 text-xs font-semibold leading-5 text-soft"
+                            className="flex items-start gap-2.5 text-xs font-bold leading-5 text-soft"
                           >
                             <Check
                               aria-hidden
@@ -343,13 +343,13 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
       <SectionShell className="home-story-section home-contact-section">
         <div className="home-contact-panel mx-auto grid max-w-6xl gap-8 p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:p-12">
           <div className="max-w-3xl">
-            <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
+            <p className="home-section-eyebrow text-xs font-bold uppercase tracking-label text-muted">
               {t.contactEyebrow}
             </p>
             <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
               {t.contactTitle}
             </h2>
-            <p className="mt-4 text-sm leading-7 text-soft sm:text-base">
+            <p className="mt-4 text-base leading-7 text-soft">
               {t.contactDescription}
             </p>
           </div>

@@ -12,7 +12,7 @@ export default function Skills({ locale }: { locale: Locale }) {
     <SectionShell>
       <div className="mb-10 text-center">
         <p className="eyebrow mb-3">{t.eyebrow}</p>
-        <h2 className="text-xl font-bold text-foreground sm:text-2xl">
+        <h2 className="text-lg font-bold text-foreground sm:text-2xl">
           {t.title}
         </h2>
       </div>

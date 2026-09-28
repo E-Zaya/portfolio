@@ -63,7 +63,7 @@ export default function HeroVisual() {
 
       {/* browser frame */}
       <div
-        className="relative overflow-hidden rounded-3xl border"
+        className="relative overflow-hidden rounded-2xl border"
         style={{
           borderColor: "color-mix(in srgb, var(--foreground) 14%, transparent)",
           background:
@@ -97,7 +97,7 @@ export default function HeroVisual() {
           </div>
 
           <div
-            className="mx-3 flex-1 truncate rounded-md px-3 py-1 text-center font-mono text-[10px] tracking-wider"
+            className="mx-3 flex-1 truncate rounded-lg px-3 py-1 text-center font-mono text-[10px] tracking-wider"
             style={{
               background: "color-mix(in srgb, var(--foreground) 6%, transparent)",
               color: "var(--text-muted)",
@@ -107,7 +107,7 @@ export default function HeroVisual() {
           </div>
 
           <div
-            className="font-mono text-[10px] tracking-[0.18em]"
+            className="font-mono text-[10px] tracking-label"
             style={{ color: "var(--text-muted)" }}
           >
             {indexLabel}
@@ -153,7 +153,7 @@ export default function HeroVisual() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -3 }}
                 transition={{ duration: 0.3 }}
-                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-semibold"
+                className="flex items-center gap-2 rounded-full border px-3 py-1.5 text-[11px] font-bold"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--foreground) 12%, transparent)",
@@ -309,14 +309,14 @@ function SceneLanding({ data }: { data: LandingScene }) {
             transition={{ delay: 0.1 }}
           >
             <div
-              className="mb-1 text-[8px] font-bold uppercase tracking-widest"
+              className="mb-1 text-[8px] font-bold uppercase tracking-label"
               style={{ color: "var(--accent-1)" }}
             >
               {data.eyebrow}
             </div>
 
             <div
-              className="mb-1.5 text-[15px] font-black leading-[1.15]"
+              className="mb-1.5 text-[15px] font-bold leading-[1.15]"
               style={{ color: "var(--foreground)" }}
             >
               {data.titleBefore}
@@ -385,7 +385,7 @@ function SceneLanding({ data }: { data: LandingScene }) {
             </defs>
           </svg>
 
-          <div className="absolute bottom-2 left-2 text-[9px] font-black" style={{ color: "var(--accent-1)" }}>
+          <div className="absolute bottom-2 left-2 text-[9px] font-bold" style={{ color: "var(--accent-1)" }}>
             {data.stat}
           </div>
 
@@ -476,7 +476,7 @@ function SceneAdmin({ data }: { data: AdminScene }) {
           return (
             <div
               key={label}
-              className="rounded-md px-1.5 py-1 text-[8px]"
+              className="rounded-lg px-1.5 py-1 text-[8px]"
               style={{
                 background: isActive
                   ? "color-mix(in srgb, var(--accent-1) 15%, transparent)"
@@ -508,7 +508,7 @@ function SceneAdmin({ data }: { data: AdminScene }) {
             </div>
 
             <div>
-              <div className="text-[7px] font-semibold" style={{ color: "var(--foreground)" }}>
+              <div className="text-[7px] font-bold" style={{ color: "var(--foreground)" }}>
                 {data.userName}
               </div>
               <div className="text-[6px]" style={{ color: "var(--accent-1)" }}>
@@ -539,7 +539,7 @@ function SceneAdmin({ data }: { data: AdminScene }) {
                 {kpi.label}
               </div>
 
-              <div className="text-[10px] font-black leading-tight" style={{ color: "var(--foreground)" }}>
+              <div className="text-[10px] font-bold leading-tight" style={{ color: "var(--foreground)" }}>
                 {kpi.value}
               </div>
 
@@ -595,7 +595,7 @@ function SceneDatabase({ data }: { data: DatabaseScene }) {
     <div className="h-full w-full p-3">
       {/* SQL query */}
       <div
-        className="mb-2 rounded-md px-2.5 py-1.5 font-mono text-[8px]"
+        className="mb-2 rounded-lg px-2.5 py-1.5 font-mono text-[8px]"
         style={{
           background: "color-mix(in srgb, var(--foreground) 5%, transparent)",
           color: "var(--text-muted)",
@@ -611,7 +611,7 @@ function SceneDatabase({ data }: { data: DatabaseScene }) {
 
       {/* table header */}
       <div
-        className="grid grid-cols-[28px_1fr_1fr_44px] gap-1.5 rounded-md px-2 py-1 text-[7.5px] font-bold uppercase tracking-wider"
+        className="grid grid-cols-[28px_1fr_1fr_44px] gap-1.5 rounded-lg px-2 py-1 text-[7.5px] font-bold uppercase tracking-wider"
         style={{
           background: "color-mix(in srgb, var(--foreground) 5%, transparent)",
           color: "var(--text-muted)",
@@ -688,7 +688,7 @@ function SceneMultilingual({ data }: { data: MultilingualScene }) {
           }}
         >
           <span
-            className="rounded-md px-2 py-1 font-mono text-[10px] font-bold"
+            className="rounded-lg px-2 py-1 font-mono text-[10px] font-bold"
             style={{
               background: "linear-gradient(135deg, var(--accent-1), var(--accent-3))",
               color: "var(--button-foreground)",
@@ -704,7 +704,7 @@ function SceneMultilingual({ data }: { data: MultilingualScene }) {
       ))}
 
       <div
-        className="mt-auto text-center font-mono text-[9px] uppercase tracking-[0.25em]"
+        className="mt-auto text-center font-mono text-[9px] uppercase tracking-label"
         style={{ color: "var(--text-muted)" }}
       >
         {/* {data.footer} これもちょっと邪魔なのでとりあえず　コメントアウト*/}
