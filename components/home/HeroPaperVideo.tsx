@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { useReducedMotion } from "framer-motion";
 
 // 依頼メモに藍のペンが入り、本物の画面になる 13.8 秒の loop（音なし）。
-// 紙の色は .hero-paper と同じ #f6f5f1 なので、枠なしで Hero の紙に溶ける。
+// 紙の色は tokens.css の --paper と同じなので、枠なしで Hero の紙に溶ける。
 export default function HeroPaperVideo() {
   const ref = useRef<HTMLVideoElement>(null);
   const reduce = useReducedMotion();

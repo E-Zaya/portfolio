@@ -1,6 +1,7 @@
 /* ══════════════════════════════════════════════════════════════
-   カラーシステム「墨と藍 (Ink & Lapis)」
-   - ベース: 夜の書斎の墨色(ダーク) / 落ち着いた紙色(ライト)
+   カラーシステム「墨と藍 (Ink & Lapis)」— 地の色は Dashboard の土台 (E-Zaya/Agents templates/dashboard) に合わせた
+   - ベース: 濃紺の夜に青い光(ダーク) / 藤色〜水色の淡い地(ライト)。光は --glow-1〜3 で body に置く
+   - Hero の紙 (--paper-*) はテーマに関係なく同じ紙と墨。動画の紙と同じ色で、枠なしで溶ける
    - アクセント: Zaya Lapis — 信頼とイノベーションの深い瑠璃。マーカーは「青ペンの添削」。
      使ってよいのは ①主CTA ②マーカー/手書き ③選択・現在地 の3役のみ。
      装飾に乱用しない(上品さは金の「少なさ」で作る)。
@@ -9,20 +10,25 @@
 :root {
   color-scheme: dark;
 
-  --background: #131519;
-  --background-2: #1a1d23;
-  --foreground: #f0f2f5;
+  --background: #050d21;
+  --background-2: #0b1636;
+  --foreground: #eef2ff;
 
-  --text-soft: rgba(240, 242, 245, 0.88);
-  --text-muted: rgba(240, 242, 245, 0.66);
+  /* 地の光(Dashboard の土台と同じ)。左下・右・下中央 */
+  --glow-1: rgb(40 78 230 / 0.42);
+  --glow-2: rgb(22 64 190 / 0.38);
+  --glow-3: rgb(14 120 140 / 0.14);
 
-  /* カードは不透明(ガラス乱用をやめ、素材感を面で出す) */
-  --card: #1b1e25;
-  --card-strong: #23272f;
+  --text-soft: rgba(226, 232, 255, 0.86);
+  --text-muted: rgba(200, 210, 245, 0.66);
+
+  /* カードは地の光が少し透ける濃紺の面。ダークは上の面ほど明るく */
+  --card: rgb(13 27 70 / 0.55);
+  --card-strong: rgb(24 42 100 / 0.6);
   /* ボーダー3階層: 外枠 > 内部区切り > 装飾ヘアライン */
-  --border: rgba(240, 242, 245, 0.16);
-  --border-soft: rgba(240, 242, 245, 0.09);
-  --hairline: rgba(240, 242, 245, 0.06);
+  --border: rgb(140 165 255 / 0.22);
+  --border-soft: rgb(140 165 255 / 0.12);
+  --hairline: rgb(140 165 255 / 0.07);
 
   /* social brand colors */
   --brand-email: #ea4335;
@@ -31,50 +37,51 @@
   --brand-facebook: #1877f2;
   --brand-x: #f2ecdf;
 
-  --shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  --shadow: 0 18px 48px rgb(2 6 23 / 0.5);
 
   /* accent-1: 補助の青灰(情報系、主張しない色)
      accent-2: Zaya Gold(主役) — 旧インディゴの置き換え先
      accent-3/4: ほぼ未使用の予備(金と喧嘩しない同系) */
-  --accent-1: #8a97a8;
-  --accent-2: #7fa8f0;
-  --accent-3: #4a72cf;
-  --accent-4: #7fc0b4;
+  --accent-1: #8f9bc4;
+  --accent-2: #6d8cff;
+  --accent-3: #3c61f5;
+  --accent-4: #2fd3a3;
 
   /* マーカーと手書きインクは「青ペンの添削」 */
-  --marker: color-mix(in srgb, #7fa8f0 34%, transparent);
-  --marker-ink: #7fa8f0;
+  --marker: color-mix(in srgb, #6d8cff 36%, transparent);
+  --marker-ink: #8fa9ff;
 
   --surface-glow: rgba(240, 242, 245, 0.03);
   --surface-glow-strong: rgba(240, 242, 245, 0.05);
 
-  /* 藍ボタンの上は墨文字(ダーク) — ライトは深藍地に白 */
-  --button-foreground: #0d1524;
+  /* 主CTA は Dashboard と同じ濃い藍の塗りに白文字(5:1 以上) */
+  --button-bg: #3c61f5;
+  --button-foreground: #ffffff;
 
   --color-success: #4fae7a;
   --color-warning: #d9a648;
   --color-error: #e07856;
 
-  --header-bg: rgba(19, 21, 25, 0.92);
-  --header-bg-strong: rgba(19, 21, 25, 0.97);
-  --header-border: rgba(240, 242, 245, 0.14);
-  --header-divider: rgba(240, 242, 245, 0.1);
-  --header-hover: rgba(240, 242, 245, 0.08);
-  --header-hover-strong: rgba(240, 242, 245, 0.12);
-  --header-active: rgba(240, 242, 245, 0.12);
-  --header-active-border: rgba(127, 168, 240, 0.3);
+  --header-bg: rgb(11 22 54 / 0.72);
+  --header-bg-strong: rgb(11 22 54 / 0.9);
+  --header-border: rgb(140 165 255 / 0.18);
+  --header-divider: rgb(140 165 255 / 0.12);
+  --header-hover: rgb(140 165 255 / 0.1);
+  --header-hover-strong: rgb(140 165 255 / 0.16);
+  --header-active: rgb(60 97 245 / 0.24);
+  --header-active-border: rgb(109 140 255 / 0.4);
   --header-glow: linear-gradient(
     90deg,
-    rgba(127, 168, 240, 0.14),
-    rgba(127, 168, 240, 0.05)
+    rgb(109 140 255 / 0.16),
+    rgb(109 140 255 / 0.05)
   );
   --header-bottom-line: linear-gradient(
     90deg,
     transparent,
-    rgba(127, 168, 240, 0.35),
+    rgb(109 140 255 / 0.4),
     transparent
   );
-  --header-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+  --header-shadow: 0 8px 30px rgb(2 6 23 / 0.35);
 
   --blog-blob-primary: color-mix(in srgb, var(--accent-2) 14%, transparent);
   --blog-blob-secondary: color-mix(in srgb, var(--accent-1) 12%, transparent);
@@ -85,7 +92,7 @@
   --blog-blockquote-bg: rgba(240, 242, 245, 0.04);
   --blog-blockquote-border: rgba(220, 168, 79, 0.4);
   --blog-inline-code-bg: rgba(240, 242, 245, 0.08);
-  --blog-code-bg: #0e1015;
+  --blog-code-bg: #071030;
   --blog-code-border: rgba(240, 242, 245, 0.1);
   --blog-code-dot-red: #ff5f56;
   --blog-code-dot-yellow: #ffbd2e;
@@ -108,34 +115,41 @@
 html.light {
   color-scheme: light;
 
-  --background: #f6f5f1;
-  --background-2: #ebeae3;
-  --foreground: #1f242e;
+  --background: #e8edf8;
+  --background-2: #dde4f4;
+  --foreground: #0d1024;
 
-  --text-soft: rgba(31, 36, 46, 0.86);
-  --text-muted: rgba(31, 36, 46, 0.62);
+  /* 地の光(Dashboard の土台と同じ)。藤色・水色・淡い青緑 */
+  --glow-1: rgb(190 196 245 / 0.8);
+  --glow-2: rgb(170 222 246 / 0.85);
+  --glow-3: rgb(214 238 236 / 0.7);
 
-  --card: #fdfcf9;
-  --card-strong: #ffffff;
-  --border: rgba(58, 70, 92, 0.25);
-  --border-soft: rgba(58, 70, 92, 0.14);
-  --hairline: rgba(58, 70, 92, 0.08);
+  --text-soft: rgba(13, 16, 36, 0.84);
+  --text-muted: rgba(13, 16, 36, 0.66);
 
-  --shadow: 0 16px 40px rgba(30, 40, 60, 0.1);
+  /* 白いすりガラスの面 */
+  --card: rgb(255 255 255 / 0.62);
+  --card-strong: rgb(255 255 255 / 0.8);
+  --border: rgb(120 135 190 / 0.28);
+  --border-soft: rgb(120 135 190 / 0.16);
+  --hairline: rgb(120 135 190 / 0.09);
+
+  --shadow: 0 18px 48px rgb(40 52 110 / 0.12);
 
   /* ライトの藍は読める濃さ(コントラスト確保)の深い瑠璃 */
-  --accent-1: #52657d;
-  --accent-2: #2557cb;
-  --accent-3: #1d43a8;
-  --accent-4: #2e7f74;
+  --accent-1: #4c5a8a;
+  --accent-2: #2f52e6;
+  --accent-3: #2443c4;
+  --accent-4: #17915c;
 
-  --marker: color-mix(in srgb, #9dbcf5 45%, transparent);
-  --marker-ink: #2557cb;
+  --marker: color-mix(in srgb, #9fb2f7 45%, transparent);
+  --marker-ink: #2f52e6;
 
   --surface-glow: rgba(255, 255, 255, 0.6);
   --surface-glow-strong: rgba(255, 255, 255, 0.85);
 
-  --button-foreground: #f6f9ff;
+  --button-bg: #2f52e6;
+  --button-foreground: #ffffff;
 
   --color-success: #2e8b57;
   --color-warning: #9a6d10;
@@ -147,28 +161,28 @@ html.light {
   --brand-facebook: #1877f2;
   --brand-x: #000000;
 
-  --header-bg: rgba(253, 252, 249, 0.92);
-  --header-bg-strong: rgba(253, 252, 249, 0.97);
-  --header-border: rgba(58, 70, 92, 0.2);
-  --header-divider: rgba(58, 70, 92, 0.14);
-  --header-hover: rgba(255, 255, 255, 0.55);
-  --header-hover-strong: rgba(255, 255, 255, 0.8);
-  --header-active: rgba(255, 255, 255, 0.9);
-  --header-active-border: rgba(37, 87, 203, 0.22);
+  --header-bg: rgb(255 255 255 / 0.62);
+  --header-bg-strong: rgb(255 255 255 / 0.85);
+  --header-border: rgb(255 255 255 / 0.9);
+  --header-divider: rgb(120 135 190 / 0.18);
+  --header-hover: rgb(255 255 255 / 0.6);
+  --header-hover-strong: rgb(255 255 255 / 0.85);
+  --header-active: rgb(47 82 230 / 0.12);
+  --header-active-border: rgb(47 82 230 / 0.24);
   --header-glow: linear-gradient(
     90deg,
-    rgba(37, 87, 203, 0.1),
-    rgba(37, 87, 203, 0.04)
+    rgb(47 82 230 / 0.1),
+    rgb(47 82 230 / 0.04)
   );
   --header-bottom-line: linear-gradient(
     90deg,
     transparent,
-    rgba(37, 87, 203, 0.25),
+    rgb(47 82 230 / 0.25),
     transparent
   );
-  --header-shadow: 0 8px 30px rgba(30, 40, 60, 0.08);
+  --header-shadow: 0 8px 30px rgb(40 52 110 / 0.1);
 
-  --blog-blob-primary: color-mix(in srgb, #2557cb 12%, transparent);
+  --blog-blob-primary: color-mix(in srgb, var(--accent-2) 12%, transparent);
   --blog-blob-secondary: color-mix(in srgb, var(--accent-1) 12%, transparent);
   --blog-blob-bottom: rgba(31, 36, 46, 0.07);
   --blog-link-underline: rgba(31, 36, 46, 0.22);
@@ -186,4 +200,26 @@ html.light {
   --blog-table-cell-border: rgba(31, 36, 46, 0.08);
   --blog-copy-bg: rgba(31, 36, 46, 0.05);
   --blog-copy-border: rgba(31, 36, 46, 0.1);
+}
+
+/* Hero の紙。テーマに関係なく同じ紙と墨(動画の紙 #f6f5f1 と同じ色)。
+   藍は動画のペンと同じ深い瑠璃。縁はライトの地の上でだけ細く見せる */
+:root {
+  --paper: #f6f5f1;
+  --paper-ink: #1f242e;
+  --paper-soft: rgba(31, 36, 46, 0.86);
+  --paper-muted: rgba(31, 36, 46, 0.64);
+  --paper-card: #fdfcf9;
+  --paper-border: rgba(58, 70, 92, 0.25);
+  --paper-border-soft: rgba(58, 70, 92, 0.14);
+  --paper-shadow: 0 16px 40px rgba(30, 40, 60, 0.1);
+  --paper-accent-1: #52657d;
+  --paper-accent: #2557cb;
+  --paper-marker: color-mix(in srgb, #9dbcf5 45%, transparent);
+  --paper-on-accent: #ffffff;
+  --paper-edge: 0 24px 60px rgb(2 6 23 / 0.45);
+}
+
+html.light {
+  --paper-edge: 0 18px 48px rgb(40 52 110 / 0.14), inset 0 0 0 1px rgb(120 135 190 / 0.2);
 }
