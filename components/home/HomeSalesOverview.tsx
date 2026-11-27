@@ -1,14 +1,14 @@
 import { getBriefHref, briefLabels } from "@/lib/contact-brief";
 import Image from "next/image";
 import {
+  AppWindow,
   ArrowDown,
   ArrowUpRight,
   Check,
+  Building2,
   Clock3,
-  Globe2,
-  LayoutPanelTop,
+  LayoutDashboard,
   MessageCircle,
-  Smartphone,
 } from "lucide-react";
 import TrackedLink from "@/components/analytics/TrackedLink";
 import SectionShell from "@/components/ui/SectionShell";
@@ -23,7 +23,8 @@ const featuredClientWork: readonly ProjectItem[] = projectItems
 const actionClass =
   "inline-flex min-h-11 items-center justify-center gap-2 rounded-full border px-5 py-2.5 text-sm font-bold transition hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]";
 
-const packageIcons = [LayoutPanelTop, Globe2, Smartphone] as const;
+// 1ページのサイト / 会社の本格サイト / 管理画面のある業務システム
+const packageIcons = [AppWindow, Building2, LayoutDashboard] as const;
 
 export default function HomeSalesOverview({ locale }: { locale: Locale }) {
   const messages = getMessages(locale);
@@ -216,7 +217,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               }`}
             >
               {serviceItems.map((item, index) => {
-                const PackageIcon = packageIcons[index] ?? LayoutPanelTop;
+                const PackageIcon = packageIcons[index] ?? AppWindow;
                 const features = (
                   "features" in item ? item.features : item.forms
                 ).slice(0, 2);
@@ -229,35 +230,32 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 return (
                   <article
                     key={item.name}
-                    className={`home-service-tier relative flex min-h-[22rem] flex-col p-6 sm:p-7 ${
+                    className={`home-service-tier relative row-span-5 grid grid-rows-subgrid p-6 sm:p-7 ${
                       featured ? "home-service-tier-featured" : ""
                     }`}
                   >
-                    {recommended && (
-                      <p className="home-service-recommended flex items-center gap-2 text-xs font-bold">
-                        <span
-                          aria-hidden
-                          className="h-1.5 w-1.5 rounded-full"
-                        />
-                        {messages.services.packages?.recommendedLabel}
-                      </p>
-                    )}
-
-                    <div className="flex items-center gap-4">
-                      <span className="home-service-icon grid h-10 w-10 place-items-center rounded-sm border border-border text-muted">
+                    {/* 行は subgrid で3枚そろえる: アイコンと印 / 名前と説明 / 価格 / 項目 / 相談 */}
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="home-service-icon grid h-10 w-10 shrink-0 place-items-center rounded-sm border border-border text-muted">
                         <PackageIcon aria-hidden size={18} strokeWidth={1.6} />
                       </span>
+                      {recommended && (
+                        <p className="home-service-recommended rounded-full px-3 py-1 text-xs font-bold">
+                          {messages.services.packages?.recommendedLabel}
+                        </p>
+                      )}
                     </div>
 
-                    <h3 className="mt-8 text-lg font-bold text-foreground">
-                      {item.name}
-                    </h3>
-                    {/* 3行ぶんの高さを確保 → 説明文の行数が違っても価格行が揃う */}
-                    <p className="mt-3 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-muted">
-                      {description}
-                    </p>
+                    <div className="mt-6">
+                      <h3 className="text-lg font-bold text-foreground">
+                        {item.name}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-muted">
+                        {description}
+                      </p>
+                    </div>
 
-                    <div className="mt-7">
+                    <div className="mt-6">
                       <p className="text-xl font-bold tabular-nums text-foreground sm:text-2xl">
                         {item.price}
                       </p>
@@ -268,17 +266,17 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     </div>
 
                     {features.length > 0 && (
-                      <ul className="mt-auto space-y-2 border-t border-border pt-5">
+                      <ul className="mt-6 space-y-2 border-t border-border pt-5">
                         {features.map((feature) => (
                           <li
                             key={feature}
-                            className="flex items-start gap-2.5 text-xs font-semibold leading-5 text-soft"
+                            className="flex items-start gap-2.5 text-sm leading-6 text-soft"
                           >
                             <Check
                               aria-hidden
                               size={14}
                               strokeWidth={2}
-                              className="mt-0.5 shrink-0 text-[color:var(--accent-2)]"
+                              className="mt-1 shrink-0 text-[color:var(--accent-2)]"
                             />
                             {feature}
                           </li>
@@ -290,7 +288,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                         href={getBriefHref(locale, { plan: String(index) })}
                         eventName="Home Package CTA Click"
                         eventProperties={{ locale, package: item.name }}
-                        className="brief-plan-link"
+                        className="brief-plan-link self-end justify-self-start"
                       >
                         {briefLabels[locale].consult}
                       </TrackedLink>

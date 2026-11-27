@@ -863,14 +863,9 @@ html.light .mouse-glow::before {
 }
 
 .home-service-recommended {
-  position: absolute;
-  top: 0.8rem;
-  left: 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent-2) 36%, transparent);
+  background: color-mix(in srgb, var(--accent-2) 12%, transparent);
   color: var(--accent-2);
-}
-
-.home-service-recommended span {
-  background: var(--accent-2);
 }
 
 .home-service-tier-featured .home-service-icon {
