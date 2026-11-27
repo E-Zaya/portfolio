@@ -48,6 +48,8 @@ export type PostMeta = {
   slug: string;
   cover: string;
   readingTime: number;
+  // Notion の Pinned (checkbox)。ON の記事は一覧の先頭と記事下の「おすすめ記事」に出る
+  pinned: boolean;
 };
 
 export type Post = PostMeta & {
@@ -82,6 +84,7 @@ function pageToPostMeta(page: BlogPage): PostMeta {
   const publishedProperty = props.Published;
   const slugProperty = props.Slug;
   const readingTimeProperty = props.ReadingTime;
+  const pinnedProperty = props.Pinned;
 
   // slug を先に確定させて cover パスの生成に使う
   const slug =
@@ -133,6 +136,9 @@ function pageToPostMeta(page: BlogPage): PostMeta {
       readingTimeProperty?.type === "number"
         ? (readingTimeProperty.number ?? 1)
         : 1,
+
+    pinned:
+      pinnedProperty?.type === "checkbox" ? pinnedProperty.checkbox : false,
   };
 }
 
@@ -168,9 +174,12 @@ export async function getBlogPosts(lang?: string): Promise<PostMeta[]> {
     sorts: [{ property: "Date", direction: "descending" }],
   });
 
-  return response.results
+  const posts = response.results
     .filter((page): page is BlogPage => page.object === "page")
     .map(pageToPostMeta);
+
+  // Pin した記事を先頭へ。並べ替えは安定なので、それぞれの中は Date の新しい順のまま
+  return [...posts].sort((a, b) => Number(b.pinned) - Number(a.pinned));
 }
 
 export async function getBlogPost(

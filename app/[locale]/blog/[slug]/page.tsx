@@ -133,7 +133,15 @@ export default async function BlogDetailPage({
   const { newHtml, headings } = injectIds(rawHtml, t.tocItemAria);
 
   const allPosts = await getBlogPosts(locale);
-  const related = getRelatedPosts(allPosts, currentPost, 3);
+  const recommended = allPosts
+    .filter((post) => post.pinned && post.slug !== currentPost.slug)
+    .slice(0, 3);
+  const recommendedSlugs = new Set(recommended.map((post) => post.slug));
+  const related = getRelatedPosts(
+    allPosts.filter((post) => !recommendedSlugs.has(post.slug)),
+    currentPost,
+    3,
+  );
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -184,6 +192,8 @@ export default async function BlogDetailPage({
                     dangerouslySetInnerHTML={{ __html: newHtml }}
                   />
                 </article>
+
+                <RelatedPostsRow posts={recommended} locale={locale} title={t.recommended} />
 
                 <RelatedPostsRow posts={related} locale={locale} />
               </div>

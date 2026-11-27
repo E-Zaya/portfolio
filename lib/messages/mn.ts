@@ -375,6 +375,8 @@ export const mn = {
     toc: "Гарчиг",
     tocItemAria: "Гарчиг руу очих",
     related: "Төстэй нийтлэлүүд",
+    recommended: "Санал болгох нийтлэлүүд",
+    pinnedBadge: "Санал болгох",
     readMore: "Цааш унших",
     allTags: "Бүгд",
     noPostsTitle: "Нийтлэл олдсонгүй.",

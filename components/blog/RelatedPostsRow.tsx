@@ -11,9 +11,11 @@ type Props = {
   // [FIX] props統一
   posts: PostMeta[];
   locale: Locale;
+  // 見出し。省略時は「関連記事」
+  title?: string;
 };
 
-export default function RelatedPostsRow({ posts, locale }: Props) {
+export default function RelatedPostsRow({ posts, locale, title }: Props) {
   const t = getMessages(locale).blog;
 
   if (!posts.length) return null;
@@ -21,7 +23,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
   return (
     <section className="space-y-4">
       <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
-        {t.related}
+        {title ?? t.related}
       </h2>
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
