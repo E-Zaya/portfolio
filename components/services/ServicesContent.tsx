@@ -125,7 +125,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               {packages.items.map((item, index) => (
                 <article
                   key={item.name}
-                  className="relative flex min-h-full flex-col overflow-hidden rounded-lg border p-6 sm:p-7"
+                  className="relative flex min-h-full flex-col overflow-hidden rounded-lg border p-6 sm:p-7 lg:row-span-7 lg:grid lg:grid-rows-subgrid lg:gap-y-0"
                   style={{
                     borderColor: item.recommended
                       ? "color-mix(in srgb, var(--accent-2) 62%, var(--border))"
@@ -136,7 +136,8 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   }}
                 >
                   {/* チップの有無でタイトル開始位置がズレないよう、
-                      3枚とも同じ高さのスロットを確保する */}
+                      3枚とも同じ高さのスロットを確保する。
+                      lg では subgrid で名前・説明・価格・項目の行を3枚そろえる */}
                   <div className="mb-5 min-h-[26px]">
                     {item.recommended && (
                       <span
@@ -157,7 +158,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <h3 className="text-xl font-bold text-foreground">
                     {item.name}
                   </h3>
-                  <p className="mt-3 min-h-20 text-sm leading-7 text-soft">
+                  <p className="mt-3 text-sm leading-7 text-soft">
                     {item.description}
                   </p>
 
