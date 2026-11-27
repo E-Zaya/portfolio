@@ -8,7 +8,6 @@ import { isLocale, type Locale } from "@/lib/i18n";
 const messages: Record<
   Locale,
   {
-    eyebrow: string;
     title: string;
     description: string;
     cta: string;
@@ -16,7 +15,6 @@ const messages: Record<
   }
 > = {
   ja: {
-    eyebrow: "404 · ページが見つかりません",
     title: "お探しのページは\n見つかりませんでした",
     description:
       "URLが間違っているか、ページが移動・削除された可能性があります。",
@@ -24,7 +22,6 @@ const messages: Record<
     zaza: "ごめんね、迷子にしちゃった…",
   },
   en: {
-    eyebrow: "404 · Page Not Found",
     title: "The page you're looking\nfor doesn't exist",
     description:
       "The URL may be incorrect, or the page may have been moved or deleted.",
@@ -32,7 +29,6 @@ const messages: Record<
     zaza: "Sorry, I got you lost…",
   },
   mn: {
-    eyebrow: "404 · Хуудас олдсонгүй",
     title: "Таны хайж буй хуудас\nолдсонгүй",
     description:
       "URL буруу байж болох юм, эсвэл хуудас зөөгдсөн эсвэл устгагдсан байж болно.",
@@ -48,7 +44,7 @@ export default function LocaleNotFound() {
   const t = messages[locale];
 
   return (
-    <main className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
+    <div className="flex min-h-[70dvh] flex-col items-center justify-center px-4 py-20">
       <div className="mx-auto max-w-lg text-center">
         {/* Zazaが謝る */}
         <div className="mb-4 flex flex-col items-center gap-2">
@@ -68,9 +64,7 @@ export default function LocaleNotFound() {
           </p>
         </div>
 
-        <p className="eyebrow mb-6">{t.eyebrow}</p>
-
-        <h1 className="whitespace-pre-line text-3xl font-black leading-tight tracking-tight text-foreground sm:text-4xl">
+        <h1 className="whitespace-pre-line text-2xl font-bold leading-tight text-foreground sm:text-3xl">
           {t.title}
         </h1>
 
@@ -84,6 +78,6 @@ export default function LocaleNotFound() {
           ← {t.cta}
         </Button>
       </div>
-    </main>
+    </div>
   );
 }

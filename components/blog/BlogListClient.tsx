@@ -26,8 +26,8 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between gap-4">
-        <h2 className="text-[clamp(22px,2.4vw,30px)] font-semibold tracking-[-0.04em] text-foreground">
-          <MarkerHighlight delay={0.2}>{t.browseTitle}</MarkerHighlight>
+        <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
+          <MarkerHighlight>{t.browseTitle}</MarkerHighlight>
         </h2>
       </div>
 
@@ -45,8 +45,8 @@ export default function BlogListClient({ posts, tags, locale }: Props) {
           ))}
         </div>
       ) : (
-        <div className="rounded-3xl border border-border bg-card px-4 py-10 md:px-6 md:py-12 lg:py-14 text-center">
-          <p className="text-base font-medium text-foreground">
+        <div className="rounded-lg border border-border bg-card px-4 py-10 md:px-6 md:py-12 lg:py-14 text-center">
+          <p className="text-base font-normal text-foreground">
             {t.noPostsTitle}
           </p>
           <p className="mt-2 text-sm leading-7 text-soft">

@@ -22,24 +22,24 @@ type LinkProps = SharedProps &
   };
 
 const baseClass =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
+  "inline-flex items-center justify-center gap-2 rounded-full font-normal transition duration-200 hover:-translate-y-0.5 active:scale-[0.985] focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent";
 
 const variants: Record<Variant, string> = {
   // primary はサービスの「お問い合わせ」ボタンと同じソリッドな accent-2。
   // services-primary-button (components.css) を再利用 → ライト/ダーク自動対応。
   primary:
     "services-primary-button border border-transparent hover:opacity-90 focus-visible:ring-[color:var(--accent-2)]",
-  secondary: "border border-border bg-card text-foreground shadow-theme hover:bg-card/80 focus-visible:ring-[color:var(--accent-2)]",
+  secondary: "border border-border bg-card text-foreground hover:bg-card/80 focus-visible:ring-[color:var(--accent-2)]",
   ghost: "border border-transparent bg-transparent text-soft hover:text-foreground hover:bg-card/50 focus-visible:ring-[color:var(--accent-2)]",
   outline:
-    "border-2 border-border bg-transparent text-foreground hover:bg-card/60 hover:border-white/25 focus-visible:ring-[color:var(--accent-2)]",
+    "border-2 border-border bg-transparent text-foreground hover:bg-card/60 hover:border-[color:color-mix(in_srgb,var(--accent-2)_40%,var(--border))] focus-visible:ring-[color:var(--accent-2)]",
 };
 
 const sizes: Record<Size, string> = {
   default: "px-6 py-3 text-sm",
   lg: "px-8 py-4 text-base",
   // モバイルで2つ横並びにする用。sm:以上はclassNameで上書き拡大できる
-  compact: "px-4 py-3 text-[13px]",
+  compact: "px-4 py-3 text-xs",
 };
 
 export default function Button(props: ButtonProps | LinkProps) {

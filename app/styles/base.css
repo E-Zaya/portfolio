@@ -12,14 +12,12 @@ body {
   overflow-x: hidden;
   color: var(--foreground);
   font-family: var(--font-en), var(--font-ja), system-ui, sans-serif;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* 地は Dashboard の土台と同じ濃紺/藤色(--background)。光は下の body::before、
-     紙の繊維はここで重ねる */
+  /* 地は Dashboard の土台と同じ濃紺/藤色(--background)。光は下の body::before */
   background-color: var(--background);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
 }
 
 /* 地の光(tokens.css の --glow-*)。画面に固定し、スクロールしても動かさない。
@@ -40,6 +38,8 @@ html[data-locale="ja"] body,
 [data-locale="ja"] body,
 [data-locale="ja"] {
   font-family: var(--font-ja), var(--font-en), system-ui, sans-serif;
+  /* 和文は字間を詰めない (Agents rules/design.md 1章) */
+  letter-spacing: 0;
 }
 
 a {
@@ -54,10 +54,6 @@ select {
   font: inherit;
 }
 
-section {
-  will-change: transform, opacity, filter;
-}
-
 h1,
 h2,
 h3,
@@ -65,10 +61,10 @@ h4,
 h5,
 h6,
 .section-title {
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
 }
 
-/* 日本語表示時はマイナストラッキングをやや緩める（行間崩れ防止） */
+/* 和文の見出しは字間を詰めない */
 [data-locale="ja"] h1,
 [data-locale="ja"] h2,
 [data-locale="ja"] h3,
@@ -77,7 +73,7 @@ h6,
 [data-locale="ja"] h6,
 [data-locale="ja"] .section-title,
 [data-locale="ja"] .jp-tight {
-  letter-spacing: -0.015em;
+  letter-spacing: 0;
 }
 
 /* ──────────────────────────────────────────────────────────────
@@ -124,12 +120,12 @@ h6,
    EN/MN: セリフが不自然なので、太めのサンセリフ+詰めトラッキングで対比を作る */
 .heading-display {
   font-family: var(--font-en), var(--font-ja), system-ui, sans-serif;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
 [data-locale="ja"] .heading-display {
   font-family: var(--font-serif-ja), var(--font-ja), "Hiragino Mincho ProN", serif;
   font-weight: 700;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
 }

@@ -91,7 +91,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
             : cn(
                 "group inline-flex h-9 items-center gap-2 rounded-full",
                 "border px-3",
-                "font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-foreground",
+                "text-xs font-semibold text-foreground",
                 "transition-[transform,background,border-color,box-shadow] duration-200",
                 "hover:-translate-y-0.5",
                 "focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]",
@@ -102,7 +102,6 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
             ? {
                 borderColor: `color-mix(in srgb, ${current.accent} 55%, var(--border))`,
                 background: "color-mix(in srgb, var(--header-bg) 88%, transparent)",
-                boxShadow: `0 0 14px color-mix(in srgb, ${current.accent} 18%, transparent)`,
               }
             : {}),
         }}
@@ -114,7 +113,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
             width={20}
             height={14}
             aria-hidden="true"
-            className="h-3.5 w-5 rounded-[3px] object-cover"
+            className="h-3.5 w-5 rounded-sm object-cover"
           />
         </span>
 
@@ -148,12 +147,12 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
               isDock
                 ? "bottom-[calc(100%+8px)] left-0 w-full min-w-full"
                 : "right-0 top-[calc(100%+8px)]",
-              "overflow-hidden rounded-2xl border p-1.5",
+              "overflow-hidden rounded-md border p-1.5",
             )}
             style={{
               borderColor: `color-mix(in srgb, ${current.accent} 38%, var(--border))`,
               background: "color-mix(in srgb, var(--header-bg-strong) 94%, transparent)",
-              boxShadow: `0 16px 40px color-mix(in srgb, ${current.accent} 14%, rgba(0,0,0,0.28)), 0 0 0 1px color-mix(in srgb, var(--foreground) 4%, transparent)`,
+              boxShadow: `0 16px 40px color-mix(in srgb, ${current.accent} 14%, color-mix(in srgb, var(--shadow-color) 28%, transparent)), 0 0 0 1px color-mix(in srgb, var(--foreground) 4%, transparent)`,
             }}
           >
             {LANGS.map((lang, index) => {
@@ -169,7 +168,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                     ease: [0.22, 1, 0.36, 1],
                   }}
                   className={cn(
-                    "relative flex h-11 w-full items-center gap-3 rounded-xl px-3",
+                    "relative flex h-11 w-full items-center gap-3 rounded-md px-3",
                     "transition-[background,color] duration-200",
                   )}
                   style={
@@ -196,7 +195,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                     height={16}
                     aria-hidden="true"
                     className={cn(
-                      "h-4 w-[22px] flex-shrink-0 rounded-[3px] object-cover",
+                      "h-4 w-[22px] flex-shrink-0 rounded-sm object-cover",
                       !isCurrent && "opacity-85",
                     )}
                   />
@@ -205,7 +204,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                   <span className="flex min-w-0 flex-1 items-baseline gap-2">
                     <span
                       className={cn(
-                        "font-mono text-[11px] font-semibold uppercase tracking-[0.16em]",
+                        "text-xs font-semibold ",
                         isCurrent ? "text-foreground" : "text-soft",
                       )}
                     >
@@ -213,7 +212,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                     </span>
                     <span
                       className={cn(
-                        "truncate text-[12px]",
+                        "truncate text-xs",
                         isCurrent ? "text-foreground" : "text-muted",
                       )}
                     >
@@ -252,7 +251,7 @@ export default function LangToggle({ locale, variant = "header" }: LangTogglePro
                   role="menuitem"
                   onClick={() => setOpen(false)}
                   aria-label={lang.label}
-                  className="lang-row block focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:rounded-xl"
+                  className="lang-row block focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] focus-visible:rounded-md"
                 >
                   {item}
                 </Link>

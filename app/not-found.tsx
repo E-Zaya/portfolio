@@ -17,23 +17,11 @@ export default function NotFound() {
       }}
     >
       <div style={{ maxWidth: "480px" }}>
-        <p
-          style={{
-            fontSize: "0.6875rem",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.34em",
-            marginBottom: "1.5rem",
-            color: "var(--accent-2)",
-          }}
-        >
-          404
-        </p>
 
         <h1
           style={{
             fontSize: "2rem",
-            fontWeight: 800,
+            fontWeight: 700,
             lineHeight: 1.15,
             marginBottom: "1rem",
           }}

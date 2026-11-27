@@ -17,7 +17,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         <span className="crop-mark crop-mark-br" aria-hidden />
 
         {/* Hero ごと一枚の紙。テーマに関係なく紙の色と墨の文字で組む */}
-        <div className="hero-paper relative grid grid-cols-1 items-center overflow-hidden rounded-3xl lg:grid-cols-12">
+        <div className="hero-paper relative grid grid-cols-1 items-center overflow-hidden rounded-lg lg:grid-cols-12">
           <div className="relative z-10 min-w-0 px-5 pt-7 sm:px-8 sm:pt-9 md:px-12 md:pt-12 lg:col-span-7 lg:py-12 lg:pr-0">
             <HeroContent locale={locale} />
           </div>

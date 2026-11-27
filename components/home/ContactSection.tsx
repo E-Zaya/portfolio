@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ContactForm from "./ContactForm";
@@ -18,48 +15,31 @@ export default function ContactSection({
   return (
     <section className="section-space relative overflow-hidden">
       <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 26 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          className="mx-auto max-w-5xl"
-        >
+        <div className="mx-auto max-w-5xl">
           <div className="mb-12 text-center">
-            <h2 className="heading-display text-3xl text-foreground sm:text-5xl">
-              {t.titleA}{" "}
-              <MarkerHighlight delay={0.3}>{t.titleB}</MarkerHighlight>
-            </h2>
+            {/* お問い合わせページの見出しなので h1 */}
+            <h1 className="heading-display text-2xl text-foreground sm:text-4xl">
+              {t.titleA} <MarkerHighlight>{t.titleB}</MarkerHighlight>
+            </h1>
 
             <div className="gradient-line mx-auto mt-5 h-px w-28" />
           </div>
 
           {/* items-stretch + h-full で左右カラムの下端を揃える */}
           <div className="grid items-stretch gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-            <motion.div
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.7, delay: 0.08, ease: "easeOut" }}
-            >
+            <div>
               <ContactForm
                 key={initialMessage}
                 locale={locale}
                 initialMessage={initialMessage}
               />
-            </motion.div>
+            </div>
 
-            <motion.div
-              className="h-full"
-              initial={{ opacity: 0, y: 28 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-            >
+            <div className="h-full">
               <ContactSocials locale={locale} />
-            </motion.div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

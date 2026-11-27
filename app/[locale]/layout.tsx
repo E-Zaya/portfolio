@@ -3,7 +3,6 @@ import { Inter, Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import FloatingConsultPill from "@/components/layout/FloatingConsultPill";
-import LoadingScreen from "@/components/layout/LoadingScreen";
 import ScrollProgress from "@/components/Effects/ScrollProgress";
 import ThemeProvider from "@/components/providers/ThemeProvider";
 import MotionProvider from "@/components/providers/MotionProvider";
@@ -87,6 +86,12 @@ export async function generateMetadata({
   };
 }
 
+const skipLinkLabels: Record<Locale, string> = {
+  ja: "本文へスキップ",
+  en: "Skip to content",
+  mn: "Үндсэн хэсэг рүү шилжих",
+};
+
 export default async function LocaleLayout({
   children,
   params,
@@ -133,7 +138,7 @@ export default async function LocaleLayout({
       */}
       <script
         dangerouslySetInnerHTML={{
-          __html: `document.documentElement.lang=${JSON.stringify(locale)};try{if(!localStorage.getItem('zaya-loading-seen')){document.documentElement.setAttribute('data-loading','true');}}catch(e){}`,
+          __html: `document.documentElement.lang=${JSON.stringify(locale)};`,
         }}
       />
       <ThemeProvider>
@@ -142,11 +147,16 @@ export default async function LocaleLayout({
             className={`${inter.variable} ${notoSansJp.variable} ${notoSerifJp.variable}`}
             data-locale={locale}
           >
-            <LoadingScreen />
+            {/* キーボードで最初に止まる所。ナビを飛ばして本文へ */}
+            <a href="#main" className="skip-link">
+              {skipLinkLabels[locale]}
+            </a>
             <ScrollProgress />
             <div className="site-content">
               <Header locale={locale} />
-              <main>{children}</main>
+              <main id="main" tabIndex={-1}>
+                {children}
+              </main>
               <Footer locale={locale} />
               <FloatingConsultPill locale={locale} />
             </div>

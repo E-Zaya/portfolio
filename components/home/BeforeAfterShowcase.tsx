@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Check, X } from "lucide-react";
 import BeforeAfterSlider from "@/components/ui/BeforeAfterSlider";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";
@@ -25,18 +26,15 @@ export default function BeforeAfterShowcase({ locale }: { locale: Locale }) {
     <SectionShell className="home-ba-section">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
-            {t.eyebrow}
-          </p>
-          <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
+          <h2 className="heading-display text-balance text-2xl leading-tight text-foreground sm:text-3xl">
             {t.title}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+          <p className="mx-auto mt-4 max-w-xl text-base text-soft">
             {t.description}
           </p>
         </div>
 
-        <div className="mt-10 overflow-hidden rounded-3xl border border-border shadow-theme">
+        <div className="mt-10 overflow-hidden rounded-lg border border-border">
           <div className="relative h-[470px] sm:h-[470px] md:h-[490px]">
             <BeforeAfterSlider
               initial={50}
@@ -71,7 +69,7 @@ function NowFace({
           height={96}
           className="w-14 shrink-0 -rotate-3 sm:w-[4.5rem]"
         />
-        <p className="ba-now-label text-2xl font-black tracking-wide sm:text-3xl">
+        <p className="ba-now-label text-xl font-bold sm:text-2xl">
           {label}
         </p>
       </div>
@@ -80,7 +78,7 @@ function NowFace({
         {rows.map((row) => (
           <div key={row.before} className="ba-row ba-row-now">
             <span className="ba-row-icon ba-row-icon-now" aria-hidden>
-              ✕
+              <X size={14} strokeWidth={2.4} />
             </span>
             <span className="line-clamp-2 text-xs leading-snug sm:text-sm">
               {row.before}
@@ -103,7 +101,7 @@ function FutureFace({
   return (
     <div className="ba-future flex h-full flex-col px-5 py-5 sm:px-7 sm:py-6">
       <div className="flex h-16 items-center justify-end gap-3 sm:h-20">
-        <p className="ba-future-label text-2xl font-black tracking-wide sm:text-3xl">
+        <p className="ba-future-label text-xl font-bold sm:text-2xl">
           {label}
         </p>
         <Image
@@ -123,7 +121,7 @@ function FutureFace({
               {row.after}
             </span>
             <span className="ba-row-icon ba-row-icon-future" aria-hidden>
-              ✓
+              <Check size={14} strokeWidth={2.4} />
             </span>
           </div>
         ))}

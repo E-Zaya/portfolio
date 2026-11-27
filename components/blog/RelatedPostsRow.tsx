@@ -20,7 +20,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
 
   return (
     <section className="space-y-4">
-      <h2 className="text-[clamp(24px,2.6vw,32px)] font-semibold tracking-[-0.045em] text-foreground">
+      <h2 className="text-xl sm:text-2xl font-semibold text-foreground">
         {t.related}
       </h2>
 
@@ -36,10 +36,10 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
               href={withLocale(locale, `/blog/${post.slug}`)}
               className="group block"
             >
-              <article className="h-full rounded-2xl border border-border bg-card p-4 shadow-theme transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
+              <article className="h-full rounded-md border border-border bg-card p-4 transition duration-200 hover:-translate-y-0.5 hover:border-foreground/10">
                 <div className="text-xs text-muted">{formattedDate}</div>
 
-                <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-[1.2] tracking-[-0.04em] text-foreground">
+                <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-[1.2] text-foreground">
                   {title}
                 </h3>
 
@@ -47,7 +47,7 @@ export default function RelatedPostsRow({ posts, locale }: Props) {
                   {summary}
                 </p>
 
-                <span className="mt-4 inline-flex text-sm font-medium text-foreground">
+                <span className="mt-4 inline-flex text-sm font-normal text-foreground">
                   {t.readMore}
                 </span>
               </article>

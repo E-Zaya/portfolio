@@ -2,8 +2,16 @@
 
 import { getBriefHref } from "@/lib/contact-brief";
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import { Clock3, MessageCircle } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Clock3,
+  MessageCircle,
+  ShieldCheck,
+  X,
+} from "lucide-react";
 import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
@@ -14,118 +22,13 @@ import { getMessages, type Locale } from "@/lib/i18n";
 
 /* ─────────────────────────── icons ─────────────────────────── */
 
-function ArrowIcon() {
-  return (
-    <svg
-      className="h-4 w-4"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M3 8h10M9 4l4 4-4 4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ExternalArrowIcon() {
-  return (
-    <svg
-      className="h-3.5 w-3.5"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M5 11L11 5M6 5h5v5"
-        stroke="currentColor"
-        strokeWidth="1.7"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function CrossIcon() {
-  return (
-    <svg
-      className="h-3 w-3"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M2.5 2.5l7 7m0-7l-7 7"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      className="h-3 w-3"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M2 6.5L4.8 9.5L10 3"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function ShieldIcon() {
-  return (
-    <svg
-      className="h-5 w-5"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      <path
-        d="M10 2l6 2.4v4.4c0 4-2.6 7-6 8.7-3.4-1.7-6-4.7-6-8.7V4.4L10 2z"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M7.2 9.8l2 2 3.6-4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 /* ────────────────────── section label ────────────────────── */
 
 /** 「こんな形でつくります」等のミニ見出し — 右にルール線を流すエディトリアル調 */
 function MiniHeading({ children }: { children: React.ReactNode }) {
   return (
     <div className="mt-10 flex items-center gap-4">
-      <span className="whitespace-nowrap text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
+      <span className="whitespace-nowrap text-sm font-bold text-muted">
         {children}
       </span>
       <span
@@ -146,7 +49,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
   const ctaHref = getConsultHref(locale);
   const consultLinkProps = getConsultLinkProps(locale);
   const packages = t.packages;
-  const reduce = useReducedMotion();
 
   // タイトルを2行に分解: 1行目(比較対象)は控えめ、2行目(主張)にマーカーが走る
   const [titleLine1, titleLine2 = ""] = t.title.split("\n");
@@ -157,101 +59,43 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       <SectionShell>
         <div className="mx-auto max-w-3xl space-y-6 text-center">
           <h1 className="heading-display section-title">
-            <motion.span
-              className="block text-soft"
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              {titleLine1}
-            </motion.span>
-            <motion.span
-              className="mt-1 inline-block"
-              initial={reduce ? false : { opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{ duration: 0.5, delay: 0.12, ease: "easeOut" }}
-            >
-              <MarkerHighlight delay={0.55}>{titleLine2}</MarkerHighlight>
-            </motion.span>
+            <span className="block text-soft">{titleLine1}</span>
+            <span className="mt-1 inline-block">
+              <MarkerHighlight>{titleLine2}</MarkerHighlight>
+            </span>
           </h1>
 
-          <motion.p
-            className="text-base leading-loose text-soft sm:text-lg"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.45, delay: 0.2, ease: "easeOut" }}
-          >
-            {t.intro[0]}
-          </motion.p>
-          <motion.p
-            className="text-sm leading-relaxed text-muted"
-            initial={reduce ? false : { opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.45, delay: 0.3, ease: "easeOut" }}
-          >
-            {t.intro[1]}
-          </motion.p>
+          <p className="mx-auto max-w-xl text-base text-soft sm:text-lg">{t.intro[0]}</p>
+          <p className="mx-auto max-w-xl text-sm text-muted">{t.intro[1]}</p>
 
           {/* 2本柱へのジャンプピル + Zazaの応援 */}
           <div className="flex flex-wrap items-end justify-center gap-3 pt-2">
             {t.pillars.map((pillar, index) => (
-              <motion.a
+              <a
                 key={pillar.name}
                 href={`#pillar-${index + 1}`}
-                className="group inline-flex items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm font-bold text-foreground transition-colors duration-200"
+                className="group inline-flex min-h-11 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm font-bold text-foreground transition-colors duration-200 hover:border-[color:var(--accent-2)]"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--accent-2) 35%, var(--border))",
                   background:
                     "color-mix(in srgb, var(--accent-2) 7%, transparent)",
                 }}
-                initial={reduce ? false : { opacity: 0, scale: 0.7, y: 12 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.6 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 320,
-                  damping: 18,
-                  delay: 0.4 + index * 0.12,
-                }}
-                whileHover={reduce ? undefined : { y: -3 }}
               >
-                <span
-                  className="font-mono text-[10px] font-bold tracking-widest"
-                  style={{ color: "var(--accent-2)" }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 {pillar.name}
-                <span
+                <ArrowDown
+                  aria-hidden
+                  size={14}
                   className="transition-transform duration-200 group-hover:translate-y-0.5"
                   style={{ color: "var(--accent-2)" }}
-                  aria-hidden
-                >
-                  ↓
-                </span>
-              </motion.a>
+                />
+              </a>
             ))}
 
             {/* Zaza — ピルの横でぴょこんと応援 */}
-            <motion.span
+            <span
               aria-hidden
-              className="pointer-events-none -mb-1 select-none"
-              initial={
-                reduce ? false : { opacity: 0, y: 24, rotate: 12, scale: 0.5 }
-              }
-              whileInView={{ opacity: 1, y: 0, rotate: 5, scale: 1 }}
-              viewport={{ once: true, amount: 0.6 }}
-              transition={{
-                type: "spring",
-                stiffness: 240,
-                damping: 15,
-                delay: 0.72,
-              }}
+              className="pointer-events-none -mb-1 rotate-[5deg] select-none"
             >
               <Image
                 src="/Zaza/mascot/zaza-cheer.png"
@@ -260,7 +104,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                 height={96}
                 className="w-14 sm:w-16"
               />
-            </motion.span>
+            </span>
           </div>
         </div>
       </SectionShell>
@@ -269,13 +113,10 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
         <SectionShell>
           <div className="mx-auto max-w-6xl">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-muted">
-                {packages.eyebrow}
-              </p>
-              <h2 className="heading-display mt-3 text-3xl text-foreground sm:text-4xl">
+              <h2 className="heading-display text-2xl text-foreground sm:text-3xl">
                 {packages.title}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="mx-auto mt-4 max-w-xl text-base text-soft">
                 {packages.description}
               </p>
             </div>
@@ -284,7 +125,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
               {packages.items.map((item, index) => (
                 <article
                   key={item.name}
-                  className="relative flex min-h-full flex-col overflow-hidden rounded-3xl border p-6 sm:p-7"
+                  className="relative flex min-h-full flex-col overflow-hidden rounded-lg border p-6 sm:p-7"
                   style={{
                     borderColor: item.recommended
                       ? "color-mix(in srgb, var(--accent-2) 62%, var(--border))"
@@ -292,9 +133,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     background: item.recommended
                       ? "color-mix(in srgb, var(--accent-2) 9%, var(--card-strong))"
                       : "var(--card-strong)",
-                    boxShadow: item.recommended
-                      ? "0 20px 60px color-mix(in srgb, var(--accent-2) 14%, transparent)"
-                      : "var(--shadow)",
                   }}
                 >
                   {/* チップの有無でタイトル開始位置がズレないよう、
@@ -302,7 +140,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   <div className="mb-5 min-h-[26px]">
                     {item.recommended && (
                       <span
-                        className="inline-flex rounded-full border px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em]"
+                        className="inline-flex rounded-full border px-3 py-1 text-xs font-bold"
                         style={{
                           borderColor:
                             "color-mix(in srgb, var(--accent-2) 42%, transparent)",
@@ -323,7 +161,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     {item.description}
                   </p>
 
-                  <p className="mt-6 text-3xl font-black tracking-tight text-foreground">
+                  <p className="mt-6 text-2xl font-bold tabular-nums text-foreground">
                     {item.price}
                   </p>
                   <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
@@ -346,7 +184,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                             color: "var(--accent-2)",
                           }}
                         >
-                          <CheckIcon />
+                          <Check size={12} strokeWidth={2.4} />
                         </span>
                         {feature}
                       </li>
@@ -379,63 +217,35 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       <SectionShell>
         <div className="mx-auto max-w-5xl space-y-14">
           {t.pillars.map((pillar, pillarIndex) => {
-            const number = String(pillarIndex + 1).padStart(2, "0");
-
             return (
               <Card
                 key={pillar.name}
                 id={`pillar-${pillarIndex + 1}`}
-                className="relative scroll-mt-28 overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12"
+                className="relative scroll-mt-28 overflow-hidden rounded-lg p-6 sm:p-10 lg:p-12"
               >
-                {/* 背景ウォーターマーク番号 */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -top-8 right-2 select-none font-mono text-[9rem] font-black leading-none tracking-tighter sm:-top-12 sm:text-[13rem]"
-                  style={{
-                    color:
-                      "color-mix(in srgb, var(--accent-2) 7%, transparent)",
-                  }}
-                >
-                  {number}
-                </span>
-
                 {/* 柱ヘッダー */}
                 <div className="relative">
-                  <div className="flex items-center gap-3">
-                    <span
-                      aria-hidden
-                      className="h-px w-10"
-                      style={{ background: "var(--accent-2)" }}
-                    />
-                    <span
-                      className="font-mono text-[11px] font-bold uppercase tracking-[0.3em]"
-                      style={{ color: "var(--accent-2)" }}
-                    >
-                      {number}
-                    </span>
-                  </div>
-
-                  <h2 className="heading-display mt-4 text-4xl text-foreground sm:text-5xl">
-                    <MarkerHighlight delay={0.2}>{pillar.name}</MarkerHighlight>
+                  <h2 className="heading-display text-3xl text-foreground sm:text-4xl">
+                    <MarkerHighlight>{pillar.name}</MarkerHighlight>
                   </h2>
 
                   <p className="mt-3 text-base font-bold text-soft sm:text-lg">
                     {pillar.tagline}
                   </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted sm:text-[15px]">
+                  <p className="mt-3 max-w-xl text-base text-muted">
                     {pillar.lead}
                   </p>
                 </div>
 
                 {/* ── ビフォー→アフター: 「今」と「これから」の2つの世界 ── */}
                 <div
-                  className="relative mt-10 overflow-hidden rounded-2xl border"
+                  className="relative mt-10 overflow-hidden rounded-md border"
                   style={{ borderColor: "var(--border)" }}
                 >
                   {/* パネルヘッダー(デスクトップのみ) */}
                   <div className="hidden sm:grid sm:grid-cols-2">
                     <div
-                      className="px-6 py-3 text-[11px] font-bold uppercase tracking-[0.24em] text-muted"
+                      className="px-6 py-3 text-sm font-bold text-muted"
                       style={{
                         background:
                           "color-mix(in srgb, var(--foreground) 5%, transparent)",
@@ -444,7 +254,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                       {t.labels.before}
                     </div>
                     <div
-                      className="px-6 py-3 text-[11px] font-bold uppercase tracking-[0.24em]"
+                      className="px-6 py-3 text-sm font-bold"
                       style={{
                         background:
                           "color-mix(in srgb, var(--accent-2) 12%, transparent)",
@@ -456,32 +266,21 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   </div>
 
                   {pillar.beforeAfter.map((row) => (
-                    <motion.div
+                    <div
                       key={row.before}
                       className="grid border-t first:border-t-0 sm:grid-cols-2 sm:border-t"
                       style={{ borderColor: "var(--border)" }}
-                      initial={reduce ? "show" : "hidden"}
-                      whileInView="show"
-                      viewport={{ once: true, amount: 0.5 }}
                     >
                       {/* 今 — 重い世界 */}
-                      <motion.div
+                      <div
                         className="relative flex items-start gap-3 px-5 py-4 sm:px-6 sm:py-5"
                         style={{
                           background:
                             "color-mix(in srgb, var(--foreground) 3%, transparent)",
                         }}
-                        variants={{
-                          hidden: { opacity: 0, x: -12 },
-                          show: {
-                            opacity: 1,
-                            x: 0,
-                            transition: { duration: 0.35, ease: "easeOut" },
-                          },
-                        }}
                       >
                         <span className="mb-0 block sm:hidden">
-                          <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted">
+                          <span className="text-xs font-bold text-muted">
                             {t.labels.before}
                           </span>
                         </span>
@@ -493,63 +292,36 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                               "color-mix(in srgb, var(--foreground) 8%, transparent)",
                           }}
                         >
-                          <CrossIcon />
+                          <X size={12} strokeWidth={2.4} />
                         </span>
                         <p className="text-sm leading-relaxed text-muted">
                           {row.before}
                         </p>
 
-                        {/* 境界を突き破る矢印 — ポンッと弾んで登場 */}
-                        <motion.span
+                        {/* 今 → これから の境目の印 */}
+                        <span
                           aria-hidden
-                          className="absolute -right-3.5 top-1/2 z-10 hidden h-7 w-7 place-items-center rounded-full text-xs font-bold sm:grid"
+                          className="absolute -right-3.5 top-1/2 z-10 hidden h-7 w-7 -translate-y-1/2 place-items-center rounded-full sm:grid"
                           style={{
-                            background: "var(--accent-2)",
+                            background: "var(--button-bg)",
                             color: "var(--button-foreground)",
-                            boxShadow:
-                              "0 2px 10px color-mix(in srgb, var(--accent-2) 45%, transparent)",
-                            y: "-50%",
-                          }}
-                          variants={{
-                            hidden: { scale: 0 },
-                            show: {
-                              scale: 1,
-                              transition: {
-                                type: "spring",
-                                stiffness: 420,
-                                damping: 17,
-                                delay: 0.2,
-                              },
-                            },
                           }}
                         >
-                          →
-                        </motion.span>
-                      </motion.div>
+                          <ArrowRight size={14} strokeWidth={2.2} />
+                        </span>
+                      </div>
 
                       {/* これから — 軽い世界(色が流れ込む) */}
-                      <motion.div
+                      <div
                         className="flex items-start gap-3 px-5 py-4 sm:px-6 sm:py-5 sm:pl-9"
                         style={{
                           background:
                             "color-mix(in srgb, var(--accent-2) 7%, transparent)",
                         }}
-                        variants={{
-                          hidden: { opacity: 0, x: 12 },
-                          show: {
-                            opacity: 1,
-                            x: 0,
-                            transition: {
-                              duration: 0.35,
-                              delay: 0.32,
-                              ease: "easeOut",
-                            },
-                          },
-                        }}
                       >
                         <span className="mb-0 block sm:hidden">
                           <span
-                            className="text-[9px] font-bold uppercase tracking-[0.2em]"
+                            className="text-xs font-bold"
                             style={{ color: "var(--accent-2)" }}
                           >
                             {t.labels.after}
@@ -564,13 +336,13 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                             color: "var(--accent-2)",
                           }}
                         >
-                          <CheckIcon />
+                          <Check size={12} strokeWidth={2.4} />
                         </span>
                         <p className="text-sm font-semibold leading-relaxed text-foreground">
                           {row.after}
                         </p>
-                      </motion.div>
-                    </motion.div>
+                      </div>
+                    </div>
                   ))}
                 </div>
 
@@ -580,7 +352,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                   {pillar.forms.map((form) => (
                     <span
                       key={form}
-                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-[13px] font-semibold text-soft"
+                      className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold text-soft"
                       style={{
                         background:
                           "color-mix(in srgb, var(--accent-2) 8%, transparent)",
@@ -637,21 +409,21 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         </div>
                         {isLink && (
                           <span
-                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-200 group-hover:border-transparent group-hover:bg-[var(--accent-2)] group-hover:text-[var(--button-foreground)]"
+                            className="grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-colors duration-200 group-hover:border-transparent group-hover:bg-[var(--button-bg)] group-hover:text-[var(--button-foreground)]"
                             style={{
                               borderColor: "var(--border)",
                               color: "var(--accent-2)",
                             }}
                             aria-hidden
                           >
-                            <ExternalArrowIcon />
+                            <ArrowUpRight size={14} strokeWidth={2} />
                           </span>
                         )}
                       </>
                     );
 
                     const sharedClass =
-                      "group relative flex items-center gap-4 overflow-hidden rounded-xl border p-4 pl-6";
+                      "group relative flex items-center gap-4 overflow-hidden rounded-md border p-4 pl-6";
                     const sharedStyle = {
                       borderColor: "var(--border)",
                       background:
@@ -664,7 +436,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                         href={proof.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`${sharedClass} transition-all duration-200 hover:-translate-y-0.5 hover:border-[color-mix(in_srgb,var(--accent-2)_45%,var(--border))]`}
+                        className={`${sharedClass} transition-colors duration-200 hover:border-[color-mix(in_srgb,var(--accent-2)_45%,var(--border))]`}
                         style={sharedStyle}
                         onClick={() =>
                           track("Service Proof Click", {
@@ -689,7 +461,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
 
                 {/* ── 目安価格の帯 + CTA ── */}
                 <div
-                  className="mt-10 flex flex-col gap-5 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+                  className="mt-10 flex flex-col gap-5 rounded-md p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6"
                   style={{
                     background:
                       "color-mix(in srgb, var(--accent-2) 9%, transparent)",
@@ -699,13 +471,13 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                 >
                   <div>
                     <p
-                      className="text-[11px] font-bold uppercase tracking-[0.24em]"
+                      className="text-sm font-bold"
                       style={{ color: "var(--accent-2)" }}
                     >
                       {t.labels.price}
                     </p>
                     <p className="mt-1.5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-                      <span className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">
+                      <span className="text-xl font-bold tabular-nums text-foreground sm:text-2xl">
                         {pillar.price}
                       </span>
                       <span className="text-xs font-bold text-muted">
@@ -727,7 +499,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
                     }
                   >
                     {t.ctaLabel}
-                    <ArrowIcon />
                   </Button>
                 </div>
               </Card>
@@ -738,17 +509,17 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
 
       {/* ── 保守・伴走 ── */}
       <SectionShell>
-        <Card className="mx-auto max-w-5xl rounded-3xl p-6 sm:p-8">
+        <Card className="mx-auto max-w-5xl rounded-lg p-6 sm:p-8">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
             <div
-              className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl"
+              className="grid h-12 w-12 shrink-0 place-items-center rounded-md"
               style={{
                 background:
                   "color-mix(in srgb, var(--accent-2) 12%, transparent)",
                 color: "var(--accent-2)",
               }}
             >
-              <ShieldIcon />
+              <ShieldCheck size={20} strokeWidth={1.6} />
             </div>
             <div className="flex-1">
               <h2 className="text-lg font-bold text-foreground sm:text-xl">
@@ -789,7 +560,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── ご利用の流れ(4ステップ) ── */}
       <SectionShell>
         <div className="mx-auto max-w-4xl space-y-8">
-          <h2 className="text-center text-2xl font-semibold">
+          <h2 className="text-center text-xl font-semibold">
             {t.process.title}
           </h2>
 
@@ -855,7 +626,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── よくある質問 ── */}
       <SectionShell>
         <div className="mx-auto max-w-2xl space-y-6">
-          <h2 className="text-center text-2xl font-semibold">{t.faq.title}</h2>
+          <h2 className="text-center text-xl font-semibold">{t.faq.title}</h2>
           <div className="services-faq-list">
             {t.faq.items.map((item) => (
               <details key={item.question} className="services-faq-item">
@@ -875,7 +646,7 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
       {/* ── 最後のCTA ── */}
       <SectionShell>
         <div className="mx-auto max-w-xl space-y-4 text-center">
-          <h2 className="text-2xl font-semibold">{t.bottomCtaTitle}</h2>
+          <h2 className="text-xl font-semibold">{t.bottomCtaTitle}</h2>
           <p className="text-base leading-relaxed text-soft">
             {t.bottomCtaText}
           </p>
@@ -893,7 +664,6 @@ export default function ServicesContent({ locale }: { locale: Locale }) {
             }
           >
             {t.ctaLabel}
-            <ArrowIcon />
           </Button>
         </div>
       </SectionShell>

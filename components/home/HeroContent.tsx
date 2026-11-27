@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
@@ -18,20 +17,15 @@ export default function HeroContent({ locale }: { locale: Locale }) {
   const titleLines = t.title.split("\n").filter((line) => line.trim());
   const highlightLines = t.highlight.split("\n").filter((line) => line.trim());
 
-  // モンゴル語(キリル文字)は語が長く、ja/enと同じサイズでは行が溢れるため
-  // mnのみ約75%スケール+字間を緩める。ja/enは従来のまま。
+  // 段は tokens.css の文字の段から。モンゴル語(キリル文字)は語が長いので1段小さく。
+  // 字間は base.css の見出しの値 (欧文 -0.02em、和文 0)。
   const headingSizeClass =
     locale === "mn"
-      ? "text-[clamp(1.35rem,6vw,1.8rem)] leading-[1.5] tracking-[-0.02em] sm:text-[2rem] sm:leading-[1.22] md:text-[2.6rem] lg:text-[3rem] xl:text-[3.2rem]"
-      : "text-[clamp(1.5rem,7vw,2rem)] leading-[1.5] tracking-[-0.05em] sm:text-[2.4rem] sm:leading-[1.15] md:text-[3.4rem] md:leading-[1.12] lg:text-[3.9rem] xl:text-[4.2rem]";
+      ? "text-xl sm:text-2xl md:text-3xl"
+      : "text-2xl sm:text-3xl lg:text-4xl";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="flex min-w-0 flex-col items-start text-left"
-    >
+    <div className="flex min-w-0 flex-col items-start text-left">
       {/* headline — 翻訳側で決めた改行を保ち、長いMN文言も画面内に収める */}
       <h1 className={`heading-display jp-tight text-foreground ${headingSizeClass}`}>
         <span className="block">
@@ -42,9 +36,9 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           ))}
         </span>
         <span className="block">
-          {highlightLines.map((line, index) => (
+          {highlightLines.map((line) => (
             <span key={line} className="block w-fit max-w-full">
-              <MarkerHighlight delay={0.6 + index * 0.18}>
+              <MarkerHighlight>
                 {line}
               </MarkerHighlight>
             </span>
@@ -52,7 +46,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
         </span>
       </h1>
       {/* description */}
-      <p className="mt-4 max-w-xl whitespace-pre-line text-[15px] leading-[1.8] text-soft sm:mt-7 md:text-base md:leading-8">
+      <p className="mt-4 max-w-xl whitespace-pre-line text-base text-soft sm:mt-7">
         {t.description}
       </p>
 
@@ -63,7 +57,7 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           {...consultLinkProps}
           variant="primary"
           size="compact"
-          className="group min-h-12 w-full font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
+          className="min-h-12 w-full font-bold sm:w-auto sm:px-8 sm:py-4 sm:text-base"
           onClick={() =>
             track("Hero CTA Click", {
               locale,
@@ -72,18 +66,6 @@ export default function HeroContent({ locale }: { locale: Locale }) {
           }
         >
           {t.primaryCta}
-          <svg
-            aria-hidden
-            viewBox="0 0 24 24"
-            className="h-4 w-4 shrink-0 transition-transform duration-300 group-hover:translate-x-0.5"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.4"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
         </Button>
 
         <Button
@@ -97,23 +79,6 @@ export default function HeroContent({ locale }: { locale: Locale }) {
         </Button>
       </div>
 
-      {/* tech line — subtle proof line */}
-      <div className="mt-6 flex items-center gap-3 sm:mt-10">
-        <span
-          aria-hidden
-          className="h-px w-8"
-          style={{
-            background:
-              "linear-gradient(90deg, color-mix(in srgb, var(--foreground) 30%, transparent), transparent)",
-          }}
-        />
-        <p
-          className="break-keep text-left text-[10px] font-medium uppercase leading-relaxed tracking-[0.14em] text-muted sm:tracking-[0.3em] md:text-[11px]"
-          style={{ fontFamily: "var(--font-mono, ui-monospace, monospace)" }}
-        >
-          {t.techLine}
-        </p>
-      </div>
-    </motion.div>
+    </div>
   );
 }

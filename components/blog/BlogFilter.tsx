@@ -19,7 +19,7 @@ export default function BlogFilter({
   const t = getMessages(locale).blog;
 
   const baseClass =
-    "rounded-full border px-4 py-2 text-sm font-medium transition";
+    "rounded-full border px-4 py-2 text-sm font-normal transition";
   const activeClass =
     "border-foreground/10 bg-card-strong text-foreground";
   const inactiveClass =
@@ -27,7 +27,7 @@ export default function BlogFilter({
 
   return (
     <div className="space-y-3">
-      <p className="text-sm font-medium text-soft">{t.filterLabel}</p>
+      <p className="text-sm font-normal text-soft">{t.filterLabel}</p>
 
       <div className="flex flex-wrap gap-3">
         <button

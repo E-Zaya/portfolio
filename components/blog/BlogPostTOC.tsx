@@ -65,9 +65,9 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
 
   return (
     <aside
-      className="rounded-2xl border border-border bg-card p-4 shadow-theme sm:p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
+      className="rounded-md border border-border bg-card p-4 sm:p-5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto"
     >
-      <h2 className="mb-3 text-sm font-semibold tracking-[0.08em] text-foreground sm:mb-4">
+      <h2 className="mb-3 text-sm font-semibold text-foreground sm:mb-4">
         {t.toc}
       </h2>
 
@@ -80,9 +80,9 @@ export default function BlogPostTOC({ headings, locale, mode = "all" }: Props) {
               key={heading.id}
               href={`#${heading.id}`}
               aria-current={isActive ? "true" : undefined}
-              className={`relative block rounded-xl px-3 py-2 text-sm leading-5 transition ${
+              className={`relative block rounded-md px-3 py-2 text-sm leading-5 transition ${
                 isActive
-                  ? "bg-card-strong font-medium text-foreground"
+                  ? "bg-card-strong font-normal text-foreground"
                   : "text-soft hover:bg-card-strong hover:text-foreground"
               } ${heading.level === 3 ? "ml-3 sm:ml-4" : ""}`}
               title={heading.text}

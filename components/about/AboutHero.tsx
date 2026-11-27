@@ -1,20 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
 import MarkerHighlight from "@/components/ui/MarkerHighlight";
 import { getMessages, type Locale } from "@/lib/i18n";
 import ReactCountryFlag from "react-country-flag";
-
-const fadeUp = {
-  initial: { opacity: 0, y: 28 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
-  transition: { duration: 0.7 },
-};
 
 const languages = [
   { code: "MN", country: "MN", level: "Native" },
@@ -33,12 +26,17 @@ const zoomLabels: Record<Locale, string> = {
   mn: "Зургийг томоор харах",
 };
 
+const noopSubscribe = () => () => {};
+
 export default function AboutHero({ locale }: { locale: Locale }) {
   const t = getMessages(locale).about;
   const [photoOpen, setPhotoOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
+  // ポータルは document.body が要るので、hydrate が済んでから出す
+  const mounted = useSyncExternalStore(
+    noopSubscribe,
+    () => true,
+    () => false,
+  );
 
   const close = useCallback(() => setPhotoOpen(false), []);
 
@@ -54,23 +52,15 @@ export default function AboutHero({ locale }: { locale: Locale }) {
   }, [photoOpen, close]);
 
   return (
-    <motion.div {...fadeUp} className="mx-auto max-w-2xl">
-      <p className="eyebrow mb-4">{t.eyebrow}</p>
-
+    <div className="mx-auto max-w-2xl">
       {/* 差出人 — 小さな顔 + 挨拶 */}
       <div className="flex items-center gap-4 md:gap-5">
-        <motion.button
+        <button
           type="button"
           onClick={() => setPhotoOpen(true)}
           aria-label={zoomLabels[locale]}
           title={zoomLabels[locale]}
-          initial={{ opacity: 0, scale: 0.7 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.15 }}
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.96 }}
-          className="shrink-0 cursor-zoom-in rounded-full border-0 bg-transparent p-0.5"
+          className="shrink-0 cursor-zoom-in rounded-full border-0 bg-transparent p-0.5 transition-transform duration-150 ease-out hover:scale-[1.04] active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
           style={{
             background: "color-mix(in srgb, var(--accent-2) 45%, transparent)",
           }}
@@ -84,62 +74,43 @@ export default function AboutHero({ locale }: { locale: Locale }) {
             className="size-20 rounded-full border-2 md:size-[104px]"
             style={{ borderColor: "var(--card)" }}
           />
-        </motion.button>
+        </button>
 
-        <h1 className="heading-display text-balance text-4xl leading-tight text-foreground md:text-5xl">
-          <MarkerHighlight delay={0.3}>{t.title}</MarkerHighlight>
+        <h1 className="heading-display text-balance text-3xl leading-tight text-foreground md:text-4xl">
+          <MarkerHighlight>{t.title}</MarkerHighlight>
         </h1>
       </div>
 
       <div className="gradient-line mt-5 h-px w-28" />
 
-      <div className="mt-7 space-y-5 text-soft">
-        {t.paragraphs.map((paragraph, index) => (
-          <motion.p
-            key={paragraph}
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
-            className="leading-8"
-          >
-            {paragraph}
-          </motion.p>
+      <div className="mt-7 max-w-xl space-y-5 text-soft">
+        {t.paragraphs.map((paragraph) => (
+          <p key={paragraph}>{paragraph}</p>
         ))}
 
         {/* 手紙の署名 — 手書き風 */}
-        <motion.p
-          initial={{ opacity: 0, x: -8 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.4 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="-rotate-1 text-right text-sm font-bold italic tracking-wide"
+        <p
+          className="-rotate-1 text-right text-sm font-bold italic"
           style={{ color: "var(--marker-ink)" }}
         >
           {t.signature}
-        </motion.p>
+        </p>
       </div>
 
       <div className="mt-8 flex flex-wrap gap-2">
-        {languages.map((lang, index) => (
-          <motion.div
+        {languages.map((lang) => (
+          <div
             key={lang.code}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.45, delay: 0.55 + index * 0.1 }}
-            whileHover={{ scale: 1.07, y: -2 }}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs shadow-sm"
+            className="inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1.5 text-xs"
           >
             <ReactCountryFlag
               countryCode={lang.country}
               svg
               style={{ width: "1.1em", height: "1.1em" }}
             />
-            <span className="font-medium text-foreground">{lang.code}</span>
-            <span className="text-muted">·</span>
+            <span className="font-normal text-foreground">{lang.code}</span>
             <span className="text-muted">{lang.level}</span>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -159,7 +130,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
                 aria-modal="true"
                 aria-label={zoomLabels[locale]}
                 className="fixed inset-0 z-[100] flex cursor-zoom-out items-center justify-center p-4 sm:p-8"
-                style={{ background: "rgba(10, 12, 16, 0.82)", backdropFilter: "blur(8px)" }}
+                style={{ background: "var(--scrim)", backdropFilter: "blur(8px)" }}
               >
                 <motion.div
                   initial={{ opacity: 0, scale: 0.92, y: 12 }}
@@ -174,7 +145,7 @@ export default function AboutHero({ locale }: { locale: Locale }) {
                     width={900}
                     height={900}
                     className="size-[min(85vw,60vh,30rem)] rounded-full object-cover shadow-2xl"
-                    style={{ border: "2px solid rgba(240, 242, 245, 0.18)" }}
+                    style={{ border: "2px solid color-mix(in srgb, var(--on-image) 18%, transparent)" }}
                   />
                   <button
                     type="button"
@@ -195,6 +166,6 @@ export default function AboutHero({ locale }: { locale: Locale }) {
           </AnimatePresence>,
           document.body,
         )}
-    </motion.div>
+    </div>
   );
 }
