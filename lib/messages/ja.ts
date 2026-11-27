@@ -488,7 +488,7 @@ export const ja = {
       title: "規模も、金額も、期間も、最初からはっきり。",
       description:
         "下記は目安の金額です。ページ数・言語数・必要な機能によって変わるので、最終的なお見積もりは無料相談のあとにお出しします。",
-      recommendedLabel: "いちばん選ばれています",
+      recommendedLabel: "おすすめ",
       items: [
         {
           name: "Launch Website",

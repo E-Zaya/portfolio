@@ -502,7 +502,7 @@ export const en = {
       title: "Scope, price, and timeline — clear from day one.",
       description:
         "These are starting figures. The final quote depends on content volume, number of languages, and the features you need, and I confirm it after the free consultation.",
-      recommendedLabel: "Most businesses start here",
+      recommendedLabel: "Recommended",
       items: [
         {
           name: "Launch Website",
