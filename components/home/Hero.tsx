@@ -1,87 +1,30 @@
-import Card from "@/components/ui/Card";
 import SectionShell from "@/components/ui/SectionShell";
-import { getMessages, type Locale } from "@/lib/i18n";
-import HeroAvailabilityStatus from "./HeroAvailabilityStatus";
+import { type Locale } from "@/lib/i18n";
 import HeroContent from "./HeroContent";
-// HeroVisual(Zaya Studioプレビュー)は温存中 — 気に入っているので別の場所で再利用予定。
-// 戻す場合: import HeroVisual from "./HeroVisual" にして下のHeroShowcaseと入れ替えるだけ。
-import HeroShowcase from "./HeroShowcase";
+import HeroPaperVideo from "./HeroPaperVideo";
+// HeroVisual(Zaya Studioプレビュー)と HeroShowcase(OdooTech の切り替え)は温存中。
+// 戻す場合: 下の HeroPaperVideo と入れ替える。
 
 export default function Hero({ locale }: { locale: Locale }) {
-  const t = getMessages(locale).hero;
-
   return (
     <SectionShell className="pt-3 sm:pt-4">
       {/* トンボ(印刷のコーナーマーク) — 「入稿された原稿」の記号。
-          カードがoverflow-hiddenなので外側のラッパーに置く */}
+          紙がoverflow-hiddenなので外側のラッパーに置く */}
       <div className="relative">
         <span className="crop-mark crop-mark-tl" aria-hidden />
         <span className="crop-mark crop-mark-tr" aria-hidden />
         <span className="crop-mark crop-mark-bl" aria-hidden />
         <span className="crop-mark crop-mark-br" aria-hidden />
-      <Card
-        gradientBorder
-        className="relative overflow-hidden rounded-3xl px-5 py-6 sm:px-6 sm:py-7 md:px-10 md:py-9 lg:px-14 lg:py-10"
-      >
-        {/* 帳簿のマージン罫 — 左端に1本だけ金の縦線 */}
-        <div
-          className="pointer-events-none absolute bottom-0 top-0 hidden w-px md:left-7 md:block"
-          style={{ background: "color-mix(in srgb, var(--accent-2) 22%, transparent)" }}
-        />
 
-        {/* top rule */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-px"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent 5%, color-mix(in srgb, var(--accent-2) 55%, transparent) 50%, transparent 95%)",
-          }}
-        />
-
-        {/* meta bar — editorial */}
-        <div className="relative z-10 mb-4 flex flex-wrap items-center justify-between gap-y-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-muted md:mb-5 md:text-[11px]">
-          <div className="flex min-w-0 flex-wrap items-center gap-2">
-            <span className="relative inline-flex h-1.5 w-1.5">
-              <span
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: "var(--accent-1)",
-                  boxShadow:
-                    "0 0 0 3px color-mix(in srgb, var(--accent-1) 25%, transparent)",
-                }}
-              />
-              <span
-                className="absolute inset-0 animate-ping rounded-full"
-                style={{ background: "var(--accent-1)", opacity: 0.6 }}
-              />
-            </span>
-            <HeroAvailabilityStatus status={t.meta.status} />
-          </div>
-          <div className="font-mono text-[10px] tracking-[0.18em] md:text-[11px]">
-            {t.meta.focus}
-          </div>
-        </div>
-
-        {/* hairline divider under meta bar */}
-        <div
-          aria-hidden
-          className="relative z-10 mb-6 h-px md:mb-8"
-          style={{
-            background:
-              "linear-gradient(90deg, transparent, color-mix(in srgb, var(--foreground) 14%, transparent) 50%, transparent)",
-          }}
-        />
-
-        {/* main two-column layout */}
-        <div className="relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <div className="min-w-0 lg:col-span-7">
+        {/* Hero ごと一枚の紙。テーマに関係なく紙の色と墨の文字で組む */}
+        <div className="hero-paper relative grid grid-cols-1 items-center overflow-hidden rounded-3xl lg:grid-cols-12">
+          <div className="relative z-10 min-w-0 px-5 pt-7 sm:px-8 sm:pt-9 md:px-12 md:pt-12 lg:col-span-7 lg:py-12 lg:pr-0">
             <HeroContent locale={locale} />
           </div>
           <div className="min-w-0 lg:col-span-5">
-            <HeroShowcase locale={locale} />
+            <HeroPaperVideo />
           </div>
         </div>
-      </Card>
       </div>
     </SectionShell>
   );
