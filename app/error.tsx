@@ -30,23 +30,11 @@ export default function RootError({
       }}
     >
       <div style={{ maxWidth: "480px" }}>
-        <p
-          style={{
-            fontSize: "0.6875rem",
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.34em",
-            marginBottom: "1rem",
-            color: "var(--color-error)",
-          }}
-        >
-          Something went wrong
-        </p>
 
         <h1
           style={{
             fontSize: "1.75rem",
-            fontWeight: 800,
+            fontWeight: 700,
             lineHeight: 1.2,
             marginBottom: "1rem",
           }}

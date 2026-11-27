@@ -118,7 +118,7 @@ export default async function PrivacyPage({
   return (
     <SectionShell>
       <div className="mx-auto max-w-2xl">
-        <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{t.title}</h1>
+        <h1 className="text-2xl font-bold text-foreground sm:text-3xl">{t.title}</h1>
         <p className="mt-3 text-xs text-muted">{t.updated}</p>
         <p className="mt-6 text-sm leading-7 text-soft">{t.intro}</p>
 

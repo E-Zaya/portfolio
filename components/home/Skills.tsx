@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { skillItems } from "@/data/portfolio";
 import SectionShell from "@/components/ui/SectionShell";
 import { getMessages, type Locale } from "@/lib/i18n";
@@ -11,36 +8,30 @@ export default function Skills({ locale }: { locale: Locale }) {
   return (
     <SectionShell>
       <div className="mb-10 text-center">
-        <p className="eyebrow mb-3">{t.eyebrow}</p>
-        <h2 className="text-xl font-bold text-foreground sm:text-2xl">
+        <h2 className="text-xl font-bold text-foreground">
           {t.title}
         </h2>
       </div>
 
       <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-6">
-        {skillItems.map((skill, index) => {
+        {skillItems.map((skill) => {
           const Icon = skill.icon;
 
           return (
-            <motion.a
+            <a
               key={skill.name}
               href={skill.url}
               target="_blank"
               rel="noreferrer"
               aria-label={skill.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.45, delay: index * 0.08 }}
-              whileHover={{ y: -8, scale: 1.05 }}
-              className="glass group flex min-h-10 flex-col items-center justify-center rounded-2xl p-6 text-center transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+              className="glass flex min-h-10 flex-col items-center justify-center rounded-md p-6 text-center transition-colors hover:border-[color:var(--accent-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
             >
               <Icon
                 aria-hidden="true"
-                className="mb-4 text-5xl text-foreground transition duration-300 group-hover:scale-110"
+                className="mb-4 size-12 text-foreground"
               />
-              <span className="text-sm font-medium text-foreground">{skill.name}</span>
-            </motion.a>
+              <span className="text-sm font-normal text-foreground">{skill.name}</span>
+            </a>
           );
         })}
       </div>

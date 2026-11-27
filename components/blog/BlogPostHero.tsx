@@ -69,7 +69,7 @@ export default function BlogPostHero({ post, locale }: Props) {
             <span className="shrink-0 text-muted">/</span>
 
             <span
-              className="min-w-0 flex-1 truncate font-medium text-foreground"
+              className="min-w-0 flex-1 truncate font-normal text-foreground"
               title={title}
             >
               {truncateText(title, 60)}
@@ -80,7 +80,7 @@ export default function BlogPostHero({ post, locale }: Props) {
 
       {/* [cover] article cover */}
       {post.cover && (
-        <div className="relative h-[180px] w-full overflow-hidden rounded-2xl border border-border bg-card sm:h-[220px] md:h-[280px] lg:h-[320px]">
+        <div className="relative h-[180px] w-full overflow-hidden rounded-md border border-border bg-card sm:h-[220px] md:h-[280px] lg:h-[320px]">
           <Image
             src={post.cover}
             alt={title}
@@ -101,7 +101,7 @@ export default function BlogPostHero({ post, locale }: Props) {
 
       {/* [header] title + meta */}
       <div className="space-y-3.5 md:space-y-4">
-        <h1 className="max-w-4xl text-[clamp(26px,7vw,42px)] font-semibold leading-[1.1] tracking-[-0.04em] text-foreground">
+        <h1 className="max-w-4xl text-2xl font-semibold sm:text-3xl text-foreground">
           {title}
         </h1>
 
@@ -120,7 +120,7 @@ export default function BlogPostHero({ post, locale }: Props) {
       </div>
 
       {/* [summary] short intro */}
-      <p className="max-w-3xl text-[15px] leading-7 text-soft md:text-base md:leading-8">
+      <p className="max-w-xl text-base text-soft">
         {summary}
       </p>
     </section>

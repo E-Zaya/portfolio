@@ -80,19 +80,15 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
   return (
     <Card
       gradientBorder
-      className="relative overflow-hidden rounded-3xl p-5 sm:p-7 md:p-9"
+      className="relative overflow-hidden rounded-lg p-5 sm:p-7 md:p-9"
     >
 
       <div className="relative z-10">
-        <p className="text-sm uppercase tracking-[0.22em] text-muted">
-          {t.primaryLabel}
-        </p>
-
-        <h3 className="mt-4 text-2xl font-semibold tracking-[-0.025em] text-foreground sm:text-3xl">
+        <h2 className="text-xl font-semibold text-foreground sm:text-2xl">
           {t.primaryTitle}
-        </h3>
+        </h2>
 
-        <p className="mt-4 max-w-xl text-sm leading-7 text-soft sm:text-base">
+        <p className="mt-4 max-w-xl text-base text-soft">
           {t.primaryDescription}
         </p>
 
@@ -126,7 +122,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
                 type="text"
                 name="name"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+                className="w-full rounded-md border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.namePlaceholder}
                 autoComplete="name"
               />
@@ -138,7 +134,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
                 type="email"
                 name="email"
                 required
-                className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+                className="w-full rounded-md border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
                 placeholder={t.form.emailPlaceholder}
                 autoComplete="email"
               />
@@ -152,7 +148,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
               name="message"
               rows={6}
               required
-              className="w-full rounded-2xl border border-border bg-card px-4 py-3 text-sm text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
+              className="w-full rounded-md border border-border bg-card px-4 py-3 text-base text-foreground outline-none transition focus:border-[var(--accent-2)] focus-visible:ring-2 focus-visible:ring-[var(--accent-2)]"
               placeholder={t.form.messagePlaceholder}
             />
           </label>
@@ -170,7 +166,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
           </div>
 
           {/* 安心のひとこと — 送るハードルを下げるマイクロコピー */}
-          <p className="text-[13px] leading-relaxed text-muted">{t.form.note}</p>
+          <p className="text-xs leading-relaxed text-muted">{t.form.note}</p>
 
           <div aria-live="polite" className="min-h-6 text-sm">
             {state === "error" && (
@@ -198,7 +194,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
             tabIndex={-1}
             aria-labelledby="contact-success-title"
             aria-describedby="contact-success-body"
-            className="project-modal-panel relative w-full max-w-sm rounded-3xl p-7 text-center outline-none sm:p-9"
+            className="project-modal-panel relative w-full max-w-sm rounded-lg p-7 text-center outline-none sm:p-9"
             initial={{ opacity: 0, y: 24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ type: "spring", stiffness: 300, damping: 22 }}
@@ -214,7 +210,7 @@ export default function ContactForm({ locale, initialMessage = "" }: { locale: L
             />
             <p
               id="contact-success-title"
-              className="mt-4 text-xl font-bold text-foreground sm:text-2xl"
+              className="mt-4 text-xl font-bold text-foreground sm:text-xl"
             >
               {zaza.formSuccess}
             </p>

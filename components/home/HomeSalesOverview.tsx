@@ -2,7 +2,6 @@ import { getBriefHref, briefLabels } from "@/lib/contact-brief";
 import Image from "next/image";
 import {
   ArrowDown,
-  ArrowRight,
   ArrowUpRight,
   Check,
   Clock3,
@@ -39,10 +38,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
     <div className="home-story">
       <SectionShell className="home-story-intro">
         <div className="mx-auto max-w-5xl text-center">
-          <p className="home-story-index font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-muted">
-            01 / 03
-          </p>
-          <h2 className="heading-display home-statement-title mt-5 text-4xl leading-[1.2] text-foreground sm:text-5xl lg:text-6xl">
+          <h2 className="heading-display home-statement-title text-3xl leading-[1.2] text-foreground sm:text-4xl lg:text-4xl">
             {statementLines.map((line, index) => (
               <span
                 key={line}
@@ -56,22 +52,19 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               </span>
             ))}
           </h2>
-          <p className="mx-auto mt-7 max-w-3xl text-sm leading-7 text-soft sm:text-base sm:leading-8">
+          <p className="mx-auto mt-7 max-w-xl text-base text-soft">
             {messages.services.intro[0]}
           </p>
 
           <div className="mt-9 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-            {messages.services.pillars.slice(0, 2).map((pillar, index) => (
+            {messages.services.pillars.slice(0, 2).map((pillar) => (
               <a
                 key={pillar.name}
                 href="#home-services"
                 className="home-outcome-link group inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-border px-5 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
               >
-                <span className="font-mono text-[10px] text-muted">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <span>{pillar.name}</span>
-                <span className="hidden font-medium text-muted md:inline">
+                <span className="hidden font-normal text-muted md:inline">
                   {pillar.tagline}
                 </span>
                 <ArrowDown
@@ -89,16 +82,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
             <div className="max-w-3xl">
-              <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-muted">
-                  02 / 03
-                </span>
-                {t.projectsEyebrow}
-              </p>
-              <h2 className="heading-display text-balance mt-4 text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl">
+              <h2 className="heading-display text-balance text-2xl leading-tight text-foreground sm:text-3xl">
                 {t.projectsTitle}
               </h2>
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="mt-4 max-w-xl text-base text-soft">
                 {t.projectsDescription}
               </p>
             </div>
@@ -107,21 +94,15 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
               href={`/${locale}/projects`}
               eventName="Home All Projects Click"
               eventProperties={{ locale }}
-              className="home-inline-link inline-flex items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] lg:mb-1"
+              className="home-inline-link inline-flex min-h-11 items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)] lg:mb-1"
             >
               {t.projectsLink}
-              <span
-                aria-hidden
-                className="grid h-9 w-9 place-items-center rounded-full border border-border transition"
-              >
-                <ArrowRight size={16} strokeWidth={1.9} />
-              </span>
             </TrackedLink>
           </div>
 
           <div className="home-projects-board mt-10 overflow-hidden">
             <div className="grid lg:grid-cols-2">
-              {featuredClientWork.map((project, index) => {
+              {featuredClientWork.map((project) => {
                 const content = messages.projects.items[project.slug];
                 const href =
                   project.demo ??
@@ -168,19 +149,17 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                           }
                         />
                         <div className="home-project-media-shade absolute inset-0" />
-                        <p className="absolute left-5 top-5 z-10 flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-white/80">
-                          <span>{String(index + 1).padStart(2, "0")}</span>
-                          <span aria-hidden className="h-px w-5 bg-white/40" />
+                        <p className="absolute left-5 top-5 z-10 text-xs font-bold text-on-image/85">
                           {messages.projects.laneLabels[project.category]}
                         </p>
                       </div>
 
                       <div className="flex items-start justify-between gap-5 p-6 sm:p-7">
                         <div className="min-w-0">
-                          <p className="text-[11px] font-bold text-[color:var(--accent-2)]">
+                          <p className="text-xs font-bold text-[color:var(--accent-2)]">
                             {content.client}
                           </p>
-                          <h3 className="mt-1 text-2xl font-bold text-foreground">
+                          <h3 className="mt-1 text-xl font-bold text-foreground">
                             {content.title}
                           </h3>
                           <p className="mt-3 line-clamp-2 max-w-xl text-sm leading-7 text-soft">
@@ -208,33 +187,21 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
         <div className="mx-auto max-w-6xl">
           <div className="relative grid gap-7 xl:grid-cols-[minmax(0,1fr)_minmax(24rem,0.72fr)] xl:items-end xl:gap-16">
             <div>
-              <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-                <span className="font-mono text-[10px] text-muted">
-                  03 / 03
-                </span>
-                {t.servicesEyebrow}
-              </p>
-              <h2 className="heading-display mt-4 max-w-4xl text-3xl leading-tight text-foreground sm:text-4xl xl:max-w-xl">
+              <h2 className="heading-display max-w-4xl text-2xl leading-tight text-foreground sm:text-3xl xl:max-w-xl">
                 {t.servicesTitle}
               </h2>
             </div>
             <div className="lg:pb-1">
-              <p className="max-w-2xl text-sm leading-7 text-soft sm:text-base">
+              <p className="max-w-xl text-base text-soft">
                 {t.servicesDescription}
               </p>
               <TrackedLink
                 href={`/${locale}/services`}
                 eventName="Home Services Click"
                 eventProperties={{ locale }}
-                className="home-services-link mt-5 inline-flex items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
+                className="home-services-link mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent-2)]"
               >
                 {t.servicesLink}
-                <span
-                  aria-hidden
-                  className="grid h-8 w-8 place-items-center rounded-full border border-border transition"
-                >
-                  <ArrowRight size={15} strokeWidth={1.9} />
-                </span>
               </TrackedLink>
             </div>
           </div>
@@ -267,7 +234,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     }`}
                   >
                     {recommended && (
-                      <p className="home-service-recommended flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.16em]">
+                      <p className="home-service-recommended flex items-center gap-2 text-xs font-bold">
                         <span
                           aria-hidden
                           className="h-1.5 w-1.5 rounded-full"
@@ -276,11 +243,8 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                       </p>
                     )}
 
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="font-mono text-xs font-bold text-muted">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <span className="home-service-icon grid h-10 w-10 place-items-center rounded-md border border-border text-muted">
+                    <div className="flex items-center gap-4">
+                      <span className="home-service-icon grid h-10 w-10 place-items-center rounded-sm border border-border text-muted">
                         <PackageIcon aria-hidden size={18} strokeWidth={1.6} />
                       </span>
                     </div>
@@ -294,7 +258,7 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                     </p>
 
                     <div className="mt-7">
-                      <p className="text-2xl font-black text-foreground sm:text-[1.7rem]">
+                      <p className="text-xl font-bold tabular-nums text-foreground sm:text-2xl">
                         {item.price}
                       </p>
                       <p className="mt-2 flex items-center gap-2 text-xs font-semibold text-muted">
@@ -329,7 +293,6 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                         className="brief-plan-link"
                       >
                         {briefLabels[locale].consult}
-                        <ArrowUpRight size={16} aria-hidden />
                       </TrackedLink>
                     )}
                   </article>
@@ -343,13 +306,10 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
       <SectionShell className="home-story-section home-contact-section">
         <div className="home-contact-panel mx-auto grid max-w-6xl gap-8 p-7 sm:p-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:p-12">
           <div className="max-w-3xl">
-            <p className="home-section-eyebrow text-[11px] font-bold uppercase tracking-[0.22em] text-muted">
-              {t.contactEyebrow}
-            </p>
-            <h2 className="heading-display text-balance mt-3 text-3xl leading-tight text-foreground sm:text-4xl">
+            <h2 className="heading-display text-balance text-2xl leading-tight text-foreground sm:text-3xl">
               {t.contactTitle}
             </h2>
-            <p className="mt-4 text-sm leading-7 text-soft sm:text-base">
+            <p className="mt-4 max-w-xl text-base text-soft">
               {t.contactDescription}
             </p>
           </div>
@@ -377,7 +337,6 @@ export default function HomeSalesOverview({ locale }: { locale: Locale }) {
                 className={`${actionClass} border-border bg-card text-foreground`}
               >
                 {t.contactLink}
-                <ArrowUpRight aria-hidden size={16} strokeWidth={1.8} />
               </TrackedLink>
             )}
           </div>

@@ -49,7 +49,7 @@ export default function Header({ locale }: { locale: Locale }) {
 
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-300 xl:hidden",
+          "sticky top-0 z-50 transition duration-300 xl:hidden",
           hidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100",
           scrolled ? "py-1.5" : "py-2.5",
         )}
@@ -57,11 +57,11 @@ export default function Header({ locale }: { locale: Locale }) {
       <div className="container-custom">
         <div
           className={cn(
-            "header-shell relative rounded-2xl transition-all duration-300",
+            "header-shell relative rounded-md transition duration-300",
             scrolled ? "px-3 py-1.5 sm:px-5" : "px-3 py-2 sm:px-5",
           )}
         >
-          <div className="pointer-events-none absolute inset-0 rounded-2xl bg-linear-to-r from-[color-mix(in_srgb,var(--accent-2)_8%,transparent)] via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 rounded-md bg-linear-to-r from-[color-mix(in_srgb,var(--accent-2)_8%,transparent)] via-transparent to-transparent" />
 
           <div className="relative flex min-h-12 items-center justify-between gap-3 sm:gap-4">
             <Link

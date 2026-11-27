@@ -29,7 +29,6 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
 
   const [visible, setVisible] = useState(false);
   const [bubble, setBubble] = useState(false);
-  const [flashed, setFlashed] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
@@ -46,20 +45,6 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 初登場時に一度だけ、吹き出しをひょこっと見せる(その後はhoverで)
-  useEffect(() => {
-    if (!visible || flashed) return;
-    const show = setTimeout(() => setBubble(true), 700);
-    const hide = setTimeout(() => {
-      setBubble(false);
-      setFlashed(true);
-    }, 3800);
-    return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
-    };
-  }, [visible, flashed]);
-
   if (cleanPath === "/contact") return null;
 
   return (
@@ -71,52 +56,38 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
           style={{
             bottom: "calc(env(safe-area-inset-bottom, 0px) + 1.25rem)",
           }}
-          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.9 }}
-          animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }}
-          exit={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.9 }}
-          transition={{ type: "spring", stiffness: 320, damping: 24 }}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+          animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+          exit={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+          transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
           onMouseEnter={() => setBubble(true)}
-          onMouseLeave={() => flashed && setBubble(false)}
+          onMouseLeave={() => setBubble(false)}
         >
           {/* Zazaのひとこと吹き出し */}
           <AnimatePresence>
             {bubble && (
               <motion.span
                 key="bubble"
-                className="absolute -top-11 right-0 z-20 whitespace-nowrap rounded-2xl rounded-br-sm border px-3.5 py-2 text-xs font-bold"
+                className="absolute -top-11 right-0 z-20 whitespace-nowrap rounded-md rounded-br-sm border px-3.5 py-2 text-xs font-bold"
                 style={{
                   background: "var(--background-2)",
                   borderColor: "var(--border)",
                   color: "var(--foreground)",
                   boxShadow: "var(--shadow)",
                 }}
-                initial={
-                  reduce ? { opacity: 0 } : { opacity: 0, y: 8, scale: 0.85 }
-                }
-                animate={
-                  reduce ? { opacity: 1 } : { opacity: 1, y: 0, scale: 1 }
-                }
-                exit={
-                  reduce ? { opacity: 0 } : { opacity: 0, y: 6, scale: 0.9 }
-                }
-                transition={{ type: "spring", stiffness: 380, damping: 22 }}
+                initial={reduce ? { opacity: 0 } : { opacity: 0, y: 4 }}
+                animate={reduce ? { opacity: 1 } : { opacity: 1, y: 0 }}
+                exit={reduce ? { opacity: 0 } : { opacity: 0, y: 4 }}
+                transition={{ duration: 0.15, ease: [0.23, 1, 0.32, 1] }}
               >
                 {t.zaza.pillBubble}
               </motion.span>
             )}
           </AnimatePresence>
           {/* Zaza — ピルの左肩からひょこっと覗く */}
-          <motion.span
+          <span
             aria-hidden
-            className="pointer-events-none absolute -left-8 -top-5 z-0 select-none"
-            initial={reduce ? false : { x: 16, rotate: 0, opacity: 0 }}
-            animate={{ x: 0, rotate: -8, opacity: 1 }}
-            transition={{
-              delay: 0.25,
-              type: "spring",
-              stiffness: 260,
-              damping: 16,
-            }}
+            className="pointer-events-none absolute -left-8 -top-5 z-0 -rotate-[8deg] select-none"
           >
             <Image
               src="/Zaza/mascot/zaza-peek.png"
@@ -125,7 +96,7 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
               height={72}
               className="w-12"
             />
-          </motion.span>
+          </span>
 
           <Link
             href={consultHref}
@@ -136,14 +107,10 @@ export default function FloatingConsultPill({ locale }: { locale: Locale }) {
                 destination: locale === "mn" ? "messenger" : "contact",
               })
             }
-            className="services-primary-button relative z-10 inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
-            style={{
-              boxShadow:
-                "0 10px 30px color-mix(in srgb, var(--accent-2) 40%, transparent)",
-            }}
+            className="services-primary-button relative z-10 inline-flex min-h-11 items-center rounded-full px-5 py-3 text-sm font-bold transition-transform duration-200 hover:-translate-y-0.5 active:scale-[0.98]"
+            style={{ boxShadow: "var(--shadow)" }}
           >
             {t.hero.primaryCta}
-            <span aria-hidden>→</span>
           </Link>
         </motion.div>
       )}

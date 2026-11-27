@@ -40,18 +40,18 @@ export function ProjectsClient({ locale, projects, t }: Props) {
     <>
       {/* Section header */}
       <div className="mb-12 text-center">
-        <h1 className="heading-display text-4xl text-foreground sm:text-5xl">
+        <h1 className="heading-display text-3xl text-foreground sm:text-4xl">
           {t.titleA ? (
             <>
               <span>{t.titleA} </span>
-              <MarkerHighlight delay={0.25}>{t.titleB}</MarkerHighlight>
+              <MarkerHighlight>{t.titleB}</MarkerHighlight>
             </>
           ) : (
-            <MarkerHighlight delay={0.25}>{t.titleB}</MarkerHighlight>
+            <MarkerHighlight>{t.titleB}</MarkerHighlight>
           )}
         </h1>
         {t.description && (
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-8 text-soft">
+          <p className="mx-auto mt-4 max-w-xl text-base leading-8 text-soft">
             {t.description}
           </p>
         )}
@@ -61,7 +61,7 @@ export function ProjectsClient({ locale, projects, t }: Props) {
           旧: デスクトップは左右2レーン常時表示 → 件数差(3 vs 7)で
           片側に巨大な空白ができていたため、タブ切替に統一 */}
       <div
-        className="project-board-tabs mb-6 grid grid-cols-2 rounded-lg border border-border p-1 lg:mx-auto lg:mb-10 lg:max-w-xl"
+        className="project-board-tabs mb-6 grid grid-cols-2 rounded-sm border border-border p-1 lg:mx-auto lg:mb-10 lg:max-w-xl"
         role="tablist"
         aria-label={t.titleB}
       >
@@ -93,7 +93,7 @@ export function ProjectsClient({ locale, projects, t }: Props) {
                 setActiveCategory(nextCategory);
                 document.getElementById(`project-tab-${nextCategory}`)?.focus();
               }}
-              className={`project-board-tab flex cursor-pointer items-center justify-center gap-2 rounded-md border px-3 py-3.5 text-sm font-bold ${
+              className={`project-board-tab flex cursor-pointer items-center justify-center gap-2 rounded-sm border px-3 py-3.5 text-sm font-bold ${
                 isActive ? "project-board-tab-active" : "text-muted"
               }`}
             >
@@ -104,8 +104,8 @@ export function ProjectsClient({ locale, projects, t }: Props) {
                 strokeWidth={1.8}
               />
               <span>{label}</span>
-              <span className="ml-2 font-mono text-xs">
-                {String(count).padStart(2, "0")}
+              <span className="text-xs font-normal tabular-nums">
+                {count}
               </span>
             </button>
           );

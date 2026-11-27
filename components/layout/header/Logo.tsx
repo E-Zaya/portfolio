@@ -35,8 +35,8 @@ export default function Logo({ size = 46 }: LogoProps) {
           >
             <defs>
               <linearGradient id={gradientId} x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#9DBCF5" />
-                <stop offset="100%" stopColor="#3B66D6" />  
+                <stop offset="0%" style={{ stopColor: "var(--logo-from)" }} />
+                <stop offset="100%" style={{ stopColor: "var(--logo-to)" }} />
               </linearGradient>
             </defs>
 

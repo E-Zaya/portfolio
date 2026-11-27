@@ -7,6 +7,39 @@
      装飾に乱用しない(上品さは金の「少なさ」で作る)。
    ══════════════════════════════════════════════════════════════ */
 
+/* 文字の段と角丸の段 (Agents rules/design.md 1章・2章)。
+   Tailwind の既定の段を消して、ここに無い段はクラスが作られないようにする。
+   文字は 8段 (13/14/16/18/22/28/40/56px を rem で)。13px 未満は作らない。
+   角丸は 3段 + pill (Dashboard の土台と同じ 10/14/22)。 */
+@theme static {
+  --text-*: initial;
+  --text-xs: 0.8125rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.6;
+  --text-base: 1rem;
+  --text-base--line-height: 1.75;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.7;
+  --text-xl: 1.375rem;
+  --text-xl--line-height: 1.45;
+  --text-2xl: 1.75rem;
+  --text-2xl--line-height: 1.3;
+  --text-3xl: 2.5rem;
+  --text-3xl--line-height: 1.2;
+  --text-4xl: 3.5rem;
+  --text-4xl--line-height: 1.12;
+
+  --radius-*: initial;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  /* 写真の上に載せる白い文字と暗い影 (値は下の :root の --on-image / --image-shade) */
+  --color-on-image: var(--on-image);
+  --color-image-shade: var(--image-shade);
+}
+
 :root {
   color-scheme: dark;
 
@@ -38,6 +71,10 @@
   --brand-x: #f2ecdf;
 
   --shadow: 0 18px 48px rgb(2 6 23 / 0.5);
+  /* 影・幕の色。影はこの色を color-mix で薄めて使う */
+  --shadow-color: rgb(2 6 23);
+  /* モーダルの後ろの幕 */
+  --scrim: rgb(2 6 23 / 0.72);
 
   /* accent-1: 補助の青灰(情報系、主張しない色)
      accent-2: Zaya Gold(主役) — 旧インディゴの置き換え先
@@ -135,6 +172,8 @@ html.light {
   --hairline: rgb(120 135 190 / 0.09);
 
   --shadow: 0 18px 48px rgb(40 52 110 / 0.12);
+  --shadow-color: rgb(40 52 110);
+  --scrim: rgb(13 16 36 / 0.45);
 
   /* ライトの藍は読める濃さ(コントラスト確保)の深い瑠璃 */
   --accent-1: #4c5a8a;
@@ -239,4 +278,14 @@ html.light {
   --paper-on-accent: #ffffff;
   --paper-scheme: light;
   --paper-edge: 0 18px 48px rgb(40 52 110 / 0.14), inset 0 0 0 1px rgb(120 135 190 / 0.2);
+}
+
+/* 写真の上に重ねる影と文字。写真は明るさが決まらないので、テーマに関係なく暗い影と白い文字 */
+:root {
+  --image-shade: rgb(2 6 23);
+  --on-image: #ffffff;
+
+  /* ロゴの Z の線。ロゴの色なのでテーマで変えない */
+  --logo-from: #9dbcf5;
+  --logo-to: #3b66d6;
 }

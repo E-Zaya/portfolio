@@ -4,7 +4,7 @@ import { getBriefHref, briefLabels } from "@/lib/contact-brief";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 import type { ProjectItem } from "@/data/projects";
 import type { Locale } from "@/lib/i18n";
@@ -94,12 +94,12 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
       onClick={onClose}
     >
       <div
-        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-3xl"
+        className="project-modal-panel relative w-full max-w-3xl overflow-y-auto rounded-lg"
         style={{
           maxHeight: "90dvh",
           background: "var(--background-2)",
           border: "1px solid var(--border)",
-          boxShadow: "0 32px 80px rgba(0, 0, 0, 0.5)",
+          boxShadow: "0 32px 80px color-mix(in srgb, var(--shadow-color) 50%, transparent)",
         }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -107,13 +107,13 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
         <button
           onClick={onClose}
           className="project-modal-close sticky top-3 right-3 z-10 float-right ml-3"
-          aria-label="閉じる"
+          aria-label={locale === "en" ? "Close" : locale === "mn" ? "Хаах" : "閉じる"}
         >
-          ✕
+          <X aria-hidden size={18} strokeWidth={2} />
         </button>
 
         {/* Preview slider */}
-        <div className="relative overflow-hidden rounded-t-3xl bg-card-strong sm:rounded-t-4xl">
+        <div className="relative overflow-hidden rounded-t-lg bg-card-strong sm:rounded-t-lg">
           <div className="project-modal-slider relative h-56 w-full overflow-hidden sm:h-72">
             <div
               className="flex h-full transition-transform duration-500 ease-out"
@@ -156,22 +156,28 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                   <ChevronRight className="h-5 w-5" />
                 </button>
 
-                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-white/20 bg-black/35 px-2.5 py-1.5">
+                <div className="absolute bottom-3 left-1/2 z-10 flex -translate-x-1/2 items-center rounded-full border border-on-image/20 bg-image-shade/35 px-1">
                   {gallery.map((src, index) => (
+                    // 点は小さいが、押せる所は 24px 角にする
                     <button
                       key={src}
                       type="button"
                       onClick={() => setActiveImageIndex(index)}
-                      className={`h-1.5 rounded-full transition-all ${
-                        index === activeImageIndex
-                          ? "w-5 bg-white"
-                          : "w-1.5 bg-white/45 hover:bg-white/80"
-                      }`}
+                      className="group/dot grid h-6 min-w-6 place-items-center px-1"
                       aria-label={`画像 ${index + 1} を表示`}
                       aria-current={
                         index === activeImageIndex ? "true" : undefined
                       }
-                    />
+                    >
+                      <span
+                        aria-hidden
+                        className={`block h-1.5 rounded-full transition ${
+                          index === activeImageIndex
+                            ? "w-5 bg-on-image"
+                            : "w-1.5 bg-on-image/45 group-hover/dot:bg-on-image/80"
+                        }`}
+                      />
+                    </button>
                   ))}
                 </div>
               </>
@@ -185,7 +191,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
                   key={src}
                   type="button"
                   onClick={() => setActiveImageIndex(index)}
-                  className={`project-modal-thumbnail relative h-14 w-24 shrink-0 overflow-hidden rounded-xl border ${
+                  className={`project-modal-thumbnail relative h-14 w-24 shrink-0 overflow-hidden rounded-md border ${
                     index === activeImageIndex
                       ? "project-modal-thumbnail-active"
                       : "border-border"
@@ -223,7 +229,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
               {t.kindLabels[project.kind]}
             </span>
             <span
-              className={`rounded-full border px-3 py-1 text-xs font-medium ${
+              className={`rounded-full border px-3 py-1 text-xs font-normal ${
                 project.status === "Completed"
                   ? "badge-completed"
                   : "badge-in-progress"
@@ -232,20 +238,20 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
               {status}
             </span>
             {project.featured && (
-              <span className="badge-featured rounded-full border px-3 py-1 text-xs font-medium">
+              <span className="badge-featured rounded-full border px-3 py-1 text-xs font-normal">
                 {t.featuredBadge}
               </span>
             )}
           </div>
 
           {/* Title */}
-          <h2 className="mb-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+          <h2 className="mb-3 text-xl font-semibold text-foreground sm:text-2xl">
             {itemText.title}
           </h2>
 
           {/* クライアント・期間(実案件用) */}
           {(itemText.client || itemText.duration) && (
-            <p className="mb-3 text-xs font-semibold tracking-wide text-muted">
+            <p className="mb-3 text-xs font-semibold text-muted">
               {[itemText.client, itemText.duration]
                 .filter(Boolean)
                 .join(" ・ ")}
@@ -253,7 +259,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           )}
 
           {/* Description */}
-          <p className="mb-2 text-sm leading-7 text-soft sm:text-base sm:leading-8">
+          <p className="mb-2 text-base text-soft">
             {itemText.description}
           </p>
           <p className="mb-6 text-sm leading-6 text-muted">
@@ -262,14 +268,14 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
 
           {/* Scope + Focus */}
           <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <div className="project-info-block rounded-2xl border border-border p-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
+            <div className="project-info-block rounded-md border border-border p-4">
+              <p className="mb-2 text-xs font-normal text-muted">
                 {t.scopeLabel}
               </p>
               <p className="text-sm leading-6 text-soft">{itemText.scope}</p>
             </div>
-            <div className="project-info-block rounded-2xl border border-border p-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
+            <div className="project-info-block rounded-md border border-border p-4">
+              <p className="mb-2 text-xs font-normal text-muted">
                 {t.focusLabel}
               </p>
               <p className="text-sm leading-6 text-soft">{itemText.focus}</p>
@@ -279,7 +285,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           {/* 制作の裏側 — 一番悩んだところ。人間味とプロ味の同時出し */}
           {itemText.behind && (
             <div
-              className="mb-6 rounded-2xl border p-4"
+              className="mb-6 rounded-md border p-4"
               style={{
                 borderColor:
                   "color-mix(in srgb, var(--marker-ink) 28%, var(--border))",
@@ -288,7 +294,7 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
               }}
             >
               <p
-                className="mb-1.5 text-xs font-bold uppercase tracking-widest"
+                className="mb-1.5 text-xs font-bold"
                 style={{ color: "var(--marker-ink)" }}
               >
                 {t.behindLabel}
@@ -300,9 +306,11 @@ export function ProjectModal({ locale, project, itemText, t, onClose }: Props) {
           )}
 
           {/* 使用技術 — 興味のある人向けの控えめな1行(技術語はメイン導線から排除する方針) */}
-          <p className="mb-6 font-mono text-[11px] tracking-wide text-muted">
-            {project.tech.join(" · ")}
-          </p>
+          <ul className="mb-6 flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted">
+            {project.tech.map((tech) => (
+              <li key={tech}>{tech}</li>
+            ))}
+          </ul>
 
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3">
