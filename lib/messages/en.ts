@@ -362,6 +362,8 @@ export const en = {
     toc: "Table of Contents",
     tocItemAria: "Jump to heading",
     related: "Related Posts",
+    recommended: "Recommended",
+    pinnedBadge: "Recommended",
     readMore: "Read more",
     allTags: "All",
     noPostsTitle: "No posts found.",

@@ -271,6 +271,8 @@ export type BlogContent = {
   toc: string;
   tocItemAria: string;
   related: string;
+  recommended: string;
+  pinnedBadge: string;
   readMore: string;
   allTags: string;
   noPostsTitle: string;

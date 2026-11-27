@@ -365,6 +365,8 @@ export const ja = {
     toc: "目次",
     tocItemAria: "見出しへ移動",
     related: "関連記事",
+    recommended: "おすすめ記事",
+    pinnedBadge: "おすすめ",
     readMore: "続きを読む",
     allTags: "すべて",
     noPostsTitle: "記事が見つかりません。",

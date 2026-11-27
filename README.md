@@ -48,6 +48,7 @@ The site is built with a Japanese-first structure and supports three languages:
 記事は Notion の「Blog database」に書き、`Published` を ON にすると約5分で出る (revalidate 300)。再 deploy は不要。
 
 - Notion の property: `Title` / `Slug` / `Published` / `Lang` (ja・mn・en) / `Date` / `Summary` / `Tags` / `ReadingTime`
+- `Pinned` を ON にした記事は、一覧の先頭 (「おすすめ」付き) と、各記事の下の「おすすめ記事」(最大3本) に出る
 - カバー画像は Notion の Cover ではなく `public/images/blog/{slug}.png` を使う。記事を公開する前に、この画像を repo に入れて deploy しておく
 
 ### カバー画像の型

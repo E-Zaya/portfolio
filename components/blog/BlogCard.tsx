@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { Clock3 } from "lucide-react";
+import { Clock3, Pin } from "lucide-react";
 import { getMessages, withLocale, type Locale } from "@/lib/i18n";
 import type { PostMeta } from "@/lib/notion";
 import {
@@ -66,6 +66,13 @@ export default function BlogCard({ post, locale }: Props) {
               {t.minRead(readTime)}
             </span>
           </div>
+
+          {post.pinned ? (
+            <span className="mb-2 inline-flex w-fit items-center gap-1 text-xs font-semibold text-foreground">
+              <Pin className="h-3.5 w-3.5" aria-hidden="true" />
+              {t.pinnedBadge}
+            </span>
+          ) : null}
 
           <h3 className="line-clamp-2 text-xl font-semibold leading-[1.18] text-foreground">
             {title}
