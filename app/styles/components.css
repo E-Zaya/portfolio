@@ -690,14 +690,8 @@ html.light .mouse-glow::before {
 .home-page {
   position: relative;
   overflow: clip;
-  background:
-    linear-gradient(
-      145deg,
-      color-mix(in srgb, var(--accent-1) 4%, var(--background)) 0%,
-      var(--background) 35%,
-      color-mix(in srgb, var(--accent-2) 4%, var(--background)) 68%,
-      var(--background) 100%
-    );
+  /* 地の色と光は body に置く(tokens.css の --glow-*)。ここで塗ると光が隠れる */
+  background: transparent;
 }
 
 .home-page::before {
@@ -1327,9 +1321,9 @@ html.light .mouse-glow::before {
 }
 
 .services-primary-button {
-  background: var(--accent-2);
+  background: var(--button-bg);
   color: var(--button-foreground);
-  box-shadow: 0 3px 12px color-mix(in srgb, var(--accent-2) 22%, transparent);
+  box-shadow: 0 6px 22px color-mix(in srgb, var(--button-bg) 38%, transparent);
 }
 
 /* 現在は未使用(Button primaryに統一済み)。使う場合もaccent-2単色で。 */
@@ -1875,33 +1869,36 @@ html[data-loading] .site-content {
 }
 
 /* ── Hero の紙 ───────────────────────────────────────────────
-   Hero 動画の紙(#f6f5f1)と同じ色の一枚。ダークでもライトでも紙と墨で組む。
-   値は html.light のトークンと同じ。 */
+   Hero 動画と同じ紙の一枚。ダークは濃紺の紙、ライトは白い紙(動画も2本ある)。
+   色は tokens.css の --paper-* だけを使い、中の部品が読むトークンを紙用に差し替える。 */
 .hero-paper {
-  --foreground: #1f242e;
-  --text-soft: rgba(31, 36, 46, 0.86);
-  --text-muted: rgba(31, 36, 46, 0.62);
-  --card: #fdfcf9;
-  --card-strong: #ffffff;
-  --border: rgba(58, 70, 92, 0.25);
-  --border-soft: rgba(58, 70, 92, 0.14);
-  --shadow: 0 16px 40px rgba(30, 40, 60, 0.1);
-  --accent-1: #52657d;
-  --accent-2: #2557cb;
-  --marker: color-mix(in srgb, #9dbcf5 45%, transparent);
-  --marker-ink: #2557cb;
-  --button-foreground: #f6f9ff;
-  color-scheme: light;
-  background: #f6f5f1;
+  --foreground: var(--paper-ink);
+  --text-soft: var(--paper-soft);
+  --text-muted: var(--paper-muted);
+  --card: var(--paper-card);
+  --card-strong: var(--paper-card);
+  --border: var(--paper-border);
+  --border-soft: var(--paper-border-soft);
+  --shadow: var(--paper-shadow);
+  --accent-1: var(--paper-accent-1);
+  --accent-2: var(--paper-accent);
+  --marker: var(--paper-marker);
+  --marker-ink: var(--paper-accent);
+  --button-bg: var(--paper-button-bg);
+  --button-foreground: var(--paper-on-accent);
+  color-scheme: var(--paper-scheme);
+  background: var(--paper);
   color: var(--foreground);
-}
-
-/* ライトでは背景も同じ紙色なので、細い罫で紙の縁を見せる */
-html.light .hero-paper {
-  box-shadow: inset 0 0 0 1px rgba(58, 70, 92, 0.14);
+  box-shadow: var(--paper-edge);
 }
 
 /* 動画の縁(紙の継ぎ目の罫)を本文側へぼかして、一枚の紙に見せる */
+/* テーマに合う紙の動画だけ見せる(class は next-themes が html に付ける) */
+html.light .hero-paper-video-dark,
+html:not(.light) .hero-paper-video-light {
+  display: none;
+}
+
 .hero-paper-video {
   -webkit-mask-image: linear-gradient(180deg, transparent, #000 6%);
   mask-image: linear-gradient(180deg, transparent, #000 6%);

@@ -16,10 +16,24 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* 「墨と金」の紙 — グラデやブロブは使わず、無地+ごく薄い紙の繊維だけ。
-     カードは不透明なので、質感は余白にだけ静かに現れる */
+  /* 地は Dashboard の土台と同じ濃紺/藤色(--background)。光は下の body::before、
+     紙の繊維はここで重ねる */
   background-color: var(--background);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* 地の光(tokens.css の --glow-*)。画面に固定し、スクロールしても動かさない。
+   background-attachment: fixed は iOS Safari で効かないので、固定の層にする */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(60% 70% at 0% 100%, var(--glow-1), transparent 70%),
+    radial-gradient(45% 80% at 100% 45%, var(--glow-2), transparent 70%),
+    radial-gradient(40% 40% at 55% 105%, var(--glow-3), transparent 70%);
 }
 
 html[data-locale="ja"] body,
