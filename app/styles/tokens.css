@@ -202,9 +202,28 @@ html.light {
   --blog-copy-border: rgba(31, 36, 46, 0.1);
 }
 
-/* Hero の紙。テーマに関係なく同じ紙と墨(動画の紙 #f6f5f1 と同じ色)。
-   藍は動画のペンと同じ深い瑠璃。縁はライトの地の上でだけ細く見せる */
+/* Hero の紙。動画の紙と同じ色にして、枠なしで溶かす。
+   ダークは濃紺の紙に明るい墨(動画 paper-dark と同じ #0e1838)、ライトは白い紙に墨(動画 paper と同じ #f6f5f1)。
+   藍は動画のペンと同じ色 */
 :root {
+  --paper: #0e1838;
+  --paper-ink: #e6ebfa;
+  --paper-soft: rgba(230, 235, 250, 0.86);
+  --paper-muted: rgba(200, 210, 245, 0.68);
+  --paper-card: #14204a;
+  --paper-border: rgba(140, 165, 255, 0.24);
+  --paper-border-soft: rgba(140, 165, 255, 0.13);
+  --paper-shadow: 0 16px 40px rgba(2, 6, 23, 0.4);
+  --paper-accent-1: #8f9bc4;
+  --paper-accent: #7d99ff;
+  --paper-marker: color-mix(in srgb, #6d8cff 36%, transparent);
+  --paper-button-bg: #3c61f5;
+  --paper-on-accent: #ffffff;
+  --paper-scheme: dark;
+  --paper-edge: 0 24px 60px rgb(2 6 23 / 0.5), inset 0 0 0 1px rgb(140 165 255 / 0.16);
+}
+
+html.light {
   --paper: #f6f5f1;
   --paper-ink: #1f242e;
   --paper-soft: rgba(31, 36, 46, 0.86);
@@ -216,10 +235,8 @@ html.light {
   --paper-accent-1: #52657d;
   --paper-accent: #2557cb;
   --paper-marker: color-mix(in srgb, #9dbcf5 45%, transparent);
+  --paper-button-bg: #2557cb;
   --paper-on-accent: #ffffff;
-  --paper-edge: 0 24px 60px rgb(2 6 23 / 0.45);
-}
-
-html.light {
+  --paper-scheme: light;
   --paper-edge: 0 18px 48px rgb(40 52 110 / 0.14), inset 0 0 0 1px rgb(120 135 190 / 0.2);
 }

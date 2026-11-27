@@ -1869,7 +1869,7 @@ html[data-loading] .site-content {
 }
 
 /* ── Hero の紙 ───────────────────────────────────────────────
-   Hero 動画と同じ紙の一枚。ダークでもライトでも紙と墨で組む。
+   Hero 動画と同じ紙の一枚。ダークは濃紺の紙、ライトは白い紙(動画も2本ある)。
    色は tokens.css の --paper-* だけを使い、中の部品が読むトークンを紙用に差し替える。 */
 .hero-paper {
   --foreground: var(--paper-ink);
@@ -1884,15 +1884,21 @@ html[data-loading] .site-content {
   --accent-2: var(--paper-accent);
   --marker: var(--paper-marker);
   --marker-ink: var(--paper-accent);
-  --button-bg: var(--paper-accent);
+  --button-bg: var(--paper-button-bg);
   --button-foreground: var(--paper-on-accent);
-  color-scheme: light;
+  color-scheme: var(--paper-scheme);
   background: var(--paper);
   color: var(--foreground);
   box-shadow: var(--paper-edge);
 }
 
 /* 動画の縁(紙の継ぎ目の罫)を本文側へぼかして、一枚の紙に見せる */
+/* テーマに合う紙の動画だけ見せる(class は next-themes が html に付ける) */
+html.light .hero-paper-video-dark,
+html:not(.light) .hero-paper-video-light {
+  display: none;
+}
+
 .hero-paper-video {
   -webkit-mask-image: linear-gradient(180deg, transparent, #000 6%);
   mask-image: linear-gradient(180deg, transparent, #000 6%);
