@@ -32,6 +32,11 @@ export const ja = {
         description:
           "当サイトにおける個人情報の取り扱い(お問い合わせフォーム・アクセス解析)について説明します。",
       },
+      feedback: {
+        title: "Feedback を送る",
+        description:
+          "気づいたこと・困ったこと・ほしい機能を送れる窓です。",
+      },
       blog: {
         title: "ブログ — Web制作の記録",
         description:
@@ -644,6 +649,7 @@ export const ja = {
     copyright: "© 2026 Designed & Built by Zaya",
     emailLabel: "メール",
     privacy: "プライバシーポリシー",
+    feedback: "Feedback",
   },
   langToggle: {
     en: "EN",

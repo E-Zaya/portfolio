@@ -31,6 +31,11 @@ export const en = {
         description:
           "How personal information is handled on this site (contact form and analytics).",
       },
+      feedback: {
+        title: "Send feedback",
+        description:
+          "Tell us what you noticed, what got in the way, or what you want.",
+      },
       blog: {
         title: "Blog — Notes on Web Development",
         description:
@@ -665,6 +670,7 @@ export const en = {
     copyright: "© 2026 Designed & Built by Zaya",
     emailLabel: "Email",
     privacy: "Privacy Policy",
+    feedback: "Feedback",
   },
   langToggle: {
     en: "EN",

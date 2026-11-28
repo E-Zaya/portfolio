@@ -311,6 +311,7 @@ export type Messages = {
       contact: MetaEntry;
       blog: MetaEntry;
       privacy: MetaEntry;
+      feedback: MetaEntry;
     };
   };
 
@@ -443,6 +444,8 @@ export type Messages = {
     emailLabel: string;
     /** プライバシーポリシーへのリンクラベル */
     privacy: string;
+    /** Feedback 窓へのリンクラベル */
+    feedback: string;
   };
 
   langToggle: {

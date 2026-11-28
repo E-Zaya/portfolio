@@ -22,13 +22,13 @@ const CONTENT: Record<
 > = {
   ja: {
     title: "プライバシーポリシー",
-    updated: "最終更新日: 2026年8月30日",
+    updated: "最終更新日: 2026年11月28日",
     intro:
       "本サイト(ezaya.dev、以下「当サイト」)における個人情報の取り扱いについて、以下のとおり定めます。",
     sections: [
       {
         heading: "1. 取得する情報",
-        body: "お問い合わせフォームの送信時に、お名前・メールアドレス・ご相談内容を取得します。これら以外の個人情報を当サイトから取得することはありません。",
+        body: "お問い合わせフォームの送信時に、お名前・メールアドレス・ご相談内容を取得します。Feedback の窓からは、送られた文章と、任意のメールアドレス、アプリの版・端末・ページの情報を取得します。これら以外の個人情報を当サイトから取得することはありません。",
       },
       {
         heading: "2. 利用目的",
@@ -36,7 +36,7 @@ const CONTENT: Record<
       },
       {
         heading: "3. 送信・保管",
-        body: "フォームの内容はメール配信サービス(Resend)を通じて運営者のメールアドレスに送信されます。サーバー上のデータベースに保存されることはありません。",
+        body: "フォームと Feedback の内容はメール配信サービス(Resend)を通じて運営者のメールアドレスに送信されます。サーバー上のデータベースに保存されることはありません。",
       },
       {
         heading: "4. アクセス解析",
@@ -50,13 +50,13 @@ const CONTENT: Record<
   },
   en: {
     title: "Privacy Policy",
-    updated: "Last updated: August 30, 2026",
+    updated: "Last updated: November 28, 2026",
     intro:
       "This page explains how personal information is handled on this website (ezaya.dev).",
     sections: [
       {
         heading: "1. Information collected",
-        body: "When you submit the contact form, your name, email address, and message are collected. No other personal information is collected on this site.",
+        body: "When you submit the contact form, your name, email address, and message are collected. The feedback window collects your message, an optional email address, and the app version, device, and page. No other personal information is collected on this site.",
       },
       {
         heading: "2. How it is used",
@@ -64,7 +64,7 @@ const CONTENT: Record<
       },
       {
         heading: "3. Delivery and storage",
-        body: "Form submissions are delivered to the site owner's email via Resend, an email delivery service. They are not stored in any database on the server.",
+        body: "Contact form and feedback submissions are delivered to the site owner's email via Resend, an email delivery service. They are not stored in any database on the server.",
       },
       {
         heading: "4. Analytics",
@@ -78,13 +78,13 @@ const CONTENT: Record<
   },
   mn: {
     title: "Нууцлалын бодлого",
-    updated: "Сүүлд шинэчилсэн: 2026 оны 8 сарын 30",
+    updated: "Сүүлд шинэчилсэн: 2026 оны 11-р сарын 28",
     intro:
       "Энэ хуудсанд тус вэбсайт (ezaya.dev) дээрх хувийн мэдээллийн боловсруулалтыг тайлбарлав.",
     sections: [
       {
         heading: "1. Цуглуулах мэдээлэл",
-        body: "Холбоо барих маягт илгээх үед таны нэр, имэйл хаяг, хүсэлтийн агуулгыг хүлээн авна. Үүнээс өөр хувийн мэдээлэл цуглуулдаггүй.",
+        body: "Холбоо барих маягт илгээх үед таны нэр, имэйл хаяг, хүсэлтийн агуулгыг хүлээн авна. Санал хүсэлтийн цонхоор бичсэн агуулга, хүсвэл үлдээсэн цахим шуудангийн хаяг, хэрэглүүрийн хувилбар, төхөөрөмж, хуудасны мэдээллийг хүлээн авна. Үүнээс өөр хувийн мэдээлэл цуглуулдаггүй.",
       },
       {
         heading: "2. Ашиглах зорилго",
@@ -92,7 +92,7 @@ const CONTENT: Record<
       },
       {
         heading: "3. Илгээлт ба хадгалалт",
-        body: "Маягтын агуулга имэйл үйлчилгээ (Resend)-ээр дамжин сайт эзэмшигчийн имэйл рүү илгээгдэнэ. Серверийн өгөгдлийн санд хадгалагдахгүй.",
+        body: "Маягт болон санал хүсэлтийн агуулга имэйл үйлчилгээ (Resend)-ээр дамжин сайт эзэмшигчийн имэйл рүү илгээгдэнэ. Серверийн өгөгдлийн санд хадгалагдахгүй.",
       },
       {
         heading: "4. Аналитик",
