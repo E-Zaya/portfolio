@@ -37,6 +37,15 @@ export default function Footer({ locale }: { locale: Locale }) {
                 >
                   {t.privacy}
                 </Link>
+
+                <span className="hidden h-1 w-1 rounded-full bg-soft/30 sm:block" />
+
+                <Link
+                  href={`/${locale}/feedback`}
+                  className="inline-flex min-h-6 items-center underline-offset-2 transition-colors hover:text-foreground hover:underline"
+                >
+                  {t.feedback}
+                </Link>
               </div>
             </div>
 

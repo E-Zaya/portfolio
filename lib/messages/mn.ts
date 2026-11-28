@@ -31,6 +31,11 @@ export const mn = {
         description:
           "Энэ сайт дээрх хувийн мэдээллийн боловсруулалт (холбоо барих маягт, аналитик)-ын тухай.",
       },
+      feedback: {
+        title: "Санал хүсэлт илгээх",
+        description:
+          "Анзаарсан зүйл, хүндрэл, хүсэж буй боломжоо илгээх цонх.",
+      },
       blog: {
         title: "Блог — Вэб хөгжүүлэлтийн тэмдэглэл",
         description:
@@ -678,6 +683,7 @@ export const mn = {
     copyright: "© 2026 Designed & Built by Zaya",
     emailLabel: "Имэйл",
     privacy: "Нууцлалын бодлого",
+    feedback: "Санал хүсэлт",
   },
 
   langToggle: {
