@@ -140,7 +140,7 @@ export default function FeedbackForm({
           email: String(formData.get("email") || ""),
           website: String(formData.get("website") || ""),
           version,
-          os: os || navigator.userAgent,
+          os,
           page: fromPage,
           locale,
           elapsedMs: Date.now() - openedAt.current,
